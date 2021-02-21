@@ -7,6 +7,7 @@
         <title>@yield('title','Master Page')</title>
         <link rel="stylesheet" href="{{asset('css/updateprogress.css')}}">
         <link rel="stylesheet" href="{{asset('css/viewprogress.css')}}">
+        <link rel="stylesheet" href="{{asset('css/login.css')}}">
 
 
     <meta charset="utf-8">

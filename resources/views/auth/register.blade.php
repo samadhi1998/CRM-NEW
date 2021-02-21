@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','Register')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -52,6 +52,35 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="mobileNo" class="col-md-4 col-form-label text-md-right">{{ __('MobileNo') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="mobileNo" type="text" class="form-control @error('MobileNo') is-invalid @enderror" name="mobileNo" required autocomplete="mobileNo" autofocus>
+
+                                @error('mobileNo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="emptype" class="col-md-4 col-form-label text-md-right">{{ __('EmpType') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="emptype" type="text" class="form-control @error('EmpType') is-invalid @enderror" name="emptype" required autocomplete="emptype" autofocus>
+
+                                @error('emptype')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
