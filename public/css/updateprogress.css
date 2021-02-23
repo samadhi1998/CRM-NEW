@@ -1,0 +1,64 @@
+button {
+    background-color: white;
+    color: #233554;
+    border-radius: 40px;
+    margin: auto;
+    display: block;
+    float: right;
+}
+
+label{
+    color: #233554;
+}
+
+option{
+    color: #233554;
+}
+
+form{
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 80px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-my-own-color {
+    color: #233554 !important; 
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #233554 !important;
+    color: white !important; 
+    border-color: white !important;
+    border-radius: 40px !important;
+}
+
+.btn-secondary {
+    background-color: white !important;
+    color: #233554 !important; 
+    border-color: #233554 !important;
+    border-radius: 40px !important;
+}
+
+/* body {
+    background: linear-gradient(0deg, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4)),url('{{asset("/img/background.jpg")}}');
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Ubuntu', sans-serif;
+} */

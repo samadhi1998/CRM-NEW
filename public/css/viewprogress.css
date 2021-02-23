@@ -1,0 +1,55 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    color: #233554;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  td, th {
+    border: 2px solid #233554;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  td:nth-child(1) {
+      text-align: center;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #233554;
+    color: white; 
+  }
+  
+  th{
+      text-align: center;
+  }
+  
+  button {
+      background-color: white;
+      color: #233554;
+      border-radius: 40px;
+      margin: auto;
+      display: inline;
+      font-weight: bold;
+  }
+  
+  .text-my-own-color {
+      color: #233554 !important; 
+  }
+  
+  a:hover {
+      text-decoration: none;
+  }
+  
+  a:active {
+      text-decoration: none;
+  }
+
+  /* body {
+    background: linear-gradient(0deg, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4)),url('{{asset("/img/background.jpg")}}');
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Ubuntu', sans-serif;
+} */
