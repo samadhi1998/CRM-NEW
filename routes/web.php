@@ -38,5 +38,17 @@ Route::get('/chats', function () {
     return view('chat/chat');
 });
 
+//order
+Route::get('/index', function () {
+    return view('order/index');
+});
+
+Route::get('/create', function () {
+    return view('order/create');
+});
+
+Route::get('/edit', function () {
+    return view('order/edit');
+});
 
 
