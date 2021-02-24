@@ -26,3 +26,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('/admin/users','App\Http\Controllers\Admin\UserController');
 
+
+//user management
+
+Route::get('/viewuser', function () {
+    return view('admin/users/viewuser');
+});
+
+//chats
+Route::get('/chats', function () {
+    return view('chat/chat');
+});
+
+
+
