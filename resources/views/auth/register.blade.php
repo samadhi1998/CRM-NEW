@@ -1,6 +1,18 @@
 @extends('layouts.app')
 @section('title','Register')
 @section('content')
+<html>
+<head>
+<style>
+    body {
+		background: linear-gradient(0deg, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4)),url('{{asset("/img/background.jpg")}}');
+		background-attachment: fixed;
+		background-size: cover;
+		font-family: 'Ubuntu', sans-serif;
+	}
+    </style>
+</head>
+<body>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -117,4 +129,7 @@
         </div>
     </div>
 </div>
+</body>
+</html>
+
 @endsection
