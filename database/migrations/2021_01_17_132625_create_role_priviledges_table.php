@@ -14,10 +14,9 @@ class CreateRolePriviledgesTable extends Migration
     public function up()
     {
         Schema::create('role_priviledges', function (Blueprint $table) {
-            $table->unsignedBigInteger('RoleID');
-            $table->unsignedBigInteger('PriviledgeID');
-            $table->foreign('RoleID')->references('RoleID')->on('roles');
-            $table->foreign('PriviledgeID')->references('PriviledgeID')->on('priviledges');
+            $table->bigIncrements('id');
+            $table->integer('RoleID')->unsigned();
+            $table->integer('PriviledgeID')->unsigned();
             $table->timestamps();
         });
     }

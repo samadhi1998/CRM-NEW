@@ -25,7 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Route::get('/home', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('home');
 
 Route::resource('/admin/users','App\Http\Controllers\Admin\UserController');
-
+Route::resource('roles','App\Http\Controllers\Admin\RoleController');
 
 //user management
 
@@ -33,8 +33,10 @@ Route::get('/viewuser', function () {
     return view('admin/users/viewuser');
 });
 
+
 Route::get('admin/users/edit/{EmpID}','App\Http\Controllers\Admin\UserController@edit')->name('editUser');
 Route::post('edit/{EmpID}','App\Http\Controllers\Admin\UserController@update');
+Route::get('/add-priviledge','App\Http\Controllers\Admin\RoleController@index');
 
 
 //chats
