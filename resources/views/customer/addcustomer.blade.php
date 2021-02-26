@@ -15,7 +15,7 @@
         <form method="POST" action="/addCustomer" id="myform">
             @csrf
             
-            <label for="Name" ><b> Customer Name: </b></label>
+            <label for="Name" ><b> Customer Name Enter: </b></label>
             <input type="text" name="Name"  name="Name"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
             <br>
             <label for="MobileNo" ><b>Mobile Number : </b></label>
