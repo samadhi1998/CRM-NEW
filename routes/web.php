@@ -33,6 +33,10 @@ Route::get('/viewuser', function () {
     return view('admin/users/viewuser');
 });
 
+Route::get('admin/users/edit/{EmpID}','App\Http\Controllers\Admin\UserController@edit')->name('editUser');
+Route::post('edit/{EmpID}','App\Http\Controllers\Admin\UserController@update');
+
+
 //chats
 Route::get('/chats', function () {
     return view('chat/chat');

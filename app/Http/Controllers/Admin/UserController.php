@@ -60,9 +60,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($EmpID)
     {
-        //
+        $data = user::find($EmpID);
+        return view('admin.users.updateuser',['users'=>$data]);
     }
 
     /**
@@ -74,7 +75,16 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $data = user::find($request->input('EmpID'));
+        $data->EmpID = $request->input('EmpID');
+        $data->name = $request->input('name');
+        $data->email = $request->input('email');
+        $data->Address = $request->input('Address');
+        $data->MobileNo = $request->input('MobileNo');
+        
+        $data->save();
+
+        return redirect('/home');
     }
 
     /**

@@ -2,28 +2,38 @@
 @section('title','Users')
 @section('content')
      
-    <div class="card">
-      <div>
-		    <img src="/img/logo.png" class="images">
-	    </div>
-      <div class="card-body">
-        <h5 class="card-title">User Profile</h5>
-        <p class="card-text">
-        @foreach($users as $user)
-        <!--<input type="hidden" class="find_value" value="{{$user->EmpID}}">-->
-          {{$user['empid']}}
-          <br>
-          {{$user['name']}}
-          <br>
-          {{$user['email']}}
-          <br>
-        @endforeach  
-        </p>
-        <a href="#!" class="btn btn-primary">See more details</a>
-      </div>
-    </div>
-  </div>
 
+  <table>
+    <tr>
+      <th>EmpID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>MobileNo</th>
+      <th>Action</th>    
+    </tr>
+      @foreach($users as $user)
+    <tr>
+      <td>{{$user['EmpID']}}</td>
+      <td>{{$user['name']}}</td>
+      <td>{{$user['email']}}</td>
+      <td>{{$user['Address']}}</td>
+      <td>{{$user['MobileNo']}}</td>
+      <td>
+        <div class="btn-group" role="group">
+        <a href="{{route('users.edit', $user->EmpID)}}">
+          <button type="button" data-toggle="modal" data-target="#exampleModal1" >Edit</button>
+        </a>
+        </div>
+
+        <div class="btn-group" role="group">
+        <a href="{{route('users.destroy', $user->EmpID)}}">
+          <button type="button" data-toggle="modal" data-target="#exampleModal2" >Delete</button>
+        </a>
+        </div>
+      </td> 
+    </tr>
+      @endforeach 
 
 
  
