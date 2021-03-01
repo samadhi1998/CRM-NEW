@@ -12,7 +12,7 @@
                 <form method="POST" action="">
                         @csrf
                         <label for="Role"><b>Role : </b></label>
-                        <select  name="Role"  value= style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+                        <select  name="Role" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
                         @foreach($roles as $role)
                             <option value="{{$roles->name}}">{{$roles->name}}</option>
                         @endforeach

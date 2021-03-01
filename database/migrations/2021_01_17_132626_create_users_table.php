@@ -24,8 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('Status')->nullable();
             $table->string('Added_By')->nullable();
-            // $table->unsignedBigInteger('RoleID')->nullable();
-            // $table->foreign('RoleID')->references('RoleID')->on('roles');
+            $table->unsignedBigInteger('RoleID')->nullable();
+            $table->foreign('RoleID')->references('RoleID')->on('roles');
             $table->rememberToken();
             $table->timestamps();
         });

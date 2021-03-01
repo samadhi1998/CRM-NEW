@@ -22,17 +22,24 @@
       <td>
         <div class="btn-group" role="group">
         <a href="{{route('users.edit', $user->EmpID)}}">
-          <button type="button" data-toggle="modal" data-target="#exampleModal1" >Edit</button>
+          <button type="button" >Edit</button>
         </a>
         </div>
 
         <div class="btn-group" role="group">
-        <a href="{{route('users.destroy', $user->EmpID)}}">
-          <button type="button" data-toggle="modal" data-target="#exampleModal2" >Delete</button>
-        </a>
+        <form action="{{route('users.destroy', $user->EmpID)}}" method="POST">
+          @csrf
+          @method('delete')
+          <button type="submit" data-toggle="modal" data-target="#exampleModal2" >Delete</button>
+          </form>
         </div>
       </td> 
     </tr>
+ 
+
+    <!-- <div class="btn-group" role="group">
+    <button type="button" data-toggle="modal" data-target="#exampleModal1" >Delete</button>
+                </div> -->
       @endforeach 
 
 

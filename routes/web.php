@@ -37,6 +37,9 @@ Route::get('/viewuser', function () {
 Route::get('admin/users/edit/{EmpID}','App\Http\Controllers\Admin\UserController@edit')->name('editUser');
 Route::post('edit/{EmpID}','App\Http\Controllers\Admin\UserController@update');
 Route::get('/add-priviledge','App\Http\Controllers\Admin\RoleController@index');
+Route::post('delete/{EmpID}','App\Http\Controllers\Admin\UserController@destroy');
+
+//Route::get('/deleteUser/{EmpID}','App\Http\Controllers\Admin\UserController@destroy');
 
 
 //chats
