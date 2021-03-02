@@ -14,7 +14,7 @@
          {{$error}}
           </div>
            @endforeach
-        <form method="POST" action="/Updateproducts">
+        <form method="POST" action="/Updateproducts"id="myformproduct">
             @csrf
             <label for="AdminID" ><b>Admin ID : </b></label>
             <input type="text" name="AdminID" value="{{$data['AdminID']}}" name="Name"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
@@ -41,10 +41,32 @@
             <input type="text" name="Status" value="{{$data['Status']}}"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
             <br>
             <br>
-            <div class="text-right">
-            <button type="submit"  Value="Next"class="btn btn-default btn-lg">Update Product</button>	 			
+            <div class="btn-group float-right" role="group">
+            <button type="button" data-toggle="modal" class="btn btn-primary" data-target="#exampleModal" >Update</button>
             </div>
+            <div class="btn-group float-right mr-2 " role="group">
+            <button type="submit" class="btn btn-primary" ><a href="/viewproduct">Cancel</a></button>
+            </div>     
             </form>
         </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel" style="color:#233554">Update Alert</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="color:#233554">
+                    You are going to update the progress of Product {{$data->ProductID"}} . Do you want to continue ?
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button type="submit" form="myformproduct" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>        
 
 @endsection

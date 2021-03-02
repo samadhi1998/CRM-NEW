@@ -48,9 +48,10 @@
       <td>{{$product['Status']}}</td>
       <td>
      <tab></tab>
-          <a href="/updateProduct/{{$product['ProductID']}}"  style="margin:2px"><button> Update</button></a><tab></tab>
+          <a href= {{"/UpdateProducts/".$product['ProductID']}} style="margin:2px"><button> Update</button></a><tab></tab>
           
-          <!--{{"/UpdateProducts/".$product['ProductID']}}-->
+                                              
+          <!-- "/updateProduct/{{$product['ProductID']}}"  -->
       </td>
 
 </tr>

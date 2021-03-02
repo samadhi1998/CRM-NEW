@@ -10,11 +10,11 @@
         <div class="container">
 
         @foreach($errors->all() as $error)
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger" role="alert" >
          {{$error}}
           </div>
            @endforeach
-        <form method="POST" action="/editcustomers">
+        <form method="POST" action="/editcustomers"id="myformcustomer">
             @csrf
             <label for="CustomerID">Customer ID</label>
              <input type="text"  name="CustomerID" value="{{$data['CustomerID']}}" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%">
@@ -35,15 +35,14 @@
             <input type="text" name="Address"   value="{{$data['Address']}}"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
             <br>
             <br>
-            <div class="text-right">
-             <button type="submit"  Value="Next"class="btn btn-default btn-lg">Update</button>	 			
-              </div>
+            <div class="btn-group float-right" role="group">
+            <button type="button" data-toggle="modal" class="btn btn-primary" data-target="#exampleModal" >Update</button>
+            </div>
+            <div class="btn-group float-right mr-2 " role="group">
+            <button type="submit" class="btn btn-primary" ><a href="/ViewCustomers">Cancel</a></button>
+            </div>     
             </form>
         </div>
-        
-
-
-
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -54,14 +53,13 @@
                         </button>
                     </div>
                     <div class="modal-body" style="color:#233554">
-                        You are going to update the progress of Customer ID {{$data->CustomerID}} . Do you want to continue ?
+                        You are going to update the details of Customer ID {{$data->CustomerID}} . Do you want to continue ?
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" form="myform" class="btn btn-primary">Update</button>
+                    <button type="submit" form="myformcustomer" class="btn btn-primary">Update</button>
                     </div>
                 </div>
             </div>
         </div>
-
 @endsection
