@@ -11,8 +11,8 @@ class ProductController extends Controller
     {
         $this->validate($request, [
              'AdminID'=>'required',
-             'Name'=>'required|min:5|max:25',
-             'Brand'=>'required|min:5|max:25',
+             'Name'=>'required|min:1|max:25',
+             'Brand'=>'required|min:1|max:25',
              'Qty'=>'required',
              'Price'=>'required',
              'Description'=>'required|min:5|max:100'
@@ -32,20 +32,20 @@ class ProductController extends Controller
         } else {
             return ["Result"=>"operation failed"];
         }*/
-        return redirect('product.viewproduct');
+        return redirect('/product/viewproduct');
     }
 
 
     public function ViewProduct()
     {
         $data=product::paginate(5);
-        return  view('product.viewproduct', ['products'=>$data]);
+        return  view('product/viewproduct', ['products'=>$data]);
     }
       
     public function UpdateProducts($ProductID)
     {
         $data=product::find($ProductID);
-        return view('product.updateproduct', ['data'=>$data]);
+        return view('product.updateproduct', ['products'=>$data]);
     }
 
 
@@ -59,7 +59,7 @@ class ProductController extends Controller
         $data->Qty=$req->Qty;
         $data->Description=$req->Description;
         $data->save();
-        return redirect('product.viewproduct');
+        return redirect('product/viewproduct');
     }
 
 

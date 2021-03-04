@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-<div class="container">
+<div class="container" style="background :none !important ">
     <div class="row justify-content-center">
         <div class="col-md">
             <div class="card">

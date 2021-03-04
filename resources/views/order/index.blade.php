@@ -30,7 +30,7 @@
                 <th> Progress</th> 
                 <th width="280px">Action</th>         
             </tr>
-           
+          
             <tr>
                 <td>No:</td>
                 <td>{{ $order->CustomerID }}</td>

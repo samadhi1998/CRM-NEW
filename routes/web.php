@@ -36,8 +36,6 @@ Route::resource('roles','App\Http\Controllers\Admin\RoleController');
 Route::get('/viewuser', function () {
     return view('admin/users/viewuser');
 });
-
-
 Route::get('admin/users/edit/{EmpID}','App\Http\Controllers\Admin\UserController@edit')->name('editUser');
 Route::post('edit/{EmpID}','App\Http\Controllers\Admin\UserController@update');
 Route::get('/add-priviledge','App\Http\Controllers\Admin\RoleController@index');
@@ -53,10 +51,10 @@ Route::get('/chats', function () {
 
 //order
 Route::get('/index', function () {
-    return view('order/index');
+    return view('order/view');
 });
 
-Route::get('/create', function () {
+Route::get('/createorder', function () {
     return view('order/create');
 });
 
@@ -72,7 +70,7 @@ Route::get('/addproduct', function () {
     return view('product/addproduct');
 });
 Route::post('/addproduct',[App\Http\Controllers\Product\ProductController::class,'AddProduct']);
-Route::get('/viewproduct',[App\Http\Controllers\Product\ProductController::class,'ViewProduct']);
+Route::get('product/viewproduct',[App\Http\Controllers\Product\ProductController::class,'ViewProduct']);
 Route::get('/UpdateProducts/{ProductID}',[App\Http\Controllers\Product\ProductController::class,'UpdateProducts']);
 Route::post('/Updateproducts',[App\Http\Controllers\Product\ProductController::class,'ShowUpdatesProducts']);
 
@@ -99,3 +97,10 @@ Route::post('/updateChargers',[App\Http\Controllers\charge\ChargeController::cla
 Route::get('/UpdateChargers/{ExtraChargeID}',[App\Http\Controllers\charge\ChargeController::class, 'UpdateChargers']);
 Route::get('/Search_Chargers',[App\Http\Controllers\charge\ChargeController::class,'SearchChargers']);
 
+
+
+Route::resource('tasks','App\Http\Controllers\TaskController');
+Route::get('/View-Task','App\Http\Controllers\TaskController@index');
+Route::get('/View-Task/edit/{TaskID}','App\Http\Controllers\TaskController@edit')->name('editTask'); 
+Route::get('/Assign-Task','App\Http\Controllers\EmployeeController@index');
+Route::post('edit','App\Http\Controllers\TaskController@update');

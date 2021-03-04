@@ -9,6 +9,7 @@ class CustomerController extends Controller
     public function AddCustomer(Request $request){
      
         $customer=new customer;
+        $customer->CustomerID=$request->CustomerID;
         $customer->Name=$request->Name;
         $customer->NIC=$request->NIC;
         $customer->Address=$request->Address;

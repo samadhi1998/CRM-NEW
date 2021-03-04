@@ -8,22 +8,29 @@ button {
 }
 
 label{
-    color: #233554;
+    color: #233554 !important;
 }
 
 option{
-    color: #233554;
+    color: #233554 !important;
 }
 
 form{
     margin-left: auto;
     margin-right: auto;
-    border: 2px;
+    border: 2px !important;
 }
+
+/* input{
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 2px solid #233554 !important;
+} */
 
 .container {
     border-radius: 5px;
-    /* background-color: #f2f2f2; */
+    background-color: #f2f2f2;
     padding: 80px;
     width: 50%;
     margin-left: auto;

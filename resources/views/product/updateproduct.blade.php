@@ -17,35 +17,35 @@
         <form method="POST" action="/Updateproducts"id="myformproduct">
             @csrf
             <label for="AdminID" ><b>Admin ID : </b></label>
-            <input type="text" name="AdminID" value="{{$data['AdminID']}}" name="Name"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="AdminID" value="{{$products['AdminID']}}" name="Name"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
             <br>
             <label for="ProductID" ><b>Product ID: </b></label>
-            <input type="text" name="ProductID" value="{{$data['ProductID']}}" name="Name"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="ProductID" value="{{$products['ProductID']}}" name="Name"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
             <br>
             <label for="Name" ><b>Product Name : </b></label>
-            <input type="text" name="Name" value="{{$data['Name']}}"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="Name" value="{{$products['Name']}}"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
             <br>
             <label for="Brand" ><b>Brand : </b></label>
-            <input type="text" name="Brand" value="{{$data['Brand']}}" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="Brand" value="{{$products['Brand']}}" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
             <br>
             <label for="Price" ><b>Price : </b></label>
-            <input type="number" name="Price" value="{{$data['Price']}}"required="true" min="100" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="number" name="Price" value="{{$products['Price']}}" min="1" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
             <br>
             <label for="Qty" ><b>Quantity : </b></label>
-            <input type="number" name="Qty" required="true" value="{{$data['Qty']}}" min="10" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="number" name="Qty"  value="{{$products['Qty']}}" min="1" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
             <br>
             <label for="Description" ><b>Description : </b></label>
-            <textarea  name="Description"  value="{{$data['Description']}}"required style="background: #ffffff; margin: 15px 0 22px 0; border: none; padding: 10px; width: 100%" ></textarea>
+            <textarea name="Description" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" rows="5" cols="50" >{{$products->Description}}</textarea>
             <br>
             <label for="Status" ><b>Status : </b></label>
-            <input type="text" name="Status" value="{{$data['Status']}}"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="Status" value="{{$products['Status']}}"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
             <br>
             <br>
             <div class="btn-group float-right" role="group">
             <button type="button" data-toggle="modal" class="btn btn-primary" data-target="#exampleModal" >Update</button>
             </div>
             <div class="btn-group float-right mr-2 " role="group">
-            <button type="submit" class="btn btn-primary" ><a href="/viewproduct">Cancel</a></button>
+            <button type="submit" class="btn btn-primary" ><a href="product/viewproduct">Cancel</a></button>
             </div>     
             </form>
         </div>
@@ -59,7 +59,7 @@
                         </button>
                     </div>
                     <div class="modal-body" style="color:#233554">
-                    You are going to update the progress of Product {{$data->ProductID"}} . Do you want to continue ?
+                    You are going to update the progress of Product {{$products->ProductID}} . Do you want to continue ?
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
