@@ -40,9 +40,15 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                   <!-- Left Side Of Navbar -->
+                   <ul class="navbar-nav mr-auto">
+                   @guest
+                            @if (Route::has('login'))
+                            @endif
+                            
+                            @if (Route::has('register'))
+                            @endif
+                        @else
                         <li class="nav-item active">
                             <a class="nav-link" href="/View-Progress" style="color: #233554">View Progress <span class="sr-only">(current)</span></a>
                         </li>
@@ -75,8 +81,8 @@
                             <a class="dropdown-item" href="/Create-Task">Create Task</a>
                             <a class="dropdown-item" href="/Assign-Task">Assign Task</a>
                         </li>
+                        @endguest
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -114,6 +120,8 @@
                                     </form>
                                 </div>
                             </li>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
                         @endguest
                     </ul>
                 </div>
