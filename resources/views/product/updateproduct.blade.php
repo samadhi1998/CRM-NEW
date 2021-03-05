@@ -37,7 +37,7 @@
             <label for="Description" ><b>Description : </b></label>
             <textarea  name="Description"  value="{{$data['Description']}}"required style="background: #ffffff; margin: 15px 0 22px 0; border: none; padding: 10px; width: 100%" ></textarea>
             <br>
-            <label for="Status" ><b>Status : </b></label>
+            <label for="Status" ><b>Status  : </b></label>
             <input type="text" name="Status" value="{{$data['Status']}}"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
             <br>
             <br>
