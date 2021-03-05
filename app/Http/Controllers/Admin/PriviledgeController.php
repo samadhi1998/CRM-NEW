@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Priviledge;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class PriviledgeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //return view('views: admin.users.index');
-        //return view('index');
-        $users= User::all();
-        return view('admin.users.index')->with('users', $users);
-
+        //
     }
 
     /**
@@ -46,10 +42,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Priviledge  $priviledge
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Priviledge $priviledge)
     {
         //
     }
@@ -57,46 +53,34 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Priviledge  $priviledge
      * @return \Illuminate\Http\Response
      */
-    public function edit($EmpID)
+    public function edit(Priviledge $priviledge)
     {
-        $data = user::find($EmpID);
-        return view('admin.users.updateuser',['users'=>$data]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Priviledge  $priviledge
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Priviledge $priviledge)
     {
-        $data = user::find($request->input('EmpID'));
-        $data->EmpID = $request->input('EmpID');
-        $data->name = $request->input('name');
-        $data->email = $request->input('email');
-        $data->Address = $request->input('Address');
-        $data->MobileNo = $request->input('MobileNo');
-        
-        $data->save();
-
-        return redirect('/home');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Priviledge  $priviledge
      * @return \Illuminate\Http\Response
      */
-    public function destroy($EmpID)
+    public function destroy(Priviledge $priviledge)
     {
-        $data=user::find($EmpID);
-        $data->delete();
-        return redirect('/home');
+        //
     }
 }

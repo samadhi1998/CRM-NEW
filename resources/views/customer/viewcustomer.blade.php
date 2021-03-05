@@ -36,9 +36,10 @@
   </thead>
   <tbody>
       @foreach($customers as $customer)
-    <tr>   
-                                     
-      <th scope="row">{{$customer['CustomerID']}}</th>
+
+    <tr>                                                
+      <th >{{$customer['CustomerID']}}</th>
+
       <td>{{$customer['Name']}}</td>
       <td>{{$customer['NIC']}}</td>
       <td>{{$customer['Address']}}</td>

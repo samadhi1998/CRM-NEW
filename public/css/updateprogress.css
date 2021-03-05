@@ -8,24 +8,31 @@ button {
 }
 
 label{
-    color: #233554;
+    color: #233554 !important;
 }
 
 option{
-    color: #233554;
+    color: #233554 !important;
 }
 
 form{
     margin-left: auto;
     margin-right: auto;
-    border: 2px;
+    border: 2px !important;
 }
+
+/* input{
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 2px solid #233554 !important;
+} */
 
 .container {
     border-radius: 5px;
-    /* background-color: #f2f2f2; */
-    padding: 80px;
-    width: 50%;
+    background-color: #f2f2f2;
+    padding: 10px;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
     
@@ -33,7 +40,11 @@ form{
 
 .card-header{
     text-align: center;
+    color: #233554 !important;
+    font-weight: bold;
+    font-size: larger; 
 }
+
 
 .text-my-own-color {
     color: #233554 !important; 
@@ -67,3 +78,12 @@ a:active {
     background-size: cover;
     font-family: 'Ubuntu', sans-serif;
 } */
+
+input, textarea{
+    background-color: white !important;
+    margin: 5px 0 22px 0;
+    border: 2px solid #aeb0b1 !important;
+    border-radius: 5px;
+    padding: 10px; 
+    width: 100%;
+}

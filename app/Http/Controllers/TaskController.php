@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //return view('views: admin.users.index');
-        //return view('index');
-        $users= User::all();
-        return view('admin.users.index')->with('users', $users);
-
+        $data = task::all();
+        return view('task/viewtask',['tasks'=>$data]);
     }
 
     /**
@@ -46,10 +42,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Task $task)
     {
         //
     }
@@ -57,46 +53,44 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit($EmpID)
+    public function edit($TaskID)
     {
-        $data = user::find($EmpID);
-        return view('admin.users.updateuser',['users'=>$data]);
+        $data = task::find($TaskID);
+        return view('UpdateTask',['tasks'=>$data]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Task $task)
     {
-        $data = user::find($request->input('EmpID'));
-        $data->EmpID = $request->input('EmpID');
-        $data->name = $request->input('name');
-        $data->email = $request->input('email');
-        $data->Address = $request->input('Address');
-        $data->MobileNo = $request->input('MobileNo');
+        $data = task::find($request->input('TaskID'));
+        $data->TaskID = $request->input('TaskID');
+        $data->ServicePersonID = $request->input('ServicePersonID');
+        $data->Due_Date = $request->input('Due_Date');
+        $data->Status = $request->input('Status');
+        $data->Description = $request->input('Description');
         
         $data->save();
 
-        return redirect('/home');
+        return redirect('View-Task');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy($EmpID)
+    public function destroy(Task $task)
     {
-        $data=user::find($EmpID);
-        $data->delete();
-        return redirect('/home');
+        //
     }
 }

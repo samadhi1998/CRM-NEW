@@ -11,8 +11,8 @@ class ProductController extends Controller
     {
         $this->validate($request, [
              'AdminID'=>'required',
-             'Name'=>'required|min:5|max:25',
-             'Brand'=>'required|min:5|max:25',
+             'Name'=>'required|min:1|max:25',
+             'Brand'=>'required|min:1|max:25',
              'Qty'=>'required',
              'Price'=>'required',
              'Description'=>'required|min:5|max:100'
@@ -20,7 +20,7 @@ class ProductController extends Controller
 
 
         $product=new product;
-        $product->AdminID=$request->AdminID;
+        $product->AdminID=Auth::id();
         $product->Name=$request->Name;
         $product->Price=$request->Price;
         $product->Brand=$request->Brand;
@@ -32,7 +32,9 @@ class ProductController extends Controller
         } else {
             return ["Result"=>"operation failed"];
         }*/
-        return redirect('/viewproduct');
+
+        return redirect('/product/viewproduct');
+
     }
 
 
@@ -45,7 +47,7 @@ class ProductController extends Controller
     public function UpdateProducts($ProductID)
     {
         $data=product::find($ProductID);
-        return view('product/updateproduct', ['data'=>$data]);
+
     }
 
 
@@ -58,8 +60,11 @@ class ProductController extends Controller
         $data->Brand=$req->Brand;
         $data->Qty=$req->Qty;
         $data->Description=$req->Description;
+        $data->Status=$req->Status;
         $data->save();
-        return redirect('/viewproduct');
+
+        return redirect('product/viewproduct');
+
     }
 
 

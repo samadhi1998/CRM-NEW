@@ -33,19 +33,56 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'CRM') }}
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    <img src="/img/logo.png" width="100" height="50" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
+                   <!-- Left Side Of Navbar -->
+                   <ul class="navbar-nav mr-auto">
+                   @guest
+                            @if (Route::has('login'))
+                            @endif
+                            
+                            @if (Route::has('register'))
+                            @endif
+                        @else
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/View-Progress" style="color: #233554">View Progress <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #233554">
+                                Product Management
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/addproduct">Add Products</a>
+                                <a class="dropdown-item" href="product/viewproduct">View Products</a>
+                                <a class="dropdown-item" href="/"></a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #233554">
+                                Order Management
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/createorder">Create Order</a>
+                            <a class="dropdown-item" href="/ViewCustomers">View Order</a>
+                            <a class="dropdown-item" href="/Assign-Task"></a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #233554">
+                                Task Management
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/View-Task">View Task</a>
+                            <a class="dropdown-item" href="/Create-Task">Create Task</a>
+                            <a class="dropdown-item" href="/Assign-Task">Assign Task</a>
+                        </li>
+                        @endguest
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -74,15 +111,17 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('users.index') }}">
+                                    <!-- <a class="dropdown-item" href="{{ route('users.index') }}">
                                         User Management
-                                    </a>
+                                    </a> -->
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
                             </li>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
                         @endguest
                     </ul>
                 </div>
