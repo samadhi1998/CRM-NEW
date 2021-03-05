@@ -1,10 +1,13 @@
 @extends('layouts.app')
 @section('title','View Products')
 @section('content')
+<div class="container" style="background :none !important ">
+<div class="row justify-content-center">
+        <div class="col-md">
+            <div class="card">
+                <div class="card-header">{{ __('View Product Details') }}</div>
 
-    <h1 style="text-align: center; color:#233554">Customer Relationship Management System</h1>
-    <h2 style="text-align: center; color:#233554">Product Details</h2>
-    <hr style="background-color:#233554; height: 5px">
+                <div class="card-body">
 
     <br>
   
@@ -53,13 +56,14 @@
     </tr>
         @endforeach
   </table>
-
+  </div></div></div></div></div></div>
 </br>
 
 <div style="text-align: right;font-size: 15px;">
 <span>{{$products->links()}}</span>
 </div>
 </br>
+
 
 
 @endsection

@@ -20,7 +20,7 @@ class ProductController extends Controller
 
 
         $product=new product;
-        $product->AdminID=$request->AdminID;
+        $product->AdminID=Auth::id();
         $product->Name=$request->Name;
         $product->Price=$request->Price;
         $product->Brand=$request->Brand;
@@ -58,6 +58,7 @@ class ProductController extends Controller
         $data->Brand=$req->Brand;
         $data->Qty=$req->Qty;
         $data->Description=$req->Description;
+        $data->Status=$req->Status;
         $data->save();
         return redirect('product/viewproduct');
     }
