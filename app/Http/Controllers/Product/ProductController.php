@@ -32,20 +32,20 @@ class ProductController extends Controller
         } else {
             return ["Result"=>"operation failed"];
         }*/
-        return redirect('product.viewproduct');
+        return redirect('/viewproduct');
     }
 
 
     public function ViewProduct()
     {
         $data=product::paginate(5);
-        return  view('product.viewproduct', ['products'=>$data]);
+        return  view('product/viewproduct', ['products'=>$data]);
     }
       
     public function UpdateProducts($ProductID)
     {
         $data=product::find($ProductID);
-        return view('product.updateproduct', ['data'=>$data]);
+        return view('product/updateproduct', ['data'=>$data]);
     }
 
 
@@ -59,7 +59,7 @@ class ProductController extends Controller
         $data->Qty=$req->Qty;
         $data->Description=$req->Description;
         $data->save();
-        return redirect('product.viewproduct');
+        return redirect('/viewproduct');
     }
 
 
@@ -67,7 +67,7 @@ class ProductController extends Controller
     {
         $data=product::find($ProductID);
         $data->delete();
-        return redirect('ViewProducts');
+        return redirect('/ViewProducts');
     }
   
     public function SearchProducts(Request $request)
