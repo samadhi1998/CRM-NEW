@@ -32,7 +32,9 @@ class ProductController extends Controller
         } else {
             return ["Result"=>"operation failed"];
         }*/
+
         return redirect('/product/viewproduct');
+
     }
 
 
@@ -45,7 +47,7 @@ class ProductController extends Controller
     public function UpdateProducts($ProductID)
     {
         $data=product::find($ProductID);
-        return view('product.updateproduct', ['products'=>$data]);
+
     }
 
 
@@ -60,7 +62,9 @@ class ProductController extends Controller
         $data->Description=$req->Description;
         $data->Status=$req->Status;
         $data->save();
+
         return redirect('product/viewproduct');
+
     }
 
 
@@ -68,7 +72,7 @@ class ProductController extends Controller
     {
         $data=product::find($ProductID);
         $data->delete();
-        return redirect('ViewProducts');
+        return redirect('/ViewProducts');
     }
   
     public function SearchProducts(Request $request)

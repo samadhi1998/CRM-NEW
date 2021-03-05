@@ -37,6 +37,7 @@
             <label for="Description" ><b>Description : </b></label>
             <textarea name="Description" required rows="5" cols="50" >{{$products->Description}}</textarea>
             <br>
+
             <label for="Status"><b>Status : </b></label>
                 <select  name="Status">
                 <option value="{{$products['Status']}}" selected hidden>{{$products['Status']}}</option>
@@ -44,6 +45,7 @@
                     <option value="Out of Stock">Out of Stock</option>
                     <option value="No longer available">No longer available</option>
                 </select>
+
             <br>
             <br>
             <div class="btn-group float-right" role="group">

@@ -23,7 +23,7 @@ class ChargeController extends Controller
         } else {
             return ["Result"=>"operation failed"];
         }*/
-        return redirect('viewcharge');
+        return redirect('/ViewChargers');
     }
 
 
@@ -53,7 +53,7 @@ class ChargeController extends Controller
         $data->Amount=$req->Amount;
         $data->Description=$req->Description;
         $data->save();
-        return redirect('charge/viewcharge');
+        return redirect('/ViewChargers');
     }
 
 

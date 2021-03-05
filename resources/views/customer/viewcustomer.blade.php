@@ -36,25 +36,27 @@
   </thead>
   <tbody>
       @foreach($customers as $customer)
+
     <tr>                                                
       <th >{{$customer['CustomerID']}}</th>
+
       <td>{{$customer['Name']}}</td>
       <td>{{$customer['NIC']}}</td>
       <td>{{$customer['Address']}}</td>
       <td>{{$customer['MobileNo']}}</td>
       <td>{{$customer['Email']}}</td>
       <td>
+
      <tab></tab>
           <a href="/editCustomer/{{$customer['CustomerID']}}" style="margin:2px"><button > Update</button></a><tab></tab>
           
-         <!-- {{"editCustomer/".$customer['CustomerID']}}-->
           </br>
           </br>
           <a href="/deleteCustomer/{{$customer['CustomerID']}}" style="margin:10px"><button> Delete</button></a>
           
-          <!--{{"/deleteCustomer/".$customer['CustomerID']}}-->
+          
       </td>
-
+    
 </tr>
 @endforeach
 </tbody>

@@ -50,8 +50,10 @@
       <td>{{$product['Status']}}</td>
       <td>
      <tab></tab>
+
           <a href= {{"/UpdateProducts/".$product['ProductID']}} style="margin:2px"><button> Update</button></a><tab></tab>                                
           <!-- "/updateProduct/{{$product['ProductID']}}"  -->
+
       </td>
     </tr>
         @endforeach

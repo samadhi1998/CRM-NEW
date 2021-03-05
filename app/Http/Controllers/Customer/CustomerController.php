@@ -21,7 +21,7 @@ class CustomerController extends Controller
         } else {
             return ["Result"=>"operation failed"];
         }*/
-        return view('customer.viewcustomer',['customers'=>$customer]);
+        return redirect('/ViewCustomers');
     }
 
 
@@ -55,14 +55,14 @@ class CustomerController extends Controller
         } else {
             return ["data"=>"operation failed"];
         }*/
-        return redirect('customer/viewcustomer');
+        return redirect('/ViewCustomers');
     }
 
     public function DeleteCustomers($CustomerID)
     {
         $data=customer::find($CustomerID);
         $data->delete();
-        return redirect('customer/viewcustomer');
+        return redirect('/ViewCustomers');
     }
 
 
