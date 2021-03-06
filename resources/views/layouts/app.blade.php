@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="{{asset('css/updateprogress.css')}}">
         <link rel="stylesheet" href="{{asset('css/viewprogress.css')}}">
         <link rel="stylesheet" href="{{asset('css/login.css')}}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
 
 
     <meta charset="utf-8">
@@ -33,7 +35,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             
-                <a class="navbar-brand" href="{{ url('/home') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="/img/logo.png" width="100" height="50" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -69,7 +71,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/createorder">Create Order</a>
                             <a class="dropdown-item" href="/ViewCustomers">View Order</a>
-                            <a class="dropdown-item" href="/Assign-Task"></a>
+                            <a class="dropdown-item" href="/addChargers">Add charge</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">

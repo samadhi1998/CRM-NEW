@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\charge\ChargeController;
+use App\Http\Controllers\OrdersController;
 
 
 /*
@@ -20,6 +21,10 @@ use App\Http\Controllers\charge\ChargeController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/Dashboard', function () {
+    return view('admin/dashboard');
 });
 
 Auth::routes();
@@ -50,18 +55,15 @@ Route::get('/chats', function () {
 });
 
 //order
-Route::get('/index', function () {
-    return view('order/view');
-});
-
-Route::get('/createorder', function () {
-    return view('order/create');
-});
-
-Route::get('/edit', function () {
-    return view('order/edit');
-});
-
+Route::resource('orders', OrdersController::class);
+Route::get('index', [App\Http\Controllers\OrdersController::class,'index']);
+Route::get('create', [App\Http\Controllers\OrdersController::class,'create']);
+Route::get('edit', [App\Http\Controllers\OrdersController::class,'edit']);
+Route::get('show', [App\Http\Controllers\OrdersController::class,'show']);
+Route::get('joincustomers', [App\Http\Controllers\OrdersController::class,'joincustomers']);
+Route::get('joinorddetails', [App\Http\Controllers\OrdersController::class,'joinorddetails']);
+Route::get('emails', [App\Http\Controllers\OrdersController::class,'emails']);
+//Route::get('find', [OrdersController::class,'findorder']);
 
 
 

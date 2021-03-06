@@ -15,24 +15,24 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('OrderID');
-            $table->string('Description');
-            $table->string('Status');
-            $table->integer('Rate');
-            $table->date('Due_date');
-            $table->string('Feedback');
-            $table->string('Progress');
-            $table->integer('Advance');
-            $table->integer('Total_Price');
-            $table->integer('Discount');
-            $table->unsignedBigInteger('CustomerID');
+            $table->string('Description')->nullable();
+            $table->string('Status')->nullable();
+            $table->integer('Rate')->nullable();
+            $table->date('Due_date')->nullable();
+            $table->string('Feedback')->nullable();
+            $table->string('Progress')->nullable();
+            $table->integer('Advance')->nullable();
+            $table->integer('Total_Price')->nullable();
+            $table->integer('Discount')->nullable();
+            $table->unsignedBigInteger('CustomerID')->nullable();
             $table->foreign('CustomerID')->references('CustomerID')->on('customers');
-            $table->unsignedBigInteger('QuotationEmpID');
+            $table->unsignedBigInteger('QuotationEmpID')->nullable();
             $table->foreign('QuotationEmpID')->references('EmpID')->on('users');
-            $table->unsignedBigInteger('FollowUpID');
+            $table->unsignedBigInteger('FollowUpID')->nullable();
             $table->foreign('FollowUpID')->references('EmpID')->on('users');
-            $table->unsignedBigInteger('CustomerCareID');
+            $table->unsignedBigInteger('CustomerCareID')->nullable();
             $table->foreign('CustomerCareID')->references('EmpID')->on('users');
-            $table->unsignedBigInteger('TaskID');
+            $table->unsignedBigInteger('TaskID')->nullable();
             $table->foreign('TaskID')->references('TaskID')->on('tasks');
             $table->timestamps();
         });

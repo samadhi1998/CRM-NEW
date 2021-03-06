@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid" style="max-width:1000px">
     <div class="row justify-content-center">
         <div class="col-md">
             <div class="card">

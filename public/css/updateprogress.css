@@ -79,7 +79,7 @@ a:active {
     font-family: 'Ubuntu', sans-serif;
 } */
 
-input, textarea{
+input, textarea, select{
     background-color: white !important;
     margin: 5px 0 22px 0;
     border: 2px solid #aeb0b1 !important;
@@ -87,3 +87,7 @@ input, textarea{
     padding: 10px; 
     width: 100%;
 }
+
+/* .special-card {
+    background-color: rgba(226, 222, 222, 0.9) !important;
+} */

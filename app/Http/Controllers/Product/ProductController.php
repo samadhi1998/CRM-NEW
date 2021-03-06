@@ -20,7 +20,7 @@ class ProductController extends Controller
 
 
         $product=new product;
-        $product->AdminID=Auth::id();
+        $product->AdminID=$request->AdminID;
         $product->Name=$request->Name;
         $product->Price=$request->Price;
         $product->Brand=$request->Brand;
@@ -47,6 +47,7 @@ class ProductController extends Controller
     public function UpdateProducts($ProductID)
     {
         $data=product::find($ProductID);
+        return view('product/updateproduct', ['data'=>$data]);
 
     }
 

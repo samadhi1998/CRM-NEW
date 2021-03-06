@@ -13,9 +13,10 @@
     </style>
 </head>
 <body>
-<div class="container" style="background :none !important ">
+<div class="jumbotron d-flex align-items-center " style="background :none !important ">
+<div class="container-fluid" style="max-width:1250px">
     <div class="row justify-content-center">
-        <div class="col-md">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
@@ -81,6 +82,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
  
 </body>

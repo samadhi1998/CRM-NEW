@@ -17,7 +17,7 @@
         <form method="POST" action="/addproduct">
             @csrf
             <label for="AdminID" ><b>Admin ID: </b></label>
-            <input type="text" name="AdminID" required  value="{{ Auth::user()->id }}">
+            <input type="text" name="AdminID" required  >
             <br>
             <label for="Name" ><b>Product Name : </b></label>
             <input type="text" name="Name" required >
