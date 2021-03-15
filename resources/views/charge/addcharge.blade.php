@@ -2,17 +2,19 @@
 @section('title','Add Charge')
 @section('content')
 
-<h1 style="text-align: center; color:#233554">Customer Relationship Management System</h1>
-        <h2 style="text-align: center; color:#233554">Get Chargers</h2>
-        <hr style="background-color:#233554; height: 5px">
-        <br>
-        <div class="container">
 
-        @foreach($errors->all() as $error)
+
+        <!-- @foreach($errors->all() as $error)
         <div class="alert alert-danger" role="alert">
          {{$error}}
           </div>
-           @endforeach
+           @endforeach -->
+           <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+              <div class="card-header">{{ __('Add Charges') }}</div>
+              <div class="card-body">
+        <div class="container"  style="background :none !important ">
         <form method="POST" action="/addChargers">
             @csrf
 
@@ -42,6 +44,7 @@
               </div>
             </form>
         </div>
+        </div></div></div></div>
 
  
 

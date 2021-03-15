@@ -1,12 +1,21 @@
 @extends('layouts.app')
 @section('title','View Customer')
+@section('header','Customer Details')
 @section('content')
+<div class="pull-left">
+    <a class="btn btn-primary" href="/addCustomer">Add new Customer</a>
+</div>
+<br>
+<br>
+<div class="container " style="background :none !important ">
+<div class="row justify-content-center">
+        <div class="col-md">
+            <div class="card">
+                <!-- <div class="card-header">{{ __('View Customer Details') }}</div> -->
 
-<h1 style="text-align: center; color:#233554">Customer Relationship Management System</h1>
-        <h2 style="text-align: center; color:#233554"> Customer Details</h2>
-        <hr style="background-color:#233554; height: 5px">
-        <br>
-<div class="container">
+                <div class="card-body">
+<br>
+
 <form action="/Search_Customers" method="GET" role="search">
 {{ csrf_field() }}
 <div class="input-group">
@@ -18,19 +27,20 @@
   </span>
   </div>
 </form>
+
 </br>
 </br>
-<font-size="2" face="Verdana" >
-<table class="table table-striped" borders="4" >
-  <thead >
-    <tr style="height:70px;width:100px">
-      <th scope="col">Customer ID</th>
-      <th scope="col">Customer Name</th>
-      <th scope="col">NIC</th>
-      <th scope="col">Address</th>
-      <th scope="col">Mobile Number</th>
-      <th scope="col">Email</th>
-      <th scope="col">Action</th>
+
+<table >
+  
+    <tr>
+      <th>Customer ID</th>
+      <th>Customer Name</th>
+      <!-- <th>NIC</th> -->
+      <th>Address</th>
+      <th>Mobile Number</th>
+      <th>Email</th>
+      <th>Action</th>
       
     </tr>
   </thead>
@@ -39,33 +49,29 @@
 
     <tr>                                                
       <th >{{$customer['CustomerID']}}</th>
-
       <td>{{$customer['Name']}}</td>
-      <td>{{$customer['NIC']}}</td>
+      <!-- <td>{{$customer['NIC']}}</td> -->
       <td>{{$customer['Address']}}</td>
       <td>{{$customer['MobileNo']}}</td>
       <td>{{$customer['Email']}}</td>
       <td>
-
-     <tab></tab>
-          <a href="/editCustomer/{{$customer['CustomerID']}}" style="margin:2px"><button > Update</button></a><tab></tab>
-          
-          </br>
-          </br>
-          <a href="/deleteCustomer/{{$customer['CustomerID']}}" style="margin:10px"><button> Delete</button></a>
-          
-          
+          <a href="/editCustomer/{{$customer['CustomerID']}}" style="margin:2px" class="text-my-own-color"><span data-feather="edit"></span></a>
+          <a href="/deleteCustomer/{{$customer['CustomerID']}}" style="margin:10px" class="text-my-own-color"><span data-feather= "trash-2"></span></a>
       </td>
     
 </tr>
 @endforeach
 </tbody>
 </table>
-</font-size>
-</br>
+<br>
+<br>
 <div style="text-align: right;font-size: 15px;">
 <span>{{$customers->links()}}</span>
 </div>
 </br>
+</div></div></div></div></div></div>
+
+</br>
+
 
 @endsection

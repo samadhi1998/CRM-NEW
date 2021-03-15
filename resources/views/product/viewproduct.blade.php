@@ -1,16 +1,21 @@
 @extends('layouts.app')
 @section('title','View Products')
+@section('header','Product Details')
 @section('content')
-<div class="container" style="background :none !important ">
+<div class="pull-left">
+    <a class="btn btn-primary" href="/addproduct">Add new product</a>
+</div>
+<br>
+<br>
+<div class="container " style="background :none !important ">
 <div class="row justify-content-center">
         <div class="col-md">
             <div class="card">
-                <div class="card-header">{{ __('View Product Details') }}</div>
+                <!-- <div class="card-header">{{ __('View Product Details') }}</div> -->
 
                 <div class="card-body">
 
     <br>
-  
     <form action="/Search_Products" method="GET" role="search">
       {{ csrf_field() }}
       <div class="input-group">
@@ -49,11 +54,8 @@
       <td>{{$product['Description']}}</td>
       <td>{{$product['Status']}}</td>
       <td>
-     <tab></tab>
-
-          <a href= {{"/UpdateProducts/".$product['ProductID']}} style="margin:2px"><button> Update</button></a><tab></tab>                                
+          <a href= "/UpdateProducts/{{$product['ProductID']}}" style="margin:2px"><span data-feather="edit"></span></a>                               
           <!-- "/updateProduct/{{$product['ProductID']}}"  -->
-
       </td>
     </tr>
         @endforeach

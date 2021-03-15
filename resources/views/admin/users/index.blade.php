@@ -1,8 +1,30 @@
 @extends('layouts.app')
 @section('title','Users')
+@section('header','Employee Details')
 @section('content')
-     
+<div class="container" style="background :none !important ">
+<div class="row justify-content-center">
+        <div class="col-md">
+            <div class="card">
+                <!-- <div class="card-header">{{ __('View Employee Details') }}</div> -->
 
+                <div class="card-body">
+
+    <br>
+    <form action="/Search_Products" method="GET" role="search">
+      {{ csrf_field() }}
+      <div class="input-group">
+        <input type="text" class="form-control" name="query" id="query" placeholder="Search Employee"> <span class="input-group-btn">
+        <button type="submit" class="btn btn-default">
+        <span class="glyphicon glyphicon-search"></span>
+        </button>
+        </span>
+      </div>
+    </form>
+  
+
+    </br>
+    </br>
   <table>
     <tr>
       <th>EmpID</th>
@@ -35,12 +57,14 @@
         </div>
       </td> 
     </tr>
- 
+    @endforeach 
+ </table>
+ </div></div></div></div></div></div></div>
 
     <!-- <div class="btn-group" role="group">
     <button type="button" data-toggle="modal" data-target="#exampleModal1" >Delete</button>
                 </div> -->
-      @endforeach 
+      
 
 
  

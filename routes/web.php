@@ -106,3 +106,6 @@ Route::get('/View-Task','App\Http\Controllers\TaskController@index');
 Route::get('/View-Task/edit/{TaskID}','App\Http\Controllers\TaskController@edit')->name('editTask'); 
 Route::get('/Assign-Task','App\Http\Controllers\EmployeeController@index');
 Route::post('edit','App\Http\Controllers\TaskController@update');
+Route::get('/addtask', function () {
+    return view('task/CreateTask');
+});

@@ -1,17 +1,19 @@
 @extends('layouts.app')
 @section('title','Add Customer')
 @section('content')
-<h1 style="text-align: center; color:#233554">Customer Relationship Management System</h1>
-        <h2 style="text-align: center; color:#233554">Get Customer Details</h2>
-        <hr style="background-color:#233554; height: 5px">
-        <br>
-        <div class="container">
 
-        @foreach($errors->all() as $error)
+
+        <!-- @foreach($errors->all() as $error)
         <div class="alert alert-danger" role="alert">
          {{$error}}
           </div>
-           @endforeach
+           @endforeach -->
+           <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+              <div class="card-header">{{ __('Add Customer') }}</div>
+              <div class="card-body">
+        <div class="container"  style="background :none !important ">
         <form method="POST" action="/addCustomer" id="myform">
             @csrf
             
@@ -32,7 +34,7 @@
             <br>
             <br>
             <div class="text-right">
-             <button type="submit"  Value="Next"class="btn btn-default btn-lg">NEXT</button>	 			
+             <button type="submit"  Value="Next"class="btn btn-primary">Next</button>	 			
               </div>
             </form>
         </div>

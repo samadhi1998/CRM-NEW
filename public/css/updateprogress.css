@@ -32,7 +32,7 @@ form{
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 10px;
-    width: 90%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     
@@ -88,6 +88,9 @@ input, textarea, select{
     width: 100%;
 }
 
+.input-group{
+    width: 90%;
+}
 /* .special-card {
     background-color: rgba(226, 222, 222, 0.9) !important;
 } */

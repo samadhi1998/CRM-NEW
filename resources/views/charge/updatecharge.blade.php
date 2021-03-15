@@ -2,41 +2,41 @@
 @section('title','Update Charge')
 @section('content')
 
-<h1 style="text-align: center; color:#233554">Customer Relationship Management System</h1>
-        <h2 style="text-align: center; color:#233554">Update Chargers</h2>
-        <hr style="background-color:#233554; height: 5px">
-        <br>
-        <div class="container">
+<div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+              <div class="card-header">{{ __('Update Charges') }}</div>
+              <div class="card-body">
+        <div class="container"  style="background :none !important ">
 
-        @foreach($errors->all() as $error)
+        <!-- @foreach($errors->all() as $error)
         <div class="alert alert-danger" role="alert">
          {{$error}}
           </div>
-           @endforeach
+           @endforeach -->
         <form method="POST" action="/updateChargers"id="myformcharge">
             @csrf
             <label for="ExtraChargeID" ><b> ExtraCharge ID: </b></label>
-            <input type="text" name="ExtraChargeID" value="{{$data['ExtraChargeID']}}" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="ExtraChargeID" value="{{$data['ExtraChargeID']}}" required>
             <br>
             <label for="OrderID" ><b> Order ID : </b></label>
-            <input type="text" name="OrderID" value="{{$data['OrderID']}}" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="OrderID" value="{{$data['OrderID']}}" required>
             <br>
             <label for="ServicePersonID" ><b>ServicePerson ID : </b></label>
-            <input type="text" name="ServicePersonID" value="{{$data['ExtraChargeID']}}" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="ServicePersonID" value="{{$data['ExtraChargeID']}}" required>
             <br>
             <label for="Type"><b>Type : </b></label>
-            <select  name="Type"  value="{{$data['Type']}}" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-                <option value="" selected disabled hidden></option>
+            <select  name="Type">
+            <option value="{{$data['Type']}}" selected hidden>{{$data['Type']}}</option>
                 <option value="ExtraCharge">Extra Charge</option>
                 <option value="ServiceCharge">Service Charge</option>
-                
             </select>
             <br>
             <label for="Amount" ><b>Amount : </b></label>
-            <input type="number" name="Amount" value="{{$data['Amount']}}"  required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="number" name="Amount" value="{{$data['Amount']}}"  required>
             <br>
             <label for="Description" ><b>Description : </b></label>
-            <textarea  name="Description"  value="{{$data['Description']}}" required style="background: #ffffff; margin: 15px 0 22px 0; border: none; padding: 10px; width: 100%" ></textarea>
+            <textarea  name="Description" required>{{$data['Description']}}</textarea>
             <br>
             <br>
             <div class="btn-group float-right" role="group">
@@ -48,6 +48,8 @@
             </form>
         </div>
         </div>
+        </div></div></div></div>
+
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

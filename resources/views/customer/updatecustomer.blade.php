@@ -1,38 +1,40 @@
 @extends('layouts.app')
 @section('title','Update Customer')
+@section('header','Update Customer Details')
 @section('content')
 
 
-<h1 style="text-align: center; color:#233554">Customer Relationship Management System</h1>
-        <h2 style="text-align: center; color:#233554">Modify Customer Details</h2>
-        <hr style="background-color:#233554; height: 5px">
-        <br>
-        <div class="container">
+<div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+              <!-- <div class="card-header">{{ __('Update Products') }}</div> -->
+              <div class="card-body">
+        <div class="container"  style="background :none !important ">
 
-        @foreach($errors->all() as $error)
+        <!-- @foreach($errors->all() as $error)
         <div class="alert alert-danger" role="alert" >
          {{$error}}
           </div>
-           @endforeach
+           @endforeach -->
         <form method="POST" action="/editcustomers"id="myformcustomer">
             @csrf
-            <label for="CustomerID">Customer ID</label>
-             <input type="text"  name="CustomerID" value="{{$data['CustomerID']}}" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%">
+            <label for="CustomerID"> <b>Customer ID</b> </label>
+             <input type="text"  name="CustomerID" value="{{$data['CustomerID']}}" required>
 
             <label for="Name" ><b> Customer Name : </b></label>
-            <input type="text" name="Name" value="{{$data['Name']}}" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="Name" value="{{$data['Name']}}" required>
             <br>
             <label for="MobileNo" ><b>Mobile Number : </b></label>
-            <input type="text" name="MobileNo"  value="{{$data['MobileNo']}}" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="MobileNo"  value="{{$data['MobileNo']}}" required>
             <br>
             <label for="NIC" ><b>NIC : </b></label>
-            <input type="text" name="NIC" value="{{$data['NIC']}}" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="NIC" value="{{$data['NIC']}}" required>
             <br>
             <label for="Email" ><b>Email : </b></label>
-            <input type="text" name="Email"  value="{{$data['Email']}}"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="Email"  value="{{$data['Email']}}"required>
             <br>
             <label for="Address" ><b>Address : </b></label>
-            <input type="text" name="Address"   value="{{$data['Address']}}"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="Address"   value="{{$data['Address']}}"required>
             <br>
             <br>
             <div class="btn-group float-right" role="group">
@@ -43,6 +45,7 @@
             </div>     
             </form>
         </div>
+        </div></div></div></div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -56,7 +59,7 @@
                         You are going to update the details of Customer ID {{$data->CustomerID}} . Do you want to continue ?
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                     <button type="submit" form="myformcustomer" class="btn btn-primary">Update</button>
                     </div>
                 </div>

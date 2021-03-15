@@ -1,14 +1,13 @@
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 90%;
+    width: 100%;
     color: #233554;
-    margin-left: auto;
     margin-right: auto;
   }
   
   td, th {
-    border: 2px solid #233554;
+    border: 2px solid #C2CAD0;
     text-align: left;
     padding: 8px;
   }
@@ -18,8 +17,12 @@ table {
   }
   
   tr:nth-child(even) {
-    background-color: #233554;
-    color: white; 
+    background-color: #C2CAD0;
+    /* color: white !important;  */
+  }
+
+  tr:nth-child(odd) {
+    color:  #233554 !important;
   }
   
   th{
@@ -34,6 +37,15 @@ table {
       display: inline;
       font-weight: bold;
   }
+
+  .button1{
+    background-color: none;
+    color: none;
+    border-radius: 0px;
+    margin: auto;
+    display: inline;
+    border-color: none;
+  }
   
   .text-my-own-color {
       color: #233554 !important; 
@@ -46,6 +58,8 @@ table {
   a:active {
       text-decoration: none;
   }
+
+
 
   /* body {
     background: linear-gradient(0deg, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4)),url('{{asset("/img/background.jpg")}}');

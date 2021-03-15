@@ -31,7 +31,7 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
        $request->validate([
-            'OrderID' => 'required',
+            // 'OrderID' => 'required',
             'Due_date' => 'required',
             'Progress'=>'required',
             'Qty'=>'required',

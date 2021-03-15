@@ -1,9 +1,13 @@
 @extends('layouts.app')
 @section('title','View Task')
 @section('content')
-<h2 style="text-align: center; color:#233554">Customer Relationship Management System</h2>
-        <h2 style="text-align: center; color:#233554">View Task</h2>
-        <hr style="background-color:#233554; height: 5px">
+<div class="container" style="background :none !important ">
+<div class="row justify-content-center">
+        <div class="col-md">
+            <div class="card">
+                <div class="card-header">{{ __('View Product Details') }}</div>
+
+                <div class="card-body">
         <br>
         <table>
           <tr>
@@ -29,4 +33,5 @@
           </tr>
           @endforeach
         </table>
+        </div></div></div></div></div></div>
 @endsection

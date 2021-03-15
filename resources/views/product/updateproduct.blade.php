@@ -2,17 +2,17 @@
 @section('title','Update Products')
 @section('content')
 
-<h1 style="text-align: center; color:#233554">Customer Relationship Management System</h1>
-        <h2 style="text-align: center; color:#233554"> Update Product Details</h2>
-        <hr style="background-color:#233554; height: 5px">
-        <br>
-        <div class="container">
-
-        @foreach($errors->all() as $error)
+<div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+              <div class="card-header">{{ __('Update Products') }}</div>
+              <div class="card-body">
+        <div class="container"  style="background :none !important ">
+        <!-- @foreach($errors->all() as $error)
         <div class="alert alert-danger" role="alert">
          {{$error}}
           </div>
-           @endforeach
+           @endforeach -->
         <form method="POST" action="/Updateproducts"id="myformproduct">
             @csrf
             <label for="AdminID" ><b>Admin ID : </b></label>
@@ -55,6 +55,8 @@
             </div>     
             </form>
         </div>
+        </div></div></div></div>
+
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

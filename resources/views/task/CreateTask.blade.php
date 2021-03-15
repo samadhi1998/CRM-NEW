@@ -1,9 +1,12 @@
 @extends('layouts.app')
 @section('title','Create Task')
 @section('content')
-        <div class="container">
-        <h2 style="text-align: center; color:#233554">Create New Task</h2>
-        <br>
+<div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+              <div class="card-header">{{ __('Create Task') }}</div>
+              <div class="card-body">
+        <div class="container"  style="background :none !important ">
         <form method="POST" action="/edit" id="myform">
             @csrf
             <label for="Order ID" ><b>Order ID : </b></label>
@@ -28,6 +31,7 @@
             
         </form>
         </div>
+        </div></div></div></div>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
