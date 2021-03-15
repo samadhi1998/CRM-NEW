@@ -51,7 +51,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
+        <nav class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow" style="background-color: #D8D5DB  !important">
             
                 <a class="navbar-brand col-md-3 col-lg-2 px-3" href="{{ url('/') }}">
                     <img src="/img/logo.png" width="100" height="50" alt="">
@@ -127,9 +127,9 @@
                         
                         
             @else
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-color: #F4F2F3">
                 <div class="row">
-                    <nav id="sidebarMenu" class="col-md-4 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <nav id="sidebarMenu" class="col-md-4 col-lg-2 d-md-block bg-light sidebar collapse" style="background-color: #2D3142 !important">
                         <div class="position-sticky pt-3 pb-5">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
@@ -171,7 +171,7 @@
                             </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span></span>
+          <span>Others</span>
           <a class="link-secondary" href="#" aria-label="Add a new report">
             <span data-feather="plus-circle"></span>
           </a>
