@@ -15,7 +15,7 @@ class OrdersController extends Controller
 {
     public function index()
     {
-        $orders = Order::latest()->paginate(5);
+        $orders = Order::all();
     
         return view('orders/index',compact('orders'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -40,6 +40,7 @@ class OrdersController extends Controller
         ]);
     
         Order::create($request->all());
+        $order->CustomerCareID = Auth::user()->EmpID;
         order_detail::create($request->all());
      
         return redirect()->route('orders.index')
@@ -115,5 +116,11 @@ class OrdersController extends Controller
         });
   
         dd('Mail sent successfully');
+    }
+
+    public function selectorder(){
+        $orders = Order::all();
+
+        return view('task.selectorder',compact('orders'));
     }
 }

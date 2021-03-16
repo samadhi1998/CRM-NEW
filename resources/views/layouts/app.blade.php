@@ -23,6 +23,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/dashboard.js') }}" defer></script>
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -53,8 +54,8 @@
     <div id="app">
         <nav class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow" style="background-color: #D8D5DB  !important">
             
-                <a class="navbar-brand col-md-3 col-lg-2 px-3" href="{{ url('/') }}">
-                    <img src="/img/logo.png" width="100" height="50" alt="">
+                <a class="navbar-brand col-md-3 col-lg-2 px-5" href="{{ url('/') }}">
+                    <img src="/img/logo.png" width="110" height="60" alt="">
                 </a>
                 <button class="navbar-toggler  position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -115,7 +116,7 @@
             
         </nav>
 
-        <main class="py-4">
+        <main class="py-1 pb-5">
         @guest
             @if (Route::has('login'))
                 @yield('content1')
@@ -129,7 +130,7 @@
             @else
             <div class="container-fluid" style="background-color: #F4F2F3">
                 <div class="row">
-                    <nav id="sidebarMenu" class="col-md-4 col-lg-2 d-md-block bg-light sidebar collapse" style="background-color: #2D3142 !important">
+                    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="background-color: #2D3142 !important">
                         <div class="position-sticky pt-3 pb-5">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
@@ -157,9 +158,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                    <span data-feather="bar-chart-2"></span>
-                                    Reports
+                                    <a class="nav-link" href="/View-Task">
+                                    <span data-feather="target"></span>
+                                    Tasks
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -170,35 +171,35 @@
                                 </li>
                             </ul>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Others</span>
+                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Other</span>
           <a class="link-secondary" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
+            
           </a>
         </h6>
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <span data-feather="Calendar"></span>
-              Current month
+              <span data-feather="calendar"></span>
+              Add Reminder
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="file-text"></span>
-              Last quarter
+              Quotations and Invoices
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Social engagement
+              <span data-feather="bar-chart-2"></span>
+              Reports
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Year-end sale
+              <span data-feather="thumbs-up"></span>
+              Feedbacks
             </a>
           </li>
         </ul>
@@ -224,7 +225,13 @@
       @yield('content')
             @endguest
         </main>
+        
+       
     </div>
+    <!-- <footer >
+    <p>Author: Hege Refsnes<br>
+      <a href="mailto:hege@example.com">hege@example.com</a></p>
+    </footer> -->
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

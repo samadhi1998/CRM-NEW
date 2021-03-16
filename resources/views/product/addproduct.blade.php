@@ -17,9 +17,9 @@
         <div class="container"  style="background :none !important ">
         <form method="POST" action="/addproduct">
             @csrf
-            <label for="AdminID"><b>Admin ID: </b></label>
-            <input type="text" name="AdminID" required>
-            <br>
+            <!-- <label for="AdminID"><b>Admin ID: </b></label>
+            <input type="text" name="AdminID" required >
+            <br> -->
             <label for="Name" ><b>Product Name : </b></label>
             <input type="text" name="Name" required >
             <br>

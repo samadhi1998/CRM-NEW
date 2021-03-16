@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('title','Orders')
-@section('header','Order Details')
+@section('header','Select Order')
 @section('content')
 
-<div class="pull-left">
+<!-- <div class="pull-left">
     <a class="btn btn-primary" href="/addCustomer">Add new order <span data-feather="plus"></a>
 </div>
-<br>
+<br> -->
 <br>
 <div class="container" style="background :none !important ">
 <div class="row">
@@ -32,12 +32,10 @@
 
     <table>
         <tr> 
-            <th>NO:</th>
+            <th>Order ID:</th>
             <!-- <th>Customer </th> -->
-            <th>Date</th>
+            <th>Created Date</th>
             <th>Due Date</th>
-            <th>Advance</th> 
-            <th>Total Price </th> 
             <th>Progress</th> 
             <th>Action</th>         
         </tr>
@@ -47,35 +45,16 @@
             <!-- <td>{{ $order->CustomerID }}</td> -->
             <td>{{ $order->created_at }}</td>
             <td>{{ $order->Due_date }}</td>
-            <td>{{ $order->Advance }}</td>
-            <td>{{ $order->Total_Price }}</td>
             <td>{{ $order->Progress }}</td>
             <td>
 
 
-            <a href="{{ route('orders.show',$order->OrderID) }}" class="text-my-own-color"><span data-feather="eye"></span></a>
-            <a href="{{ route('orders.edit',$order->OrderID) }}" class="text-my-own-color"><span data-feather="edit"></span></a>
-            <div class="btn-group " role="group">
-                <form action="{{route('orders.destroy', $order->OrderID)}}" method="POST">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" data-toggle="modal" data-target="#exampleModal2" class="text-my-own-color"><span data-feather="trash-2"></span></button>
-                </form>
-            </div>
-                   
+            <a href="/addtask/{{$order['OrderID']}}" class="text-my-own-color" style="margin:2px"><span data-feather="check-circle"></span></a>
+            <a href="/View-Task" class="text-my-own-color" style="margin:10px" ><span data-feather="x-circle"></span></a>
 
-                    <!-- <a class="btn btn-primary" href="{{ route('orders.show',$order->OrderID) }}">Create</a> -->
-
-                    <!-- <a class="btn btn-primary" href="{{ route('orders.edit',$order->OrderID) }}">Update</a> -->
-            
-                  
-
-                </form>
             </td>    
         </tr>
         
-        
-
         
         @endforeach
         </table>

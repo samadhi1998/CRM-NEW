@@ -99,4 +99,9 @@ class UserController extends Controller
         $data->delete();
         return redirect('/home');
     }
+
+    public function assigntask(){
+        $users= User::all();
+        return view('task.AssignTask')->with('users', $users);
+    }
 }

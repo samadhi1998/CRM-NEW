@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\product;
+use App\Models\User;
 
 class ProductController extends Controller
 {
     public function AddProduct (Request $request) 
     {
         $this->validate($request, [
-             'AdminID'=>'required',
+            //  'AdminID'=>'required',
              'Name'=>'required|min:1|max:25',
              'Brand'=>'required|min:1|max:25',
              'Qty'=>'required',
@@ -20,7 +22,7 @@ class ProductController extends Controller
 
 
         $product=new product;
-        $product->AdminID=$request->AdminID;
+        $product->AdminID = Auth::user()->EmpID;
         $product->Name=$request->Name;
         $product->Price=$request->Price;
         $product->Brand=$request->Brand;
@@ -40,7 +42,7 @@ class ProductController extends Controller
 
     public function ViewProduct()
     {
-        $data=product::paginate(5);
+        $data=product::paginate(10);
         return  view('product/viewproduct', ['products'=>$data]);
     }
       

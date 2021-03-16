@@ -50,12 +50,12 @@ body {
   }
   
   .sidebar .nav-link.active {
-    color: #007bff;
+    color: lightsteelblue;
   }
   
   .sidebar .nav-link:hover .feather,
   .sidebar .nav-link.active .feather {
-    color: inherit;
+    color: lightsteelblue;
   }
   
   .sidebar-heading {
@@ -67,7 +67,7 @@ body {
    * Navbar
    */
   
-  .navbar-brand {
+  /* .navbar-brand {
     padding-top: .100rem;
     padding-bottom: .75rem;
     font-size: 1rem;
@@ -95,8 +95,17 @@ body {
   .form-control-dark:focus {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
-  }
+  } */
   
   .header1{
     color: #233554;
+  }
+
+  footer{
+    text-align: center;
+    padding: 0;
+    background-color: #D8D5DB;
+    color: #233554;
+    width: 100%;
+    margin: 0;
   }

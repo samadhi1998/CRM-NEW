@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Task;
+use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -25,7 +27,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view ('task/CreateTask');
     }
 
     /**
@@ -36,7 +38,18 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task=new task;
+        $task->Added_By = Auth::user()->EmpID;
+        $task->Description=$request->Description;
+        $task->Due_Date=$request->Due_Date;
+        $result=$task->save();
+       /* if ($result) {
+            return ["Result"=>"Data has been saved"];
+        } else {
+            return ["Result"=>"operation failed"];
+        }*/
+        // Order::create($request->TaskID());
+        return redirect('/task/Assign-Task');
     }
 
     /**

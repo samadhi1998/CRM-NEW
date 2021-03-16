@@ -2,10 +2,10 @@
 @section('title','View Customer')
 @section('header','Customer Details')
 @section('content')
-<div class="pull-left">
-    <a class="btn btn-primary" href="/addCustomer">Add new Customer</a>
-</div>
-<br>
+<!-- <div class="pull-left">
+    <a class="btn btn-primary" href="/addCustomer">Add new Customer <span data-feather="plus"></span></a>
+</div> -->
+
 <br>
 <div class="container " style="background :none !important ">
 <div class="row justify-content-center">
@@ -55,8 +55,8 @@
       <td>{{$customer['MobileNo']}}</td>
       <td>{{$customer['Email']}}</td>
       <td>
-          <a href="/editCustomer/{{$customer['CustomerID']}}" style="margin:2px" class="text-my-own-color"><span data-feather="edit"></span></a>
-          <a href="/deleteCustomer/{{$customer['CustomerID']}}" style="margin:10px" class="text-my-own-color"><span data-feather= "trash-2"></span></a>
+          <a href="/editCustomer/{{$customer['CustomerID']}}" style="margin:2px" class="text-my-own-color"><i data-feather="edit"></i></a>
+          <a href="/deleteCustomer/{{$customer['CustomerID']}}" style="margin:10px" class="text-my-own-color"><i data-feather= "trash-2"></i></a>
       </td>
     
 </tr>
@@ -72,6 +72,9 @@
 </div></div></div></div></div></div>
 
 </br>
+<script>
+      feather.replace()
+    </script>
 
 
 @endsection

@@ -1,11 +1,17 @@
 @extends('layouts.app')
 @section('title','View Task')
+@section('header','View Tasks')
 @section('content')
+<div class="pull-left">
+    <a class="btn btn-primary" href="/Select-Order">Add new task <span data-feather="plus"></a>
+</div>
+<br>
+<br>
 <div class="container" style="background :none !important ">
 <div class="row justify-content-center">
         <div class="col-md">
             <div class="card">
-                <div class="card-header">{{ __('View Product Details') }}</div>
+                <!-- <div class="card-header">{{ __('View Product Details') }}</div> -->
 
                 <div class="card-body">
         <br>

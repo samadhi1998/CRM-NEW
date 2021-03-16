@@ -104,8 +104,7 @@ Route::get('/Search_Chargers',[App\Http\Controllers\charge\ChargeController::cla
 Route::resource('tasks','App\Http\Controllers\TaskController');
 Route::get('/View-Task','App\Http\Controllers\TaskController@index');
 Route::get('/View-Task/edit/{TaskID}','App\Http\Controllers\TaskController@edit')->name('editTask'); 
-Route::get('/Assign-Task','App\Http\Controllers\EmployeeController@index');
+Route::get('/Assign-Task','App\Http\Controllers\Admin\UserController@assigntask');
 Route::post('edit','App\Http\Controllers\TaskController@update');
-Route::get('/addtask', function () {
-    return view('task/CreateTask');
-});
+Route::get('/Select-Order','App\Http\Controllers\OrdersController@selectorder');
+Route::get('/addtask/{OrderID}','App\Http\Controllers\TaskController@create' );

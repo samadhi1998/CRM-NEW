@@ -21,6 +21,8 @@ class CreateTasksTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('ServicePersonID');
             $table->foreign('ServicePersonID')->references('EmpID')->on('users');
+            $table->unsignedBigInteger('Added_By');
+            $table->foreign('Added_By')->references('EmpID')->on('users');
         });
     }
 

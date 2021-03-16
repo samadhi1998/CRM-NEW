@@ -3,7 +3,7 @@
 @section('header','Product Details')
 @section('content')
 <div class="pull-left">
-    <a class="btn btn-primary" href="/addproduct">Add new product</a>
+    <a class="btn btn-primary" href="/addproduct">Add new product <span data-feather="plus"></a>
 </div>
 <br>
 <br>
@@ -54,7 +54,8 @@
       <td>{{$product['Description']}}</td>
       <td>{{$product['Status']}}</td>
       <td>
-          <a href= "/UpdateProducts/{{$product['ProductID']}}" style="margin:2px"><span data-feather="edit"></span></a>                               
+          <a href= "/UpdateProducts/{{$product['ProductID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>                               
+          <a href= "" style="margin:10px" class="text-my-own-color"><span data-feather ="trash-2"></span></a> 
           <!-- "/updateProduct/{{$product['ProductID']}}"  -->
       </td>
     </tr>

@@ -42,19 +42,16 @@
       <td>{{$user['Address']}}</td>
       <td>{{$user['MobileNo']}}</td>
       <td>
-        <div class="btn-group" role="group">
-        <a href="{{route('users.edit', $user->EmpID)}}">
-          <button type="button" >Edit</button>
+        
+        <a href="{{route('users.edit', $user->EmpID)}}" style="margin:2px" class="text-my-own-color">
+        <span data-feather="edit"></span>
         </a>
-        </div>
 
-        <div class="btn-group" role="group">
-        <form action="{{route('users.destroy', $user->EmpID)}}" method="POST">
+        <form action="{{route('users.destroy', $user->EmpID)}}" method="POST" >
           @csrf
           @method('delete')
-          <button type="submit" data-toggle="modal" data-target="#exampleModal2" >Delete</button>
+          <button type="submit" data-toggle="modal" data-target="#exampleModal2" style="margin:10px" class="text-my-own-color"><span data-feather="trash-2"></span></button>
           </form>
-        </div>
       </td> 
     </tr>
     @endforeach 

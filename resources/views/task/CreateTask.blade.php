@@ -1,20 +1,22 @@
 @extends('layouts.app')
 @section('title','Create Task')
+@section('header','Create Tasks')
 @section('content')
+<br>
 <div class="row justify-content-center">
         <div class="col-md-8">
           <div class="card">
-              <div class="card-header">{{ __('Create Task') }}</div>
+              <!-- <div class="card-header">{{ __('Create Task') }}</div> -->
               <div class="card-body">
         <div class="container"  style="background :none !important ">
         <form method="POST" action="/edit" id="myform">
             @csrf
-            <label for="Order ID" ><b>Order ID : </b></label>
+            <!-- <label for="Order ID" ><b>Order ID : </b></label>
             <input type="text" name="Order ID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%">
             <br>
             <label for="Task ID" ><b>Task ID : </b></label>
             <input type="text" name="Task ID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%">
-            <br>
+            <br> -->
             <label for="Description" ><b>Description : </b></label>
             <textarea name="Description" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" rows="5" cols="50"></textarea>
             <br>
@@ -26,7 +28,7 @@
             <button type="button" data-toggle="modal" data-target="#exampleModal" >Create Task</button>
             </div>
             <div class="btn-group float-right mr-2 " role="group">
-            <button type="submit" ><a href="/View-Progress" class="text-my-own-color">Cancel</a></button>
+            <button type="submit" ><a href="/View-Task" class="text-my-own-color">Cancel</a></button>
             </div>
             
         </form>
