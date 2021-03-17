@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\support\Facades\DB;
 use App\Models\product;
 use App\Models\User;
 
@@ -93,7 +94,14 @@ class ProductController extends Controller
         } else {
             return redirect()->back()->with('error', 'Invalid Search , Enter Available Product ...');
         }
+     
 
         
     }
+
+         function ProductCount()    {
+         return DB::table ('products')->count();
+
+   } 
+
 }
