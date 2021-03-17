@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\support\Facades\DB;
 use App\Models\customer;
 class CustomerController extends Controller
 {
@@ -84,5 +85,8 @@ class CustomerController extends Controller
 
     }
 
+  function CustomerCount(){
+    return DB::table ('customers')->count();
 
+  }
 }

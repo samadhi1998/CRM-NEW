@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\support\Facades\DB;
 use App\Models\product;
 
 class ProductController extends Controller
@@ -91,7 +92,14 @@ class ProductController extends Controller
         } else {
             return redirect()->back()->with('error', 'Invalid Search , Enter Available Product ...');
         }
+     
 
         
     }
+
+         function ProductCount()    {
+         return DB::table ('products')->count();
+
+   } 
+
 }
