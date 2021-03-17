@@ -32,6 +32,9 @@
             <label for="Qty" ><b>Quantity : </b></label>
             <input type="number" name="Qty" required="true"min="1" required >
             <br>
+            <label for="Warranty" ><b>Warranty : </b></label>
+            <input type="text" name="Warranty" required>
+            <br>
             <label for="Description" ><b>Description : </b></label>
             <textarea  name="Description"  required ></textarea>
             <br>

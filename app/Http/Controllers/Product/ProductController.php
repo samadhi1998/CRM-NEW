@@ -27,6 +27,7 @@ class ProductController extends Controller
         $product->Price=$request->Price;
         $product->Brand=$request->Brand;
         $product->Qty=$request->Qty;
+        $product->Warranty=$request->Warranty;
         $product->Description=$request->Description;
         $result=$product->save();
        /* if ($result) {
@@ -62,6 +63,7 @@ class ProductController extends Controller
         $data->Price=$req->Price;
         $data->Brand=$req->Brand;
         $data->Qty=$req->Qty;
+        $data->Warranty=$req->Warranty;
         $data->Description=$req->Description;
         $data->Status=$req->Status;
         $data->save();

@@ -23,9 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/Dashboard', function () {
-    return view('admin/dashboard');
-});
+Route::get('/Dashboard','App\Http\Controllers\OrdersController@dashboard');
 
 Auth::routes();
 

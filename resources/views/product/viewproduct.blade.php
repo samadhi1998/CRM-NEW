@@ -39,6 +39,7 @@
       <th >Brand</th>
       <th >Price</th>
       <th >Quantity</th>
+      <th >Warranty</th>
       <th >Description</th>
       <th >Status</th>
       <th >Action</th>
@@ -51,6 +52,7 @@
       <td>{{$product['Brand']}}</td>
       <td>{{$product['Price']}}</td>
       <td>{{$product['Qty']}}</td>
+      <td>{{$product['Warranty']}}</td>
       <td>{{$product['Description']}}</td>
       <td>{{$product['Status']}}</td>
       <td>

@@ -33,6 +33,9 @@
             <label for="Qty" ><b>Quantity : </b></label>
             <input type="number" name="Qty"  value="{{$data['Qty']}}" min="1" required>
             <br>
+            <label for="Warranty" ><b>Warranty : </b></label>
+            <input type="text" name="Warranty"  value="{{$data['Warranty']}}" required>
+            <br>
             <label for="Description" ><b>Description : </b></label>
             <textarea name="Description" required rows="5" cols="50" >{{$data->Description}}</textarea>
             <br>

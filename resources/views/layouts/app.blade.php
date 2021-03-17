@@ -33,6 +33,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+    
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -128,13 +129,13 @@
                         
                         
             @else
-            <div class="container-fluid" style="background-color: #F4F2F3">
+            <div class="container-fluid pb-5" style="background-color: #F4F2F3">
                 <div class="row">
                     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="background-color: #2D3142 !important">
                         <div class="position-sticky pt-3 pb-5">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="/home">
+                                    <a class="nav-link active" aria-current="page" href="/Dashboard">
                                         <span data-feather="home"></span>
                                         Dashboard
                                     </a>

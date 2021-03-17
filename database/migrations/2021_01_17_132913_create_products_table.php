@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('Name');
             $table->string('Brand');
             $table->string('Description');
+            $table->string('Warranty');
             $table->integer('Price');
             $table->integer('Qty');
             $table->string('Status')->nullable()->default("Active");

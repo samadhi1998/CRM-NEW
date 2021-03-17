@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use App\Models\order_detail;
 use App\Models\product;
@@ -40,7 +40,7 @@ class OrdersController extends Controller
         ]);
     
         Order::create($request->all());
-        $order->CustomerCareID = Auth::user()->EmpID;
+        // $order->CustomerCareID = Auth::user()->EmpID;
         order_detail::create($request->all());
      
         return redirect()->route('orders.index')
@@ -122,5 +122,11 @@ class OrdersController extends Controller
         $orders = Order::all();
 
         return view('task.selectorder',compact('orders'));
+    }
+
+    public function dashboard(){
+        $orders = Order::all();
+
+        return view('admin.dashboard',compact('orders'));
     }
 }
