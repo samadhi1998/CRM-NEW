@@ -87,7 +87,7 @@ class ProductController extends Controller
         $product=product::where('Name', 'like', "%$query%")->orWhere('ProductID', 'like', "%$query%")->paginate(5);
         //dd($product);
         if (count($product)>0) {
-            return view('/SearchProducts', ['products'=>$product]);
+            return view('product/searchproduct', ['products'=>$product]);
         } else {
             return redirect()->back()->with('error', 'Invalid Search , Enter Available Product ...');
         }
