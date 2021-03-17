@@ -25,6 +25,8 @@ class CreateProductsTable extends Migration
             $table->foreign('AdminID')->references('EmpID')->on('users');
             $table->timestamps();
         });
+
+
     }
 
     /**
