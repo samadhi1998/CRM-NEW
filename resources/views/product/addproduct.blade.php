@@ -32,9 +32,14 @@
             <label for="Qty" ><b>Quantity : </b></label>
             <input type="number" name="Qty" required="true"min="1" required >
             <br>
-            <label for="Warranty" ><b>Warranty : </b></label>
-            <input type="text" name="Warranty" required>
-            <br>
+            <label for="Warranty"><b>Warranty : </b></label>
+            <select  name="Warranty" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+                <option value="" selected disabled hidden></option>
+                <option value="one-year-warranty">One Year Warranty</option>
+                <option value="two-year-Warranty">Two Year Warranty</option>
+                <option value="three-year-Warranty">Three Year Warranty</option>
+                <option value="No-Wrranty">No Warranty</option>
+            </select>
             <label for="Description" ><b>Description : </b></label>
             <textarea  name="Description"  required ></textarea>
             <br>

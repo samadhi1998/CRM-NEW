@@ -33,8 +33,14 @@
             <label for="Qty" ><b>Quantity : </b></label>
             <input type="number" name="Qty"  value="{{$data['Qty']}}" min="1" required>
             <br>
-            <label for="Warranty" ><b>Warranty : </b></label>
-            <input type="text" name="Warranty"  value="{{$data['Warranty']}}" required>
+            <label for="Warranty"><b>Warranty : </b></label>
+            <select  name="Warranty">
+            <option value="{{$data['Warranty']}}" selected hidden>{{$data['Warranty']}}</option>
+            <option value="one-year-warranty">One Year Warranty</option>
+                <option value="two-year-Warranty">Two Year Warranty</option>
+                <option value="three-year-Warranty">Three Year Warranty</option>
+                <option value="No-Wrranty">No Warranty</option>
+            </select>
             <br>
             <label for="Description" ><b>Description : </b></label>
             <textarea name="Description" required rows="5" cols="50" >{{$data->Description}}</textarea>
