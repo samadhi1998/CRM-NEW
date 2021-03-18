@@ -43,8 +43,7 @@
       <td>{{$extra_charges['Amount']}}</td>
       <td>{{$extra_charges['Description']}}</td>
       <td>
-      <a href= {{"UpdateChargers/".$extra_charges['ExtraChargeID']}}  ><button> Update</button></a><tab></tab>
-     
+      <a href= "/UpdateChargers/{{$extra_charges['ExtraChargeID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>                               
     </td>
 </tr>
 @endforeach
