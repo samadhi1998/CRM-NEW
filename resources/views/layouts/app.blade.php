@@ -229,6 +229,10 @@
         
        
     </div>
+    </div>
+    <footer class="footer text-center pt-3 pb-3 fixed-bottom">
+                © 2021 CRM by She Squad
+            </footer>
     <!-- <footer >
     <p>Author: Hege Refsnes<br>
       <a href="mailto:hege@example.com">hege@example.com</a></p>

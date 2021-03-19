@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                             </div>
-                            <div class="col-md-4 d-flex align-self-center"><span data-feather = "shopping-cart" style="width: 70px; height: 70px" ></span></div>
+                            <div class="col-md-4 d-flex align-self-center"><span data-feather = "shopping-cart" style="width: 70px; height: 70px" class="text-my-own-color" ></span></div>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                             </div>
-                            <div class="col-md-4 d-flex align-self-center"><span data-feather = "users" style="width: 70px; height: 70px" ></span></div>
+                            <div class="col-md-4 d-flex align-self-center"><span data-feather = "users" style="width: 70px; height: 70px" class="text-my-own-color"></span></div>
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             </div>
-                            <div class="col-md-4 d-flex align-self-center"><span data-feather = "target" style="width: 70px; height: 70px" ></span></div>
+                            <div class="col-md-4 d-flex align-self-center"><span data-feather = "target" style="width: 70px; height: 70px" class="text-my-own-color"></span></div>
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                                 </div>
                             </div>
                             </div>
-                            <div class="col-md-4 d-flex align-self-center"><span data-feather = "package" style="width: 70px; height: 70px" ></span></div>
+                            <div class="col-md-4 d-flex align-self-center"><span data-feather = "package" style="width: 70px; height: 70px" class="text-my-own-color"></span></div>
                             </div>
                         </div>
                     </div>
@@ -90,8 +90,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-md-flex">
-                                    <h4 class="card-title col-md-10 mb-md-0 mb-5 align-self-center">Orders of the Month</h4>
-                                    <div class="col-md-3 ms-auto">
+                                    <h4 class="card-title col-md-10 mb-md-0 mb-5 align-self-center">Orders</h4>
+                                    <!-- <div class="col-md-3 ms-auto">
                                         <select class="form-select shadow-none col-md-15 ml-auto mr-auto">
                                             <option selected>January</option>
                                             <option value="1">February</option>
@@ -106,27 +106,27 @@
                                             <option value="3">November</option>
                                             <option value="3">December</option>
                                         </select>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="table-responsive mt-5">
                                       <table>
                                           <tr> 
-                                              <th>NO:</th>
+                                              <th>Order ID:</th>
                                               <!-- <th>Customer </th> -->
                                               <th>Date</th>
                                               <th>Due Date</th>
                                               <!-- <th>Advance</th>  -->
-                                              <th>Total Price </th> 
+                                              <!-- <th>Total Price </th>  -->
                                               <th>Progress</th>         
                                           </tr>
                                           @foreach($orders as $order)
                                           <tr>
                                               <td>{{ $order->OrderID }}</td>
-                                              <!-- <td>{{ $order->CustomerID }}</td> -->
+                                              <!-- <td>{{ $order->Name }}</td> -->
                                               <td>{{ $order->created_at }}</td>
                                               <td>{{ $order->Due_date }}</td>
                                               <!-- <td>{{ $order->Advance }}</td> -->
-                                              <td>{{ $order->Total_Price }}</td>
+                                              <!-- <td>{{ $order->Total_Price }}</td> -->
                                               <td>{{ $order->Progress }}</td>
                                           </tr>
                                           @endforeach
@@ -185,7 +185,9 @@
                                                           </div>
                                                       </div>
                 </div>
+                
                 </div>
+            
 
 
 @endsection
