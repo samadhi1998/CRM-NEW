@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title','Add Order')
+@section('header','Add Order Details')
 @section('content')
 <html>
 <head>

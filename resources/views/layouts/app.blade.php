@@ -165,7 +165,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/home">
+                                    <a class="nav-link" href="/viewuser">
                                     <span data-feather="user"></span>
                                     Users
                                     </a>

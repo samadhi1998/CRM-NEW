@@ -53,8 +53,9 @@
             <td>
 
 
-            <a href="{{ route('orders.show',$order->OrderID) }}" class="text-my-own-color"><span data-feather="eye"></span></a>
-            <a href="{{ route('orders.edit',$order->OrderID) }}" class="text-my-own-color"><span data-feather="edit"></span></a>
+            <a href="{{ route('orders.show',$order->OrderID) }}" class="text-my-own-color"><span data-feather="eye"> </span></a>
+            <a href="{{ route('orders.edit',$order->OrderID) }}" class="text-my-own-color"><span data-feather="edit"> </span></a>
+            <a href= "progressedit/{{$order->OrderID}}" class="text-my-own-color"><span data-feather="edit-3"> </span></a>
             <div class="btn-group " role="group">
                 <form action="{{route('orders.destroy', $order->OrderID)}}" method="POST">
                     @csrf

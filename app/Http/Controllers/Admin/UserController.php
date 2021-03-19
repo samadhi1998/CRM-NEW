@@ -84,7 +84,7 @@ class UserController extends Controller
         
         $data->save();
 
-        return redirect('/home');
+        return redirect('/viewuser');
     }
 
     /**

@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/Dashboard','App\Http\Controllers\OrdersController@dashboard');
+
 
 Auth::routes();
 
@@ -33,12 +33,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('/admin/users','App\Http\Controllers\Admin\UserController');
 Route::resource('roles','App\Http\Controllers\Admin\RoleController');
+Route::get('/Dashboard','App\Http\Controllers\OrdersController@dashboard');
 
 //user management
 
-Route::get('/viewuser', function () {
-    return view('admin/users/viewuser');
-});
+Route::get('/viewuser','App\Http\Controllers\Admin\UserController@index');
 Route::get('admin/users/edit/{EmpID}','App\Http\Controllers\Admin\UserController@edit')->name('editUser');
 Route::post('edit/{EmpID}','App\Http\Controllers\Admin\UserController@update');
 Route::get('/add-priviledge','App\Http\Controllers\Admin\RoleController@index');
@@ -61,6 +60,8 @@ Route::get('show', [App\Http\Controllers\OrdersController::class,'show']);
 Route::get('joincustomers', [App\Http\Controllers\OrdersController::class,'joincustomers']);
 Route::get('joinorddetails', [App\Http\Controllers\OrdersController::class,'joinorddetails']);
 Route::get('emails', [App\Http\Controllers\OrdersController::class,'emails']);
+Route::get('progressedit/{OrderID}',[App\Http\Controllers\OrdersController::class,'progressedit']);
+Route::post('progressedit',[App\Http\Controllers\OrdersController::class,'progressupdate']);
 //Route::get('find', [OrdersController::class,'findorder']);
 
 
