@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Order;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         //return view('index');
-        $users= User::all();
-        return view('admin.users.index')->with('users', $users);
+        $orders= Order::all();
+        return view('admin.dashboard')->with('orders', $orders);
     }
 }
