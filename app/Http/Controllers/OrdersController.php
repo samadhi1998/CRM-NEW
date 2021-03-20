@@ -46,8 +46,7 @@ class OrdersController extends Controller
         return redirect()->route('orders.index')
                         ->with('success','Order created successfully.');
     }
-
-  
+    
     public function show(Order $order)
     {
         return view('orders.show',compact('order'));
