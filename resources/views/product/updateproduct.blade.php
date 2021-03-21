@@ -18,9 +18,9 @@
             <!-- <label for="AdminID" ><b>Admin ID : </b></label>
             <input type="text" name="AdminID" value="{{$data['AdminID']}}" name="Name" required readonly>
             <br> -->
-            <!-- <label for="ProductID" ><b>Product ID: </b></label>
+             <label for="ProductID" ><b>Product ID: </b></label>
             <input type="text" name="ProductID" value="{{$data['ProductID']}}" name="Name" required readonly>
-            <br> -->
+            <br> 
             <label for="Name" ><b>Product Name : </b></label>
             <input type="text" name="Name" value="{{$data['Name']}}"required>
             <br>
