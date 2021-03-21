@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function AddProduct (Request $request) 
     {
         $this->validate($request, [
-            //  'AdminID'=>'required',
+        
              'Name'=>'required|min:1|max:25',
              'Brand'=>'required|min:1|max:25',
              'Qty'=>'required',
@@ -31,12 +31,7 @@ class ProductController extends Controller
         $product->Warranty=$request->Warranty;
         $product->Description=$request->Description;
         $result=$product->save();
-       /* if ($result) {
-            return ["Result"=>"Data has been saved"];
-        } else {
-            return ["Result"=>"operation failed"];
-        }*/
-
+     
         return redirect('/product/viewproduct');
 
     }
