@@ -76,7 +76,7 @@ Route::get('/UpdateProducts/{ProductID}',[App\Http\Controllers\Product\ProductCo
 Route::post('/Updateproducts',[App\Http\Controllers\Product\ProductController::class,'ShowUpdatesProducts']);
 Route::get('/Search_Products',[App\Http\Controllers\Product\ProductController::class,'SearchProducts']);
 Route::get('/ProductCount',[App\Http\Controllers\Product\ProductController::class,'ProductCount']);
-
+Route::get('/Delete_Products/{ProductID}',[App\Http\Controllers\Product\ProductController::class,'deleteproducts']);
 
 Route::get('/addCustomer', function () {
     return view('customer/addcustomer');

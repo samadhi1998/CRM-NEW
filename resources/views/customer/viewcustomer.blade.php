@@ -65,12 +65,9 @@
 </table>
 <br>
 <br>
-<div style="text-align: right;font-size: 15px;">
-<span>{{$customers->links()}}</span>
-</div>
+{{$customers->links()}}
 </br>
 </div></div></div></div></div></div>
-
 </br>
 <script>
       feather.replace()
