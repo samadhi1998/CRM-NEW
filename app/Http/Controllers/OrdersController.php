@@ -41,7 +41,10 @@ class OrdersController extends Controller
     
         Order::create($request->all());
         // $order->CustomerCareID = Auth::user()->EmpID;
-        order_detail::create($request->all());
+        $content=order_detail::create($request->all());
+        DB::table('products')
+					->where('ProductID', $content->ProductID)
+					->update(['Qty' => DB::raw('QTy - '.$content->Qty)]);
      
         return redirect()->route('orders.index')
                         ->with('success','Order created successfully.');

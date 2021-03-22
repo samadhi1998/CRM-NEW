@@ -77,6 +77,12 @@ Route::post('/Updateproducts',[App\Http\Controllers\Product\ProductController::c
 Route::get('/Search_Products',[App\Http\Controllers\Product\ProductController::class,'SearchProducts']);
 Route::get('/ProductCount',[App\Http\Controllers\Product\ProductController::class,'ProductCount']);
 Route::get('/Delete_Products/{ProductID}',[App\Http\Controllers\Product\ProductController::class,'deleteproducts']);
+Route::get('/StockoutProducts',[App\Http\Controllers\Product\ProductController::class,'stockOut']);
+Route::get('/InStockProducts',[App\Http\Controllers\Product\ProductController::class,'instock']);
+Route::get('/Not_AvailableProducts',[App\Http\Controllers\Product\ProductController::class,'notavailable']);
+
+
+
 
 Route::get('/addCustomer', function () {
     return view('customer/addcustomer');

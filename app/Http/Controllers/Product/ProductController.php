@@ -16,8 +16,8 @@ class ProductController extends Controller
         
              'Name'=>'required|min:1|max:25',
              'Brand'=>'required|min:1|max:25',
-             'Qty'=>'required',
              'Price'=>'required',
+             'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
              'Description'=>'required|min:5|max:100'
          ]);
 
@@ -122,5 +122,24 @@ class ProductController extends Controller
          return DB::table ('products')->count();
 
    } 
+
+
+   public function stockOut()//get stockout  product details
+	{
+		$stockOut = DB::table('products')->where('Qty', '<', 5)->get();
+		return response()->json($stockOut);
+	}
+
+    public function instock()//get in stock product details
+	{
+		$stockOut = DB::table('products')->where('Qty', '>', 5)->get();
+		return response()->json($stockOut);
+	}
+
+    public function notavailable()//get not available stock product details
+	{
+		$stockOut = DB::table('products')->where('Qty', '=', 0)->get();
+		return response()->json($stockOut);
+	}
 
 }
