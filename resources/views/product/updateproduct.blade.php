@@ -36,7 +36,7 @@
             <input type="number" name="Price" value="{{$data['Price']}}" min="1" required>
             <br>
             <label for="Qty" ><b>Quantity : </b></label>
-            <input type="number" name="Qty"  value="{{$data['Qty']}}" min="1" required>
+            <input type="number" name="Qty"  value="{{$data['Qty']}}" required>
             <br>
             <label for="Warranty"><b>Warranty : </b></label>
             <select  name="Warranty">
