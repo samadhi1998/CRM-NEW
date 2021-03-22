@@ -14,19 +14,20 @@
                         <label for="Role"><b>Role : </b></label>
                         <select  name="Role" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
                         @foreach($roles as $role)
-                            <option value="{{$roles->name}}">{{$roles->name}}</option>
+                            <option value="{{$role->name}}">{{$role->name}}</option>
                         @endforeach
                         </select>
                     <br>
                     <br>
                     <ul class="list-group list-group-flush">
-                    <!-- User Managament -->
+                    @foreach($priviledges as $priviledge)
                         <li class="list-group-item">
                             <div class="checkbox">
-                            <label><input type="checkbox" value=""> Add User</label>
+                            <label><input type="checkbox" value=""> {{$priviledge->Description}}</label>
                             </div>
                         </li>
-                        <li class="list-group-item"><div class="checkbox">
+                    @endforeach
+                        <!-- <li class="list-group-item"><div class="checkbox">
                            <label><input type="checkbox" value=""> View User Details</label>
                            </div>
                         </li>
@@ -38,7 +39,7 @@
                             <label><input type="checkbox" value=""> Delete User Details</label>
                         </div>
                         </li>
-                        <!-- Customer Managament -->
+                        
                         <li class="list-group-item"><div class="checkbox">
                             <label><input type="checkbox" value=""> Add Customer</label>
                         </div>
@@ -55,7 +56,7 @@
                             <label><input type="checkbox" value=""> Delete Customer Details</label>
                         </div>
                         </li>
-                        <!-- Product Managament -->
+                        
                         <li class="list-group-item"><div class="checkbox">
                             <label><input type="checkbox" value=""> Add Products</label>
                         </div>
@@ -72,7 +73,7 @@
                             <label><input type="checkbox" value=""> Delete Product Details</label>
                         </div>
                         </li>
-                        <!-- Order Managament -->
+                        
                         <li class="list-group-item"><div class="checkbox">
                             <label><input type="checkbox" value=""> Add Order</label>
                         </div>
@@ -97,7 +98,7 @@
                             <label><input type="checkbox" value=""> Update Order Progress</label>
                         </div>
                         </li>
-                        <!-- Charge Managament -->
+                        
                         <li class="list-group-item"><div class="checkbox">
                             <label><input type="checkbox" value=""> Add Charges</label>
                         </div>
@@ -114,7 +115,7 @@
                             <label><input type="checkbox" value=""> Delete Charge Details</label>
                         </div>
                         </li>
-                        <!-- Invoice Quotation and Report Managament -->
+                        
                         <li class="list-group-item"><div class="checkbox">
                             <label><input type="checkbox" value=""> Add Invoice</label>
                         </div>
@@ -163,7 +164,7 @@
                             <label><input type="checkbox" value=""> Delete Report</label>
                         </div>
                         </li>
-                        <!-- Notes and Reminders Managment -->
+                        
                         <li class="list-group-item"><div class="checkbox">
                             <label><input type="checkbox" value=""> Add Notes</label>
                         </div>
@@ -196,7 +197,7 @@
                             <label><input type="checkbox" value=""> Delete Reminder</label>
                         </div>
                         </li>
-                        <!-- Chat and GPS Managment -->
+                        
                         <li class="list-group-item"><div class="checkbox">
                             <label><input type="checkbox" value=""> Chat with Customer</label>
                         </div>
@@ -204,7 +205,7 @@
                         <li class="list-group-item"><div class="checkbox">
                             <label><input type="checkbox" value=""> Locate Service Person</label>
                         </div>
-                        </li>
+                        </li> -->
                     </ul>
                     
                  </div>

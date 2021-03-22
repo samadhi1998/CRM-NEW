@@ -12,4 +12,6 @@ class Role extends Model
     public function priviledges(){
         return $this->belongsToMany(Priviledge::class);
     }
+
+    protected $primaryKey = 'RoleID';
 }

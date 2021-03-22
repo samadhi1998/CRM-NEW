@@ -68,7 +68,7 @@
   </table>
   <br>
   <br>
-  {{$products->links()}}
+ {{$products->links()}}
   </div></div></div></div></div></div>
 </br>
 

@@ -9,7 +9,7 @@
               <!-- <div class="card-header">{{ __('Create Task') }}</div> -->
               <div class="card-body">
         <div class="container"  style="background :none !important ">
-        <form method="POST" action="/edit" id="myform">
+        <form method="POST" action="{{ route('task.store') }}" id="myform">
             @csrf
             <!-- <label for="Order ID" ><b>Order ID : </b></label>
             <input type="text" name="Order ID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%">
@@ -20,8 +20,28 @@
             <label for="Description" ><b>Description : </b></label>
             <textarea name="Description" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" rows="5" cols="50"></textarea>
             <br>
-            <label for="Due Date" ><b>Due Date : </b></label>
-            <input type="date" name="Due Date" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%">
+            <label for="Due_Date" ><b>Due Date : </b></label>
+            <input type="date" name="Due_Date" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%">
+            <br>
+            <label for="OrderID"><b>OrderID : </b></label>
+            <select name="Status" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            @foreach ($orders as $order)
+                <option value="{{ $order->OrderID }}">{{ $order->OrderID }}</option>
+            @endforeach
+            </select>
+            <br>
+            <label for="EmpID"><b>Assign Employee : </b></label>
+            <select name="EmpID" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            @foreach($users as $user)
+                <option value="{{$user['EmpID']}}">{{$user['name']}}</option>
+            @endforeach
+            </select>
+            <br>
+            <label for="Status"><b>Status : </b></label>
+            <select name="Status" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+                <option value="Open">Open</option>
+                <option value="Completed">Completed</option>
+            </select>
             <br>
             <br>
             <div class="btn-group float-right" role="group">
@@ -49,7 +69,7 @@
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" form="myform" class="btn btn-primary"><a href="/Assign-Task">Continue</button>
+                    <button type="submit" form="myform" class="btn btn-primary">Continue</button>
                     </div>
                 </div>
             </div>

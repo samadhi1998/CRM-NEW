@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
+use App\Models\Priviledge;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -16,7 +17,7 @@ class RoleController extends Controller
     public function index()
     {
         $data = role::all();
-        return view('addpriviledge',['roles'=>$data]);
+        return view('admin.users.viewrole',['roles'=>$data]);
     }
 
     /**
@@ -26,7 +27,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin/users/createrole');
     }
 
     /**
@@ -37,7 +38,17 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $role=new role;
+        $role->name = $request->name;
+        // $role->Description=$request->Description;
+        $result=$role->save();
+       /* if ($result) {
+            return ["Result"=>"Data has been saved"];
+        } else {
+            return ["Result"=>"operation failed"];
+        }*/
+        // Order::create($request->TaskID());
+        return redirect('/View-Role');
     }
 
     /**
@@ -57,9 +68,10 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function roleedit($RoleID)
     {
-        //
+        $data = role::find($RoleID);
+        return view('admin.users.editrole',['roles'=>$data]);
     }
 
     /**
@@ -69,9 +81,15 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function roleupdate(Request $request, Role $role)
     {
-        //
+        $data = role::find($request->input('RoleID'));
+        $data->RoleID = $request->input('RoleID');
+        $data->name = $request->input('name');
+        
+        $data->save();
+
+        return redirect('View-Role');
     }
 
     /**
@@ -83,5 +101,13 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         //
+    }
+
+    public function viewpriviledge(){
+
+        $data = role::all();
+        return view('admin.users.addpriviledge',['roles'=>$data])
+            ->with('priviledges',Priviledge::all());
+
     }
 }
