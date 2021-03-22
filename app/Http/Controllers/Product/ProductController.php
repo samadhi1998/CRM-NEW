@@ -25,21 +25,32 @@ class ProductController extends Controller
         $product=new product;
         $product->AdminID = Auth::user()->EmpID;
         $product->Name=$request->Name;
-        $product->Price=$request->Price;
         $product->Brand=$request->Brand;
+
+        if($request->hasfile('image')){
+           $file=$request->file('image');
+           $extension=$file->getClientOriginalExtension();//get image extension
+           $filename= time().'.'.$extension;
+           $file->move('uploads/product',$filename); 
+           $product->image=$filename;
+           }else{
+               return $request;
+               $product->image='';
+           }
+        $product->Price=$request->Price;
         $product->Qty=$request->Qty;
         $product->Warranty=$request->Warranty;
         $product->Description=$request->Description;
         $result=$product->save();
      
-        return redirect('/product/viewproduct');
+        return redirect('/product/viewproduct')-> with ('success','Product Inserted successfully');
 
     }
 
 
     public function ViewProduct()
     {
-        $data=product::paginate(10);
+        $data=product::paginate(5);
         return  view('product/viewproduct', ['products'=>$data]);
     }
       
@@ -54,26 +65,37 @@ class ProductController extends Controller
     public function ShowUpdatesProducts(Request $req)
     {
         $data=product::find($req->ProductID);
-        $data->AdminID=$req->AdminID;
+        // $data->AdminID=$req->AdminID;
         $data->Name=$req->Name;
-        $data->Price=$req->Price;
         $data->Brand=$req->Brand;
+
+        // if($req->hasfile('image')){
+        //     $file=$req->file('image');
+        //     $extension=$file->getClientOriginalExtension();//get image extension
+        //     $filename= time().'.'.$extension;
+        //     $file->move('uploads/product',$filename); 
+        //     $data->image=$filename;
+        //   }else{
+        //      return $req;
+        //      $data->image='';
+        //   }
+       
+        $data->Price=$req->Price;
         $data->Qty=$req->Qty;
         $data->Warranty=$req->Warranty;
         $data->Description=$req->Description;
         $data->Status=$req->Status;
         $data->save();
-
         return redirect('product/viewproduct');
 
     }
 
 
-    public function DeleteProducts($ProductID)
+    public function deleteproducts($ProductID)
     {
         $data=product::find($ProductID);
         $data->delete();
-        return redirect('/ViewProducts');
+        return redirect('product/viewproduct');
     }
   
     public function SearchProducts(Request $request)

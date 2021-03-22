@@ -16,6 +16,7 @@
       <th scope="col">Product ID</th>
       <th scope="col">Product Name</th>
       <th scope="col">Brand</th>
+      <th scope="col" >Product View</th>
       <th scope="col">Price</th>
       <th scope="col">Quantity</th>
       <th scope="col">Description</th>
@@ -29,6 +30,7 @@
       <td>{{$product['ProductID']}}</td>
       <td>{{$product['Name']}}</td>
       <td>{{$product['Brand']}}</td>
+      <td> <img src="{{asset('uploads/product/'.$product->image)  }}" width="100px;" height="100px;" alt="Product-Image">  </td>
       <td>{{$product['Price']}}</td>
       <td>{{$product['Qty']}}</td>
       <td>{{$product['Description']}}</td>

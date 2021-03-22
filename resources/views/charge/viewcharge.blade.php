@@ -48,12 +48,6 @@
 </tr>
 @endforeach
 </table>
+{{$extra_charge->links()}}
 </div></div></div></div></div></div>
-<br>
-
-<div style="text-align: right;font-size: 15px;">
-<span>{{$extra_charge->links()}}</span>
-</div>
-<br>
-
 @endsection

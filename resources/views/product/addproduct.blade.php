@@ -15,7 +15,7 @@
               <!-- <div class="card-header">{{ __('Add Product') }}</div> -->
               <div class="card-body">
         <div class="container"  style="background :none !important ">
-        <form method="POST" action="/addproduct">
+        <form method="POST" action="/addproduct" enctype="multipart/form-data">
             @csrf
             <!-- <label for="AdminID"><b>Admin ID: </b></label>
             <input type="text" name="AdminID" required >
@@ -25,6 +25,9 @@
             <br>
             <label for="Brand" ><b>Brand : </b></label>
             <input type="text" name="Brand" required >
+            <br>
+            <label for="file" ><b>Product View: </b></label>
+            <input type="file" name="image" >
             <br>
             <label for="Price" ><b>Price : </b></label>
             <input type="number" name="Price" required="true" min="1" required >
