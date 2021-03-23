@@ -10,7 +10,7 @@ class Role extends Model
     use HasFactory;
 
     public function priviledges(){
-        return $this->belongsToMany(Priviledge::class);
+        return $this->belongsToMany(Priviledge::class, 'role_priviledges');
     }
 
     protected $primaryKey = 'RoleID';

@@ -13,6 +13,19 @@
             <label for="name" ><b>name : </b></label>
             <input type="text" name="name" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$roles->name}}" >
             <br>
+            <div class="form-group" >
+            <label for="roles_permissions"> <b>Add Priviledges :</b>  </label>
+            <div class="container">
+            @foreach($priviledges as $priviledge)
+            
+                <div class="form-group form-check col-sm-5">
+                <input type="checkbox" class="form-check-input" name="PriviledgeID[]" value="{{$priviledge->PriviledgeID}}">
+                <label class="form-check-label checkbox-inline" for="PriviledgeID">{{$priviledge->Description}} </label>
+                </div>
+                  
+            @endforeach  
+            </div>
+            </div>
             <br>
             <div class="btn-group float-right" role="group">
             <button type="button" data-toggle="modal" data-target="#exampleModal" >Update</button>

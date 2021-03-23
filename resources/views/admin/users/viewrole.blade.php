@@ -31,7 +31,7 @@
             <!-- <td style="text-align: center">{{$role['Description']}}</td> -->
             <td>
             <a href="roleedit/{{$role->RoleID}}" class="text-my-own-color" style="margin:2px" ><span data-feather="edit"></span></a>
-            <a href= "/assign-priviledge" style="margin:10px" class="text-my-own-color"><span data-feather ="settings"></span></a>
+            <a href= "viewpriviledge/{{$role->RoleID}}" style="margin:10px" class="text-my-own-color"><span data-feather ="settings"></span></a>
             </td>
           </tr>
           @endforeach

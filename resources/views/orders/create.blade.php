@@ -2,15 +2,11 @@
 @section('title','Add Order')
 @section('header','Add Order Details')
 @section('content')
-<html>
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-</head>
+
 <div class="row justify-content-center">
         <div class="col-md-10">
           <div class="card">
-              <div class="card-header">{{ __('Create Order') }}</div>
+              <!-- <div class="card-header">{{ __('Create Order') }}</div> -->
               <div class="card-body">
         <div class="container"  style="background :none !important ">
             <form action="{{ route('orders.store') }}" method="POST">
@@ -47,7 +43,7 @@
                                             <th>Price</th>
                                             <th>Discount</th>
                                             <th>Amount</th>
-                                            <th><a href="#" class="addRow"><i class="glyphicon glyphicon-plus"></i></a></th>
+                                            <th><a href="#" class="addRow"><span data-feather="plus"></span></a></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -58,7 +54,7 @@
                                             <td><input type="text" name="Price" class="form-control budget"></td>
                                             <td><input type="text" name="Discount" class="form-control budget"></td>
                                             <td><input type="text" name="amount" class="form-control amount"></td>
-                                            <td><a href="#" class="btn btn-danger remove"><i class="glyphicon glyphicon-remove"></i></a></td>
+                                            <td><a href="#" class="btn btn-danger remove"><span data-feather="delete"></span></a></td>
                                         </tr>
                                     </tbody>
                                     <tfoot>
@@ -141,11 +137,11 @@
                                 }                         
                             });
                         </script>  
-                        
-                @endsection
-                </form>
+                        </form>
             </div>
             </div></div></div></div>
+                @endsection
+                
 
          
        

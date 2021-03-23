@@ -3,7 +3,6 @@
 @section('header','Update Progress')
 @section('content')
         <div class="container">
-        <h2 style="text-align: center ;color:#233554">Update Progress</h2>
         <br>
         <form method="POST" action="/progressedit" id="myform">
             @csrf

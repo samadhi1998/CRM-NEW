@@ -14,12 +14,15 @@ class CreateRolePriviledgesTable extends Migration
     public function up()
     {
         Schema::create('role_priviledges', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            
             $table->unsignedBigInteger('RoleID');
             $table->unsignedBigInteger('PriviledgeID');
             $table->timestamps();
+
             $table->foreign('RoleID')->references('RoleID')->on('roles')->onDelete('cascade');
             $table->foreign('PriviledgeID')->references('PriviledgeID')->on('priviledges')->onDelete('cascade');
+
+            $table->primary('RoleID','PriviledgeID');
         });
     }
 

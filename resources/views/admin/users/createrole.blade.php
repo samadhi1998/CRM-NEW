@@ -3,6 +3,7 @@
 @section('header','Create Role')
 @section('content')
 
+    
         <!-- @foreach($errors->all() as $error)
           <div class="alert alert-danger" role="alert">
          {{$error}}
@@ -23,9 +24,7 @@
             <label for="name" ><b>Role Name : </b></label>
             <input type="text" name="name" required >
             <br>
-            <!-- <label for="Description" ><b>Description : </b></label>
-            <textarea  name="Description"  required ></textarea>
-            <br> -->
+            
             <br>
             <div class="text-right">
              <button type="submit"  Value="Next"class="btn btn-primary">Add Role</button>	 			
@@ -33,5 +32,6 @@
             </form>
             </div>
             </div></div></div></div>
+            
 
 @endsection

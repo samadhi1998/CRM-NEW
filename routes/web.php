@@ -53,7 +53,8 @@ Route::post('roles','App\Http\Controllers\Admin\RoleController@store')->name('ro
 Route::get('roleedit/{RoleID}','App\Http\Controllers\Admin\RoleController@roleedit'); 
 Route::post('roleedit',[App\Http\Controllers\Admin\RoleController::class,'roleupdate']);
 
-Route::get('/assign-priviledge','App\Http\Controllers\Admin\RoleController@viewpriviledge');
+Route::get('viewpriviledge/{RoleID}','App\Http\Controllers\Admin\RoleController@viewpriviledge');
+Route::post('viewpriviledge',[App\Http\Controllers\Admin\RoleController::class,'addpriviledge']);
 
 //chats
 Route::get('/chats', function () {
