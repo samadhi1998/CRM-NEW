@@ -163,4 +163,5 @@ class RoleController extends Controller
           ->where('roles.RoleID',1)
           ->get();   
     }
+
 }

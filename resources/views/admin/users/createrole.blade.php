@@ -24,7 +24,6 @@
             <label for="name" ><b>Role Name : </b></label>
             <input type="text" name="name" required >
             <br>
-            
             <br>
             <div class="text-right">
              <button type="submit"  Value="Next"class="btn btn-primary">Add Role</button>	 			

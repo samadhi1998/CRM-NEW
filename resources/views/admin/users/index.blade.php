@@ -46,6 +46,9 @@
         <a href="{{route('users.edit', $user->EmpID)}}" style="margin:2px" class="text-my-own-color">
         <span data-feather="edit"></span>
         </a>
+        <a href="assignRole/{{$user->EmpID}}" style="margin:2px" class="text-my-own-color">
+        <span data-feather="key"></span>
+        </a>
 
         <form action="{{route('users.destroy', $user->EmpID)}}" method="POST" >
           @csrf

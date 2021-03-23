@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -82,6 +83,7 @@ class UserController extends Controller
         $data->Address = $request->input('Address');
         $data->MobileNo = $request->input('MobileNo');
         
+        
         $data->save();
 
         return redirect('/viewuser');
@@ -104,4 +106,33 @@ class UserController extends Controller
         $users= User::all();
         return view('task.AssignTask')->with('users', $users);
     }
+
+    public function assignRole($EmpID){
+
+        $data = user::find($EmpID);
+        return view('admin.users.assignrole',['users'=>$data])
+        ->with('roles',Role::all());
+    }
+
+    public function addrole(Request $request, User $user){
+        dd($request);
+        $data = user::find($request->input('EmpID'));
+        $data->RoleID = $request->input('RoleID');
+
+        $data->save();
+
+        return redirect('/viewuser');
+
+    }
+
+    public function joinroles(User $user)
+    {
+        // return DB::table('orders')->get();
+          return DB::table('roles')
+          ->join('users','users.RoleID',"=",'roles.RoleID')
+          ->select('roles.*')
+          ->where('users.RoleID',1)
+          ->get();   
+    }
+
 }

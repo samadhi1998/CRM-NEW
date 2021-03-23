@@ -23,6 +23,7 @@ class User extends Authenticatable
         'address',
         'mobileNo',
         'emptype',
+        'RoleID'
     ];
 
     /**
