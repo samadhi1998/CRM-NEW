@@ -95,11 +95,11 @@ class RoleController extends Controller
         $priviledges = $request->PriviledgeID;
 
         foreach($priviledges as $PriviledgeID){
-
+            
             $content = new role_priviledges;
             $content=role_priviledges::create([
             'RoleID' => $request->RoleID,
-            'PriviledgeID' => $request->PriviledgeID,
+            'PriviledgeID' => $PriviledgeID,
             //'PriviledgeID' => implode(',', $request->PriviledgeID),
         ]);
         }

@@ -22,7 +22,7 @@ class CreateRolePriviledgesTable extends Migration
             $table->foreign('RoleID')->references('RoleID')->on('roles')->onDelete('cascade');
             $table->foreign('PriviledgeID')->references('PriviledgeID')->on('priviledges')->onDelete('cascade');
 
-            $table->primary('RoleID','PriviledgeID');
+            $table->primary(['RoleID','PriviledgeID']);
         });
     }
 
