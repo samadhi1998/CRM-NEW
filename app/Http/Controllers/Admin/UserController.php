@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use DB;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -111,15 +112,22 @@ class UserController extends Controller
 
         $data = user::find($EmpID);
         return view('admin.users.assignrole',['users'=>$data])
-        ->with('roles',Role::all());
+        ->with('roles',role::all());
     }
 
-    public function addrole(Request $request, User $user){
-        dd($request);
-        $data = user::find($request->input('EmpID'));
-        $data->RoleID = $request->input('RoleID');
+    public function addrole(Request $request, User $user, Role $role){
 
-        $data->save();
+        $data = user::find($request->input('EmpID'));
+        // return User::update(['RoleID' => $role['RoleID']]);
+        $role->RoleID = $request->RoleID;
+        $data->role()->associate('RoleID');
+
+        // $data->save();
+
+        //$data->update(['RoleID' => $data['RoleID']]);
+
+        // $role->RoleID = $request->RoleID;
+        // $data->role()->update($role);
 
         return redirect('/viewuser');
 

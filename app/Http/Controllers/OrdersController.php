@@ -60,7 +60,7 @@ class OrdersController extends Controller
     {
         return view('orders.edit',compact('order'));
 
-        $order=order_detail::find($order_detailsID); 
+        $order = order_detail::find($order_detailsID); 
         return view('find')->with('findorder',$order);
     }
 

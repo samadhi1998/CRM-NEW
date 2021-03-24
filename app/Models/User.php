@@ -46,4 +46,8 @@ class User extends Authenticatable
     ];
 
     protected $primaryKey = "EmpID";
+
+    public function roles(){
+        return $this->belongsto(Role::class, 'RoleID');
+    }
 }
