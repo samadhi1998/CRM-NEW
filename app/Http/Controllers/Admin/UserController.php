@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use App\Models\User;
 use App\Models\Role;
@@ -20,7 +21,8 @@ class UserController extends Controller
         //return view('views: admin.users.index');
         //return view('index');
         $users= User::all();
-        return view('admin.users.index')->with('users', $users);
+        return view('admin.users.index')->with('users', $users)
+        ->with('roles',role::all());
 
     }
 
@@ -78,11 +80,13 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $data = user::find($request->input('EmpID'));
+        $data->Added_By = Auth::user()->EmpID;
         $data->EmpID = $request->input('EmpID');
         $data->name = $request->input('name');
         $data->email = $request->input('email');
         $data->Address = $request->input('Address');
         $data->MobileNo = $request->input('MobileNo');
+        $data->Status = $request->input('Status');
         
         
         $data->save();
@@ -115,19 +119,14 @@ class UserController extends Controller
         ->with('roles',role::all());
     }
 
-    public function addrole(Request $request, User $user, Role $role){
+    public function addrole(Request $request, User $user){
 
         $data = user::find($request->input('EmpID'));
-        // return User::update(['RoleID' => $role['RoleID']]);
-        $role->RoleID = $request->RoleID;
-        $data->role()->associate('RoleID');
+        $data->EmpID = $request->input('EmpID');
+        $role = $request->input('RoleID');
+        $data->roles()->associate($role);
 
-        // $data->save();
-
-        //$data->update(['RoleID' => $data['RoleID']]);
-
-        // $role->RoleID = $request->RoleID;
-        // $data->role()->update($role);
+        $data->save();
 
         return redirect('/viewuser');
 

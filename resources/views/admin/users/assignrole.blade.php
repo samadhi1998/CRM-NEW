@@ -21,12 +21,15 @@
             <!-- <label for="AdminID"><b>Admin ID: </b></label>
             <input type="text" name="AdminID" required >
             <br> -->
+            <label for="EmpID" ><b>Emp ID : </b></label>
+            <input type="text" name="EmpID" value="{{$users->EmpID}}" required >
+            <br>
             <label for="name" ><b>Emp Name : </b></label>
             <input type="text" name="name" value="{{$users->name}}" required >
             <br>
             
-            <label for="Role"><b>Role : </b></label>
-              <select  name="Role" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <label for="RoleID"><b>Role : </b></label>
+              <select  name="RoleID" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
                 @foreach($roles as $role) 
                   <option value="{{$role->RoleID}}">{{$role->name}}</option>
                 @endforeach
