@@ -91,13 +91,13 @@
                                 </li>
                             @endif
                         @else
-                        <form class="form-inline my-2">
+                        
                           <div class="dropdown mr-sm-2" id="nav-toggle" class="nav-item">
                               <a id="notification-clock" role="button" data-toggle="dropdown" >
                                   <span data-feather="bell"></span>
                               </a>
                               </div>
-                            <li class="nav-item dropdown my-2 my-sm-0">
+                            <li class="nav-item dropdown my-sm-0">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                    <b>{{ Auth::user()->name }}</b> 
                                 </a>
@@ -114,11 +114,10 @@
                                     </a> -->
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
+                                    {{ csrf_field() }}
                                     </form>
                                 </div>
                             </li>
-                            </form>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         @endguest
                     </ul>
@@ -216,6 +215,12 @@
             <a class="nav-link" href="#">
               <span data-feather="thumbs-up"></span>
               Feedbacks
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/note/viewnote">
+              <span data-feather="file-text"></span>
+              Notes
             </a>
           </li>
         </ul>

@@ -64,18 +64,20 @@ Route::get('/chats', function () {
 });
 
 //order
+
 Route::resource('orders', OrdersController::class);
 Route::get('index', [App\Http\Controllers\OrdersController::class,'index']);
 Route::get('create', [App\Http\Controllers\OrdersController::class,'create']);
 Route::get('edit', [App\Http\Controllers\OrdersController::class,'edit']);
 Route::get('show', [App\Http\Controllers\OrdersController::class,'show']);
+Route::get('view', [App\Http\Controllers\OrdersController::class,'view']);
 Route::get('joincustomers', [App\Http\Controllers\OrdersController::class,'joincustomers']);
 Route::get('joinorddetails', [App\Http\Controllers\OrdersController::class,'joinorddetails']);
 Route::get('emails', [App\Http\Controllers\OrdersController::class,'emails']);
 Route::get('progressedit/{OrderID}',[App\Http\Controllers\OrdersController::class,'progressedit']);
 Route::post('progressedit',[App\Http\Controllers\OrdersController::class,'progressupdate']);
+Route::get('delete',[App\Http\Controllers\Product\ProductController::class,'delete']);
 //Route::get('find', [OrdersController::class,'findorder']);
-
 
 
 
@@ -92,6 +94,17 @@ Route::get('/Delete_Products/{ProductID}',[App\Http\Controllers\Product\ProductC
 Route::get('/StockoutProducts',[App\Http\Controllers\Product\ProductController::class,'stockOut']);
 Route::get('/InStockProducts',[App\Http\Controllers\Product\ProductController::class,'instock']);
 Route::get('/Not_AvailableProducts',[App\Http\Controllers\Product\ProductController::class,'notavailable']);
+
+
+
+Route::get('/addNote', function () {
+    return view('notes/createnote');
+});
+Route::post('/addNote',[App\Http\Controllers\NoteController::class,'AddNote']);
+Route::get('/note/viewnote',[App\Http\Controllers\NoteController::class,'ViewNote']);
+Route::get('/UpdateNote/{NoteID}',[App\Http\Controllers\NoteController::class,'UpdateNote']);
+Route::post('/UpdateNote',[App\Http\Controllers\NoteController::class,'ShowUpdatesNotes']);
+Route::get('/DeleteNote/{NoteID}',[App\Http\Controllers\NoteController::class,'deleteNote']);
 
 
 
