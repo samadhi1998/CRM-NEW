@@ -24,23 +24,23 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        $this->registerUserPolicies();
+       // $this->registerUserPolicies();
 
         //
     }
 
-    public function registerUserPolicies()
-    {
-        Gate::define('Edit-User',function($user){
-            $user->hasAccess('Edit-User');
-        });
+    // public function registerUserPolicies()
+    // {
+    //     Gate::define('Edit-User',function($user){
+    //         $user->hasAccess('Edit-User');
+    //     });
 
-        Gate::define('Delete-User',function($user){
-            $user->hasAccess('Delete-User');
-        });
+    //     Gate::define('Delete-User',function($user){
+    //         $user->hasAccess('Delete-User');
+    //     });
 
-        Gate::define('View-User',function($user){
-            $user->hasAccess('View-User');
-        });
-    }
+    //     Gate::define('View-User',function($user){
+    //         $user->hasAccess('View-User');
+    //     });
+    // }
 }

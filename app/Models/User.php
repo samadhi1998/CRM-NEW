@@ -51,13 +51,13 @@ class User extends Authenticatable
         return $this->hasmany(Role::class, 'roles');
     }
 
-    public function hasAccess($role)
-    {
+    // public function hasAccess($role)
+    // {
         
-            if($role->hasAccess($priviledge)){
-                return true;
-            }
+    //         if($role->hasAccess($priviledge)){
+    //             return true;
+    //         }
         
-        return false;
-    }
+    //     return false;
+    // }
 }
