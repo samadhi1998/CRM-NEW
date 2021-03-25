@@ -37,7 +37,8 @@
 <br>
 <br>
 </br>
-<div style="text-align: right;font-size: 15px;">
-
-
+{{$extra_charge->links()}}
+<div class="pull-right" style="text-align: right;color:blue">
+  <a href="{{ URL::previous() }}">Go Back</a>
+  </div>
 @endsection

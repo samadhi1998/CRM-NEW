@@ -34,7 +34,11 @@
                             <div class="card-body">
                                 <h4 class="card-title">Customers</h4>
                                 <div class="text-end">
+<<<<<<< HEAD
                                     <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> {{ $count2 }}</h2>
+=======
+                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> 10</h2>
+>>>>>>> 7b7c32e457df54987c4ef97c847e71cb3d0c5f54
                                     <span class="text-muted">Daily Customers</span>
                                 </div>
                             </div>
@@ -146,7 +150,6 @@
                                           <tr> 
                                               <th>Product Name:</th>
                                               <!-- <th>Customer </th> -->
-                                              <th>Image</th>
                                               <th>Description</th>
                                               <!-- <th>Advance</th>  -->
                                               <!-- <th>Total Price </th>  -->
@@ -156,8 +159,6 @@
                                           <tr>
                                               <td>{{ $product->Name }}</td>
                                               <!-- <td>{{ $order->Name }}</td> -->
-                                              <td><img src="{{asset('uploads/product/'.$product->image)  }}"
-                                                class="img-circle" width="100px;" height="100px;" alt="Product-Image"></td>
                                               <td>{{ $product->Description }}</td>
                                               <!-- <td>{{ $order->Advance }}</td> -->
                                               <!-- <td>{{ $order->Total_Price }}</td> -->
