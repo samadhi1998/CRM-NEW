@@ -1,63 +1,62 @@
 @extends('layouts.app')
 @section('title','Add Order')
-@section('header','Add Order Details')
 @section('content')
 <html>
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-</head>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">     
+    </head>
+
+<div class="container" style="background :none !important ">
 <div class="row justify-content-center">
-        <div class="col-md-10">
-          <div class="card">
-              <div class="card-header">{{ __('Create Order') }}</div>
-              <div class="card-body">
-        <div class="container"  style="background :none !important ">
+    <div class="col-md">
+    <div class="card">
+        <div class="card-body">
+
             <form action="{{ route('orders.store') }}" method="POST">
                 @csrf
-                <label for="CustomerID" ><b>CustomerID : </b></label>
-                    <input type="text" name="CustomerID" class="form-control" required  required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-                <br>   
-                <label for="Due_date" ><b>Due_date : </b></label>
-                    <input type="date" name="Due_date" class="form-control" required  required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-                <br>
+
+                <label for="OrderID" ><b>Order ID : </b></label>
+                    <input type="text" name="OrderID" class="form-control">
+                <br><br>
+
+                <label for="CustomerID" ><b>Customer ID : </b></label>
+                    <input type="text" name="CustomerID" class="form-control">
+                <br><br>
+
+                <label for="Due_date" ><b>Due Date : </b></label>
+                    <input type="date" name="Due_date" class="form-control" >
+                <br><br>
+
                 <label for="Progress"><b>Progress : </b></label>
                     <select  name="Progress" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
                         <option value="" selected disabled hidden></option>
                         <option value="Estimated Quotation">Estimated Quotation</option>
-                        <option value="Order Confirmed">Order Confirmed</option>
+                        <option value="Order Confirmed">Quotation</option>
                         <option value="Invoice">Invoice</option>
-                    </select>
+                    </select> <br><br>
 
-                    <div class="container" style="background :none !important ">
-<div class="row justify-content-center">
-        <div class="col-md">
-            <div class="card">
-            <div class="card-header">{{ __('Add products') }}</div>
-                <div class="card-body">
+
+                    <br><br>
+                    <div class="col-md">
+                    <div class="card">
                         <form action="/orders" method="POST">
                             {{csrf_field()}}
                             <section>
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>ProductID</th>
-                                            <th>Description</th>
-                                            <th>Quantity</th>
-                                            <th>Price</th>
-                                            <th>Discount</th>
-                                            <th>Amount</th>
+                                            <th>ProductID</th>                                    
+                                            <th>Quantity</th>                                     
+                                            <th>Discount</th>                                        
                                             <th><a href="#" class="addRow"><i class="glyphicon glyphicon-plus"></i></a></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><input type="text" name="ProductID" class="form-control" ></td> 
-                                            <td><input type="text" name="Description" class="form-control" ></td>
-                                            <td><input type="text" name="Qty" class="form-control quantity" ></td>
-                                            <td><input type="text" name="Price" class="form-control budget"></td>
-                                            <td><input type="text" name="Discount" class="form-control budget"></td>
-                                            <td><input type="text" name="amount" class="form-control amount"></td>
+                                            <td><input type="text" name="ProductID" class="form-control" ></td>                                           
+                                            <td><input type="text" name="Qty" class="form-control quantity" ></td>                                       
+                                            <td><input type="text" name="Discount" class="form-control budget"></td>                                       
                                             <td><a href="#" class="btn btn-danger remove"><i class="glyphicon glyphicon-remove"></i></a></td>
                                         </tr>
                                     </tbody>
@@ -65,30 +64,9 @@
                                         <tr>
                                             <td></td>
                                             <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><b>Total Price</b></td>
-                                            <td></td>
-                                            <td><b class="total" name="Total_Price" class="form-control"></b></td>               
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><b>Advance</b></td>
-                                            <td></td>     
+                                            <td><b>Advance</b></td>  
                                             <td><b><input type="text" name="Advance" class="form-control"></b></td>     
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><b>Balance</b></td>
-                                            <td></td>
-                                            <td><b class="total"></b> </td>               
-                                        </tr>    
+                                        </tr> 
                                     </tfoot>
                                 </table>        
                             <br><br>    
@@ -121,12 +99,9 @@
                             function addRow()
                             {
                                 var tr='<tr>'+
-                                '<td><input type="text" name="product_name[]" class="form-control" ></td>'+
-                                '<td><input type="text" name="product_name[]" class="form-control" ></td>'+
-                                '<td><input type="text" name="brand[]" class="form-control"></td>'+
-                                '<td><input type="text" name="quantity[]" class="form-control quantity" ></td>'+
-                                '<td><input type="text" name="budget[]" class="form-control budget"></td>'+
-                                ' <td><input type="text" name="amount[]" class="form-control amount"></td>'+
+                                '<td><input type="text" name="productID[]" class="form-control" ></td>'+
+                                '<td><input type="text" name="Qty[]" class="form-control"></td>'+
+                                 '<td><input type="text" name="Discount[]" class="form-control budget"></td>'+
                                 '<td><a href="#" class="btn btn-danger remove"><i class="glyphicon glyphicon-remove"></i></a></td>'+
                                 '</tr>';
                                 $('tbody').append(tr);
@@ -141,11 +116,14 @@
                                 }                         
                             });
                         </script>  
-                        
                 @endsection
-                </form>
-            </div>
-            </div></div></div></div>
+            </form>
 
-         
-       
+            </div>
+        
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+        </body>
+    </html>

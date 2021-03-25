@@ -5,12 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Priviledge extends Model
+class Note extends Model
 {
     use HasFactory;
 
-    public function roles()
+
+    public function orders()
     {
-        return $this->belongsToMany(Role::class, 'role_priviledges');
+        return $this->hasmany(Order::class, 'orders');
     }
+
+    protected $primaryKey = 'NoteID';
+
 }

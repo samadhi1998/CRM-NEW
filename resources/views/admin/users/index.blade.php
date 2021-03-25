@@ -4,7 +4,7 @@
 @section('content')
 <div class="container" style="background :none !important ">
 <div class="row justify-content-center">
-        <div class="col-md">
+        <div class="col-md-12">
             <div class="card">
                 <!-- <div class="card-header">{{ __('View Employee Details') }}</div> -->
 
@@ -32,6 +32,7 @@
       <th>Email</th>
       <th>Address</th>
       <th>MobileNo</th>
+      <th>Role</th>
       <th>Action</th>    
     </tr>
       @foreach($users as $user)
@@ -41,10 +42,14 @@
       <td>{{$user['email']}}</td>
       <td>{{$user['Address']}}</td>
       <td>{{$user['MobileNo']}}</td>
+      <td>{{$user->roles->name}}</td>
       <td>
         
         <a href="{{route('users.edit', $user->EmpID)}}" style="margin:2px" class="text-my-own-color">
         <span data-feather="edit"></span>
+        </a>
+        <a href="assignRole/{{$user->EmpID}}" style="margin:2px" class="text-my-own-color">
+        <span data-feather="key"></span>
         </a>
 
         <form action="{{route('users.destroy', $user->EmpID)}}" method="POST" >

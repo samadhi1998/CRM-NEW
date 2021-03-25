@@ -23,19 +23,11 @@
             <label for="Address" ><b>Address : </b></label>
             <input type="text" name="Address" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$users->Address}}" >
             <br>
-            <label for="Role"><b>Role : </b></label>
-                <select  name="Position" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-                    <option value="Customer Care Person">Customer Care Person</option>
-                    <option value="Service Person">Service Person</option>
-                    <option value="Quotation Team Member">Quotation Member</option>
-                    <option value="Follow Up Person">Follow Up Person</option>
-                    <option value="Admin">Admin</option>
-                </select>
                 <br>
                 <label for="Status"><b>Status : </b></label>
                 <select  name="Status" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-                    <option value="Customer Care Person">Active</option>
-                    <option value="Service Person">Leave</option>
+                    <option value="Active">Active</option>
+                    <option value="Not Active">Not Active</option>
                 </select>
             <br>
             <div class="btn-group float-right" role="group">
