@@ -34,11 +34,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Customers</h4>
                                 <div class="text-end">
-<<<<<<< HEAD
                                     <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> {{ $count2 }}</h2>
-=======
-                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> 10</h2>
->>>>>>> 7b7c32e457df54987c4ef97c847e71cb3d0c5f54
                                     <span class="text-muted">Daily Customers</span>
                                 </div>
                             </div>
