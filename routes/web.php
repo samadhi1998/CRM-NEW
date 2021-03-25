@@ -79,7 +79,7 @@ Route::get('/ProductCount',[App\Http\Controllers\Product\ProductController::clas
 Route::get('/Delete_Products/{ProductID}',[App\Http\Controllers\Product\ProductController::class,'deleteproducts']);
 Route::get('/StockoutProducts',[App\Http\Controllers\Product\ProductController::class,'stockOut']);
 Route::get('/InStockProducts',[App\Http\Controllers\Product\ProductController::class,'instock']);
-Route::get('/Not_AvailableProducts',[App\Http\Controllers\Product\ProductController::class,'notavailable']);
+Route::get('/notAvailableProducts',[App\Http\Controllers\Product\ProductController::class,'notavailable']);
 
 
 

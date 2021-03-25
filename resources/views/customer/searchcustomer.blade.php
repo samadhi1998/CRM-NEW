@@ -34,7 +34,10 @@
 </tbody>
 </table>
 </div>
-<span>{{$customers->links()}}</span>
+{{$customers->links()}}
+<div class="pull-right" style="text-align: right;color:blue">
+<a href="{{ URL::previous() }}">Go Back</a>
+  </div>
 </div>
 
 

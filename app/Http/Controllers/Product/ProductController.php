@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 use App\Models\product;
@@ -126,20 +127,23 @@ class ProductController extends Controller
 
    public function stockOut()//get stockout  product details
 	{
-		$stockOut = DB::table('products')->where('Qty', '<', 5)->get();
-		return response()->json($stockOut);
+		$data = DB::table('products')->whereBetween('Qty', [1, 4])->paginate(5);
+        return view('product/productStock', compact('data'));
 	}
 
     public function instock()//get in stock product details
 	{
-		$stockOut = DB::table('products')->where('Qty', '>', 5)->get();
-		return response()->json($stockOut);
+		$data = Product::where('Qty', '>=', 5)->paginate(5);
+        return view('product/productStock', compact('data'));
 	}
 
     public function notavailable()//get not available stock product details
 	{
-		$stockOut = DB::table('products')->where('Qty', '=', 0)->get();
-		return response()->json($stockOut);
-	}
+		
+        $data = Product::where('Qty', '<=', 0)->paginate(5);
+        return view('product/productStock', compact('data'));
+       
+
+    }
 
 }

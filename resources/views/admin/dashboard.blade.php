@@ -34,7 +34,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Customers</h4>
                                 <div class="text-end">
-                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> 20</h2>
+                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> 10</h2>
                                     <span class="text-muted">Daily Customers</span>
                                 </div>
                             </div>
