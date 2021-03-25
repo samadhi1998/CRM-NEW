@@ -35,6 +35,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
     
     <style>
       .bd-placeholder-img {
@@ -143,7 +144,7 @@
                         <div class="position-sticky pt-3 pb-5">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="/Dashboard">
+                                    <a class="nav-link active" aria-current="page" href="/home">
                                         <span data-feather="home"></span>
                                         Dashboard
                                     </a>

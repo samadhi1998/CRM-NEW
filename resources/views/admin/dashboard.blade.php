@@ -16,7 +16,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Orders</h4>
                                 <div class="text-end">
-                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> 20</h2>
+                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> {{ $count }}</h2>
                                     <span class="text-muted">Daily Orders</span>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Customers</h4>
                                 <div class="text-end">
-                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> 20</h2>
+                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> {{ $count2 }}</h2>
                                     <span class="text-muted">Daily Customers</span>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Tasks</h4>
                                 <div class="text-end">
-                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> 20</h2>
+                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> {{ $count3 }}</h2>
                                     <span class="text-muted">Daily Tasks</span>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Products</h4>
                                 <div class="text-end">
-                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> 20</h2>
+                                    <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i> {{ $count4 }}</h2>
                                     <span class="text-muted">Active Products</span>
                                 </div>
                             </div>
@@ -135,48 +135,33 @@
                                                               </div>
                                                           </div>
                                                       </div>
-                                                      <div class="col-sm-6">
+                    <div class="col-sm-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-md-flex">
-                                    <h4 class="card-title col-md-10 mb-md-0 mb-5 align-self-center">Orders of the Month</h4>
-                                    <div class="col-md-3 ms-auto">
-                                        <select class="form-select shadow-none col-md-5 ml-auto">
-                                            <option selected>January</option>
-                                            <option value="1">February</option>
-                                            <option value="2">March</option>
-                                            <option value="3">April</option>
-                                            <option value="3">May</option>
-                                            <option value="3">June</option>
-                                            <option value="3">July</option>
-                                            <option value="3">August</option>
-                                            <option value="3">September</option>
-                                            <option value="3">October</option>
-                                            <option value="3">November</option>
-                                            <option value="3">December</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="table-responsive mt-5">
+                                <h4 class="card-title col-md-10 mb-md-0 mb-5 align-self-center">Products</h4>
+                                    </div>              
+                                    <div class="table-responsive mt-5">
                                       <table>
                                           <tr> 
-                                              <th>NO:</th>
+                                              <th>Product Name:</th>
                                               <!-- <th>Customer </th> -->
-                                              <th>Date</th>
-                                              <th>Due Date</th>
+                                              <th>Image</th>
+                                              <th>Description</th>
                                               <!-- <th>Advance</th>  -->
-                                              <th>Total Price </th> 
-                                              <th>Progress</th>         
+                                              <!-- <th>Total Price </th>  -->
+                                              <th>Quantity</th>         
                                           </tr>
-                                          @foreach($orders as $order)
+                                          @foreach($products as $product)
                                           <tr>
-                                              <td>{{ $order->OrderID }}</td>
-                                              <!-- <td>{{ $order->CustomerID }}</td> -->
-                                              <td>{{ $order->created_at }}</td>
-                                              <td>{{ $order->Due_date }}</td>
+                                              <td>{{ $product->Name }}</td>
+                                              <!-- <td>{{ $order->Name }}</td> -->
+                                              <td><img src="{{asset('uploads/product/'.$product->image)  }}"
+                                                class="img-circle" width="100px;" height="100px;" alt="Product-Image"></td>
+                                              <td>{{ $product->Description }}</td>
                                               <!-- <td>{{ $order->Advance }}</td> -->
-                                              <td>{{ $order->Total_Price }}</td>
-                                              <td>{{ $order->Progress }}</td>
+                                              <!-- <td>{{ $order->Total_Price }}</td> -->
+                                              <td>{{ $product->Qty }}</td>
                                           </tr>
                                           @endforeach
                                           </table>
@@ -184,9 +169,19 @@
                                                               </div>
                                                           </div>
                                                       </div>
+                                    </div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                      
+                   
                 </div>
                 
+
+                
                 </div>
+                </div>
+               
             
 
 

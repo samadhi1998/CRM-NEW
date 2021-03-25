@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\product;
+use App\Models\Task;
+use App\Models\customer;
 
 class HomeController extends Controller
 {
@@ -27,6 +32,17 @@ class HomeController extends Controller
     {
         //return view('index');
         $orders= Order::all();
-        return view('admin.dashboard')->with('orders', $orders);
+        $products= Product::all();
+        $cutomers= Customer::all();
+        $count = Order::whereDate('created_at',Carbon::today())->count();
+        $count2 = Customer::whereDate('created_at',Carbon::today())->count();
+        $count3 = Task::whereDate('created_at',Carbon::today())->count();
+        $count4 = Product::where('Status','=','Active')->count();
+
+
+        return view('admin.dashboard',compact('count','count2','count3','count4'))
+        ->with('orders', $orders)
+        ->with('customers',$cutomers)
+        ->with('products',$products);
     }
 }
