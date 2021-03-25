@@ -37,10 +37,10 @@ Route::get('/Dashboard','App\Http\Controllers\OrdersController@dashboard');
 
 //user management
 
-Route::get('/viewuser','App\Http\Controllers\Admin\UserController@index');
-Route::get('admin/users/edit/{EmpID}','App\Http\Controllers\Admin\UserController@edit')->name('editUser');
-Route::post('edit/{EmpID}','App\Http\Controllers\Admin\UserController@update');
-Route::post('delete/{EmpID}','App\Http\Controllers\Admin\UserController@destroy');
+Route::get('/viewuser','App\Http\Controllers\Admin\UserController@index')->middleware('can:View-User');
+Route::get('admin/users/edit/{EmpID}','App\Http\Controllers\Admin\UserController@edit')->name('editUser')->middleware('can:Edit-User,user');
+Route::post('edit/{EmpID}','App\Http\Controllers\Admin\UserController@update')->middleware('can:Edit-User,user');
+Route::post('delete/{EmpID}','App\Http\Controllers\Admin\UserController@destroy')->middleware('can:Delete-User');
 Route::get('assignRole/{EmpID}','App\Http\Controllers\Admin\UserController@assignRole');
 Route::post('assignRole',[App\Http\Controllers\Admin\UserController::class,'addrole']);
 

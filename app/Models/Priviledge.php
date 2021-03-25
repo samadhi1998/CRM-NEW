@@ -13,4 +13,14 @@ class Priviledge extends Model
     {
         return $this->belongsToMany(Role::class, 'role_priviledges');
     }
+
+    public function hasPermission(string $priviledge)
+    {
+        if($priviledge = $this->priviledge){
+            return true;
+        }
+
+        return $priviledge??false;
+    }
+
 }

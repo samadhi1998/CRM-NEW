@@ -154,10 +154,7 @@
                                           @foreach($products as $product)
                                           <tr>
                                               <td>{{ $product->Name }}</td>
-                                              <!-- <td>{{ $order->Name }}</td> -->
                                               <td>{{ $product->Description }}</td>
-                                              <!-- <td>{{ $order->Advance }}</td> -->
-                                              <!-- <td>{{ $order->Total_Price }}</td> -->
                                               <td>{{ $product->Qty }}</td>
                                           </tr>
                                           @endforeach

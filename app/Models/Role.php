@@ -20,4 +20,16 @@ class Role extends Model
 
 
     protected $primaryKey = 'RoleID';
+
+    public function hasAccess(string $priviledge)
+    {
+        foreach($priviledges as $priviledge){
+            if($this->hasPermission($priviledge)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }

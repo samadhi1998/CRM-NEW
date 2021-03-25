@@ -50,4 +50,14 @@ class User extends Authenticatable
     public function roles(){
         return $this->hasmany(Role::class, 'roles');
     }
+
+    public function hasAccess($role)
+    {
+        
+            if($role->hasAccess($priviledge)){
+                return true;
+            }
+        
+        return false;
+    }
 }

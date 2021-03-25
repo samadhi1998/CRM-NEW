@@ -168,10 +168,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                @can('View-User')
                                     <a class="nav-link" href="/View-Task">
                                     <span data-feather="target"></span>
                                     Tasks
                                     </a>
+                                  @endcan
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/viewuser">
