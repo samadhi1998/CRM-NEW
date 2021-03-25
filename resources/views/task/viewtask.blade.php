@@ -3,7 +3,7 @@
 @section('header','View Tasks')
 @section('content')
 <div class="pull-left">
-    <a class="btn btn-primary" href="/Select-Order">Add new task <span data-feather="plus"></a>
+    <a class="btn btn-primary" href="/Create-Task">Add new task <span data-feather="plus"></a>
 </div>
 <br>
 <br>
@@ -35,7 +35,7 @@
             <td style="text-align: center">{{$task['Due_Date']}}</td>
             <td style="text-align: center">{{$task['Description']}}</td>
             <td style="text-align: center">{{$task['updated_at']}}</td>
-            <td><button><a href="/View-Task/edit/{{$task->TaskID}}" class="text-my-own-color">Update</a></button></td>
+            <td><a href="/View-Task/edit/{{$task->TaskID}}" class="text-my-own-color"><span data-feather="edit"></span></a></td>
           </tr>
           @endforeach
         </table>

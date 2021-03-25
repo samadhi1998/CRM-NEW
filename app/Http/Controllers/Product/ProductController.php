@@ -19,7 +19,7 @@ class ProductController extends Controller
              'Brand'=>'required|min:1|max:25',
              'Price'=>'required',
              'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
-             'Description'=>'required|min:5|max:100'
+             'Description'=>'required|min:1|max:100'
          ]);
 
 

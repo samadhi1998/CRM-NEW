@@ -23,6 +23,7 @@ class User extends Authenticatable
         'address',
         'mobileNo',
         'emptype',
+        'RoleID'
     ];
 
     /**
@@ -45,4 +46,8 @@ class User extends Authenticatable
     ];
 
     protected $primaryKey = "EmpID";
+
+    public function roles(){
+        return $this->hasmany(Role::class, 'roles');
+    }
 }

@@ -27,7 +27,10 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view ('task/CreateTask');
+        return view ('task/CreateTask')
+            ->with('users',User::all())
+            ->with('orders',Order::all())
+        ;
     }
 
     /**
@@ -41,7 +44,9 @@ class TaskController extends Controller
         $task=new task;
         $task->Added_By = Auth::user()->EmpID;
         $task->Description=$request->Description;
+        $task->Status=$request->Status;
         $task->Due_Date=$request->Due_Date;
+        $task->ServicePersonID=$request->EmpID;
         $result=$task->save();
        /* if ($result) {
             return ["Result"=>"Data has been saved"];
@@ -49,7 +54,12 @@ class TaskController extends Controller
             return ["Result"=>"operation failed"];
         }*/
         // Order::create($request->TaskID());
-        return redirect('/task/Assign-Task');
+        return redirect('/View-Task');
+
+        // return view ('task/CreateTask')
+        //     ->with('users',User::all())
+        //     ->with('orders',Order::all())
+        // ;
     }
 
     /**
@@ -72,7 +82,7 @@ class TaskController extends Controller
     public function edit($TaskID)
     {
         $data = task::find($TaskID);
-        return view('UpdateTask',['tasks'=>$data]);
+        return view('task.UpdateTask',['tasks'=>$data]);
     }
 
     /**

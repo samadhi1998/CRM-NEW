@@ -5,7 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RolePriviledge extends Model
+class role_priviledges extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'RoleID','PriviledgeID',
+    ];
 }

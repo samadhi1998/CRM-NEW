@@ -24,6 +24,8 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/dashboard.js') }}" defer></script>
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <link rel="stylesheet" href="{{asset('css/bootstrap-tagsinput.css')}}">
+<script src="{{ asset('js/bootstrap-tagsinput.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -74,7 +76,7 @@
                         @endguest
                     </ul>
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav px-3">
+                    <ul class="navbar-nav px-3  justify-content-end">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -89,7 +91,13 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
+                        
+                          <div class="dropdown mr-sm-2" id="nav-toggle" class="nav-item">
+                              <a id="notification-clock" role="button" data-toggle="dropdown" >
+                                  <span data-feather="bell"></span>
+                              </a>
+                              </div>
+                            <li class="nav-item dropdown my-sm-0">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                    <b>{{ Auth::user()->name }}</b> 
                                 </a>
@@ -106,7 +114,7 @@
                                     </a> -->
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
+                                    {{ csrf_field() }}
                                     </form>
                                 </div>
                             </li>
@@ -170,6 +178,12 @@
                                     Users
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/View-Role">
+                                    <span data-feather="settings"></span>
+                                    Role Management
+                                    </a>
+                                </li>
                             </ul>
 
                             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -201,6 +215,12 @@
             <a class="nav-link" href="#">
               <span data-feather="thumbs-up"></span>
               Feedbacks
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/note/viewnote">
+              <span data-feather="file-text"></span>
+              Notes
             </a>
           </li>
         </ul>
