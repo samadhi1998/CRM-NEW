@@ -41,9 +41,11 @@
 </table>
 </font-size>
 </br>
-<div style="text-align: right;font-size: 15px;">
-<span>{{$products->links()}}</span>
-</div>
+
+{{$products->links()}}
+<div class="pull-right" style="text-align: right;color:blue">
+  <a href="{{ URL::previous() }}">Go Back</a>
+  </div>
 </br>
 
 @endsection
