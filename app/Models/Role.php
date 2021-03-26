@@ -21,6 +21,18 @@ class Role extends Model
 
     protected $primaryKey = 'RoleID';
 
+    public function hasPriviledge(Priviledge $priviledge, User $user)
+    {
+        return $this->hasRole($priviledge->roles);
+    }
+
+    public function inRole($priviledge)
+    {
+        if (is_string($priviledge)) {
+            return $this->priviledges->contains('Description', $priviledge);
+        }
+        return !! $priviledge->intersect($this->priviledges)->count();
+    }
    
 
 

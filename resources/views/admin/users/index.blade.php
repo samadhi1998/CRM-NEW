@@ -32,7 +32,7 @@
       <th>Email</th>
       <th>Address</th>
       <th>MobileNo</th>
-      <th>Role</th>
+      <!-- <th>Role</th> -->
       <th>Action</th>    
     </tr>
       @foreach($users as $user)
@@ -42,7 +42,7 @@
       <td>{{$user['email']}}</td>
       <td>{{$user['Address']}}</td>
       <td>{{$user['MobileNo']}}</td>
-      <td>{{$user->roles->name}}</td>
+      
       <td>
         
         <a href="{{route('users.edit', $user->EmpID)}}" style="margin:2px" class="text-my-own-color">
@@ -51,12 +51,13 @@
         <a href="assignRole/{{$user->EmpID}}" style="margin:2px" class="text-my-own-color">
         <span data-feather="key"></span>
         </a>
-
+        @can('user.delete', App\User::class)
         <form action="{{route('users.destroy', $user->EmpID)}}" method="POST" >
           @csrf
-          @method('delete')
+          @method('user.delete')
           <button type="submit" data-toggle="modal" data-target="#exampleModal2" style="margin:10px" class="text-my-own-color"><span data-feather="trash-2"></span></button>
           </form>
+          @endcan
       </td> 
     </tr>
     @endforeach 

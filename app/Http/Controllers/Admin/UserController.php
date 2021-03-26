@@ -102,6 +102,8 @@ class UserController extends Controller
      */
     public function destroy($EmpID)
     {
+        $this->authorize('delete', User::class);
+
         $data=user::find($EmpID);
         $data->delete();
         return redirect('/home');
