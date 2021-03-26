@@ -36,8 +36,8 @@ class HomeController extends Controller
         $cutomers= Customer::all();
         $count = Order::whereDate('created_at',Carbon::today())->count();
         $count2 = Customer::whereDate('created_at',Carbon::today())->count();
-        $count3 = Task::whereDate('created_at',Carbon::today())->count();
-        $count4 = Product::where('Status','=','Active')->count();
+        $count3 = Task::whereDate('Due_Date',Carbon::today())->count();
+        $count4 = Product::where('Status','=','In Stock')->count();
 
 
         return view('admin.dashboard',compact('count','count2','count3','count4'))

@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('Warranty');
             $table->integer('Price');
             $table->integer('Qty');
-            $table->string('Status')->nullable()->default("Active");
+            $table->string('Status')->nullable()->default("In Stock");
             $table->unsignedBigInteger('AdminID');
             $table->foreign('AdminID')->references('EmpID')->on('users');
             $table->timestamps();
