@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\charge\ChargeController;
