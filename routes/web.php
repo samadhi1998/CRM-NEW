@@ -119,7 +119,7 @@ Route::get('/deleteCustomer/{CustomerID}',[App\Http\Controllers\Customer\Custome
 Route::get('/Search_Customers',[App\Http\Controllers\Customer\CustomerController::class,'SearchCustomers']);
 Route::get('/ViewCustomers',[App\Http\Controllers\Customer\CustomerController::class, 'ViewCustomers']);
 Route::get('/CustomerCount',[App\Http\Controllers\Customer\CustomerController::class,'CustomerCount']);
-
+Route::get('/searchordercustomer',[App\Http\Controllers\Customer\CustomerController::class,'index']);
 
 
 Route::get('/addChargers', function () {

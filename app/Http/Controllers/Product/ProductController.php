@@ -18,7 +18,9 @@ class ProductController extends Controller
              'Name'=>'required|min:1|max:25',
              'Brand'=>'required|min:1|max:25',
              'Price'=>'required',
+             'Qty'=>'required|numeric|min:1',
              'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
+             'Warranty'=>'required',
              'Description'=>'required|min:1|max:100'
          ]);
 
@@ -51,9 +53,12 @@ class ProductController extends Controller
 
     public function ViewProduct()
     {
-        $data=product::paginate(5);
-        return  view('product/viewproduct', ['products'=>$data]);
+        $data=product::paginate(5); 
+       return  view('product/viewproduct', ['products'=>$data]);
+
+       
     }
+
       
     public function UpdateProducts($ProductID)
     {
@@ -128,7 +133,7 @@ class ProductController extends Controller
    public function stockOut()//get stockout  product details
 	{
 		$data = DB::table('products')->whereBetween('Qty', [1, 4])->paginate(5);
-        return view('product/productStock', compact('data'));
+        return view('product/productReorder', compact('data'));
 	}
 
     public function instock()//get in stock product details
@@ -141,7 +146,7 @@ class ProductController extends Controller
 	{
 		
         $data = Product::where('Qty', '<=', 0)->paginate(5);
-        return view('product/productStock', compact('data'));
+        return view('product/productNotAvailable', compact('data'));
        
 
     }

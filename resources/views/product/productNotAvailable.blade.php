@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title','Available Products')
-@section('header',' Available Products Details')
+@section('title','Not Available Products')
+@section('header','  Not Available Products Details')
 @section('content')
 
 <br>
@@ -34,9 +34,8 @@
       <th >Product View</th>
       <th >Brand</th>
       <th >Price</th>
-      <th >Quantity</th>
       <th >Warranty</th>
-    
+      <th >Action</th>
     </tr>
     @foreach( $data as $product)
     <tr>                                                
@@ -45,8 +44,9 @@
        class="img-circle" width="100px;" height="100px;" alt="Product-Image">  </td>
       <td>{{$product->Brand}}</td>
       <td>{{$product->Price}}</td>
-      <td>{{$product->Qty}}</td>
       <td>{{$product->Warranty}}</td>
+      <td>  <a href= "/UpdateProducts/{{$product['ProductID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a> 
+    </td>
     </tr>
         @endforeach
   </table>
