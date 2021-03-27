@@ -3,7 +3,9 @@
 @section('header','Product Details')
 @section('content')
 <div class="pull-left">
+@if(Auth::user()->can('product.create', App\product::class))
     <a class="btn btn-primary" href="/addproduct">Add new product <span data-feather="plus"></a>
+    @endif
 </div>
   <div class="pull-right" style="text-align: right;">
   <a class="btn btn-primary" href="/InStockProducts"> Available</a>

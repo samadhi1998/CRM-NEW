@@ -13,6 +13,8 @@ class ProductController extends Controller
 {
     public function AddProduct (Request $request) 
     {
+        $this->authorizeResource('create', product::class);
+        
         $this->validate($request, [
         
              'Name'=>'required|min:1|max:25',

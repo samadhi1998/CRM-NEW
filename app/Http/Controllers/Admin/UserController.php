@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use DB;
 use App\Models\User;
 use App\Models\Role;
@@ -11,6 +12,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    public function __construct() {
+        $this->authorizeResource(User::class, User::class);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,6 +26,7 @@ class UserController extends Controller
         //return view('views: admin.users.index');
         //return view('index');
         $users= User::all();
+        dd($users[0]->roles->priviledges[0]->roles);
         return view('admin.users.index')->with('users', $users)
         ->with('roles',role::all());
 
@@ -102,9 +108,11 @@ class UserController extends Controller
      */
     public function destroy($EmpID)
     {
-        $this->authorize('delete', User::class);
+        // $this->authorizeResource('delete', User::class);
+        
 
         $data=user::find($EmpID);
+
         $data->delete();
         return redirect('/home');
     }

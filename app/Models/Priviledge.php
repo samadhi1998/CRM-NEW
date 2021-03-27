@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Priviledge extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'PriviledgeID';
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany(Role::class, 'role_priviledges', 'PriviledgeID', 'PriviledgeID');
     }
 
    

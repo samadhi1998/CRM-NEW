@@ -153,16 +153,16 @@ class RoleController extends Controller
         return redirect('/View-Role');
     }
 
-    public function joinrolepriviledges(Role $role)
-    {
-        // return DB::table('orders')->get();
-          return DB::table('role_priviledges')
-          ->join('roles','roles.RoleID',"=",'role_priviledges.RoleID')
-          ->join('priviledges','priviledges.PriviledgeID',"=",'role_priviledges.PriviledgeID')
-          ->select('role_priviledges.RoleID','role_priviledges.PriviledgeID')
-          ->where('roles.RoleID',1)
-          ->get();   
-    }
+    // public function joinrolepriviledges(Role $role)
+    // {
+    //     // return DB::table('orders')->get();
+    //       return DB::table('role_priviledges')
+    //       ->join('roles','roles.RoleID',"=",'role_priviledges.RoleID')
+    //       ->join('priviledges','priviledges.PriviledgeID',"=",'role_priviledges.PriviledgeID')
+    //       ->select('role_priviledges.RoleID','role_priviledges.PriviledgeID')
+    //       ->where('roles.RoleID',1)
+    //       ->get();   
+    // }
 
     
 
