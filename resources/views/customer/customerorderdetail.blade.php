@@ -17,8 +17,9 @@
                             <br>
                             <br>
                             
-                 <form method="post" action="" autocomplete="off">
+                 <form method="post"  action="check" autocomplete="off">
                  @csrf
+
                  <div class="form-group{{ $errors->has('CustomerID') ? ' has-danger' : '' }}">
                      
                 <label class="form-control-label" for="input-name ">Customer Order Details</label>
@@ -46,8 +47,10 @@
 </div></div></div></div></div></div>
 
 @endsection
-<script>
-new SlimSelect({
-  select: '.form-select'
-})
-</script>
+@push('js')
+    <script>
+        new SlimSelect({
+            select: '.form-select'
+        })
+    </script>
+@endpush

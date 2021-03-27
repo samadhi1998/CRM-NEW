@@ -35,7 +35,24 @@ class OrdersController extends Controller
         return view('orders/create');
     }
 
-   
+    public function customerorder(Request $request, Order $model)
+    {
+        $existent = Order::where('CustomerID', $request->get('CustomerID'))->get();
+
+        if($existent->count()) {
+            return back();
+        }
+
+        $Order = $model->create($request->all());
+        
+        return redirect()
+            ->route('/create', ['Order' => $Order->CustomerID]);
+            
+    }
+
+
+
+
 
 
 
