@@ -65,18 +65,20 @@ Route::get('/chats', function () {
 
 //order
 
-Route::resource('orders', OrdersController::class);
-Route::get('index', [App\Http\Controllers\OrdersController::class,'index']);
-Route::get('create', [App\Http\Controllers\OrdersController::class,'create']);
-Route::get('edit', [App\Http\Controllers\OrdersController::class,'edit']);
-Route::get('show', [App\Http\Controllers\OrdersController::class,'show']);
-Route::get('view', [App\Http\Controllers\OrdersController::class,'view']);
-Route::get('joincustomers', [App\Http\Controllers\OrdersController::class,'joincustomers']);
-Route::get('joinorddetails', [App\Http\Controllers\OrdersController::class,'joinorddetails']);
-Route::get('emails', [App\Http\Controllers\OrdersController::class,'emails']);
-Route::get('progressedit/{OrderID}',[App\Http\Controllers\OrdersController::class,'progressedit']);
-Route::post('progressedit',[App\Http\Controllers\OrdersController::class,'progressupdate']);
-Route::get('delete',[App\Http\Controllers\Product\ProductController::class,'delete']);
+ Route::resource('orders', OrdersController::class);
+ Route::get('index', [App\Http\Controllers\OrdersController::class,'index']);
+ Route::get('create', [App\Http\Controllers\OrdersController::class,'create']);
+ Route::get('edit', [App\Http\Controllers\OrdersController::class,'edit']);
+ Route::get('show', [App\Http\Controllers\OrdersController::class,'show']);
+ Route::get('view', [App\Http\Controllers\OrdersController::class,'view']);
+ Route::get('joincustomers', [App\Http\Controllers\OrdersController::class,'joincustomers']);
+ Route::get('joinorddetails', [App\Http\Controllers\OrdersController::class,'joinorddetails']);
+ Route::get('emails', [App\Http\Controllers\OrdersController::class,'emails']);
+ Route::get('progressedit/{OrderID}',[App\Http\Controllers\OrdersController::class,'progressedit']);
+ Route::post('progressedit',[App\Http\Controllers\OrdersController::class,'progressupdate']);
+ Route::get('delete',[App\Http\Controllers\Product\ProductController::class,'delete']);
+
+ Route::post('check',[App\Http\Controllers\OrdersController::class,'customerorder']);
 //Route::get('find', [OrdersController::class,'findorder']);
 
 
@@ -87,7 +89,7 @@ Route::get('/addproduct', function () {
 Route::post('/addproduct',[App\Http\Controllers\Product\ProductController::class,'AddProduct']);
 Route::get('product/viewproduct',[App\Http\Controllers\Product\ProductController::class,'ViewProduct']);
 Route::get('/UpdateProducts/{ProductID}',[App\Http\Controllers\Product\ProductController::class,'UpdateProducts']);
-Route::post('/Updateproducts',[App\Http\Controllers\Product\ProductController::class,'ShowUpdatesProducts']);
+Route::put('/Updateproducts',[App\Http\Controllers\Product\ProductController::class,'ShowUpdatesProducts']);
 Route::get('/Search_Products',[App\Http\Controllers\Product\ProductController::class,'SearchProducts']);
 Route::get('/ProductCount',[App\Http\Controllers\Product\ProductController::class,'ProductCount']);
 Route::get('/Delete_Products/{ProductID}',[App\Http\Controllers\Product\ProductController::class,'deleteproducts']);
@@ -114,7 +116,7 @@ Route::get('/addCustomer', function () {
 });
 Route::post('/addCustomer',[App\Http\Controllers\Customer\CustomerController::class,'AddCustomer']);
 Route::get('/editCustomer/{CustomerID}',[App\Http\Controllers\Customer\CustomerController::class,'UpdateCustomers']);
-Route::post('/editcustomers',[App\Http\Controllers\Customer\CustomerController::class,'ShowUpdatesCustomers']);
+Route::put('/editcustomers',[App\Http\Controllers\Customer\CustomerController::class,'ShowUpdatesCustomers']);
 Route::get('/deleteCustomer/{CustomerID}',[App\Http\Controllers\Customer\CustomerController::class,'DeleteCustomers']);
 Route::get('/Search_Customers',[App\Http\Controllers\Customer\CustomerController::class,'SearchCustomers']);
 Route::get('/ViewCustomers',[App\Http\Controllers\Customer\CustomerController::class, 'ViewCustomers']);
