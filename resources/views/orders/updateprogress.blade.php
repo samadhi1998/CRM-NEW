@@ -9,9 +9,6 @@
             <label for="OrderID" ><b>Order ID : </b></label>
             <input type="text" name="OrderID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$orders->OrderID}}" readonly>
             <br>
-            <label for="CustomerID" ><b>Customer ID : </b></label>
-            <input type="text" name="ServicePersonID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$orders->CustomerID}}" readonly>
-            <br>
             <label for="Due_Date" ><b>Due Date for Payment : </b></label>
             <input type="date" name="Due_Date" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$orders->Due_date}}" readonly>
             <br>
@@ -26,9 +23,6 @@
                 <option value="Order Canceled">Order Canceled</option>
             </select>
             <br>
-            <!-- <label for="Description" ><b>Description : </b></label>
-            <textarea name="Description" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" rows="5" cols="50" >{{$orders->Description}}</textarea>
-            <br> -->
             <br>
             <div class="btn-group float-right" role="group">
             <button type="button" data-toggle="modal" data-target="#exampleModal" >Update</button>

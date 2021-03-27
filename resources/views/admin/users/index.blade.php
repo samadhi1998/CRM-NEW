@@ -51,13 +51,13 @@
         <a href="assignRole/{{$user->EmpID}}" style="margin:2px" class="text-my-own-color">
         <span data-feather="key"></span>
         </a>
-        @can('user.delete', App\User::class)
+        @if (Auth::user()->can('user.delete', App\User::class))
         <form action="{{route('users.destroy', $user->EmpID)}}" method="POST" >
           @csrf
           @method('user.delete')
           <button type="submit" data-toggle="modal" data-target="#exampleModal2" style="margin:10px" class="text-my-own-color"><span data-feather="trash-2"></span></button>
           </form>
-          @endcan
+         @endif
       </td> 
     </tr>
     @endforeach 

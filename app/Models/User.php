@@ -52,12 +52,6 @@ class User extends Authenticatable
         return $this->belongsto(Role::class, 'RoleID');
     }
 
-    public function hasRole($role)
-    {
-        if (is_int($role)) {
-            return $user->RoleID === $role->RoleID;
-        }
-        return false;
-    }
+    
 
 }

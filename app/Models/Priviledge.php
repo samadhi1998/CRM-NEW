@@ -11,14 +11,8 @@ class Priviledge extends Model
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'role_priviledges');
+        return $this->belongsToMany(Role::class);
     }
 
-    public function inRole($role)
-    {
-        if (is_int($role)) {
-            return $this->roles->contains('RoleID', $role);
-        }
-        return !! $role->intersect($this->roles)->count();
-    }
+   
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-use App\User;
+use App\Model\User;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -28,7 +28,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
        
-
+        Gate::resource('users','App\Policies\UserPolicy');
+        
         //
     }
 

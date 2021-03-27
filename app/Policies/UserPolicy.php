@@ -64,8 +64,15 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        $priviledge = Priviledge::where('Description', 'Delete-User')->first();
-        return $user->hasRole($priviledge->roles);
+        foreach($user->roles as $role){
+            foreach($role->priviledges as $priviledge){
+                if($priviledge->PriviledgeID == 3){
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     /**
