@@ -1,14 +1,11 @@
 @extends('layouts.app')
 @section('title','Available Products')
-@section('header',' Available Products Details')
 @section('content')
-
-<br>
-<div class="container " style="background :none !important ">
+<div class="container" style="background :none !important ">
 <div class="row justify-content-center">
         <div class="col-md">
             <div class="card">
-                <!-- <div class="card-header">{{ __('View Product Details') }}</div> -->
+                <div class="card-header">{{ __('Available Products Details') }}</div>
 
                 <div class="card-body">
 

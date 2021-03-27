@@ -1,20 +1,17 @@
 @extends('layouts.app')
 @section('title','Not Available Products')
-@section('header','  Not Available Products Details')
 @section('content')
-
-<br>
-<div class="container " style="background :none !important ">
+<div class="container" style="background :none !important ">
 <div class="row justify-content-center">
         <div class="col-md">
             <div class="card">
-                <!-- <div class="card-header">{{ __('View Product Details') }}</div> -->
+                <div class="card-header">{{ __('Not Available Products') }}</div>
 
                 <div class="card-body">
 
     <br>
     <form action="/Search_Products" method="GET" role="search">
-      {{ csrf_field() }}
+    {{ csrf_field() }}
       <div class="input-group">
         <input type="text" class="form-control" name="query" id="query" placeholder="Search  Stock Products Details"> <span class="input-group-btn">
         <button type="submit" class="btn btn-default">
@@ -23,12 +20,9 @@
         </span> 
       </div>
     </form>
-  
     </br>
     </br>
-    </br>
-    </br>
-  <table>
+    <table>
     <tr >
       <th >Product Name</th>
       <th >Product View</th>

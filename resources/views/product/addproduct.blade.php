@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title','Add Products')
-@section('header','Add Product')
 @section('content')
 
         <!-- @foreach($errors->all() as $error)
@@ -12,7 +11,7 @@
       <div class="row justify-content-center">
         <div class="col-md-8">
           <div class="card">
-              <!-- <div class="card-header">{{ __('Add Product') }}</div> -->
+              <div class="card-header">{{ __('Add Product') }}</div> 
               <div class="card-body">
         <div class="container"  style="background :none !important ">
         <form method="POST" action="/addproduct" enctype="multipart/form-data">
