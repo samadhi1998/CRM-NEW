@@ -39,11 +39,6 @@
       </div>
   <br> 
 
-  <div class="pull-right" style="text-align: right;">
-      <a class="btn btn-primary" href="/InStockProducts"> Available</a>
-      <a class="btn btn-primary"  href="/StockoutProducts">Re Order</a>
-     <a class="btn btn-primary" href="/notAvailableProducts">Not Available</a>
-   </div>
 <br>
 <br>
 <br>
