@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Task;
 use App\Models\Order;
 use App\Models\User;
@@ -9,6 +10,10 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
+
+    public function __construct() {
+        $this->authorizeResource(Task::class, Task::class);
+    }
     /**
      * Display a listing of the resource.
      *

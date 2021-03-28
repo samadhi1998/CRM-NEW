@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
+use App\Models\Order;
 use App\Models\User;
-use App\Models\product;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ProductPolicy
+class OrderPolicy
 {
     use HandlesAuthorization;
 
@@ -18,20 +18,26 @@ class ProductPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        foreach($user->roles->priviledges as $priviledge){
+            if($priviledge->PriviledgeID == 13){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\product  $product
+     * @param  \App\Models\Order  $order
      * @return mixed
      */
-    public function view(User $user)
+    public function view(User $user, Order $order)
     {
         foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 6){
+            if($priviledge->PriviledgeID == 14){
                 return true;
             }
         }
@@ -48,7 +54,7 @@ class ProductPolicy
     public function create(User $user)
     {
         foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 5){
+            if($priviledge->PriviledgeID == 15){
                 return true;
             }
         }
@@ -60,13 +66,13 @@ class ProductPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\product  $product
+     * @param  \App\Models\Order  $order
      * @return mixed
      */
-    public function update(User $user)
+    public function update(User $user, Order $order)
     {
         foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 7){
+            if($priviledge->PriviledgeID == 16){
                 return true;
             }
         }
@@ -78,13 +84,13 @@ class ProductPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\product  $product
+     * @param  \App\Models\Order  $order
      * @return mixed
      */
-    public function delete(User $user)
+    public function delete(User $user, Order $order)
     {
         foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 8){
+            if($priviledge->PriviledgeID == 17){
                 return true;
             }
         }
@@ -96,10 +102,10 @@ class ProductPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\product  $product
+     * @param  \App\Models\Order  $order
      * @return mixed
      */
-    public function restore(User $user, product $product)
+    public function restore(User $user, Order $order)
     {
         //
     }
@@ -108,18 +114,18 @@ class ProductPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\product  $product
+     * @param  \App\Models\Order  $order
      * @return mixed
      */
-    public function forceDelete(User $user, product $product)
+    public function forceDelete(User $user, Order $order)
     {
         //
     }
 
-    public function stockOut(User $user)
+    public function show(User $user)
     {
         foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 10){
+            if($priviledge->PriviledgeID == 18){
                 return true;
             }
         }
@@ -127,21 +133,10 @@ class ProductPolicy
         return false;
     }
 
-    public function InStock(User $user)
+    public function updateprogress(User $user)
     {
         foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 11){
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public function NotAvailable(User $user)
-    {
-        foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 12){
+            if($priviledge->PriviledgeID == 19){
                 return true;
             }
         }

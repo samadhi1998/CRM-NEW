@@ -2,10 +2,11 @@
 
 namespace App\Policies;
 
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class UserPolicy
+class TaskPolicy
 {
     use HandlesAuthorization;
 
@@ -17,27 +18,25 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        //
-        return true;
+        foreach($user->roles->priviledges as $priviledge){
+            if($priviledge->PriviledgeID == 9){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\User  $model
+     * @param  \App\Models\Task  $task
      * @return mixed
      */
-    public function view(User $user)
+    public function view(User $user, Task $task)
     {
-        foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 1){
-                return true;
-            }
-        }
-
-        return false;
-        
+        //
     }
 
     /**
@@ -55,47 +54,34 @@ class UserPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\User  $model
+     * @param  \App\Models\Task  $task
      * @return mixed
      */
-    public function update(User $user)
+    public function update(User $user, Task $task)
     {
-        foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 2){
-                return true;
-            }
-        }
-
-        return false;
+        //
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\User  $model
+     * @param  \App\Models\Task  $task
      * @return mixed
      */
-    public function delete(User $user)
+    public function delete(User $user, Task $task)
     {
-        
-        foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 3){
-                return true;
-            }
-        }
-
-        return false;
+        //
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\User  $model
+     * @param  \App\Models\Task  $task
      * @return mixed
      */
-    public function restore(User $user, User $model)
+    public function restore(User $user, Task $task)
     {
         //
     }
@@ -104,23 +90,11 @@ class UserPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\User  $model
+     * @param  \App\Models\Task  $task
      * @return mixed
      */
-    public function forceDelete(User $user, User $model)
+    public function forceDelete(User $user, Task $task)
     {
         //
-    }
-
-    public function AssignTask(User $user)
-    {
-        
-        foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 4){
-                return true;
-            }
-        }
-
-        return false;
     }
 }

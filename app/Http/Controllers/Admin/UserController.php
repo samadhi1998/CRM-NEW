@@ -29,6 +29,7 @@ class UserController extends Controller
         return view('admin.users.index')->with('users', $users)
         ->with('roles',role::all());
 
+
     }
 
     /**

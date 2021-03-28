@@ -156,18 +156,22 @@
                                         Dashboard
                                     </a>
                                 </li>
+                                @if(Auth::user()->can('view-order', App\Models\Order::class))
                                 <li class="nav-item">
                                     <a class="nav-link" href="/index">
                                     <span data-feather="file"></span>
                                     Orders
                                     </a>
                                 </li>
+                                @endif
+                                @if(Auth::user()->can('view-product', App\Models\product::class))
                                 <li class="nav-item">
                                     <a class="nav-link" href="/product/viewproduct">
                                     <span data-feather="shopping-cart"></span>
                                     Products
                                     </a>
                                 </li>
+                                @endif
                                 <li class="nav-item">
                                     <a class="nav-link" href="/ViewCustomers">
                                     <span data-feather="users"></span>
@@ -175,19 +179,21 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                               
+                                @if(Auth::user()->can('view-task', App\Models\Task::class))
                                     <a class="nav-link" href="/View-Task">
                                     <span data-feather="target"></span>
                                     Tasks
                                     </a>
-                           
+                                @endif
                                 </li>
+                                @if(Auth::user()->can('view-user', App\Models\User::class))
                                 <li class="nav-item">
                                     <a class="nav-link" href="/viewuser">
                                     <span data-feather="user"></span>
                                     Users
                                     </a>
                                 </li>
+                                @endif
                                 <li class="nav-item">
                                     <a class="nav-link" href="/View-Role">
                                     <span data-feather="settings"></span>

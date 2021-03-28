@@ -4,15 +4,24 @@
 @section('content')
 
 <div class="pull-left">
-@if(Auth::user()->can('product.create', App\product::class))
+@if(Auth::user()->can('add-product', App\Models\product::class))
     <a class="btn btn-primary" href="/addproduct">Add new product <span data-feather="plus"></a>
     @endif
 </div>
 
 <div class="pull-right" style="text-align: right;">
+    @if(Auth::user()->can('Stock-In-product', App\Models\product::class))
     <a class="btn btn-primary" href="/InStockProducts"> Available</a>
+    @endif
+
+    @if(Auth::user()->can('Stock-out-product', App\Models\product::class))
     <a class="btn btn-primary"  href="/StockoutProducts">Re Order</a>
+    @endif
+
+    @if(Auth::user()->can('Not-Available-product', App\Models\product::class))
      <a class="btn btn-primary" href="/notAvailableProducts">Not Available</a>
+     @endif
+
 </div>
   <br>
   <br>
@@ -69,9 +78,12 @@
       <td>{{$product['Description']}}</td>
       <td>{{$product['Status']}}</td>
       <td>
+          @if(Auth::user()->can('edit-product', App\Models\product::class))
           <a href= "/UpdateProducts/{{$product['ProductID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>                               
+          @endif
+          @if(Auth::user()->can('delete-product', App\Models\product::class))
           <a href= "/Delete_Products/{{$product['ProductID']}}" style="margin:10px" class="text-my-own-color"><span data-feather ="trash-2"></span></a> 
-        
+          @endif
       </td>
     </tr>
         @endforeach

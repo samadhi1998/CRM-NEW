@@ -44,13 +44,19 @@
       <td>{{$user['MobileNo']}}</td>
       
       <td>
-        
+
+        @if(Auth::user()->can('edit-user', App\Models\User::class))
         <a href="{{route('users.edit', $user->EmpID)}}" style="margin:2px" class="text-my-own-color">
         <span data-feather="edit"></span>
         </a>
+        @endif
+
+        @if(Auth::user()->can('assign-role', App\Models\User::class))
         <a href="assignRole/{{$user->EmpID}}" style="margin:2px" class="text-my-own-color">
         <span data-feather="key"></span>
         </a>
+        @endif
+
         @if(Auth::user()->can('delete-user', App\Models\User::class))
         <form action="{{route('users.destroy', $user->EmpID)}}" method="POST" >
           @csrf
@@ -58,23 +64,12 @@
           <button type="submit" data-toggle="modal" data-target="#exampleModal2" style="margin:10px" class="text-my-own-color"><span data-feather="trash-2"></span></button>
           </form>
          @endif
+
       </td> 
     </tr>
     @endforeach 
  </table>
  </div></div></div></div></div></div></div>
-
-    <!-- <div class="btn-group" role="group">
-    <button type="button" data-toggle="modal" data-target="#exampleModal1" >Delete</button>
-                </div> -->
-      
-
-
- 
-
-
-
-
 @endsection
 
 

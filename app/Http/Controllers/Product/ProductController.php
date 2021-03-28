@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
@@ -11,9 +12,12 @@ use App\Models\User;
 
 class ProductController extends Controller
 {
+    public function __construct() {
+        $this->authorizeResource(product::class, product::class);
+    }
+
     public function AddProduct (Request $request) 
     {
-        $this->authorizeResource('create', product::class);
         
         $this->validate($request, [
         
@@ -57,8 +61,6 @@ class ProductController extends Controller
     {
         $data=product::paginate(5); 
        return  view('product/viewproduct', ['products'=>$data]);
-
-       
     }
 
       
