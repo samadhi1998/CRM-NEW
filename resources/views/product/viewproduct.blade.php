@@ -3,29 +3,27 @@
 @section('header','Product Details')
 @section('content')
 
-<div class="pull-left">
-@if(Auth::user()->can('product.create', App\product::class))
-    <a class="btn btn-primary" href="/addproduct">Add new product <span data-feather="plus"></a>
-    @endif
-</div>
-
-<div class="pull-right" style="text-align: right;">
-    <a class="btn btn-primary" href="/InStockProducts"> Available</a>
-    <a class="btn btn-primary"  href="/StockoutProducts">Re Order</a>
-     <a class="btn btn-primary" href="/notAvailableProducts">Not Available</a>
-</div>
-  <br>
-  <br>
-  <br>
-
 <div class="container " style="background :none !important ">
 <div class="row justify-content-center">
 <div class="col-md">
 <div class="card">
-<!-- <div class="card-header">{{ __('View Product Details') }}</div> -->
 <div class="card-body">
+      <div class="pull-right" style="text-align: left;color:blue">
+     <!-- @if(Auth::user()->can('product.create', App\product::class))-->
+                 <a href="/addproduct" class="btn btn-primary"> Add Product <span data-feather="plus"></a>
+       <!--@endif-->
+      </div>
+  <br> 
 
-  <br>
+  <div class="pull-right" style="text-align: right;">
+      <a class="btn btn-primary" href="/InStockProducts"> Available</a>
+      <a class="btn btn-primary"  href="/StockoutProducts">Re Order</a>
+     <a class="btn btn-primary" href="/notAvailableProducts">Not Available</a>
+   </div>
+<br>
+<br>
+<br>
+
     <form action="/Search_Products" method="GET" role="search">
           {{ csrf_field() }}
         <div class="input-group">

@@ -2,38 +2,32 @@
 @section('title','View Customer')
 @section('header','Customer Details')
 @section('content')
-<!-- <div class="pull-left">
-    <a class="btn btn-primary" href="/addCustomer">Add new Customer <span data-feather="plus"></span></a>
-</div> -->
 
-<br>
 <div class="container " style="background :none !important ">
 <div class="row justify-content-center">
-        <div class="col-md">
-            <div class="card">
-                <!-- <div class="card-header">{{ __('View Customer Details') }}</div> -->
+<div class="col-md">
+<div class="card">
+<!-- <div class="card-header">{{ __('View Customer Details') }}</div> -->
+<div class="card-body">
+<br>
+           <div class="pull-right" style="text-align: right;color:blue">
+                 <a href="/addCustomer" class="btn btn-primary"> Add Customer</a>
+            </div>
 
-                <div class="card-body">
+<br>
 <br>
 
-<div class="pull-right" style="text-align: right;color:blue">
-                                <a href="/addCustomer" class="btn btn-primary"> Add Customer</a>
-                            </div>
-
-                            <br>
-                            <br>
-
-<form action="/Search_Customers" method="GET" role="search">
-{{ csrf_field() }}
-<div class="input-group">
-<input type="text" class="form-control" name="query" id="query"
- placeholder="Search Customers"> <span class="input-group-btn">
-<button type="submit" class="btn btn-default">
- <span class="glyphicon glyphicon-search"></span>
-  </button>
-  </span>
-  </div>
-</form>
+       <form action="/Search_Customers" method="GET" role="search">
+              {{ csrf_field() }}
+          <div class="input-group">
+             <input type="text" class="form-control" name="query" id="query"
+              placeholder="Search Customers"> <span class="input-group-btn">
+             <button type="submit" class="btn btn-default">
+             <span class="glyphicon glyphicon-search"></span>
+             </button>
+             </span>
+          </div>
+      </form>
 
 </br>
 </br>
