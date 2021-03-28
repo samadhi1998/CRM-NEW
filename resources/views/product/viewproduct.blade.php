@@ -31,10 +31,23 @@
 <div class="row justify-content-center">
 <div class="col-md">
 <div class="card">
-<!-- <div class="card-header">{{ __('View Product Details') }}</div> -->
 <div class="card-body">
+      <div class="pull-right" style="text-align: left;color:blue">
+     <!-- @if(Auth::user()->can('product.create', App\product::class))-->
+                 <a href="/addproduct" class="btn btn-primary"> Add Product <span data-feather="plus"></a>
+       <!--@endif-->
+      </div>
+  <br> 
 
-  <br>
+  <div class="pull-right" style="text-align: right;">
+      <a class="btn btn-primary" href="/InStockProducts"> Available</a>
+      <a class="btn btn-primary"  href="/StockoutProducts">Re Order</a>
+     <a class="btn btn-primary" href="/notAvailableProducts">Not Available</a>
+   </div>
+<br>
+<br>
+<br>
+
     <form action="/Search_Products" method="GET" role="search">
           {{ csrf_field() }}
         <div class="input-group">
@@ -54,6 +67,7 @@
     <tr >
       <th >Admin ID</th>
       <th >Product ID</th>
+      <th >Get Date</th>
       <th >Product Name</th>
       <th >Product View</th>
       <th >Brand</th>
@@ -66,8 +80,10 @@
     </tr>
          @foreach($products as $product)
     <tr>                                                
-      <th scope="row">{{$product['AdminID']}}</th>
+      <th >{{$product['AdminID']}}</th>
+    
       <td>{{$product['ProductID']}}</td>
+      <td> {{ date('d-m-y', strtotime($product->created_at)) }}<td>
       <td>{{$product['Name']}}</td>
       <td> <img src="{{asset('uploads/product/'.$product->image)  }}"
        class="img-circle" width="100px;" height="100px;" alt="Product-Image">  </td>
