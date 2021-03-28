@@ -9,38 +9,44 @@
 
                 <div class="card-body">
 
-<div class="table-responsive">
-    <table class="table table-striped" borders="2">
-    <thead >
-    <tr style="height:70px;width:50px">
-      <th scope="col">Customer ID</th>
-      <th scope="col">Customer Name</th>
-      <th scope="col">NIC</th>
-      <th scope="col">Address</th>
-      <th scope="col">Mobile Number</th>
-      <th scope="col">Email</th>
-    </tr>
-    </thead>
-    <tbody>
+    <table >
+      <thead >
+          <tr>
+             <th >Customer ID</th>
+             <th >Customer Name</th>
+             <th >NIC</th>
+             <th >Address</th>
+             <th >Mobile Number</th>
+             <th >Email</th>
+          </tr>
+      </thead>
+      <tbody>
  @foreach($customers as $customer)
-    <tr>                                                
-    <th scope="row">{{$customer['CustomerID']}}</th>
-      <td>{{$customer['Name']}}</td>
-      <td>{{$customer['NIC']}}</td>
-      <td>{{$customer['Address']}}</td>
-      <td>{{$customer['MobileNo']}}</td>
-      <td>{{$customer['Email']}}</td>
+        <tr>                                                
+            <td>{{$customer['CustomerID']}}</th>
+            <td>{{$customer['Name']}}</td>
+            <td>{{$customer['NIC']}}</td>
+            <td>{{$customer['Address']}}</td>
+            <td>{{$customer['MobileNo']}}</td>
+             <td>{{$customer['Email']}}</td>
       
-    </tr>
+        </tr>
 @endforeach
-</tbody>
-</table>
-</div>
-{{$customers->links()}}
-<div class="pull-right" style="text-align: right;color:blue">
-<a href="{{ URL::previous() }}">Go Back</a>
-  </div>
+       </tbody>
+   </table>
 </div>
 
-</div></div></div></div></div></div>
+
+{{$customers->links()}}
+
+    <div class="pull-right" style="text-align: right;color:blue">
+        <a href="{{ URL::previous() }}">Go Back</a>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 @endsection

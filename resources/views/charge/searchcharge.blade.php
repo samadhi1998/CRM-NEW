@@ -2,24 +2,22 @@
 @extends('layouts.app')
 @section('title','Search Charge')
 @section('content')
+<div class="container" style="background :none !important ">
+<div class="row justify-content-center">
+<div class="col-md">
+<div class="card">
+<div class="card-header">{{ __('Searched Chargers') }}</div>
+<div class="card-body">
 
-
-<h1 style="text-align: center; color:#233554">Customer Relationship Management System</h1>
-        <h2 style="text-align: center; color:#233554">Searched Charges Details</h2>
-        <hr style="background-color:#233554; height: 5px">
-        <br>
-        <br>
-<table class="table table-striped"borders="4" border-color="#233554" >
-  <thead >
-    <tr style="height:70px;width:100px ; text-align:center; color:#233554">
-      <th scope="col">Order ID</th>
-      <th scope="col">ServicePerson ID</th>
-      <th scope="col">Type</th>
-      <th scope="col">Amount</th>
-      <th scope="col">Description</th>
+<table>
+  <tr>
+      <th>Order ID</th>
+      <th>ServicePerson ID</th>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Description</th>
       
     </tr>
-  </thead>
   <tbody>
   @foreach($extra_charge as $extra_charges)
     <tr>                                                
@@ -31,14 +29,12 @@
       
 </tr>
 @endforeach
-
 </tbody>
 </table>
 <br>
 <br>
-</br>
 {{$extra_charge->links()}}
 <div class="pull-right" style="text-align: right;color:blue">
-  <a href="{{ URL::previous() }}">Go Back</a>
-  </div>
+<a href="{{ URL::previous() }}">Go Back</a>
+</div>
 @endsection
