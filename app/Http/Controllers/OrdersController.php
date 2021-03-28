@@ -41,25 +41,6 @@ class OrdersController extends Controller
         return view('orders/create');
     }
 
-    public function customerorder(Request $request, Order $model)
-    {
-        $existent = Order::where('CustomerID', $request->get('CustomerID'))->get();
-
-        if($existent->count()) {
-            return back();
-        }
-
-        $Order = $model->create($request->all());
-        
-        return redirect()
-            ->route('/create', ['Order' => $Order->CustomerID]);
-            
-    }
-
-
-
-
-
 
     public function store(Request $request)
     {
@@ -69,39 +50,20 @@ class OrdersController extends Controller
             'Qty'=>'required',
         ]);
     
+         $productId=request('ProductID'); 
+         $qtyOld=DB::table('Products')->where('ProductID',$productId)->value('Qty');
+         $qty1=$request->get('Qty')-$qtyOld;
+         //this statement can be a error
+            
         Order::create($request->all());
         order_detail::create($request->all());
-      
+       
         return redirect()->route('orders.index')
                         ->with('success','Order created successfully.');
 
-                        DB::table('products')
-                        ->where('ProductID', $content->ProductID)
-                        ->update(['Qty' => DB::raw('Qty - '.$content->Qty)]);
+        DB::table('products')->where('ProductID', $content->ProductID)->update(['Qty' => DB::raw($qty1)]);
     }
-//     public function store(order_detail $order_detail)
-//     {
-       
-    
-//         Order::create($request->all());
-//         $order_detail=order_detail::create($request->all());
-//         foreach ($order_detail->products as $sold_product){
-//         $product_ID = $sold_product->product->ProductID;
-//         $product_Qty = $sold_product->product->Qty;
-//         if($sold_product->Qty > $product_Qty) return back()->withError("The product '$product_ID' does not have enough stock. Only has $product_Qty units.");
-//     }
 
-//     foreach ($order_detail->products as $sold_product) {
-//         $sold_product->product->Qty -= $sold_product->Qty;
-//         $sold_product->product->save();
-//     }
-
- 
-//     $order_detail->save();
- 
-
-//     return back()->withStatus('The sale has been successfully completed.');
-// }`
       
     
     public function show(Order $order)

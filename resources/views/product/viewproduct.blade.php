@@ -33,9 +33,9 @@
 <div class="card">
 <div class="card-body">
       <div class="pull-right" style="text-align: left;color:blue">
-     <!-- @if(Auth::user()->can('product.create', App\product::class))-->
+   
                  <a href="/addproduct" class="btn btn-primary"> Add Product <span data-feather="plus"></a>
-       <!--@endif-->
+      
       </div>
   <br> 
 
@@ -62,7 +62,6 @@
     <tr >
       <th >Admin ID</th>
       <th >Product ID</th>
-      <th >Get Date</th>
       <th >Product Name</th>
       <th >Product View</th>
       <th >Brand</th>
@@ -75,10 +74,8 @@
     </tr>
          @foreach($products as $product)
     <tr>                                                
-      <th >{{$product['AdminID']}}</th>
-    
+      <th scope="row">{{$product['AdminID']}}</th>
       <td>{{$product['ProductID']}}</td>
-      <td> {{ date('d-m-y', strtotime($product->created_at)) }}<td>
       <td>{{$product['Name']}}</td>
       <td> <img src="{{asset('uploads/product/'.$product->image)  }}"
        class="img-circle" width="100px;" height="100px;" alt="Product-Image">  </td>

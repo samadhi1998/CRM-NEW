@@ -5,6 +5,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 use App\Models\customer;
+use App\Models\Order;
+use App\Models\product;
+use App\Models\order_detail;
+
+
 class CustomerController extends Controller
 {
      public function index(){
@@ -115,4 +120,32 @@ class CustomerController extends Controller
     return('customer/customer');
 
   }
+
+   // public function customerorder(Request $request, Order $model)
+    // {
+    //     $existent = Order::where('CustomerID', $request->get('CustomerID'))->get();
+    //     $customer = DB::table('customers')->where('CustomerID', $request->get('CustomerID'))->value('CustomerID');
+
+
+    //     if($existent->count()) {
+    //         return redirect()
+    //         ->route('/create', ['customers' => $customer]);
+    //     }
+
+    //     $Order = $model->create($request->all());
+        
+    //     return redirect()
+    //         ->route('/create', ['Order' => $Order->CustomerID]);
+            
+    // }
+  
+
+
+
+
+
+
+
+
+
 }
