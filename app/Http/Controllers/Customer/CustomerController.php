@@ -121,23 +121,23 @@ class CustomerController extends Controller
 
   }
 
-   // public function customerorder(Request $request, Order $model)
-    // {
-    //     $existent = Order::where('CustomerID', $request->get('CustomerID'))->get();
-    //     $customer = DB::table('customers')->where('CustomerID', $request->get('CustomerID'))->value('CustomerID');
+   public function customerorder(Request $request, Order $model)
+     {
+         $existent = Order::where('CustomerID', $request->get('CustomerID'))->get();
+         $customer = DB::table('customers')->where('CustomerID', $request->get('CustomerID'))->value('CustomerID');
 
 
-    //     if($existent->count()) {
-    //         return redirect()
-    //         ->route('/create', ['customers' => $customer]);
-    //     }
+        if($existent->count()) {
+            return redirect()
+           ->route('orders.create', ['customers' => $customer]);
+         }
 
-    //     $Order = $model->create($request->all());
+        $Order = $model->create($request->all());
         
-    //     return redirect()
-    //         ->route('/create', ['Order' => $Order->CustomerID]);
+         return redirect()
+           ->route('orders.create', ['Order' => $Order->CustomerID]);
             
-    // }
+     }
   
 
 
