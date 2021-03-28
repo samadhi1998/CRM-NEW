@@ -88,25 +88,19 @@ class RoleController extends Controller
      */
     public function roleupdate(Request $request, Role $role)
     {
-        $data = role::find($request->input('RoleID'));
-        $data->RoleID = $request->input('RoleID');
-        $data->name = $request->input('name');
+        $role = role::find($request->input('RoleID'));
+        //$role->RoleID = $request->input('RoleID');
+        //$role->name = $request->input('name');
         
-        $priviledges = $request->PriviledgeID;
+        $PriviledgeID = $request->input('PriviledgeID');
 
-        foreach($priviledges as $PriviledgeID){
-            
-            $content = new role_priviledges;
-            $content=role_priviledges::create([
-            'RoleID' => $request->RoleID,
-            'PriviledgeID' => $PriviledgeID,
-            //'PriviledgeID' => implode(',', $request->PriviledgeID),
-        ]);
-        }
+        $role->priviledges()->attach($PriviledgeID);
         
-        $data->save();
+       // $role->save();
 
         return redirect('View-Role');
+
+
     }
 
     /**

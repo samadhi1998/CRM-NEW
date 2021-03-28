@@ -10,7 +10,7 @@ class Role extends Model
     use HasFactory;
 
     public function priviledges(){
-        return $this->belongsToMany(Priviledge::class, 'role_priviledges', 'RoleID', 'RoleID');
+        return $this->belongsToMany(Priviledge::class, 'role_priviledges', 'ID', 'PriviledgeID')->withTimestamps();
     }
     
     public function users(){
