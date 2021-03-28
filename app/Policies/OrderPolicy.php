@@ -34,7 +34,7 @@ class OrderPolicy
      * @param  \App\Models\Order  $order
      * @return mixed
      */
-    public function view(User $user, Order $order)
+    public function view(User $user)
     {
         foreach($user->roles->priviledges as $priviledge){
             if($priviledge->PriviledgeID == 14){
@@ -69,7 +69,7 @@ class OrderPolicy
      * @param  \App\Models\Order  $order
      * @return mixed
      */
-    public function update(User $user, Order $order)
+    public function update(User $user)
     {
         foreach($user->roles->priviledges as $priviledge){
             if($priviledge->PriviledgeID == 16){
@@ -87,7 +87,7 @@ class OrderPolicy
      * @param  \App\Models\Order  $order
      * @return mixed
      */
-    public function delete(User $user, Order $order)
+    public function delete(User $user)
     {
         foreach($user->roles->priviledges as $priviledge){
             if($priviledge->PriviledgeID == 17){

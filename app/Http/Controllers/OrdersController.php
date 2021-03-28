@@ -209,17 +209,17 @@ class OrdersController extends Controller
 
     public function progressedit($OrderID)
     {
-        $orders =  DB::table('orders')  
+        // $orders =  DB::table('orders')  
 
-        ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->join('order_details','orders.OrderID',"=",'order_details.OrderID')
-        ->join('products','products.ProductID',"=",'order_details.ProductID')
-        ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Progress','orders.Total_Price',
-                 'products.Name as ProductName','order_details.Qty','products.Price','products.ProductID')
-        ->where('orders.OrderID', '=', $OrderID)
-        ->first();   
+        // ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
+        // ->join('order_details','orders.OrderID',"=",'order_details.OrderID')
+        // ->join('products','products.ProductID',"=",'order_details.ProductID')
+        // ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Progress','orders.Total_Price',
+        //          'products.Name as ProductName','order_details.Qty','products.Price','products.ProductID')
+        // ->where('orders.OrderID', '=', $OrderID)
+        // ->first();   
 
-        return view('orders.updateprogress',['orders'=>$orders]);
+        // return view('orders.updateprogress',['orders'=>$orders]);
     }
 
     public function progressupdate(Request $request, Order $OrderID)
@@ -233,19 +233,19 @@ class OrdersController extends Controller
         // $data->save();
 
         // return redirect('/index');
-        $data = order::find($request->input('OrderID'));
+        // $data = order::find($request->input('OrderID'));
 
-        $orders =  DB::table('orders')
+        // $orders =  DB::table('orders')
 
-        ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->join('order_details','orders.OrderID',"=",'order_details.OrderID')
-        ->join('products','products.ProductID',"=",'order_details.ProductID')
-        ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Progress','orders.Total_Price',
-                 'products.Name as ProductName','order_details.Qty','products.Price','products.ProductID')
-        ->where('orders.OrderID', '=', $data->OrderID);
+        // ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
+        // ->join('order_details','orders.OrderID',"=",'order_details.OrderID')
+        // ->join('products','products.ProductID',"=",'order_details.ProductID')
+        // ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Progress','orders.Total_Price',
+        //          'products.Name as ProductName','order_details.Qty','products.Price','products.ProductID')
+        // ->where('orders.OrderID', '=', $data->OrderID);
     
-        $data->update($request->except(['_token']));
-        return redirect()->route('orders.index');
+        // $data->update($request->except(['_token']));
+        // return redirect()->route('orders.index');
     }
 
 
