@@ -3,25 +3,26 @@
 @section('content')
 <div class="container" style="background :none !important ">
 <div class="row justify-content-center">
-        <div class="col-md">
-            <div class="card">
-                <div class="card-header">{{ __('Not Available Products') }}</div>
+<div class="col-md">
+<div class="card">
+<div class="card-header">{{ __('Not Available Products') }}</div>
+<div class="card-body">
 
-                <div class="card-body">
-
-    <br>
-    <form action="/Search_Products" method="GET" role="search">
-    {{ csrf_field() }}
-      <div class="input-group">
-        <input type="text" class="form-control" name="query" id="query" placeholder="Search  Stock Products Details"> <span class="input-group-btn">
-        <button type="submit" class="btn btn-default">
-        <span class="glyphicon glyphicon-search"></span>
-        </button>
-        </span> 
+  <br>
+     <form action="/Search_Products" method="GET" role="search">
+       {{ csrf_field() }}
+       <div class="input-group">
+           <input type="text" class="form-control" name="query" id="query" placeholder="Search  Stock Products Details"> <span class="input-group-btn">
+               <button type="submit" class="btn btn-default">
+               <span class="glyphicon glyphicon-search"></span>
+               </button>
+               </span> 
       </div>
     </form>
-    </br>
-    </br>
+
+  </br>
+  </br>
+
     <table>
     <tr >
       <th >Product Name</th>
@@ -43,12 +44,23 @@
     </td>
     </tr>
         @endforeach
-  </table>
+    </table>
   <br>
   <br>
+
+
   {{$data->links()}}
-  <div class="pull-right" style="text-align: right;color:blue">
-  <a href="{{ URL::previous() }}">Go Back</a>
-  </div>
-  </div></div></div></div></div></div>
+
+     <div class="pull-right" style="text-align: right;color:blue">
+         <a href="{{ URL::previous() }}">Go Back</a>
+     </div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 @endsection

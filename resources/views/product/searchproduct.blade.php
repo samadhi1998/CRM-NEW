@@ -3,11 +3,10 @@
 @section('content')
 <div class="container" style="background :none !important ">
 <div class="row justify-content-center">
-        <div class="col-md">
-            <div class="card">
-                <div class="card-header">{{ __('Search Products') }}</div>
-
-                <div class="card-body">
+<div class="col-md">
+<div class="card">
+<div class="card-header">{{ __('Search Products') }}</div>
+<div class="card-body">
 
 <table>
   <thead >
@@ -24,9 +23,9 @@
     </tr>
   </thead>
   <tbody>
-         @foreach($products as $product)
+@foreach($products as $product)
     <tr>                                                
-      <th scope="row">{{$product['AdminID']}}</th>
+      <th >{{$product['AdminID']}}</th>
       <td>{{$product['ProductID']}}</td>
       <td>{{$product['Name']}}</td>
       <td>{{$product['Brand']}}</td>
@@ -35,18 +34,24 @@
       <td>{{$product['Qty']}}</td>
       <td>{{$product['Description']}}</td>
       <td>{{$product['Status']}}</td>
-</tr>
+    </tr>
 @endforeach
-</tbody>
-</table>
+ </tbody>
+ </table>
 </br>
 </br>
 
 {{$products->links()}}
 
-<div class="pull-right" style="text-align: right;color:blue">
-  <a href="{{ URL::previous() }}">Go Back</a>
-  </div>
+     <div class="pull-right" style="text-align: right;color:blue">
+         <a href="{{ URL::previous() }}">Go Back</a>
+     </div>
 </br>
-</div></div></div></div></div></div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 @endsection
