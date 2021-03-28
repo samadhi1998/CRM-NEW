@@ -240,7 +240,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/note/viewnote">
+            <a class="nav-link" href="/ViewChargers">
               <span data-feather="dollar-sign"></span>
               Additional Charges
             </a>

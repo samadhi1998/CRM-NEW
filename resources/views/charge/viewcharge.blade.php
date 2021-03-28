@@ -1,11 +1,17 @@
 @extends('layouts.app')
 @section('title','View Charge')
+@section('header','View Additional Charges')
 @section('content')
+<div class="pull-left">
+    <a class="btn btn-primary" href="/addChargers">Add Charges <span data-feather="plus"></a>
+</div>
+<br>
+<br>
+<br>
 <div class="container" style="background :none !important ">
 <div class="row justify-content-center">
 <div class="col-md">
 <div class="card">
-<div class="card-header">{{ __('View Charges') }}</div>
 <div class="card-body">
 <br>
         <form action="/Search_Chargers" method="GET" role="search">
