@@ -55,7 +55,6 @@ class OrdersController extends Controller
 
 
 
-
     public function store(Request $request)
     {
         $request->validate([
@@ -96,7 +95,7 @@ class OrdersController extends Controller
  
 
 //     return back()->withStatus('The sale has been successfully completed.');
-// }
+// }`
       
     
     public function show(Order $order)
