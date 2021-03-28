@@ -32,12 +32,6 @@
 <div class="col-md">
 <div class="card">
 <div class="card-body">
-      <div class="pull-right" style="text-align: left;color:blue">
-   
-                 <a href="/addproduct" class="btn btn-primary"> Add Product <span data-feather="plus"></a>
-      
-      </div>
-  <br> 
 
 <br>
 <br>

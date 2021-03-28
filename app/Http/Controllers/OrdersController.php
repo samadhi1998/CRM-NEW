@@ -209,44 +209,20 @@ class OrdersController extends Controller
 
     public function progressedit($OrderID)
     {
-        // $orders =  DB::table('orders')  
-
-        // ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        // ->join('order_details','orders.OrderID',"=",'order_details.OrderID')
-        // ->join('products','products.ProductID',"=",'order_details.ProductID')
-        // ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Progress','orders.Total_Price',
-        //          'products.Name as ProductName','order_details.Qty','products.Price','products.ProductID')
-        // ->where('orders.OrderID', '=', $OrderID)
-        // ->first();   
-
-        // return view('orders.updateprogress',['orders'=>$orders]);
+        $data = order::find($OrderID);
+        return view('orders.updateprogress',['orders'=>$data]);
     }
 
     public function progressupdate(Request $request, Order $OrderID)
     {
-        // $data = order::find($request->input('OrderID'));
-        // $data->OrderID = $request->input('OrderID');
-        // $data->CustomerID = $request->input('CustomerID');
-        // $data->Progress = $request->input('Progress');
-        // $data->Due_date = $request->input('Due_date');
+        $data = order::find($request->input('OrderID'));
+        $data->OrderID = $request->input('OrderID');
+        $data->CustomerID = $request->input('CustomerID');
+        $data->Progress = $request->input('Progress');
+        $data->Due_date = $request->input('Due_date');
         
-        // $data->save();
+        $data->update();
 
-        // return redirect('/index');
-        // $data = order::find($request->input('OrderID'));
-
-        // $orders =  DB::table('orders')
-
-        // ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        // ->join('order_details','orders.OrderID',"=",'order_details.OrderID')
-        // ->join('products','products.ProductID',"=",'order_details.ProductID')
-        // ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Progress','orders.Total_Price',
-        //          'products.Name as ProductName','order_details.Qty','products.Price','products.ProductID')
-        // ->where('orders.OrderID', '=', $data->OrderID);
-    
-        // $data->update($request->except(['_token']));
-        // return redirect()->route('orders.index');
+        return redirect('/index');
     }
-
-
 }
