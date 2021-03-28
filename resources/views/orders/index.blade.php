@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="pull-left">
-    <a class="btn btn-primary" href="/addCustomer"> Add new order <span data-feather="plus"></a></a>
+    <a class="btn btn-primary" href="/searchordercustomer"> Add new order <span data-feather="plus"></a></a>
 </div>
 <br><br>
 

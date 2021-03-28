@@ -36,6 +36,9 @@ class OrdersController extends Controller
     }
 
    
+
+
+
     public function store(Request $request)
     {
         $request->validate([
@@ -46,14 +49,38 @@ class OrdersController extends Controller
     
         Order::create($request->all());
         order_detail::create($request->all());
-    
+      
         return redirect()->route('orders.index')
                         ->with('success','Order created successfully.');
 
                         DB::table('products')
                         ->where('ProductID', $content->ProductID)
-                        ->update(['Qty' => DB::raw('QTy - '.$content->Qty)]);
+                        ->update(['Qty' => DB::raw('Qty - '.$content->Qty)]);
     }
+//     public function store(order_detail $order_detail)
+//     {
+       
+    
+//         Order::create($request->all());
+//         $order_detail=order_detail::create($request->all());
+//         foreach ($order_detail->products as $sold_product){
+//         $product_ID = $sold_product->product->ProductID;
+//         $product_Qty = $sold_product->product->Qty;
+//         if($sold_product->Qty > $product_Qty) return back()->withError("The product '$product_ID' does not have enough stock. Only has $product_Qty units.");
+//     }
+
+//     foreach ($order_detail->products as $sold_product) {
+//         $sold_product->product->Qty -= $sold_product->Qty;
+//         $sold_product->product->save();
+//     }
+
+ 
+//     $order_detail->save();
+ 
+
+//     return back()->withStatus('The sale has been successfully completed.');
+// }
+      
     
     public function show(Order $order)
     {

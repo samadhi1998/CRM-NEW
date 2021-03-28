@@ -25,7 +25,12 @@
     <script src="{{ asset('js/dashboard.js') }}" defer></script>
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <link rel="stylesheet" href="{{asset('css/bootstrap-tagsinput.css')}}">
-<script src="{{ asset('js/bootstrap-tagsinput.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-tagsinput.js') }}"></script>
+
+    <!-- Thilini -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/<version>/slimselect.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/<version>/slimselect.min.css"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.23.0/slimselect.min.css" rel="stylesheet">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -36,6 +41,8 @@
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
     
+  
+
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -262,6 +269,10 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
+   
+<!--Thilini-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.23.0/slimselect.min.js"></script>
 
+    
 </body>
 </html>

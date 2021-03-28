@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title','Available Products')
-@section('header',' Available Products Details')
+@section('title','Re Order Products')
+@section('header','Re Order Products')
 @section('content')
 
 <br>
@@ -36,7 +36,7 @@
       <th >Price</th>
       <th >Quantity</th>
       <th >Warranty</th>
-    
+      <th >Action</th>
     </tr>
     @foreach( $data as $product)
     <tr>                                                
@@ -47,6 +47,8 @@
       <td>{{$product->Price}}</td>
       <td>{{$product->Qty}}</td>
       <td>{{$product->Warranty}}</td>
+      <td>  <a href= "/UpdateProducts/{{$product['ProductID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a> 
+      </td>
     </tr>
         @endforeach
   </table>

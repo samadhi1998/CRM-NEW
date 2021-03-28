@@ -95,3 +95,10 @@ input, textarea, select{
     background-color: rgba(226, 222, 222, 0.9) !important;
 } */
 
+.form-control-label{
+    color: #233554 !important;
+    font-weight: bold;
+}
+
+
+

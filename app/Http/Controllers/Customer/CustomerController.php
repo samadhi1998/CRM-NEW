@@ -7,7 +7,28 @@ use Illuminate\support\Facades\DB;
 use App\Models\customer;
 class CustomerController extends Controller
 {
+     public function index(){
+
+     
+        $customers = Customer::all();
+
+        return view('customer/customerorderdetail', compact('customers'));
+        
+        
+     }
+
     public function AddCustomer(Request $request){
+
+        $this->validate($request, [
+        
+            'Name'=>'required|min:1|max:25',
+            'NIC'=>'required',
+            'Address'=>'required|min:1|max:300',
+            'MobileNo'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'email' =>  'regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'
+           
+        ]);
+
      
         $customer=new customer;
         $customer->CustomerID=$request->CustomerID;
@@ -22,7 +43,7 @@ class CustomerController extends Controller
         } else {
             return ["Result"=>"operation failed"];
         }*/
-        return redirect('/create');
+        return redirect('/searchordercustomer');
     }
 
 
@@ -87,6 +108,11 @@ class CustomerController extends Controller
 
   function CustomerCount(){
     return DB::table ('customers')->count();
+
+  }
+
+  function customercheck(){
+    return('customer/customer');
 
   }
 }
