@@ -217,12 +217,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Quotations and Invoices
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
               <span data-feather="bar-chart-2"></span>
               Reports
             </a>
@@ -237,6 +231,24 @@
             <a class="nav-link" href="/note/viewnote">
               <span data-feather="file-text"></span>
               Notes
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/note/viewnote">
+              <span data-feather="message-circle"></span>
+              Chat
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/note/viewnote">
+              <span data-feather="dollar-sign"></span>
+              Additional Charges
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/note/viewnote">
+              <span data-feather="map"></span>
+              Map
             </a>
           </li>
         </ul>
