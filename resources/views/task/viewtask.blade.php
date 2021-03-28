@@ -2,9 +2,11 @@
 @section('title','View Task')
 @section('header','View Tasks')
 @section('content')
+@if(Auth::user()->can('add-task', App\Models\Task::class))
 <div class="pull-left">
     <a class="btn btn-primary" href="/Create-Task">Add new task <span data-feather="plus"></a>
 </div>
+@endif
 <br>
 <br>
 <div class="container" style="background :none !important ">

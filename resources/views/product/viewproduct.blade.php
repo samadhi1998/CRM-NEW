@@ -34,8 +34,7 @@
 <div class="card-body">
 
 <br>
-<br>
-<br>
+
 
     <form action="/Search_Products" method="GET" role="search">
           {{ csrf_field() }}
