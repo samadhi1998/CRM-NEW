@@ -78,7 +78,7 @@ Route::get('/chats', function () {
  Route::post('progressedit',[App\Http\Controllers\OrdersController::class,'progressupdate']);
  Route::get('delete',[App\Http\Controllers\Product\ProductController::class,'delete']);
 
- Route::post('check',[App\Http\Controllers\OrdersController::class,'customerorder']);
+ 
 //Route::get('find', [OrdersController::class,'findorder']);
 
 
@@ -122,7 +122,7 @@ Route::get('/Search_Customers',[App\Http\Controllers\Customer\CustomerController
 Route::get('/ViewCustomers',[App\Http\Controllers\Customer\CustomerController::class, 'ViewCustomers']);
 Route::get('/CustomerCount',[App\Http\Controllers\Customer\CustomerController::class,'CustomerCount']);
 Route::get('/searchordercustomer',[App\Http\Controllers\Customer\CustomerController::class,'index']);
-
+Route::post('check',[App\Http\Controllers\Customer\CustomerController::class,'customerorder']);
 
 Route::get('/addChargers', function () {
     return view('Charge/addcharge');

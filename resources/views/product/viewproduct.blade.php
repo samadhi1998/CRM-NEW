@@ -4,9 +4,9 @@
 @section('content')
 
 <div class="pull-left">
-@if(Auth::user()->can('add-product', App\Models\product::class))
+   @if(Auth::user()->can('add-product', App\Models\product::class))
     <a class="btn btn-primary" href="/addproduct">Add new product <span data-feather="plus"></a>
-    @endif
+  @endif
 </div>
 
 <div class="pull-right" style="text-align: right;">

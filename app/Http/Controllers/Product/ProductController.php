@@ -156,4 +156,36 @@ class ProductController extends Controller
 
     }
 
+
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'Due_date' => 'required',
+    //         'Progress'=>'required',
+    //         'Qty'=>'required',
+    //     ]);
+    
+    //      $productId=request('ProductID'); 
+    //      $qtyOld=DB::table('Products')->where('ProductID',$productId)->value('Qty');
+    //      $qty1=$request->get('Qty')-$qtyOld;
+    //      //this statement can be a error
+            
+    //     Order::create($request->all());
+    //     order_detail::create($request->all());
+       
+    //     return redirect()->route('orders.index')
+    //                     ->with('success','Order created successfully.');
+
+    //     DB::table('products')->where('ProductID', $content->ProductID)->update(['Qty' => DB::raw($qty1)]);
+    //}
+
+
+
+
+
+
+
+
+
+
 }
