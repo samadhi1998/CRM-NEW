@@ -16,6 +16,13 @@
                 <div class="card-body">
 <br>
 
+<div class="pull-right" style="text-align: right;color:blue">
+                                <a href="/addCustomer" class="btn btn-primary"> Add Customer</a>
+                            </div>
+
+                            <br>
+                            <br>
+
 <form action="/Search_Customers" method="GET" role="search">
 {{ csrf_field() }}
 <div class="input-group">

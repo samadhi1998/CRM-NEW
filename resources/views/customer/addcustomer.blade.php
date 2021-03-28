@@ -1,13 +1,6 @@
 @extends('layouts.app')
 @section('title','Add Customer')
 @section('content')
-
-
-        <!-- @foreach($errors->all() as $error)
-        <div class="alert alert-danger" role="alert">
-         {{$error}}
-          </div>
-           @endforeach -->
 <div class="container" style="background :none !important ">
 <div class="row justify-content-center">
 <div class="col-md">
@@ -18,26 +11,30 @@
 <br>
         <form method="POST" action="/addCustomer" id="myform">
             @csrf
-            
             <label for="Name" ><b> Customer Name : </b></label>
-            <input type="text" name="Name"  name="Name"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-            <br>
+            <input type="text" name="Name" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <span style="color :red">@error('Name'){{$message}}@enderror</span>
+            </br>
             <label for="MobileNo" ><b>Mobile Number : </b></label>
             <input type="text" name="MobileNo" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-            <br>
+            <span style="color :red">@error('MobileNo'){{$message}}@enderror</span>
+            </br>
             <label for="NIC" ><b>NIC : </b></label>
             <input type="text" name="NIC" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-            <br>
+            <span style="color :red">@error('NIC'){{$message}}@enderror</span>
+            </br>
             <label for="Email" ><b>Email : </b></label>
             <input type="text" name="Email" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-            <br>
+            <span style="color :red">@error('Email'){{$message}}@enderror</span>
+            </br>
             <label for="Address" ><b>Address : </b></label>
             <input type="text" name="Address" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-            <br>
+            <span style="color :red">@error('Address'){{$message}}@enderror</span>
+            </br>
             <br>
             <div class="text-right">
-             <button type="submit"  Value="Next"class="btn btn-primary">Next</button>	 			
-              </div>
+            <button type="submit"  Value="save"class="btn btn-primary">Save</button>	 			
+            </div>
             </form>
 </div></div></div></div></div></div>
 @endsection

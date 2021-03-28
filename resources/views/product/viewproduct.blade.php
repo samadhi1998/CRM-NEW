@@ -2,42 +2,44 @@
 @section('title','View Products')
 @section('header','Product Details')
 @section('content')
+
 <div class="pull-left">
 @if(Auth::user()->can('product.create', App\product::class))
     <a class="btn btn-primary" href="/addproduct">Add new product <span data-feather="plus"></a>
     @endif
 </div>
-  <div class="pull-right" style="text-align: right;">
-  <a class="btn btn-primary" href="/InStockProducts"> Available</a>
-  <a class="btn btn-primary"  href="/StockoutProducts">Re Order</a>
-  <a class="btn btn-primary" href="/notAvailableProducts">Not Available</a>
-  </div>
+
+<div class="pull-right" style="text-align: right;">
+    <a class="btn btn-primary" href="/InStockProducts"> Available</a>
+    <a class="btn btn-primary"  href="/StockoutProducts">Re Order</a>
+     <a class="btn btn-primary" href="/notAvailableProducts">Not Available</a>
+</div>
   <br>
   <br>
   <br>
+
 <div class="container " style="background :none !important ">
 <div class="row justify-content-center">
-        <div class="col-md">
-            <div class="card">
-                <!-- <div class="card-header">{{ __('View Product Details') }}</div> -->
+<div class="col-md">
+<div class="card">
+<!-- <div class="card-header">{{ __('View Product Details') }}</div> -->
+<div class="card-body">
 
-                <div class="card-body">
-
-    <br>
+  <br>
     <form action="/Search_Products" method="GET" role="search">
-      {{ csrf_field() }}
-      <div class="input-group">
+          {{ csrf_field() }}
+        <div class="input-group">
         <input type="text" class="form-control" name="query" id="query" placeholder="Search stock Products"> <span class="input-group-btn">
         <button type="submit" class="btn btn-default">
         <span class="glyphicon glyphicon-search"></span>
         </button>
         </span>
-      </div>
+        </div>
     </form>
   
 
-    </br>
-    </br>
+  </br>
+  </br>
 
   <table>
     <tr >
@@ -76,17 +78,19 @@
   </table>
   <br>
   <br>
+
   {{$products->links()}}
 
-  <div class="pull-right" style="text-align: right;color:blue">
-  <a href="{{ URL::previous() }}">Go Back</a>
-  </div>
-  </div></div></div></div></div></div>
+
+    <div class="pull-right" style="text-align: right;color:blue">
+      <a href="{{ URL::previous() }}">Go Back</a>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </br>
-
-<!-- ll -->
-</br>
-
-
-
 @endsection

@@ -10,43 +10,43 @@
 <div class="card-body">
 </br>
 
-                <div class="pull-right" style="text-align: right;color:blue">
-                                <a href="/addCustomer" class="btn btn-primary">Back to Add Customer</a>
-                            </div>
+    <div class="pull-right" style="text-align: right;color:blue">
+    <a href="/addCustomer" class="btn btn-primary">Back to Add Customer</a>
+    </div>
 
-                            <br>
-                            <br>
+<br>
+<br>
                             
-                 <form method="post"  action="check" autocomplete="off">
-                 @csrf
-
-                 <div class="form-group{{ $errors->has('CustomerID') ? ' has-danger' : '' }}">
-                     
+                <form method="post"  action="check" autocomplete="off">
+                   @csrf
                 <label class="form-control-label" for="input-name ">Customer Order Details</label>
-
-                <select name="CustomerID" id="input-category" class="form-select form-control-alternative{{ $errors->has('Name') ? ' is-invalid' : '' }}" required>
+                    <select name="CustomerID" id="input-category" class="form-select form-control-alternative{{ $errors->has('Name') ? ' is-invalid' : '' }}" required>
                             
-                                    @foreach ($customers as $customer)
-                                            @if($customer['CustomerID'] == old('customer'))
-                                                <option value="{{$customer['CustomerID']}}" selected>{{$customer['Name']}} - {{$customer['MobileNo']}}</option>
-                                            @else
-                                                <option value="{{$customer['CustomerID']}}">{{$customer['Name']}} - {{$customer['MobileNo']}}</option>
-                                            @endif
-                                        @endforeach 
+                         @foreach ($customers as $customer)
+                           @if($customer['CustomerID'] == old('customer'))
+                            <option value="{{$customer['CustomerID']}}" selected>{{$customer['Name']}} - {{$customer['MobileNo']}}</option>
+                           @else
+                            <option value="{{$customer['CustomerID']}}">{{$customer['Name']}} - {{$customer['MobileNo']}}</option>
+                           @endif
+                        @endforeach 
 
-                                    </select>
-                                   
-                           </div>
-                            <br>
-                            <br>
-            <div class="text-right">
-            <button type="submit"  Value="Continue" class="btn btn-primary">Continue</button>	 			
-            </div>
-            </form>
+                    </select>
+<br>
+<br>
+                 <div class="text-right">
+                 <button type="submit"  Value="Continue" class="btn btn-primary">Continue</button>	 			
+                 </div>
+                 </form>
 
-</div></div></div></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 @endsection
+
 @push('js')
     <script>
         new SlimSelect({
