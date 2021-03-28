@@ -1,15 +1,16 @@
 @extends('layouts.app')
 @section('title','Update Customer')
-@section('header','Update Customer Details')
 @section('content')
 
-
+<div class="container" style="background :none !important ">
 <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card">
-              <!-- <div class="card-header">{{ __('Update Products') }}</div> -->
-              <div class="card-body">
-        <div class="container"  style="background :none !important ">
+        <div class="col-md">
+            <div class="card">
+                <div class="card-header">{{ __('Update Customer') }}</div>
+
+                <div class="card-body">
+
+    <br>
 
         <!-- @foreach($errors->all() as $error)
         <div class="alert alert-danger" role="alert" >

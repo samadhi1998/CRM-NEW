@@ -1,20 +1,22 @@
 @extends('layouts.app')
 @section('title','Customer Information')
-@section('header','Customer Information')
 @section('content')
 
-<div class="container " style="background :none !important ">
+<div class="container" style="background :none !important ">
 <div class="row justify-content-center">
-        <div class="col-md">
-            <div class="card">
-                <div class="card-body">
+<div class="col-md">
+<div class="card">
+<div class="card-header">{{ __('Customer Informations') }}</div>
+<div class="card-body">
+</br>
+
                 <div class="pull-right" style="text-align: right;color:blue">
                                 <a href="/addCustomer" class="btn btn-primary">Back to Add Customer</a>
                             </div>
 
                             <br>
                             <br>
-                            <br>
+                            
                  <form method="post" action="" autocomplete="off">
                  @csrf
                  <div class="form-group{{ $errors->has('CustomerID') ? ' has-danger' : '' }}">
@@ -41,10 +43,7 @@
             </div>
             </form>
 
-
-
-
-</div></div></div></div></div>
+</div></div></div></div></div></div>
 
 @endsection
 <script>

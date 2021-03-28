@@ -1,11 +1,13 @@
 @extends('layouts.app')
 @section('title','Search Customer')
 @section('content')
-<h1 style="text-align: center; color:#233554">Customer Relationship Management System</h1>
-        <h2 style="text-align: center; color:#233554"> Searched Customer Details</h2>
-        <hr style="background-color:#233554; height: 5px">
-        <br>
-<div class="container">
+<div class="container" style="background :none !important ">
+<div class="row justify-content-center">
+        <div class="col-md">
+            <div class="card">
+                <div class="card-header">{{ __('Customer Details') }}</div>
+
+                <div class="card-body">
 
 <div class="table-responsive">
     <table class="table table-striped" borders="2">
@@ -40,5 +42,5 @@
   </div>
 </div>
 
-
+</div></div></div></div></div></div>
 @endsection

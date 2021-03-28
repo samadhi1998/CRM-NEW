@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title','Add Customer')
-@section('header','Add Customer Details')
 @section('content')
 
 
@@ -9,12 +8,14 @@
          {{$error}}
           </div>
            @endforeach -->
-           <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card">
-              <!-- <div class="card-header">{{ __('Add Customer') }}</div> -->
-              <div class="card-body">
-        <div class="container"  style="background :none !important ">
+<div class="container" style="background :none !important ">
+<div class="row justify-content-center">
+<div class="col-md">
+<div class="card">
+<div class="card-header">{{ __('Add Customer') }}</div>
+<div class="card-body">
+</br>
+<br>
         <form method="POST" action="/addCustomer" id="myform">
             @csrf
             
@@ -38,5 +39,5 @@
              <button type="submit"  Value="Next"class="btn btn-primary">Next</button>	 			
               </div>
             </form>
-        </div>
+</div></div></div></div></div></div>
 @endsection
