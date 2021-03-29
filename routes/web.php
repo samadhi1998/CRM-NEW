@@ -23,6 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/wait', function () {
+    return view('auth/wait');
+});
+
 
 
 Auth::routes();
