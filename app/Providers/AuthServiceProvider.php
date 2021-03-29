@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\product;
 use App\Models\Task;
 use App\Models\Order;
+use App\Models\extra_charge;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -12,6 +13,7 @@ use App\Policies\UserPolicy;
 use App\Policies\ProductPolicy;
 use App\Policies\TaskPolicy;
 use App\Policies\OrderPolicy;
+use App\Policies\extra_chargePolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         product::class => ProductPolicy::Class,
         Task::class => TaskPolicy::Class,
         Order::class => OrderPolicy::Class,
+        extra_charge::class => extra_chargePolicy::Class,
         // 'App\product' => 'App\Policies\ProductPolicy',
         
     ];
@@ -68,6 +71,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('show-Invoice-Quotation', [OrderPolicy::class, 'show']);
         Gate::define('update-progress', [OrderPolicy::class, 'updateprogress']);
 
+        //Extra Charge Premissions
+        Gate::define('add-charge', [TaskPolicy::class, 'create']);
+        Gate::define('view-charge', [TaskPolicy::class, 'viewAny']);
+        Gate::define('delete-charge', [TaskPolicy::class, 'delete']);
+        Gate::define('edit-charge', [TaskPolicy::class, 'update']);
     }
 
     

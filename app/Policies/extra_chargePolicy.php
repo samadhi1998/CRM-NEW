@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Task;
 use App\Models\User;
+use App\Models\extra_charge;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class TaskPolicy
+class extra_chargePolicy
 {
     use HandlesAuthorization;
 
@@ -31,10 +31,10 @@ class TaskPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\extra_charge  $extraCharge
      * @return mixed
      */
-    public function view(User $user, Task $task)
+    public function view(User $user, extra_charge $extraCharge)
     {
         //
     }
@@ -47,59 +47,41 @@ class TaskPolicy
      */
     public function create(User $user)
     {
-        foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 20){
-                return true;
-            }
-        }
-
-        return false;
+        //
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\extra_charge  $extraCharge
      * @return mixed
      */
-    public function update(User $user)
+    public function update(User $user, extra_charge $extraCharge)
     {
-        foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 21){
-                return true;
-            }
-        }
-
-        return false;
+        //
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\extra_charge  $extraCharge
      * @return mixed
      */
-    public function delete(User $user)
+    public function delete(User $user, extra_charge $extraCharge)
     {
-        foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 22){
-                return true;
-            }
-        }
-
-        return false;
+        //
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\extra_charge  $extraCharge
      * @return mixed
      */
-    public function restore(User $user, Task $task)
+    public function restore(User $user, extra_charge $extraCharge)
     {
         //
     }
@@ -108,10 +90,10 @@ class TaskPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\extra_charge  $extraCharge
      * @return mixed
      */
-    public function forceDelete(User $user, Task $task)
+    public function forceDelete(User $user, extra_charge $extraCharge)
     {
         //
     }
