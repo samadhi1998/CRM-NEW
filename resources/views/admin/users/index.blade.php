@@ -60,7 +60,6 @@
         @if(Auth::user()->can('delete-user', App\Models\User::class))
         <form action="{{route('users.destroy', $user->EmpID)}}" method="POST" >
           @csrf
-          @method('user.delete')
           <button type="submit" data-toggle="modal" data-target="#exampleModal2" style="margin:10px" class="text-my-own-color"><span data-feather="trash-2"></span></button>
           </form>
          @endif

@@ -44,7 +44,7 @@ Route::get('/Dashboard','App\Http\Controllers\OrdersController@dashboard');
 Route::get('/viewuser','App\Http\Controllers\Admin\UserController@index');
 Route::get('admin/users/edit/{EmpID}','App\Http\Controllers\Admin\UserController@edit')->name('editUser');
 Route::post('edit/{EmpID}','App\Http\Controllers\Admin\UserController@update');
-Route::post('delete/{EmpID}','App\Http\Controllers\Admin\UserController@destroy');
+Route::post('delete/{EmpID}','App\Http\Controllers\Admin\UserController@destroy')->name('users.destroy');
 Route::get('assignRole/{EmpID}','App\Http\Controllers\Admin\UserController@assignRole');
 Route::post('assignRole',[App\Http\Controllers\Admin\UserController::class,'addrole']);
 

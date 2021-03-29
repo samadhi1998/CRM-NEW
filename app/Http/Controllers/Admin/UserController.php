@@ -110,9 +110,7 @@ class UserController extends Controller
     {
         // $this->authorizeResource('delete', User::class);
         
-
         $data=user::find($EmpID);
-
         $data->delete();
         return redirect('/home');
     }
