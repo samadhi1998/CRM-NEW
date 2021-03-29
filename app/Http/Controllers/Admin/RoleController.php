@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Role;
 use App\Models\Priviledge;
 use App\Models\role_priviledges;
@@ -10,6 +11,9 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
+    public function __construct() {
+        $this->authorizeResource(Role::class, Role::class);
+    }
     /**
      * Display a listing of the resource.
      *

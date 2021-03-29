@@ -2,9 +2,12 @@
 @section('title','View Charge')
 @section('header','View Additional Charges')
 @section('content')
+
+@if(Auth::user()->can('add-charge', App\Models\extra_charge::class))
 <div class="pull-left">
     <a class="btn btn-primary" href="/addChargers">Add Charges <span data-feather="plus"></a>
 </div>
+@endif
 <br>
 <br>
 <br>
@@ -45,7 +48,12 @@
       <td>{{$extra_charges['Amount']}}</td>
       <td>{{$extra_charges['Description']}}</td>
       <td>
+      @if(Auth::user()->can('edit-charge', App\Models\extra_charge::class))
       <a href= "/UpdateChargers/{{$extra_charges['ExtraChargeID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>                               
+      @endif
+      @if(Auth::user()->can('delete-charge', App\Models\extra_charge::class))
+      <a href= "/UpdateChargers/{{$extra_charges['ExtraChargeID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="trash-2"></span></a>                               
+      @endif
       </td>
     </tr>
 @endforeach

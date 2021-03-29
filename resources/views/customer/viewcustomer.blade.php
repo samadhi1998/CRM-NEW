@@ -10,10 +10,11 @@
 <!-- <div class="card-header">{{ __('View Customer Details') }}</div> -->
 <div class="card-body">
 <br>
+@if(Auth::user()->can('add-customer', App\Models\customer::class))
            <div class="pull-right" style="text-align: right;color:blue">
                  <a href="/addCustomer" class="btn btn-primary"> Add Customer</a>
             </div>
-
+@endif
 <br>
 <br>
 
@@ -56,8 +57,12 @@
       <td>{{$customer['MobileNo']}}</td>
       <td>{{$customer['Email']}}</td>
       <td>
+      @if(Auth::user()->can('edit-customer', App\Models\customer::class))
           <a href="/editCustomer/{{$customer['CustomerID']}}" style="margin:2px" class="text-my-own-color"><i data-feather="edit"></i></a>
+      @endif
+      @if(Auth::user()->can('delete-customer', App\Models\customer::class))
           <a href="/deleteCustomer/{{$customer['CustomerID']}}" style="margin:10px" class="text-my-own-color"><i data-feather= "trash-2"></i></a>
+      @endif
       </td>
     
 </tr>

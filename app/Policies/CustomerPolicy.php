@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\extra_charge;
+use App\Models\customer;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class extra_chargePolicy
+class CustomerPolicy
 {
     use HandlesAuthorization;
 
@@ -19,7 +19,7 @@ class extra_chargePolicy
     public function viewAny(User $user)
     {
         foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 24){
+            if($priviledge->PriviledgeID == 40){
                 return true;
             }
         }
@@ -31,10 +31,10 @@ class extra_chargePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\extra_charge  $extraCharge
+     * @param  \App\Models\customer  $customer
      * @return mixed
      */
-    public function view(User $user, extra_charge $extraCharge)
+    public function view(User $user, customer $customer)
     {
         //
     }
@@ -48,7 +48,7 @@ class extra_chargePolicy
     public function create(User $user)
     {
         foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 23){
+            if($priviledge->PriviledgeID == 39){
                 return true;
             }
         }
@@ -60,13 +60,13 @@ class extra_chargePolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\extra_charge  $extraCharge
+     * @param  \App\Models\customer  $customer
      * @return mixed
      */
     public function update(User $user)
     {
         foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 25){
+            if($priviledge->PriviledgeID == 41){
                 return true;
             }
         }
@@ -78,13 +78,13 @@ class extra_chargePolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\extra_charge  $extraCharge
+     * @param  \App\Models\customer  $customer
      * @return mixed
      */
-    public function delete(User $user, extra_charge $extraCharge)
+    public function delete(User $user)
     {
         foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 26){
+            if($priviledge->PriviledgeID == 42){
                 return true;
             }
         }
@@ -96,10 +96,10 @@ class extra_chargePolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\extra_charge  $extraCharge
+     * @param  \App\Models\customer  $customer
      * @return mixed
      */
-    public function restore(User $user, extra_charge $extraCharge)
+    public function restore(User $user, customer $customer)
     {
         //
     }
@@ -108,10 +108,10 @@ class extra_chargePolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\extra_charge  $extraCharge
+     * @param  \App\Models\customer  $customer
      * @return mixed
      */
-    public function forceDelete(User $user, extra_charge $extraCharge)
+    public function forceDelete(User $user, customer $customer)
     {
         //
     }

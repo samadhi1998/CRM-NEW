@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers\charge;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use App\Models\extra_charge;
 
 class ChargeController extends Controller
 {
+
+    public function __construct() {
+        $this->authorizeResource(extra_charge::class, extra_charge::class);
+    }
 
     public function AddExtraChargers (Request $request) 
     {

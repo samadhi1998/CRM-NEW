@@ -172,12 +172,14 @@
                                     </a>
                                 </li>
                                 @endif
+                                @if(Auth::user()->can('view-customer', App\Models\customer::class))
                                 <li class="nav-item">
                                     <a class="nav-link" href="/ViewCustomers">
                                     <span data-feather="users"></span>
                                     Customers
                                     </a>
                                 </li>
+                                @endif
                                 <li class="nav-item">
                                 @if(Auth::user()->can('view-task', App\Models\Task::class))
                                     <a class="nav-link" href="/View-Task">
@@ -194,12 +196,14 @@
                                     </a>
                                 </li>
                                 @endif
+                                @if(Auth::user()->can('view-role', App\Models\Role::class))
                                 <li class="nav-item">
                                     <a class="nav-link" href="/View-Role">
                                     <span data-feather="settings"></span>
                                     Role Management
                                     </a>
                                 </li>
+                                @endif
                             </ul>
 
                             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -239,12 +243,14 @@
               Chat
             </a>
           </li>
+          @if(Auth::user()->can('view-charge', App\Models\extra_charge::class))
           <li class="nav-item">
             <a class="nav-link" href="/ViewChargers">
               <span data-feather="dollar-sign"></span>
               Additional Charges
             </a>
           </li>
+          @endif
           <li class="nav-item">
             <a class="nav-link" href="/note/viewnote">
               <span data-feather="map"></span>

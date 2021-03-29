@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 use App\Models\customer;
@@ -12,6 +13,11 @@ use App\Models\order_detail;
 
 class CustomerController extends Controller
 {
+
+    public function __construct() {
+        $this->authorizeResource(customer::class, customer::class);
+    }
+
      public function index(){
 
      

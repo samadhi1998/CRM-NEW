@@ -5,6 +5,8 @@ use App\Models\User;
 use App\Models\product;
 use App\Models\Task;
 use App\Models\Order;
+use App\Models\Role;
+use App\Models\customer;
 use App\Models\extra_charge;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -14,6 +16,8 @@ use App\Policies\ProductPolicy;
 use App\Policies\TaskPolicy;
 use App\Policies\OrderPolicy;
 use App\Policies\extra_chargePolicy;
+use App\Policies\RolePolicy;
+use App\Policies\CustomerPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -28,6 +32,8 @@ class AuthServiceProvider extends ServiceProvider
         Task::class => TaskPolicy::Class,
         Order::class => OrderPolicy::Class,
         extra_charge::class => extra_chargePolicy::Class,
+        Role::class => RolePolicy::Class,
+        customer::class => CustomerPolicy::Class,
         // 'App\product' => 'App\Policies\ProductPolicy',
         
     ];
@@ -72,10 +78,23 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('update-progress', [OrderPolicy::class, 'updateprogress']);
 
         //Extra Charge Premissions
-        Gate::define('add-charge', [TaskPolicy::class, 'create']);
-        Gate::define('view-charge', [TaskPolicy::class, 'viewAny']);
-        Gate::define('delete-charge', [TaskPolicy::class, 'delete']);
-        Gate::define('edit-charge', [TaskPolicy::class, 'update']);
+        Gate::define('add-charge', [extra_chargePolicy::class, 'create']);
+        Gate::define('view-charge', [extra_chargePolicy::class, 'viewAny']);
+        Gate::define('delete-charge', [extra_chargePolicy::class, 'delete']);
+        Gate::define('edit-charge', [extra_chargePolicy::class, 'update']);
+
+        //Roles and Permission Premissions
+        Gate::define('add-role', [RolePolicy::class, 'create']);
+        Gate::define('view-role', [RolePolicy::class, 'viewAny']);
+        Gate::define('delete-role', [RolePolicy::class, 'delete']);
+        Gate::define('edit-role', [RolePolicy::class, 'update']);
+
+        //Customer Premissions
+        Gate::define('add-customer', [CustomerPolicy::class, 'create']);
+        Gate::define('view-customer', [CustomerPolicy::class, 'viewAny']);
+        Gate::define('delete-customer', [CustomerPolicy::class, 'delete']);
+        Gate::define('edit-customer', [CustomerPolicy::class, 'update']);
+
     }
 
     

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Order;
 use App\Models\product;
 use App\Models\customer;
@@ -15,6 +16,10 @@ use Mail;
 
 class OrdersController extends Controller
 {
+    public function __construct() {
+        $this->authorizeResource(Order::class, Order::class);
+    }
+
     public function index()
     {
         $orders =  DB::table('orders')
