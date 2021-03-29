@@ -17,7 +17,7 @@
 <br>
 <br>
                             
-                <form method="post"  action="check" autocomplete="off">
+                <form method="post"  action= "check" autocomplete="off">
                    @csrf
                 <label class="form-control-label" for="input-name ">Customer Order Details</label>
                     <select name="CustomerID" id="input-category" class="form-select form-control-alternative{{ $errors->has('Name') ? ' is-invalid' : '' }}" required>

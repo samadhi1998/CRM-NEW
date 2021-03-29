@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 use App\Models\Order;
 use App\Models\product;
 use App\Models\customer;
@@ -16,11 +15,6 @@ use Mail;
 
 class OrdersController extends Controller
 {
-
-    public function __construct() {
-        $this->authorizeResource(Order::class, Order::class);
-    }
-
     public function index()
     {
         $orders =  DB::table('orders')
@@ -41,7 +35,6 @@ class OrdersController extends Controller
         return view('orders/create');
     }
 
-
     public function store(Request $request)
     {
         $request->validate([
@@ -50,21 +43,18 @@ class OrdersController extends Controller
             'Qty'=>'required',
         ]);
     
-         $productId=request('ProductID'); 
-         $qtyOld=DB::table('Products')->where('ProductID',$productId)->value('Qty');
-         $qty1=$request->get('Qty')-$qtyOld;
-         //this statement can be a error
-            
         Order::create($request->all());
         order_detail::create($request->all());
-       
+    
         return redirect()->route('orders.index')
                         ->with('success','Order created successfully.');
 
-        DB::table('products')->where('ProductID', $content->ProductID)->update(['Qty' => DB::raw($qty1)]);
+                        DB::table('products')
+                        ->where('ProductID', $content->ProductID)
+                        ->update(['Qty' => DB::raw('QTy - '.$content->Qty)]);
     }
 
-      
+
     
     public function show(Order $order)
     {

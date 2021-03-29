@@ -13,23 +13,22 @@
             @csrf
             <label for="Name" ><b> Customer Name : </b></label>
             <input type="text" name="Name" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-            <span style="color :red">@error('Name'){{$message}}@enderror</span>
+            
             </br>
             <label for="MobileNo" ><b>Mobile Number : </b></label>
             <input type="text" name="MobileNo" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-            <span style="color :red">@error('MobileNo'){{$message}}@enderror</span>
+           
             </br>
             <label for="NIC" ><b>NIC : </b></label>
             <input type="text" name="NIC" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-            <span style="color :red">@error('NIC'){{$message}}@enderror</span>
-            </br>
+           
             <label for="Email" ><b>Email : </b></label>
             <input type="text" name="Email" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-            <span style="color :red">@error('Email'){{$message}}@enderror</span>
+           
             </br>
             <label for="Address" ><b>Address : </b></label>
             <input type="text" name="Address" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-            <span style="color :red">@error('Address'){{$message}}@enderror</span>
+          
             </br>
             <br>
             <div class="text-right">

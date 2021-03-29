@@ -24,15 +24,15 @@ class CustomerController extends Controller
      
      public function AddCustomer(Request $request){
 
-        $request->validate( [
+        // $request->validate( [
         
-            'Name'=>'required|min:1|max:25',
-            'NIC'=>'required|unique:customers|regex:/^[0-9]{9}[vVxX]$/|min:10',
-            'Address'=>'required|min:1|max:300',
-            'MobileNo'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
-            'email' =>  'required|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix|unique:customers|max:350'
+        //     'Name'=>'required|min:1|max:25',
+        //     'NIC'=>'required|unique:customers|regex:/^[0-9]{9}[vVxX]$/|min:10',
+        //     'Address'=>'required|min:1|max:300',
+        //     'MobileNo'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+        //     'email' =>  'required|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix|unique:customers|max:350'
            
-        ]);
+        // ]);
 
      
         $customer=new customer;
@@ -121,23 +121,23 @@ class CustomerController extends Controller
 
   }
 
-   // public function customerorder(Request $request, Order $model)
-    // {
-    //     $existent = Order::where('CustomerID', $request->get('CustomerID'))->get();
-    //     $customer = DB::table('customers')->where('CustomerID', $request->get('CustomerID'))->value('CustomerID');
+   public function customerorder(Request $request, Order $model)
+     {
+         $existent = Order::where('CustomerID', $request->get('CustomerID'))->get();
+         $customer = DB::table('customers')->where('CustomerID', $request->get('CustomerID'))->value('CustomerID');
 
 
-    //     if($existent->count()) {
-    //         return redirect()
-    //         ->route('/create', ['customers' => $customer]);
-    //     }
+        if($existent->count()) {
+            return redirect()
+           ->route('orders.create', ['customers' => $customer]);
+         }
 
-    //     $Order = $model->create($request->all());
+        $Order = $model->create($request->all());
         
-    //     return redirect()
-    //         ->route('/create', ['Order' => $Order->CustomerID]);
+         return redirect()
+           ->route('orders.create', ['Order' => $Order->CustomerID]);
             
-    // }
+     }
   
 
 
