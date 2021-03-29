@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 use DB;
+use App\Models\Role;
+use App\Models\Priviledge;
 use Illuminate\Database\Seeder;
 
 class RoleSeeder extends Seeder
@@ -13,14 +15,14 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('roles')->insert([
+        $role = Role::insert([
             [
-                'name'=>'Admin',
+                'name'=>'Super-Admin',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ]
         ]);
 
-
+        
     }
 }

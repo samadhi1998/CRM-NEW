@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('MobileNo');
             $table->string('EmpType')->nullable();
             $table->string('password');
-            $table->string('Status')->nullable();
+            $table->string('Status')->nullable()->default("Active");
             $table->string('Added_By')->nullable();
             $table->unsignedBigInteger('RoleID')->nullable();
             $table->foreign('RoleID')->references('RoleID')->on('roles');
