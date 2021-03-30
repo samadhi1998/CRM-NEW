@@ -84,7 +84,7 @@
                         @endguest
                     </ul>
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav px-3  justify-content-end">
+                    <ul class="navbar-nav px-3  justify-content-end ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -100,12 +100,39 @@
                             @endif
                         @else
                         
-                          <div class="dropdown mr-sm-2" id="nav-toggle" class="nav-item">
-                              <a id="notification-clock" role="button" data-toggle="dropdown" >
-                                  <span data-feather="bell"></span>
-                              </a>
-                              </div>
-                            <li class="nav-item dropdown my-sm-0">
+                          
+                              <li class="nav-item dropdown ml-2">
+                              <?php $notifications = auth()->user()->unreadNotifications; ?>
+                                <a id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <span data-feather="bell"></span> <b>{{$notifications->count()}}</b>
+                                </a>
+                               
+                                <ul class="dropdown-menu">
+                                  <li class="head text-light bg-dark">
+                                    <div class="row">
+                                      <div class="col-lg-12 col-sm-12 col-12">
+                                        <span>Notifications ({{ $notifications->count()}})</span>
+                                        <a href="" class="float-right text-light" > Mark all as read</a>
+                                      </div>
+                                  </li>
+                                  
+                                  @foreach($notifications as $notification)
+                                  <li class="notification-box">
+                                    <div class="row justify-content-center">    
+                                      <div class="alert alert-success" role="alert">
+                                            [{{ $notification->created_at }}] A new user has just registered.
+                                            <br>
+                                            <a href="/mark-as-read" class="float-right mark-as-read" data-id="{{ $notification->id }}">
+                                                Mark as read
+                                            </a>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  @endforeach
+                                </ul>
+                              </li>
+                              
+                            <li class="nav-item dropdown ml-10">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                    <b>{{ Auth::user()->name }}</b> 
                                 </a>
@@ -284,6 +311,34 @@
        
     </div>
     </div>
+
+   
+    <script>
+    function sendMarkRequest(id = null) {
+        return $.ajax("{{ route('markNotification') }}", {
+            method: 'POST',
+            data: {
+                _token,
+                id
+            }
+        });
+    }
+    $(function() {
+        $('.mark-as-read').click(function() {
+            let request = sendMarkRequest($(this).data('id'));
+            request.done(() => {
+                $(this).parents('div.alert').remove();
+            });
+        });
+        $('#mark-all').click(function() {
+            let request = sendMarkRequest();
+            request.done(() => {
+                $('div.alert').remove();
+            })
+        });
+    });
+    </script>
+
     <footer class="footer text-center pt-3 pb-3 fixed-bottom">
                 © 2021 CRM by She Squad
             </footer>

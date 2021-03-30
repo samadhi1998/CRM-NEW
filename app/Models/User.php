@@ -53,5 +53,9 @@ class User extends Authenticatable
     }
 
     
+    public function getIsAdminAttribute()
+    {
+        return $this->roles()->where('RoleID', 1)->exists();
+    }
 
 }

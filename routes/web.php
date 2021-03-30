@@ -32,6 +32,7 @@ Route::get('/wait', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/mark-as-read', [App\Http\Controllers\HomeController::class, 'markNotification'])->name('markNotification');
 
 //Route::get('/home', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('home');
 
