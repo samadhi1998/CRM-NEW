@@ -312,32 +312,6 @@
     </div>
     </div>
 
-   
-    <script>
-    function sendMarkRequest(id = null) {
-        return $.ajax("{{ route('markNotification') }}", {
-            method: 'POST',
-            data: {
-                _token,
-                id
-            }
-        });
-    }
-    $(function() {
-        $('.mark-as-read').click(function() {
-            let request = sendMarkRequest($(this).data('id'));
-            request.done(() => {
-                $(this).parents('div.alert').remove();
-            });
-        });
-        $('#mark-all').click(function() {
-            let request = sendMarkRequest();
-            request.done(() => {
-                $('div.alert').remove();
-            })
-        });
-    });
-    </script>
 
     <footer class="footer text-center pt-3 pb-3 fixed-bottom">
                 © 2021 CRM by She Squad

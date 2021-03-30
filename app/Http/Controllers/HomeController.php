@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use Carbon\Carbon;
 use App\Models\User;
@@ -51,14 +52,13 @@ class HomeController extends Controller
 
     public function markNotification(Request $request)
     {
-        auth()->user()
-            ->unreadNotifications
-            ->when($request->input('id'), function ($query) use ($request) {
-                return $query->where('id', $request->input('id'));
-            })
-            ->markAsRead();
-
-        return response()->noContent();
+        
+        $user = Auth::user();
+      
+        $notification = $user->unreadNotifications->where('id')->first();
+        
+        $notification->markAsRead();
+        
 
         return redirect()->back();
     }

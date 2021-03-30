@@ -53,6 +53,8 @@ class TaskController extends Controller
         $task->Due_Date=$request->Due_Date;
         $task->ServicePersonID=$request->EmpID;
         $result=$task->save();
+
+        $user->sendTaskAddedNotification($task);
        /* if ($result) {
             return ["Result"=>"Data has been saved"];
         } else {
