@@ -63,4 +63,17 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
+    public function markAllNotification(Request $request)
+    {
+        
+        $user = Auth::user();
+      
+        $notification = $user->unreadNotifications;
+        
+        $notification->markAsRead();
+        
+
+        return redirect()->back();
+    }
+
 }
