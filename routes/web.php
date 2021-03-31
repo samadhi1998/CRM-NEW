@@ -96,8 +96,9 @@ Route::get('/Delete_Products/{ProductID}',[App\Http\Controllers\Product\ProductC
 Route::get('/StockoutProducts',[App\Http\Controllers\Product\ProductController::class,'stockOut']);
 Route::get('/InStockProducts',[App\Http\Controllers\Product\ProductController::class,'instock']);
 Route::get('/notAvailableProducts',[App\Http\Controllers\Product\ProductController::class,'notavailable']);
-
-
+Route::resource('products',ProductController::class);
+Route::get('ProductInformation/{ProductID}',[App\Http\Controllers\Product\ProductController::class,'ProductInfo']);
+//Route::get('/ProductInformation',[App\Http\Controllers\Product\ProductController::class,'ProductInfo']);
 
 Route::get('/addNote', function () {
     return view('notes/createnote');
@@ -124,15 +125,19 @@ Route::get('/CustomerCount',[App\Http\Controllers\Customer\CustomerController::c
 Route::get('/searchordercustomer',[App\Http\Controllers\Customer\CustomerController::class,'index']);
 Route::post('check',[App\Http\Controllers\Customer\CustomerController::class,'customerorder']);
 
-Route::get('/addChargers', function () {
-    return view('Charge/addcharge');
+ Route::get('/addChargers', function () {
+     return view('Charge/addcharge');
 });
+
+Route::resource('extra_charge',ChargeController::class);
+//Route::get('/addChargers',[App\Http\Controllers\charge\ChargeController::class,'AddExtraChargers']);
 Route::post('/addChargers',[App\Http\Controllers\charge\ChargeController::class,'AddExtraChargers']);
 Route::get('/ViewChargers',[App\Http\Controllers\charge\ChargeController::class,'ViewChargers']);
 Route::post('/updateChargers',[App\Http\Controllers\charge\ChargeController::class,'ShowUpdateExtraChargers']);
 Route::get('/UpdateChargers/{ExtraChargeID}',[App\Http\Controllers\charge\ChargeController::class, 'UpdateChargers']);
 Route::get('/Search_Chargers',[App\Http\Controllers\charge\ChargeController::class,'SearchChargers']);
 
+Route::get('ExtrachargeInformation/{OrderID}',[App\Http\Controllers\charge\ChargeController::class,'ChargeInfo']);
 
 
 Route::resource('tasks','App\Http\Controllers\TaskController');

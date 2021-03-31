@@ -31,28 +31,35 @@ class OrdersController extends Controller
 
     
     public function create()
+
     {   
         return view('orders/create');
     }
-
     public function store(Request $request)
     {
-        $request->validate([
-            'Due_date' => 'required',
-            'Progress'=>'required',
-            'Qty'=>'required',
-        ]);
-    
+        $existent = Order::where('CustomerID', $request->get('CustomerID'))->get();
+        $customer = DB::table('customers')->where('CustomerID', $request->get('CustomerID'))->value('Name');
+
+     
+       $Order = $model->create($request->all());
+       
+        return redirect()
+          ->route('orders.create', ['Order' => $Order->CustomerID]);
+        
         Order::create($request->all());
         order_detail::create($request->all());
-    
+        
+       // $productId=request('ProductID'); 
+          $productId= order::find($request->input('ProductID'));
+        $qtyOld=DB::table('Products')->where('ProductID','=',$productId)->value('Qty');
+        $qty1=$request->get('Qty')-$qtyOld;
+       
         return redirect()->route('orders.index')
                         ->with('success','Order created successfully.');
 
-                        DB::table('products')
-                        ->where('ProductID', $content->ProductID)
-                        ->update(['Qty' => DB::raw('QTy - '.$content->Qty)]);
+     DB::table('products')->where('ProductID',$productId)->update(['Qty' => DB::raw($qty1)]);
     }
+
 
 
     
@@ -213,7 +220,7 @@ class OrdersController extends Controller
     }
 
     public function progressupdate(Request $request, Order $OrderID)
-    {
+    {  
         $data = order::find($request->input('OrderID'));
 
         $orders =  DB::table('orders')

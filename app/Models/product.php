@@ -12,4 +12,9 @@ class product extends Model
     protected $primaryKey = "ProductID";
     protected $fillable = ['ProductID','Name','Brand','image','Description','Price','Qty','Status','AdminID'];
     
+    public function users()
+    {
+        return $this->belongsTo(User::class,'EmpID');
+    }
+    
 }

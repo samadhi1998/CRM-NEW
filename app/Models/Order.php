@@ -30,4 +30,7 @@ class Order extends Model
         return $this->belongsTo(Note::class);
     }
 
+
+
+    
 }

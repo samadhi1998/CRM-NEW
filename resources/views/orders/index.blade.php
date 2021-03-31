@@ -50,40 +50,41 @@
             <td>{{ $order->Progress }}</td>
             <td>
 
-            @if(Auth::user()->can('view-order-deatils', App\Models\Order::class))
+           
             <div class="btn-group" role="group">
                 <a href="http://127.0.0.1:8000/view"  style="margin:2px" class="text-my-own-color"><span data-feather ="eye"></span></a>
             </div>
-            @endif
+          
 
-            @if(Auth::user()->can('show-Invoice-Quotation', App\Models\Order::class))
+           
             <div class="btn-group" role="group">
                 <a href="{{ route('orders.show',$order->OrderID) }}" style="margin:2px" class="text-my-own-color"><span data-feather ="file-text"></span></a>
             </div>
-            @endif
-
-            @if(Auth::user()->can('edit-order', App\Models\Order::class))
+           
+           
             <div class="btn-group" role="group">
                 <a href="{{ route('orders.edit',$order->OrderID) }}"  style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>
             </div>
-            @endif
+           
 
-            @if(Auth::user()->can('update-progress', App\Models\Order::class))
+           
             <div>
                 <a href= "progressedit/{{$order->OrderID}}" class="text-my-own-color"><span data-feather="edit-3"> </span></a>
             </div>
-            @endif
-
-            @if(Auth::user()->can('delete-order', App\Models\Order::class))
+           
+            <div>
+            <a href= "ExtrachargeInformation/{{$order->OrderID}}" style="margin:10px" class="text-my-own-color"><span data-feather ="dollar-sign"></span></a> 
+          
+            </div>
+           
             <div class="btn-group" role="group">
-                <form action="{{route('orders.destroy', $order->OrderID)}}" method="POST">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" data-toggle="modal" a href= "{{route('orders.destroy', $order->OrderID)}}" style="margin:10px" class="text-my-own-color"><span data-feather ="trash-2"></span></a>
+             <form action="{{route('orders.destroy', $order->OrderID)}}" method="POST">
+                   
+            <button type="submit" data-toggle="modal" a href= "{{route('orders.destroy', $order->OrderID)}}" style="margin:10px" class="text-my-own-color"><span data-feather ="trash-2"></span></a>
                 </form>
             </div> 
-            @endif
-            
+
+         
             </td>    
          </tr>   
 
