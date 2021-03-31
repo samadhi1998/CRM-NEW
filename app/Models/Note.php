@@ -15,6 +15,11 @@ class Note extends Model
         return $this->hasmany(Order::class, 'orders');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'users');
+    }
+
     protected $primaryKey = 'NoteID';
 
 }

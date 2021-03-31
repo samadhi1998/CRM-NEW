@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
+use App\Models\User;
 use App\Models\Order;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class NoteController extends Controller
 {
+    public function __construct() {
+        $this->authorizeResource(Note::class, Note::class);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -55,10 +61,17 @@ class NoteController extends Controller
     //     ->with('orders',order::all());
     // }
 
-    public function ViewNote()
+    public function index()
     {
-        $data=note::paginate(5);
-        return  view('notes/viewnote', ['notes'=>$data]);
+        $note = Note::where('Added_By','=', Auth::user()->EmpID)->get();
+
+        if(Auth::user()->roles->name == 'Super-Admin'){
+            $note = Note::all();
+        }
+        
+        return  view('notes/viewnote', ['notes'=>$note]);
+
+       
     }
       
     public function UpdateNote($NoteID)
@@ -87,13 +100,5 @@ class NoteController extends Controller
         return redirect('/note/viewnote');
     }
 
-    public function joinNotes(Note $note)
-    {
-        // return DB::table('orders')->get();
-           return DB::table('orders')
-          ->join('notes','orders.OrderID',"=",'notes.OrderID')
-          ->select('orders.OrderID')
-          ->where('orders.orderID',1)
-          ->get();   
-    }
+
 }

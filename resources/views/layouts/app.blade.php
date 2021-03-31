@@ -258,12 +258,14 @@
               Feedbacks
             </a>
           </li>
+          @if(Auth::user()->can('view-note', App\Models\Note::class))
           <li class="nav-item">
             <a class="nav-link" href="/note/viewnote">
               <span data-feather="file-text"></span>
               Notes
             </a>
           </li>
+          @endif
           <li class="nav-item">
             <a class="nav-link" href="/note/viewnote">
               <span data-feather="message-circle"></span>

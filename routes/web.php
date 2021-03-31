@@ -110,7 +110,7 @@ Route::get('/addNote', function () {
     return view('notes/createnote');
 });
 Route::post('/addNote',[App\Http\Controllers\NoteController::class,'AddNote']);
-Route::get('/note/viewnote',[App\Http\Controllers\NoteController::class,'ViewNote']);
+Route::get('/note/viewnote',[App\Http\Controllers\NoteController::class,'index']);
 Route::get('/UpdateNote/{NoteID}',[App\Http\Controllers\NoteController::class,'UpdateNote']);
 Route::post('/UpdateNote',[App\Http\Controllers\NoteController::class,'ShowUpdatesNotes']);
 Route::get('/DeleteNote/{NoteID}',[App\Http\Controllers\NoteController::class,'deleteNote']);

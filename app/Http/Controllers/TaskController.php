@@ -24,7 +24,7 @@ class TaskController extends Controller
         
         $data = Task::where('ServicePersonID','=', Auth::user()->EmpID)->get();
         
-        if(Auth::user()->roles->name == 'Super-Admin' || Auth::user()->can('edit-task', App\Models\Task::class) ){
+        if(Auth::user()->roles->name == 'Super-Admin' || Auth::user()->can('add-task', App\Models\Task::class) ){
             $data = task::all();
         }
         

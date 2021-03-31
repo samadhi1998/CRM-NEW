@@ -4,6 +4,7 @@ namespace App\Providers;
 use App\Models\User;
 use App\Models\product;
 use App\Models\Task;
+use App\Models\Note;
 use App\Models\Order;
 use App\Models\Role;
 use App\Models\customer;
@@ -17,6 +18,7 @@ use App\Policies\TaskPolicy;
 use App\Policies\OrderPolicy;
 use App\Policies\extra_chargePolicy;
 use App\Policies\RolePolicy;
+use App\Policies\NotePolicy;
 use App\Policies\CustomerPolicy;
 
 class AuthServiceProvider extends ServiceProvider
@@ -34,6 +36,7 @@ class AuthServiceProvider extends ServiceProvider
         extra_charge::class => extra_chargePolicy::Class,
         Role::class => RolePolicy::Class,
         customer::class => CustomerPolicy::Class,
+        Note::class => NotePolicy::Class,
         // 'App\product' => 'App\Policies\ProductPolicy',
         
     ];
@@ -94,6 +97,13 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('view-customer', [CustomerPolicy::class, 'viewAny']);
         Gate::define('delete-customer', [CustomerPolicy::class, 'delete']);
         Gate::define('edit-customer', [CustomerPolicy::class, 'update']);
+
+        //Note Premissions
+        Gate::define('add-note', [NotePolicy::class, 'create']);
+        Gate::define('view-note', [NotePolicy::class, 'viewAny']);
+        Gate::define('delete-note', [NotePolicy::class, 'delete']);
+        Gate::define('edit-note', [NotePolicy::class, 'update']);
+
 
     }
 
