@@ -40,7 +40,9 @@
       <td>{{$product->Brand}}</td>
       <td>{{$product->Price}}</td>
       <td>{{$product->Warranty}}</td>
-      <td>  <a href= "/UpdateProducts/{{$product['ProductID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a> 
+      <td>  <a href= "/UpdateProducts/{{$product['ProductID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>
+      <a href="/ProductInfomation/{{$product['ProductID']}}"  style="margin:2px" class="text-my-own-color"><span data-feather ="eye"></span></a>
+ 
     </td>
     </tr>
         @endforeach

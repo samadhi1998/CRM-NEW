@@ -181,7 +181,18 @@ class ProductController extends Controller
 
 
 
-
+    public function ProductInfo(product $product)
+    {
+        $products=  DB::table('Products')  
+        ->join('users','products.AdminID',"=",'users.EmpID')
+        ->select('products.AdminID','users.name','users.MobileNo','users.email','products.ProductID' ,
+        'Products.Created_at','Products.Name','Products.Brand','Products.Description',
+        'Products.Warranty','Products.Price','Products.Qty','Products.Status')
+       
+        ->where('products.ProductID', '=',$product['ProductID'])
+        ->get();   
+        return view('product.productInformation',['products'=>$products]);
+    }
 
 
 

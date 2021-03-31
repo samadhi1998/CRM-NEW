@@ -8,15 +8,20 @@
 <div class="card-header">{{ __('Add Charges') }}</div>
 <div class="card-body">
 <div class="container"  style="background :none !important ">
-<form method="POST" action="/addChargers">
- @csrf
 
-            
+             
+              
+              <form method="POST" action="/addChargers">
+              @csrf
+               
             <label for="OrderID" ><b> Order ID : </b></label>
             <input type="text" name="OrderID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
             <br>
             <label for="ServicePersonID" ><b>ServicePerson ID : </b></label>
             <input type="text" name="ServicePersonID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <br>
+            <label for="Amount" ><b>Amount : </b></label>
+            <input type="number" name="Amount" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
             <br>
             <label for="Type"><b>Type : </b></label>
             <select  name="Type" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >

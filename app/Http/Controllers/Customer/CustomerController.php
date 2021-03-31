@@ -130,13 +130,13 @@ class CustomerController extends Controller
    public function customerorder(Request $request, Order $model)
      {
          $existent = Order::where('CustomerID', $request->get('CustomerID'))->get();
-         $customer = DB::table('customers')->where('CustomerID', $request->get('CustomerID'))->value('CustomerID');
+         $customer = DB::table('customers')->where('CustomerID', $request->get('CustomerID'))->value('Name');
 
 
-        if($existent->count()) {
-            return redirect()
-           ->route('orders.create', ['customers' => $customer]);
-         }
+        // if($existent->count()) {
+        //     return redirect()
+        //    ->route('orders.create', ['customers' => $customer]);
+        //  }
 
         $Order = $model->create($request->all());
         

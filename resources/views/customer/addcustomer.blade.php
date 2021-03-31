@@ -12,22 +12,22 @@
         <form method="POST" action="/addCustomer" id="myform">
             @csrf
             <label for="Name" ><b> Customer Name : </b></label>
-            <input type="text" name="Name" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="Name" value="{{ old(' Name ') }}" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
             
             </br>
             <label for="MobileNo" ><b>Mobile Number : </b></label>
-            <input type="text" name="MobileNo" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="MobileNo"  value="{{ old(' MobileNo ') }}"required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
            
             </br>
             <label for="NIC" ><b>NIC : </b></label>
-            <input type="text" name="NIC" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="NIC" value="{{ old(' NIC ') }}" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
            
             <label for="Email" ><b>Email : </b></label>
-            <input type="text" name="Email" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="Email" value="{{ old('Email') }}" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
            
             </br>
             <label for="Address" ><b>Address : </b></label>
-            <input type="text" name="Address" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+            <input type="text" name="Address" value="{{ old('Address') }}" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
           
             </br>
             <br>
