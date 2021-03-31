@@ -26,6 +26,6 @@ class SendTaskAddedNotification
      */
     public function handle($task)
     {
-        $this->notify(new TaskAdded($task));
+       //
     }
 }

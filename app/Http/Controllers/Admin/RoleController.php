@@ -113,9 +113,11 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function deleteRole($RoleID)
     {
-        //
+        $data = role::find($RoleID);
+        $data->delete();
+        return redirect('View-Role');
     }
 
     public function viewpriviledge($RoleID){

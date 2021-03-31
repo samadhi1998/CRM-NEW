@@ -48,7 +48,8 @@ class User extends Authenticatable
 
     protected $primaryKey = "EmpID";
 
-    public function roles(){
+    public function roles()
+    {
         return $this->belongsTo(Role::class, 'RoleID');
     }
 
@@ -56,6 +57,11 @@ class User extends Authenticatable
     public function getIsAdminAttribute()
     {
         return $this->roles()->where('RoleID', 1)->exists();
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
     }
 
 }

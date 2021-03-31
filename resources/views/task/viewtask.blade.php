@@ -39,7 +39,7 @@
                 <a href="/View-Task/edit/{{$task->TaskID}}" class="text-my-own-color"><span data-feather="edit"></span></a>
               @endif
               @if(Auth::user()->can('delete-task', App\Models\Task::class))
-                <a href="/View-Task/edit/{{$task->TaskID}}" class="text-my-own-color"><span data-feather="trash-2"></span></a>
+                <a href="/deleteTask/{{$task->TaskID}}" class="text-my-own-color"><span data-feather="trash-2"></span></a>
               @endif
               </td>
             </tr>

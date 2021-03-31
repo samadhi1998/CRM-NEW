@@ -21,7 +21,13 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $data = task::all();
+        
+        $data = Task::where('ServicePersonID','=', Auth::user()->EmpID)->get();
+        
+        if(Auth::user()->roles->name == 'Super-Admin' || Auth::user()->can('edit-task', App\Models\Task::class) ){
+            $data = task::all();
+        }
+        
         return view('task/viewtask',['tasks'=>$data]);
     }
 
@@ -54,7 +60,7 @@ class TaskController extends Controller
         $task->ServicePersonID=$request->EmpID;
         $result=$task->save();
 
-        $user->sendTaskAddedNotification($task);
+        
        /* if ($result) {
             return ["Result"=>"Data has been saved"];
         } else {
@@ -119,8 +125,10 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function deleteTask($TaskID)
     {
-        //
+        $data=task::find($TaskID);
+        $data->delete();
+        return redirect('View-Task');
     }
 }

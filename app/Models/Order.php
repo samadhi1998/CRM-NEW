@@ -30,4 +30,9 @@ class Order extends Model
         return $this->belongsTo(Note::class);
     }
 
+    public function task()
+    {
+        return $this->belongsTo(Task::class);
+    }
+
 }

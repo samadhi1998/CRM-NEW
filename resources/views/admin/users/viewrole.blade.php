@@ -35,7 +35,7 @@
             <a href="roleedit/{{$role->RoleID}}" class="text-my-own-color" style="margin:2px" ><span data-feather="edit"></span></a>
             @endif
             @if(Auth::user()->can('delete-role', App\Models\User::class))
-            <a href="roleedit/{{$role->RoleID}}" class="text-my-own-color" style="margin:2px" ><span data-feather="trash-2"></span></a>
+            <a href="/deleteRole/{{$role->RoleID}}" class="text-my-own-color" style="margin:2px" ><span data-feather="trash-2"></span></a>
             @endif
             </td>
           </tr>

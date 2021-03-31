@@ -46,7 +46,7 @@ Route::get('/Dashboard','App\Http\Controllers\OrdersController@dashboard');
 Route::get('/viewuser','App\Http\Controllers\Admin\UserController@index');
 Route::get('admin/users/edit/{EmpID}','App\Http\Controllers\Admin\UserController@edit')->name('editUser');
 Route::post('edit/{EmpID}','App\Http\Controllers\Admin\UserController@update');
-Route::post('delete/{EmpID}','App\Http\Controllers\Admin\UserController@destroy')->name('users.destroy');
+Route::post('delete/{EmpID}','App\Http\Controllers\Admin\UserController@destroy');
 Route::get('assignRole/{EmpID}','App\Http\Controllers\Admin\UserController@assignRole');
 Route::post('assignRole',[App\Http\Controllers\Admin\UserController::class,'addrole']);
 
@@ -60,7 +60,7 @@ Route::get('/Create-Role','App\Http\Controllers\Admin\RoleController@create');
 Route::post('roles','App\Http\Controllers\Admin\RoleController@store')->name('role.store');
 Route::get('roleedit/{RoleID}','App\Http\Controllers\Admin\RoleController@roleedit'); 
 Route::post('roleedit',[App\Http\Controllers\Admin\RoleController::class,'roleupdate']);
-
+Route::get('/deleteRole/{RoleID}','App\Http\Controllers\Admin\RoleController@deleteRole');
 Route::get('viewpriviledge/{RoleID}','App\Http\Controllers\Admin\RoleController@viewpriviledge');
 Route::post('viewpriviledge',[App\Http\Controllers\Admin\RoleController::class,'addpriviledge']);
 
@@ -148,4 +148,5 @@ Route::get('/Create-Task','App\Http\Controllers\TaskController@create');
 Route::post('store','App\Http\Controllers\TaskController@store')->name('task.store');
 Route::post('edit','App\Http\Controllers\TaskController@update');
 Route::get('/Select-Order','App\Http\Controllers\OrdersController@selectorder');
+Route::get('/deleteTask/{TaskID}','App\Http\Controllers\TaskController@deleteTask');
 // Route::get('/addtask/{OrderID}','App\Http\Controllers\TaskController@create' );
