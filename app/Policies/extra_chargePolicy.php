@@ -81,7 +81,7 @@ class extra_chargePolicy
      * @param  \App\Models\extra_charge  $extraCharge
      * @return mixed
      */
-    public function delete(User $user, extra_charge $extraCharge)
+    public function delete(User $user)
     {
         foreach($user->roles->priviledges as $priviledge){
             if($priviledge->PriviledgeID == 26){

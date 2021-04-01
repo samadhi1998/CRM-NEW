@@ -51,6 +51,7 @@ class NoteController extends Controller
               $note->image='';
           }
        $result=$note->save();
+
     
        return redirect('/note/viewnote')-> with ('success','Product Inserted successfully');
     }

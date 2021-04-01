@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Notifications\TaskAdded;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Task;
@@ -59,6 +60,7 @@ class TaskController extends Controller
         $task->Due_Date=$request->Due_Date;
         $task->ServicePersonID=$request->EmpID;
         $result=$task->save();
+
 
         
        /* if ($result) {

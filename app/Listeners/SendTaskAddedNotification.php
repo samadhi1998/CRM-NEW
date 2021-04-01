@@ -24,8 +24,8 @@ class SendTaskAddedNotification
      * @param  object  $event
      * @return void
      */
-    public function handle($task)
+    public function handle($event)
     {
-       //
+             //
     }
 }

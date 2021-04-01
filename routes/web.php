@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Spatie\GoogleCalendar\Event;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Customer\CustomerController;
@@ -26,7 +27,6 @@ Route::get('/', function () {
 Route::get('/wait', function () {
     return view('auth/wait');
 });
-
 
 
 Auth::routes();
@@ -155,3 +155,8 @@ Route::post('edit','App\Http\Controllers\TaskController@update');
 Route::get('/Select-Order','App\Http\Controllers\OrdersController@selectorder');
 Route::get('/deleteTask/{TaskID}','App\Http\Controllers\TaskController@deleteTask');
 // Route::get('/addtask/{OrderID}','App\Http\Controllers\TaskController@create' );
+
+
+Route::get('/reminder','App\Http\Controllers\ReminderController@View');
+Route::post('/addreminder','App\Http\Controllers\ReminderController@Add');
+

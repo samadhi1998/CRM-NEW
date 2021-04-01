@@ -15,11 +15,9 @@ class CreateRemindersTable extends Migration
     {
         Schema::create('reminders', function (Blueprint $table) {
             $table->bigIncrements('ReminderID');
-            $table->date('DueDate');
+            $table->date('StartDate');
+            $table->date('EndDate');
             $table->string('Description');
-            $table->string('Status');
-            $table->unsignedBigInteger('OrderID');
-            $table->foreign('OrderID')->references('OrderID')->on('orders');
             $table->timestamps();
         });
     }

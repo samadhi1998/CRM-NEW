@@ -10,15 +10,16 @@ use Illuminate\Notifications\Notification;
 class TaskAdded extends Notification
 {
     use Queueable;
+    public $taskadded;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($task)
+    public function __construct($taskadded)
     {
-        $this->task = $task;
+        $this->task = $taskadded;
     }
 
     /**
