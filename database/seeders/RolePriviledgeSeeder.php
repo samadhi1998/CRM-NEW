@@ -290,6 +290,12 @@ class RolePriviledgeSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
+            [
+                'ID'=>'1',
+                'PriviledgeID'=>'47',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ]
         ]);
     }
 }

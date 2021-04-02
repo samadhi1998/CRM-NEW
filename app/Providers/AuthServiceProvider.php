@@ -7,6 +7,7 @@ use App\Models\Task;
 use App\Models\Note;
 use App\Models\Order;
 use App\Models\Role;
+use App\Models\Event;
 use App\Models\customer;
 use App\Models\extra_charge;
 
@@ -20,6 +21,7 @@ use App\Policies\extra_chargePolicy;
 use App\Policies\RolePolicy;
 use App\Policies\NotePolicy;
 use App\Policies\CustomerPolicy;
+use App\Policies\ReminderPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -37,6 +39,7 @@ class AuthServiceProvider extends ServiceProvider
         Role::class => RolePolicy::Class,
         customer::class => CustomerPolicy::Class,
         Note::class => NotePolicy::Class,
+        Event::class => ReminderPolicy::Class,
         // 'App\product' => 'App\Policies\ProductPolicy',
         
     ];
@@ -103,6 +106,13 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('view-note', [NotePolicy::class, 'viewAny']);
         Gate::define('delete-note', [NotePolicy::class, 'delete']);
         Gate::define('edit-note', [NotePolicy::class, 'update']);
+
+        //Reminder Premissions
+        Gate::define('add-reminder', [ReminderPolicy::class, 'create']);
+        Gate::define('view-reminder', [ReminderPolicy::class, 'viewAny']);
+        Gate::define('view-calendar', [ReminderPolicy::class, 'view']);
+        Gate::define('delete-reminder', [ReminderPolicy::class, 'delete']);
+        Gate::define('edit-reminder', [ReminderPolicy::class, 'update']);
 
 
     }

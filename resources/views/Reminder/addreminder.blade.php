@@ -3,9 +3,13 @@
 @section('header','Calendar')
 @section('content')
 <div class="pull-left">
-    <button type="button" data-toggle="modal" data-target="#exampleModal" >Add New Reminder</button>
+    @if(Auth::user()->can('add-reminder', App\Models\Event::class))    
+    <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" >Add New Reminder</button>
+    @endif
+    @if(Auth::user()->can('view-reminder', App\Models\Event::class))
+    <a class="btn btn-primary" href="/view-reminder">View Reminders </a>
+    @endif
 </div>
-<br>
 <br>
 <br>
 <div class="container" style="background :none !important ">
@@ -13,7 +17,8 @@
     <div class="col-md">
       <div class="card">
         <div class="card-body">
-          <div id='calendar'></div>
+        {!! $calendar->calendar() !!}
+        {!! $calendar->script() !!}
         </div>
       </div>
     </div>
@@ -31,16 +36,19 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="/addreminder" id="myform">
+        <form method="POST" action="{{ route('addevent.store') }}"  id="myform">
                 @csrf
-                <label for="Description" ><b>Description : </b></label>
-                <textarea name="Description" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" rows="5" cols="50" ></textarea>
+                <label for="title" ><b>Add Title : </b></label>
+                <input type="text" name="title" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%">
                 <br>
-                <label for="StartDate" ><b>Start Date : </b></label>
-                <input type="date" name="StartDate" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%">
+                <label for="color" ><b>Add Color : </b></label>
+                <input type="color" name="color" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%">
                 <br>
-                <label for="EndDate" ><b>End Date : </b></label>
-                <input type="date" name="EndDate" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%">
+                <label for="start_date" ><b>Start Date : </b></label>
+                <input type="date" name="start_date" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%">
+                <br>
+                <label for="end_date" ><b>End Date : </b></label>
+                <input type="date" name="end_date" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%">
                 <br>
             </form>
       </div>

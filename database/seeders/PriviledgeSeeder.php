@@ -243,6 +243,11 @@ class PriviledgeSeeder extends Seeder
                 'Description'=>'View-Chat',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'Description'=>'View-Calendar',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ]
         ]);
     }

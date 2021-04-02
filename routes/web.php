@@ -157,6 +157,18 @@ Route::get('/deleteTask/{TaskID}','App\Http\Controllers\TaskController@deleteTas
 // Route::get('/addtask/{OrderID}','App\Http\Controllers\TaskController@create' );
 
 
-Route::get('/reminder','App\Http\Controllers\ReminderController@View');
-Route::post('/addreminder','App\Http\Controllers\ReminderController@Add');
+// Route::get('/reminder','App\Http\Controllers\ReminderController@View');
+// Route::post('/addreminder','App\Http\Controllers\ReminderController@Add');
+
+Route::resource('/reminder','App\Http\Controllers\EventController');
+
+Route::post('addeventurl/store','App\Http\Controllers\EventController@store')->name('addevent.store');
+
+Route::get('/view-reminder','App\Http\Controllers\EventController@show');
+Route::get('deleteeventurl','App\Http\Controllers\EventController@show');
+
+Route::get('editeventurl/update/{id}','App\Http\Controllers\EventController@edit');
+Route::post('/editeventurl','App\Http\Controllers\EventController@update');
+
+Route::get('deleteeventurl/{id}','App\Http\Controllers\EventController@destroy');
 
