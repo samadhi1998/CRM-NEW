@@ -23,6 +23,7 @@ class CreateTasksTable extends Migration
             $table->foreign('ServicePersonID')->references('EmpID')->on('users');
             $table->unsignedBigInteger('Added_By');
             $table->foreign('Added_By')->references('EmpID')->on('users');
+            $table->softDeletes();
         });
     }
 

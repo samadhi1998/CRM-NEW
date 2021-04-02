@@ -26,6 +26,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('AdminID');
             $table->foreign('AdminID')->references('EmpID')->on('users');
             $table->timestamps();
+            $table->softDeletes();
         });
 
 

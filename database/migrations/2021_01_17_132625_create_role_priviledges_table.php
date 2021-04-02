@@ -18,7 +18,7 @@ class CreateRolePriviledgesTable extends Migration
             $table->unsignedBigInteger('ID');
             $table->unsignedBigInteger('PriviledgeID');
             $table->timestamps();
-
+            $table->softDeletes();
             $table->foreign('ID')->references('RoleID')->on('roles')->onDelete('cascade');
             $table->foreign('PriviledgeID')->references('PriviledgeID')->on('priviledges')->onDelete('cascade');
 

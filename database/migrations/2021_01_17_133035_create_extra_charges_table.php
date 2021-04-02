@@ -23,6 +23,7 @@ class CreateExtraChargesTable extends Migration
             $table->unsignedBigInteger('ServicePersonID');
             $table->foreign('ServicePersonID')->references('EmpID')->on('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

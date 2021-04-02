@@ -17,6 +17,7 @@ class CreatePriviledgesTable extends Migration
             $table->bigIncrements('PriviledgeID');
             $table->string('Description');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

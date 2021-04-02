@@ -22,6 +22,7 @@ class CreateEventsTable extends Migration
             $table->unsignedBigInteger('Added_By');
             $table->foreign('Added_By')->references('EmpID')->on('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

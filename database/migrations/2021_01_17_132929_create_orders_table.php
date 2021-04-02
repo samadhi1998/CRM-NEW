@@ -35,6 +35,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('TaskID')->nullable();
             $table->foreign('TaskID')->references('TaskID')->on('tasks');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

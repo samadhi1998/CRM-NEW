@@ -22,6 +22,7 @@ class CreateChatsTable extends Migration
             $table->unsignedBigInteger('FollowUpID');
             $table->foreign('FollowUpID')->references('EmpID')->on('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
