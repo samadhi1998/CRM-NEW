@@ -42,27 +42,20 @@ class OrdersController extends Controller
     }
     public function store(Request $request)
     {
-        $existent = Order::where('CustomerID', $request->get('CustomerID'))->get();
-        $customer = DB::table('customers')->where('CustomerID', $request->get('CustomerID'))->value('Name');
 
-     
-    //    $Order = $model->create($request->all());
-       
-    //     return redirect()
-    //       ->route('orders.create', ['Order' => $Order->CustomerID]);
+        $request->validate([
+            'Due_date' => 'required',
+            'Progress'=>'required',
+            'Qty'=>'required',
+        ]);
         
         Order::create($request->all());
         order_detail::create($request->all());
-        
-       // $productId=request('ProductID'); 
-        $productId= order::find($request->input('ProductID'));
-        $qtyOld=DB::table('Products')->where('ProductID','=',$productId)->value('Qty');
-        $qty1=$request->get('Qty')-$qtyOld;
-       
+
         return redirect()->route('orders.index')
                         ->with('success','Order created successfully.');
 
-     DB::table('products')->where('ProductID',$productId)->update(['Qty' => DB::raw($qty1)]);
+     
     }
 
 
