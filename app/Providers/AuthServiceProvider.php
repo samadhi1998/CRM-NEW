@@ -114,7 +114,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('delete-reminder', [ReminderPolicy::class, 'delete']);
         Gate::define('edit-reminder', [ReminderPolicy::class, 'update']);
 
-
     }
 
     

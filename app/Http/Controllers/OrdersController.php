@@ -46,16 +46,16 @@ class OrdersController extends Controller
         $customer = DB::table('customers')->where('CustomerID', $request->get('CustomerID'))->value('Name');
 
      
-       $Order = $model->create($request->all());
+    //    $Order = $model->create($request->all());
        
-        return redirect()
-          ->route('orders.create', ['Order' => $Order->CustomerID]);
+    //     return redirect()
+    //       ->route('orders.create', ['Order' => $Order->CustomerID]);
         
         Order::create($request->all());
         order_detail::create($request->all());
         
        // $productId=request('ProductID'); 
-          $productId= order::find($request->input('ProductID'));
+        $productId= order::find($request->input('ProductID'));
         $qtyOld=DB::table('Products')->where('ProductID','=',$productId)->value('Qty');
         $qty1=$request->get('Qty')-$qtyOld;
        
