@@ -63,9 +63,9 @@
 
 <body>
   <div id="app">
-    <nav class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow" style="background-color: #D8D5DB  !important">
+    <nav class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow navbar-expand-lg" style="background-color: #D8D5DB  !important">
       <a class="navbar-brand col-md-3 col-lg-2 px-5" href="{{ url('/') }}">
-        <img src="/img/logo.png" width="110" height="60" alt="">
+        <img src="/img/logo.png" width="100" height="50" alt="">
       </a>
       <button class="navbar-toggler  position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
         <span class="navbar-toggler-icon"></span>
@@ -99,7 +99,7 @@
             @endif
 
             @else
-            <li class="nav-item dropdown ml-2">
+            <li class="nav-item dropdown ml-10 my-2">
               <?php $notifications = auth()->user()->unreadNotifications; ?>
                 <a id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span data-feather="bell"></span> <b>{{$notifications->count()}}</b>
@@ -130,8 +130,8 @@
                 </ul>
             </li>
                               
-            <li class="nav-item dropdown ml-10">
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            <li class="nav-item dropdown ml-2">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <b>{{ Auth::user()->name }}</b> 
               </a>
 
@@ -300,10 +300,8 @@
               @endguest
             </main>
         </div>
-    </div>
 
-
-    <footer class="footer text-center pt-3 pb-3 fixed-bottom">
+    <footer class="footer text-center pt-3 pb-3 fixed-bottom" style="background-color: #D8D5DB  !important">
       © 2021 CRM by She Squad
     </footer>
     

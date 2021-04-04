@@ -133,7 +133,7 @@ input, textarea, select{
       width: 290px;
     } 
     .nav{
-      display: block;
+      display: inline-block;
     }
     .nav .nav-item,.nav .nav-item a{
       padding-left: 0px;

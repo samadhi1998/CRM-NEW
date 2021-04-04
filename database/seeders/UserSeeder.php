@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
                 'email'=>'jayawardena141@gmail.com',
                 'Address'=>'"Darshani,Ethanamadala,Kalutara North"',
                 'MobileNo'=>'0718890568',
-                'password'=>bcrypt("1234"),
+                'password'=>bcrypt("12345678"),
                 'RoleID'=>'1',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
