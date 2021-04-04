@@ -23,7 +23,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $data = role::all();
+        $data = role::sortable()->paginate(5);
         return view('admin.users.viewrole',['roles'=>$data]);
     }
 

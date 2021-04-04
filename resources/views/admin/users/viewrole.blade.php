@@ -18,10 +18,11 @@
         <br>
           <table>
             <tr>
-              <th >Role ID</th>
-              <th >Name</th>
+              <th >@sortablelink('RoleID')</th>
+              <th >@sortablelink('name')</th>
               <th >Action</th>
             </tr>
+            @if($roles->count())
             @foreach($roles as $role)
             <tr>
               <td style="text-align: center">{{$role['RoleID']}}</td>
@@ -36,7 +37,11 @@
               </td>
             </tr>
             @endforeach
+            @endif
           </table>
+          <br>
+          <br>
+          {!! $roles->appends(\Request::except('page'))->render() !!}
         </div>
       </div>
     </div>

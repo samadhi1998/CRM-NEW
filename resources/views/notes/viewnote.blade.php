@@ -31,11 +31,11 @@
           </br>
           <table>
             <tr >
-              <th >Note ID</th>
-              <th >Description</th>
+              <th >@sortablelink('NoteID')</th>
+              <th >@sortablelink('Description')</th>
               <th >Type</th>
               <th >Images</th>
-              <th >Added By</th>
+              <th >@sortablelink('Added_By')</th>
               <th >Action</th>
             </tr>
             @foreach($notes as $note)
@@ -60,7 +60,7 @@
           </table>
           <br>
           <br> 
-          {{$notes->links()}}
+          {!! $notes->appends(\Request::except('page'))->render() !!}
         </div>
       </div>
     </div>

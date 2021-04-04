@@ -32,15 +32,16 @@
           <table>
             <thead>
               <tr>
-                <th>Customer ID</th>
-                <th>Customer Name</th>
+                <th>@sortablelink('CustomerID')</th>
+                <th>@sortablelink('Name')</th>
                 <th>Address</th>
                 <th>Mobile Number</th>
-                <th>Email</th>
+                <th>@sortablelink('Email')</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
+              @if($customers->count())
               @foreach($customers as $customer)
               <tr>                                                
                 <th >{{$customer['CustomerID']}}</th>
@@ -58,11 +59,12 @@
                 </td>
               </tr>
               @endforeach
+              @endif
             </tbody>
           </table>
           <br>
           <br>
-          {{$customers->links()}}
+          {!! $customers->appends(\Request::except('page'))->render() !!}
           <div class="pull-right" style="text-align: right;color:blue">
             <a href="{{ URL::previous() }}">Go Back</a>
           </div>

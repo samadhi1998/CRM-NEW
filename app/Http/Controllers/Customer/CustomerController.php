@@ -55,7 +55,7 @@ class CustomerController extends Controller
     
     public function ViewCustomers()
     {
-        $data=customer::paginate(10);
+        $data=customer::sortable()->paginate(10);
         return  view('customer/viewcustomer', ['customers'=>$data]);
     }
 
