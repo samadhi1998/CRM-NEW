@@ -78,7 +78,7 @@ class AuthServiceProvider extends ServiceProvider
         //Order Permission
         Gate::define('add-order', [OrderPolicy::class, 'create']);
         Gate::define('view-order', [OrderPolicy::class, 'viewAny']);
-        Gate::define('view-order-deatils', [OrderPolicy::class, 'view']);
+        Gate::define('view-order-details', [OrderPolicy::class, 'view']);
         Gate::define('delete-order', [OrderPolicy::class, 'delete']);
         Gate::define('edit-order', [OrderPolicy::class, 'update']);
         Gate::define('show-Invoice-Quotation', [OrderPolicy::class, 'show']);

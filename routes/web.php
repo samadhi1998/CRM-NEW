@@ -49,6 +49,7 @@ Route::post('edit/{EmpID}','App\Http\Controllers\Admin\UserController@update');
 Route::get('/deleteuser/{EmpID}','App\Http\Controllers\Admin\UserController@deleteuser');
 Route::get('assignRole/{EmpID}','App\Http\Controllers\Admin\UserController@assignRole');
 Route::post('assignRole',[App\Http\Controllers\Admin\UserController::class,'addrole']);
+Route::get('/Search_Users',[App\Http\Controllers\Admin\UserController::class,'searchUser']);
 
 //Route::get('/deleteUser/{EmpID}','App\Http\Controllers\Admin\UserController@destroy');
 
@@ -146,7 +147,7 @@ Route::get('/note/viewnote',[App\Http\Controllers\NoteController::class,'index']
 Route::get('/UpdateNote/{NoteID}',[App\Http\Controllers\NoteController::class,'UpdateNote']);
 Route::post('/UpdateNote',[App\Http\Controllers\NoteController::class,'ShowUpdatesNotes']);
 Route::get('/DeleteNote/{NoteID}',[App\Http\Controllers\NoteController::class,'deleteNote']);
-
+Route::get('/Search_Notes',[App\Http\Controllers\NoteController::class,'searchNotes']);
 
 
 
@@ -186,6 +187,10 @@ Route::post('store','App\Http\Controllers\TaskController@store')->name('task.sto
 Route::post('edit','App\Http\Controllers\TaskController@update');
 Route::get('/Select-Order','App\Http\Controllers\OrdersController@selectorder');
 Route::get('/deleteTask/{TaskID}','App\Http\Controllers\TaskController@deleteTask');
+Route::get('/Search_Tasks',[App\Http\Controllers\TaskController::class,'searchTasks']);
+Route::get('addtask/{OrderID}','App\Http\Controllers\TaskController@create');
+Route::post('addtask',[App\Http\Controllers\TaskController::class,'store']);
+
 // Route::get('/addtask/{OrderID}','App\Http\Controllers\TaskController@create' );
 
 
@@ -203,4 +208,5 @@ Route::get('editeventurl/update/{id}','App\Http\Controllers\EventController@edit
 Route::post('/editeventurl','App\Http\Controllers\EventController@update');
 
 Route::get('deleteeventurl/{id}','App\Http\Controllers\EventController@destroy');
+Route::get('/Search_Reminders',[App\Http\Controllers\EventController::class,'searchReminders']);
 

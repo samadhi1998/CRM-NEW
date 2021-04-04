@@ -3,19 +3,19 @@
 @section('header','Customer Details')
 @section('content')
 
+@if(Auth::user()->can('add-customer', App\Models\customer::class))
+  <div class="pull-left" style="text-align: right;color:blue">
+    <a href="/addCustomer" class="btn btn-primary"> Add Customer</a>
+  </div>
+@endif
+<br>
+<br>
+<br>
 <div class="container " style="background :none !important ">
   <div class="row justify-content-center">
     <div class="col-md">
       <div class="card">
         <div class="card-body">
-          <br>
-          @if(Auth::user()->can('add-customer', App\Models\customer::class))
-            <div class="pull-right" style="text-align: right;color:blue">
-              <a href="/addCustomer" class="btn btn-primary"> Add Customer</a>
-            </div>
-          @endif
-          <br>
-          <br>
           <form action="/Search_Customers" method="GET" role="search">
             {{ csrf_field() }}
               <div class="input-group">

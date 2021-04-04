@@ -46,10 +46,10 @@ class NoteController extends Controller
 
     public function index()
     {
-        $note = Note::where('Added_By','=', Auth::user()->EmpID)->get();
+        $note = Note::where('Added_By','=', Auth::user()->EmpID)->paginate(4);
 
         if(Auth::user()->roles->name == 'Super-Admin'){
-            $note = Note::all();
+            $note = Note::paginate(4);
         }
         
         return  view('notes/viewnote', ['notes'=>$note]);
@@ -82,6 +82,24 @@ class NoteController extends Controller
         $data=note::find($NoteID);
         $data->delete();
         return redirect('/note/viewnote');
+    }
+
+    public function searchNotes(Request $request)
+    {
+
+        $request->validate([
+            'query'=>'required']);
+
+        $query=$request->input('query') ;
+        
+        $note=Note::where('Description', 'like', "%$query%")->orWhere('OrderID', 'like', "%$query%")->orWhere('NoteID', 'like', "%$query%")->paginate(5);
+        
+        if (count($note)>0) {
+            return view('notes/searchNote', ['notes'=>$note]);
+        } else {
+            return redirect()->back()->with('error', 'Invalid Search , Enter available one ...');
+        }
+    
     }
 
 }

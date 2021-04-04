@@ -1,28 +1,13 @@
 @extends('layouts.app')
-@section('title','View Task')
-@section('header','View Tasks')
+@section('title','Search Task')
+@section('header','Search Task')
 @section('content')
-
 <div class="container" style="background :none !important ">
   <div class="row justify-content-center">
     <div class="col-md">
       <div class="card">
         <div class="card-body">
-          <br>
-            <form action="/Search_Tasks" method="GET" role="search">
-              {{ csrf_field() }}
-              <div class="input-group">
-                <input type="text" class="form-control" name="query" id="query" placeholder="Search Task"> 
-                <span class="input-group-btn">
-                  <button type="submit" class="btn btn-default">
-                    <span class="glyphicon glyphicon-search"></span>
-                  </button>
-                </span>
-              </div>
-            </form>
-            </br>
-            </br>
-          <table>
+        <table>
             <tr>
               <th >Task ID</th>
               <th >Service Person ID</th>
@@ -51,12 +36,19 @@
             </tr>
             @endforeach
           </table>
-          <br>
-          <br>
+
+          </br>
+          </br>
+
           {{$tasks->links()}}
+          <div class="pull-right" style="text-align: right;color:blue">
+            <a href="{{ URL::previous() }}">Go Back</a>
+          </div>
+          </br>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 @endsection

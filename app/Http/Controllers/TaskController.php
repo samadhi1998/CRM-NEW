@@ -23,10 +23,10 @@ class TaskController extends Controller
     public function index()
     {
         
-        $data = Task::where('ServicePersonID','=', Auth::user()->EmpID)->get();
+        $data = Task::where('ServicePersonID','=', Auth::user()->EmpID)->paginate(5);
         
         if(Auth::user()->roles->name == 'Super-Admin' || Auth::user()->can('add-task', App\Models\Task::class) ){
-            $data = task::all();
+            $data = task::paginate(5);
         }
         
         return view('task/viewtask',['tasks'=>$data]);
@@ -37,12 +37,11 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($OrderID)
     {
-        return view ('task/CreateTask')
-            ->with('users',User::all())
-            ->with('orders',Order::all())
-        ;
+        $data = Order::find($OrderID);
+        return view ('task/CreateTask',['orders'=>$data])
+            ->with('users',User::all());
     }
 
     /**
@@ -52,29 +51,26 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $task=new task;
-        $task->Added_By = Auth::user()->EmpID;
-        $task->Description=$request->Description;
-        $task->Status=$request->Status;
-        $task->Due_Date=$request->Due_Date;
-        $task->ServicePersonID=$request->EmpID;
-        $result=$task->save();
+     {
+          $task=new Task;
+          $task->Added_By = Auth::user()->EmpID;
+          $task->Description=$request->Description;
+          $task->Status=$request->Status;
+          $task->Due_Date=$request->Due_Date;
+          $task->ServicePersonID=$request->EmpID;
+
+         $data = Order::find($request->input('OrderID'));
+         $data->OrderID = $request->input('OrderID');
+
+         $task->save();
+         $data->task()->associate($task);
+
+         $data->save();
+       
 
 
-        
-       /* if ($result) {
-            return ["Result"=>"Data has been saved"];
-        } else {
-            return ["Result"=>"operation failed"];
-        }*/
-        // Order::create($request->TaskID());
         return redirect('/View-Task');
 
-        // return view ('task/CreateTask')
-        //     ->with('users',User::all())
-        //     ->with('orders',Order::all())
-        // ;
     }
 
     /**
@@ -132,5 +128,23 @@ class TaskController extends Controller
         $data=task::find($TaskID);
         $data->delete();
         return redirect('View-Task');
+    }
+
+    public function searchTasks(Request $request)
+    {
+
+        $request->validate([
+            'query'=>'required']);
+
+        $query=$request->input('query') ;
+        
+        $task=task::where('Description', 'like', "%$query%")->orWhere('TaskID', 'like', "%$query%")->orWhere('Due_Date', 'like', "%$query%")->paginate(5);
+        
+        if (count($task)>0) {
+            return view('task/searchTask', ['tasks'=>$task]);
+        } else {
+            return redirect()->back()->with('error', 'Invalid Search , Enter available one ...');
+        }
+    
     }
 }

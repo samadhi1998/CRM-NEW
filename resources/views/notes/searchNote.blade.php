@@ -1,35 +1,13 @@
 @extends('layouts.app')
-@section('title','View Note')
-@section('header','Note Details')
+@section('title','Search Note')
+@section('header','Search Note')
 @section('content')
-
-@if(Auth::user()->can('add-note', App\Models\Note::class))
-  <div class="pull-left">
-    <a class="btn btn-primary" href="/addNote">Add new note <span data-feather="plus"></a>
-  </div>
-@endif
-  <br> 
-  <br>
-<div class="container " style="background :none !important ">
+<div class="container" style="background :none !important ">
   <div class="row justify-content-center">
     <div class="col-md">
       <div class="card">
         <div class="card-body">
-          <br>
-          <form action="/Search_Notes" method="GET" role="search">
-            {{ csrf_field() }}
-            <div class="input-group">
-              <input type="text" class="form-control" name="query" id="query" placeholder="Search Notes"> 
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-default">
-                  <span class="glyphicon glyphicon-search"></span>
-                </button>
-              </span>
-            </div>
-          </form>
-          </br>
-          </br>
-          <table>
+        <table>
             <tr >
               <th >Note ID</th>
               <th >Description</th>
@@ -58,12 +36,19 @@
             </tr>
             @endforeach
           </table>
-          <br>
-          <br> 
+
+          </br>
+          </br>
+
           {{$notes->links()}}
+          <div class="pull-right" style="text-align: right;color:blue">
+            <a href="{{ URL::previous() }}">Go Back</a>
+          </div>
+          </br>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 @endsection

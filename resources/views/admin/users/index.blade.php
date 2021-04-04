@@ -9,7 +9,7 @@
         <div class="card-body">
           <br>
           <!-- Search Bar -->
-            <form action="/Search_Products" method="GET" role="search">
+            <form action="/Search_Users" method="GET" role="search">
               {{ csrf_field() }}
                 <div class="input-group">
                   <input type="text" class="form-control" name="query" id="query" placeholder="Search Employee"> 
@@ -63,6 +63,9 @@
               @endforeach 
             </table>
           <!-- Emp Detail Table End -->
+          <br>
+          <br>
+          {{$users->links()}}
         </div>
       </div>
     </div>

@@ -169,7 +169,7 @@
                 <div class="position-sticky pt-3 pb-5">
                   <ul class="nav flex-column">
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="/home">
+                      <a class="nav-link" aria-current="page" href="/home">
                         <span data-feather="home"></span>
                           Dashboard
                       </a>

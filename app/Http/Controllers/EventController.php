@@ -103,4 +103,22 @@ class EventController extends Controller
         $events->delete();
          return redirect('/view-reminder');
     }
+
+    public function searchReminders(Request $request)
+    {
+
+        $request->validate([
+            'query'=>'required']);
+
+        $query=$request->input('query') ;
+        
+        $event=Event::where('title', 'like', "%$query%")->orWhere('start_date', 'like', "%$query%")->orWhere('end_date', 'like', "%$query%")->paginate(5);
+        
+        if (count($event)>0) {
+            return view('Reminder/searchReminder', ['events'=>$event]);
+        } else {
+            return redirect()->back()->with('error', 'Invalid Search , Enter available one ...');
+        }
+    
+    }
 }

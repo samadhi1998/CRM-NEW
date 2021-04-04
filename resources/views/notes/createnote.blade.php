@@ -28,7 +28,7 @@
               <br>
               <br>
               <div class="text-right">
-                <button type="submit"  Value="Next"class="btn btn-primary">Add Product</button>	 			
+                <button type="submit"  Value="Next"class="btn btn-primary">Add Note</button>	 			
               </div>
           </form>
         </div>

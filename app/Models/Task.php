@@ -11,7 +11,7 @@ class Task extends Model
     use HasFactory, SoftDeletes;
 
     public function order(){
-        return $this->belongsTo(Order::class);
+        return $this->hasOne(Order::class, 'OrderID');
     }
 
     public function user(){
@@ -19,5 +19,6 @@ class Task extends Model
     }
 
     protected $primaryKey = 'TaskID';
+    protected $fillable = ['TaskID','Description','ServicePersonID','Added_By','Due_Date','Status'];
 
 }

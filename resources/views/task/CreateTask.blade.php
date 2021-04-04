@@ -16,12 +16,8 @@
                         <label for="Due_Date" ><b>Due Date : </b></label>
                         <input type="date" name="Due_Date" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%">
                         <br>
-                        <label for="OrderID"><b>OrderID : </b></label>
-                            <select name="Status" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-                                @foreach ($orders as $order)
-                                    <option value="{{ $order->OrderID }}">{{ $order->OrderID }}</option>
-                                @endforeach
-                            </select>
+                        <label for="OrderID" ><b>Order ID : </b></label>
+                        <input type="text" name="OrderID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$orders->OrderID}}"> 
                         <br>
                         <label for="EmpID"><b>Assign Employee : </b></label>
                             <select name="EmpID" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >

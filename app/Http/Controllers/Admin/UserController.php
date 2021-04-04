@@ -23,13 +23,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //return view('views: admin.users.index');
-        //return view('index');
-        $users= User::all();
+        $users= User::paginate(5);
         return view('admin.users.index')->with('users', $users)
         ->with('roles',Role::all());
-
-
     }
 
     /**
@@ -59,9 +55,23 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function searchUser(Request $request)
     {
-        //
+            
+        $request->validate([
+            'query'=>'required']);
+
+        $query=$request->input('query') ;
+        
+        $user=User::where('name', 'like', "%$query%")->orWhere('EmpID', 'like', "%$query%")->paginate(5);
+        
+        if (count($user)>0) {
+            return view('admin/users/searchUser', ['users'=>$user]);
+        } else {
+            return redirect()->back()->with('error', 'Invalid Search , Enter Exsisting User ...');
+        }
+    
+
     }
 
     /**

@@ -19,7 +19,7 @@
       <div class="card">
         <div class="card-body">
           <br>
-            <form action="/Search_Products" method="GET" role="search">
+            <form action="/Search_Reminders" method="GET" role="search">
               {{ csrf_field() }}
               <div class="input-group">
                 <input type="text" class="form-control" name="query" id="query" placeholder="Search Reminder"> 
