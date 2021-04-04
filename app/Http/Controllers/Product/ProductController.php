@@ -76,7 +76,7 @@ class ProductController extends Controller
     public function ShowUpdatesProducts(Request $req)
     {
         $data=product::find($req->ProductID);
-        // $data->AdminID=$req->AdminID;
+       // $data->AdminID=$req->AdminID;
         $data->Name=$req->Name;
         $data->Brand=$req->Brand;
 
@@ -96,6 +96,7 @@ class ProductController extends Controller
         $data->Warranty=$req->Warranty;
         $data->Description=$req->Description;
         $data->Status=$req->Status;
+        $data->stock_defective=$req->stock_defective;
         $data->save();
         return redirect('product/viewproduct');
 
@@ -124,13 +125,13 @@ class ProductController extends Controller
         } else {
             return redirect()->back()->with('error', 'Invalid Search , Enter Available Product ...');
         }
-     
-
         
     }
 
          function ProductCount()    {
-         return DB::table ('products')->count();
+         $count = DB::table ('products')->count();
+         return  view('product/viewproduct', ['$counts'=>$count]);
+        // dd($data );  
 
    } 
 
@@ -156,43 +157,17 @@ class ProductController extends Controller
 
     }
 
-
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'Due_date' => 'required',
-    //         'Progress'=>'required',
-    //         'Qty'=>'required',
-    //     ]);
-    
-    //      $productId=request('ProductID'); 
-    //      $qtyOld=DB::table('Products')->where('ProductID',$productId)->value('Qty');
-    //      $qty1=$request->get('Qty')-$qtyOld;
-    //      //this statement can be a error
-            
-    //     Order::create($request->all());
-    //     order_detail::create($request->all());
-       
-    //     return redirect()->route('orders.index')
-    //                     ->with('success','Order created successfully.');
-
-    //     DB::table('products')->where('ProductID', $content->ProductID)->update(['Qty' => DB::raw($qty1)]);
-    //}
-
-
-
-    public function ProductInfo(product $product)
-    {
+    public function ProductInfo($id)
+    {   //dd($id);
         $products=  DB::table('Products')  
         ->join('users','products.AdminID',"=",'users.EmpID')
         ->select('products.AdminID','users.name','users.MobileNo','users.email','products.ProductID' ,
         'Products.Created_at','Products.Name','Products.Brand','Products.Description',
-        'Products.Warranty','Products.Price','Products.Qty','Products.Status')
-       
-        ->where('products.ProductID', '=',$product['ProductID'])
-        ->get();   
+        'Products.Warranty','Products.Price','Products.Qty','Products.Status','Products.stock_defective')
+        ->where('products.ProductID', '=',$id)
+        ->get()->toArray();
+        //dd($products);
         return view('product.productInformation',['products'=>$products]);
     }
-
 
 }

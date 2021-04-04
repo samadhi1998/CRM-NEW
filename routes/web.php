@@ -119,7 +119,7 @@ Route::get('send-mail', function () {
     dd("Email is Sent.");
 });
 
-
+// product routes
 
 Route::get('/addproduct', function () {
     return view('product/addproduct');
@@ -127,16 +127,17 @@ Route::get('/addproduct', function () {
 Route::post('/addproduct',[App\Http\Controllers\Product\ProductController::class,'AddProduct']);
 Route::get('product/viewproduct',[App\Http\Controllers\Product\ProductController::class,'ViewProduct']);
 Route::get('/UpdateProducts/{ProductID}',[App\Http\Controllers\Product\ProductController::class,'UpdateProducts']);
-Route::put('/Updateproducts',[App\Http\Controllers\Product\ProductController::class,'ShowUpdatesProducts']);
+Route::post('/Updateproducts',[App\Http\Controllers\Product\ProductController::class,'ShowUpdatesProducts']);
 Route::get('/Search_Products',[App\Http\Controllers\Product\ProductController::class,'SearchProducts']);
 Route::get('/ProductCount',[App\Http\Controllers\Product\ProductController::class,'ProductCount']);
 Route::get('/Delete_Products/{ProductID}',[App\Http\Controllers\Product\ProductController::class,'deleteproducts']);
 Route::get('/StockoutProducts',[App\Http\Controllers\Product\ProductController::class,'stockOut']);
 Route::get('/InStockProducts',[App\Http\Controllers\Product\ProductController::class,'instock']);
 Route::get('/notAvailableProducts',[App\Http\Controllers\Product\ProductController::class,'notavailable']);
-Route::resource('products',ProductController::class);
 Route::get('ProductInformation/{ProductID}',[App\Http\Controllers\Product\ProductController::class,'ProductInfo']);
-//Route::get('/ProductInformation',[App\Http\Controllers\Product\ProductController::class,'ProductInfo']);
+Route::get('productCount',[App\Http\Controllers\Product\ProductController::class,'ProductCount']);
+
+
 
 Route::get('/addNote', function () {
     return view('notes/createnote');
@@ -148,7 +149,7 @@ Route::post('/UpdateNote',[App\Http\Controllers\NoteController::class,'ShowUpdat
 Route::get('/DeleteNote/{NoteID}',[App\Http\Controllers\NoteController::class,'deleteNote']);
 
 
-
+// customers routes
 
 Route::get('/addCustomer', function () {
     return view('customer/addcustomer');
@@ -161,21 +162,18 @@ Route::get('/Search_Customers',[App\Http\Controllers\Customer\CustomerController
 Route::get('/ViewCustomers',[App\Http\Controllers\Customer\CustomerController::class, 'ViewCustomers']);
 Route::get('/CustomerCount',[App\Http\Controllers\Customer\CustomerController::class,'CustomerCount']);
 Route::get('/searchordercustomer',[App\Http\Controllers\Customer\CustomerController::class,'index']);
-Route::post('check',[App\Http\Controllers\Customer\CustomerController::class,'customerorder']);
+Route::post('/checkcustomers',[App\Http\Controllers\Customer\CustomerController::class,'customerorder']);
 
- Route::get('/addChargers', function () {
-     return view('Charge/addcharge');
-});
+//charges blade
 
-Route::resource('extra_charge',ChargeController::class);
-//Route::get('/addChargers',[App\Http\Controllers\charge\ChargeController::class,'AddExtraChargers']);
+Route::get('/addChargers/{id}',[App\Http\Controllers\charge\ChargeController::class,'Addcharge']);
 Route::post('/addChargers',[App\Http\Controllers\charge\ChargeController::class,'AddExtraChargers']);
 Route::get('/ViewChargers',[App\Http\Controllers\charge\ChargeController::class,'ViewChargers']);
 Route::post('/updateChargers',[App\Http\Controllers\charge\ChargeController::class,'ShowUpdateExtraChargers']);
 Route::get('/UpdateChargers/{ExtraChargeID}',[App\Http\Controllers\charge\ChargeController::class, 'UpdateChargers']);
 Route::get('/Search_Chargers',[App\Http\Controllers\charge\ChargeController::class,'SearchChargers']);
-
 Route::get('ExtrachargeInformation/{OrderID}',[App\Http\Controllers\charge\ChargeController::class,'ChargeInfo']);
+
 
 
 Route::resource('tasks','App\Http\Controllers\TaskController');

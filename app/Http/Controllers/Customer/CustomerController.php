@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 use App\Models\customer;
@@ -13,11 +12,6 @@ use App\Models\order_detail;
 
 class CustomerController extends Controller
 {
-
-    public function __construct() {
-        $this->authorizeResource(customer::class, customer::class);
-    }
-
      public function index(){
 
      
@@ -129,19 +123,11 @@ class CustomerController extends Controller
 
    public function customerorder(Request $request, Order $model)
      {
-         $existent = Order::where('CustomerID', $request->get('CustomerID'))->get();
-         $customer = DB::table('customers')->where('CustomerID', $request->get('CustomerID'))->value('Name');
 
+    Order::where('CustomerID', $request->get('CustomerID'))->get();
+    $Order = $model->create($request->all());
+    return redirect()->route('orders.create', ['customerID' => $Order->CustomerID]);
 
-        // if($existent->count()) {
-        //     return redirect()
-        //    ->route('orders.create', ['customers' => $customer]);
-        //  }
-
-        $Order = $model->create($request->all());
-        
-         return redirect()
-           ->route('orders.create', ['Order' => $Order->CustomerID]);
             
      }
   

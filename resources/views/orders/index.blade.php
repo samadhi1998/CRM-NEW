@@ -76,9 +76,10 @@
             </div>
            
             <div>
-            <a href= "ExtrachargeInformation/{{$order->OrderID}}" style="margin:10px" class="text-my-own-color"><span data-feather ="dollar-sign"></span></a> 
+            <a href= "addChargers/{{$order->OrderID}}" style="margin:10px" class="text-my-own-color"><span data-feather ="dollar-sign"></span></a> 
           
             </div>
+           
            
             <div class="btn-group" role="group">
              <form action="{{route('orders.destroy', $order->OrderID)}}" method="POST">

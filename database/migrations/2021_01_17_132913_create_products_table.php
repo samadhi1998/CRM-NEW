@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->integer('Price');
             $table->integer('Qty');
             $table->string('Status')->nullable()->default("In Stock");
+            $table->integer('stock_defective')->nullable()->default(0);
             $table->unsignedBigInteger('AdminID');
             $table->foreign('AdminID')->references('EmpID')->on('users');
             $table->timestamps();

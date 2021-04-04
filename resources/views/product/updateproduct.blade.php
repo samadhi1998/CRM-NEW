@@ -34,6 +34,9 @@
                                     <option value="No-Wrranty">No Warranty</option>
                                 </select>
                             <br>
+                            <label for="stock_defective" ><b>Stock_Defective : </b></label>
+                            <input type="number" name="stock_defective"  value="{{$data['stock_defective']}}" >
+                            <br>
                             <label for="Description" ><b>Description : </b></label>
                             <textarea name="Description" required rows="5" cols="50" >{{$data->Description}}</textarea>
                             <br>

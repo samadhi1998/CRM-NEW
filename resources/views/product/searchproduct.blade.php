@@ -17,6 +17,7 @@
                 <th >Product View</th>
                 <th >Price</th>
                 <th >Quantity</th>
+                <td>Stock_Defective</td>
                 <th >Description</th>
                 <th >Status</th>
               </tr>
@@ -31,6 +32,7 @@
                 <td> <img src="{{asset('uploads/product/'.$product->image)  }}" width="100px;" height="100px;" alt="Product-Image">  </td>
                 <td>{{$product['Price']}}</td>
                 <td>{{$product['Qty']}}</td>
+                <td>{{$product->stock_defective}}</td>
                 <td>{{$product['Description']}}</td>
                 <td>{{$product['Status']}}</td>
               </tr>
