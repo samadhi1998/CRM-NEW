@@ -248,6 +248,11 @@ class PriviledgeSeeder extends Seeder
                 'Description'=>'View-Calendar',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'Description'=>'View-Product-Information',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ]
         ]);
     }
