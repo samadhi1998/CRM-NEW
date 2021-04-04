@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Providers;
-
+use App\Models\product;
+use App\Observers\productObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use App\Listeners\SendUserRegisteredNotification;
@@ -31,6 +32,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        product::observe(productObserver::class);
     }
 }

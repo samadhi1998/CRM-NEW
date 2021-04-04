@@ -15,27 +15,16 @@ use Carbon\Carbon;
 
 class ChargeController extends Controller
 {
-
+ 
     public function __construct() {
-        $this->authorizeResource(extra_charge::class, extra_charge::class);
+        $this->authorizeResource(extra_charge::class,extra_charge::class);
     }
 
     public function AddExtraChargers (Request $request) 
     {
-
-        // extra_charge $extra_charge
-        // $data =  DB::table('extra_charges')  
-        // ->join('orders','extra_charges.OrderID',"=",'orders.OrderID')
-        // ->select('orders.OrderID')
-        // ->get();   
-             
-        // return view('charge.addcharge',['extra_charges'=>$data]);
-
-
       
         $charge=new extra_charge;
         $charge->OrderID=$request->OrderID;
-       // $charge->ServicePersonID = Auth::user()->EmpID;
         $charge->ServicePersonID=$request->ServicePersonID;
         $charge->Type=$request->Type;
         $charge->Amount=$request->Amount;
@@ -48,6 +37,20 @@ class ChargeController extends Controller
         }*/
         return redirect('/ViewChargers');
     }
+
+    
+
+
+    public function Addcharge($id)
+    {
+        $extra_charges=  DB::table('orders')
+        ->where('OrderID',$id)
+         ->get()->first(); 
+        // dd( $extra_charges);
+        return  view('charge/addcharge',['extra_charge'=>$extra_charges]);
+
+    }
+
 
 
   
@@ -98,31 +101,17 @@ class ChargeController extends Controller
 
     }
 
-    public function ChargeInfo(Request $request, Order $OrderID)
-    {
-       
-            //$data = order::find($request->input('OrderID'));
-    
-        //    $extra_charges=  DB::table('extra_charges')  
-        //      ->join('users','extra_charges.ServicePersonID',"=",'users.EmpID')
-        //      ->join('orders','extra_charges.OrderID',"=",'orders.OrderID')
-        //      ->select('extra_charges.ExtraChargeID','extra_charges.OrderID','extra_charges.Created_at','extra_charges.Type','extra_charges.Amount',
-        //        'extra_charges.Description','extra_charges.ServicePersonID','users.name','users.MobileNo','users.email')
-        //      ->where('extra_charges.OrderID', '=',$data->OrderID)
-        //       ->get();   
-             
-        //         return view('charge.chargeInformation');
-        
-
-
+    public function ChargeInfo($id)
+    {  
+        // dd($id);
          $extra_charges=  DB::table('extra_charges')  
          ->join('users','extra_charges.ServicePersonID',"=",'users.EmpID')
-        ->join('orders','extra_charges.OrderID',"=",'orders.OrderID')
-        ->select('extra_charges.ExtraChargeID','extra_charges.OrderID','extra_charges.Created_at','extra_charges.Type','extra_charges.Amount',
+         ->join('orders','extra_charges.OrderID',"=",'orders.OrderID')
+         ->select('extra_charges.ExtraChargeID','extra_charges.OrderID','extra_charges.Created_at','extra_charges.Type','extra_charges.Amount',
          'extra_charges.Description','extra_charges.ServicePersonID','users.name','users.MobileNo','users.email')
-         ->where('extra_charges.OrderID', '=','orders.OrderID')
-          ->get();   
-             
+         ->where('extra_charges.ExtraChargeID', '=',$id)
+          ->get()->toArray();;   
+        //dd( $extra_charges) ;
          return view('charge.chargeInformation',['extra_charges'=>$extra_charges]);
     }
 

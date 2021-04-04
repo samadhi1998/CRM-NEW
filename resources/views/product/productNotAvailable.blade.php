@@ -29,6 +29,7 @@
               <th >Brand</th>
               <th >Price</th>
               <th >Warranty</th>
+              <th> Stock_Defective</th>
               <th >Action</th>
             </tr>
             @foreach( $data as $product)
@@ -39,6 +40,7 @@
               <td>{{$product->Brand}}</td>
               <td>{{$product->Price}}</td>
               <td>{{$product->Warranty}}</td>
+              <td>{{$product->stock_defective}}</td>
               <td>  
               @if(Auth::user()->can('edit-product', App\Models\product::class))
                 <a href= "/UpdateProducts/{{$product['ProductID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>

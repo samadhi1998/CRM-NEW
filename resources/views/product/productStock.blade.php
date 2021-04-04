@@ -30,6 +30,7 @@
               <th >Price</th>
               <th >Quantity</th>
               <th >Warranty</th>
+              <th> Stock_Defective</th>
             </tr>
             @foreach( $data as $product)
             <tr>                                                
@@ -41,6 +42,7 @@
               <td>{{$product->Price}}</td>
               <td>{{$product->Qty}}</td>
               <td>{{$product->Warranty}}</td>
+              <td>{{$product->stock_defective}}</td>
             </tr>
             @endforeach
         </table>

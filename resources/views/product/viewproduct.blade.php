@@ -44,7 +44,7 @@
               <th >Brand</th>
               <th >Price</th>
               <th >Quantity</th>
-              <th >Warranty</th>
+              <td>Stock_Defective</td>
               <th >Status</th>
               <th >Action</th>
             </tr>
@@ -56,7 +56,7 @@
               <td>{{$product['Brand']}}</td>
               <td>{{$product['Price']}}</td>
               <td>{{$product['Qty']}}</td>
-              <td>{{$product['Warranty']}}</td>
+              <td>{{$product->stock_defective}}</td>
               <td>{{$product['Status']}}</td>
               <td>
               @if(Auth::user()->can('view-product-information', App\Models\product::class))
