@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title','Estimated Quotation/Invoice')
+@section('header','View Quotation/Invoice')
 @section('content')
 @foreach ($orders as $ord)
 

@@ -12,4 +12,9 @@ class customer extends Model
 
     protected $table = 'customers';
     protected $primaryKey = "CustomerID";
+
+    public function orders()
+    {
+        return $this->hasmany(Order::class, 'orders');
+    }
 }

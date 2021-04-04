@@ -18,7 +18,13 @@ class ProductPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        foreach($user->roles->priviledges as $priviledge){
+            if($priviledge->PriviledgeID == 48){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

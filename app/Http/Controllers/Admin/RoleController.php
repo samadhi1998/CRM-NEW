@@ -11,9 +11,11 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         $this->authorizeResource(Role::class, Role::class);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,16 +48,9 @@ class RoleController extends Controller
     {
         $role=new role;
         $role->name = $request->name;
-        
-        // $role->Description=$request->Description;
+
         $result=$role->save();
 
-       /* if ($result) {
-            return ["Result"=>"Data has been saved"];
-        } else {
-            return ["Result"=>"operation failed"];
-        }*/
-        // Order::create($request->TaskID());
         return redirect('/View-Role');
     }
 
@@ -93,18 +88,10 @@ class RoleController extends Controller
     public function roleupdate(Request $request, Role $role)
     {
         $role = role::find($request->input('RoleID'));
-        //$role->RoleID = $request->input('RoleID');
-        //$role->name = $request->input('name');
-        
         $PriviledgeID = $request->input('PriviledgeID');
-
         $role->priviledges()->attach($PriviledgeID);
-        
-       // $role->save();
 
         return redirect('View-Role');
-
-
     }
 
     /**
@@ -119,51 +106,5 @@ class RoleController extends Controller
         $data->delete();
         return redirect('View-Role');
     }
-
-    public function viewpriviledge($RoleID){
-
-        $data = role::find($RoleID);
-        return view('admin.users.addpriviledge',['roles'=>$data])
-            ->with('priviledges',Priviledge::all());
-    }
-
-    public function addpriviledge(Request $request){
-
-        $priviledges = $request->PriviledgeID;
-
-        foreach($priviledges as $priviledge){
-                $data = new role_priviledge;
-                $data->RoleID = $request->input('RoleID');
-                $data->PriviledgeID =$request->input('PriviledgeID');
-        //     $data->PriviledgeID = true;
-                role_priviledge::create($data);
-                // $data->Save;
-        }
-
-        // $content=role_priviledges::create([
-        //     'RoleID' => $request->RoleID,
-        //     'PriviledgeID' => implode(',', $request->PriviledgeID),
-        // ]);
-
-        // $data = $request->input();
-        // $data->RoleID = $request->input('RoleID');
-        // $data['PriviledgeID'] = implode(",",$data['PriviledgeID']);
-        // role_priviledge::create($data);
-
-        return redirect('/View-Role');
-    }
-
-    // public function joinrolepriviledges(Role $role)
-    // {
-    //     // return DB::table('orders')->get();
-    //       return DB::table('role_priviledges')
-    //       ->join('roles','roles.RoleID',"=",'role_priviledges.RoleID')
-    //       ->join('priviledges','priviledges.PriviledgeID',"=",'role_priviledges.PriviledgeID')
-    //       ->select('role_priviledges.RoleID','role_priviledges.PriviledgeID')
-    //       ->where('roles.RoleID',1)
-    //       ->get();   
-    // }
-
-    
 
 }

@@ -46,7 +46,7 @@ Route::get('/Dashboard','App\Http\Controllers\OrdersController@dashboard');
 Route::get('/viewuser','App\Http\Controllers\Admin\UserController@index');
 Route::get('admin/users/edit/{EmpID}','App\Http\Controllers\Admin\UserController@edit')->name('editUser');
 Route::post('edit/{EmpID}','App\Http\Controllers\Admin\UserController@update');
-Route::post('delete/{EmpID}','App\Http\Controllers\Admin\UserController@destroy');
+Route::get('/deleteuser/{EmpID}','App\Http\Controllers\Admin\UserController@deleteuser');
 Route::get('assignRole/{EmpID}','App\Http\Controllers\Admin\UserController@assignRole');
 Route::post('assignRole',[App\Http\Controllers\Admin\UserController::class,'addrole']);
 
@@ -86,6 +86,38 @@ Route::get('/chats', function () {
 
  
 //Route::get('find', [OrdersController::class,'findorder']);
+
+
+
+//report
+
+Route::get('salesreport', [App\Http\Controllers\ReportController::class, 'salesreport'])->name('report');
+Route::get('bydaily', [App\Http\Controllers\ReportController::class, 'bydaily'])->name('report.bydaily');
+Route::get('byweekly', [App\Http\Controllers\ReportController::class, 'byweekly'])->name('report.byweekly');
+Route::get('bymonthly', [App\Http\Controllers\ReportController::class, 'bymonthly'])->name('report.bymonthly');
+Route::get('monthwise', [App\Http\Controllers\ReportController::class, 'monthwise'])->name('report.monthwise');
+Route::get('premonth', [App\Http\Controllers\ReportController::class, 'premonth'])->name('report.premonth');
+Route::get('test', [App\Http\Controllers\ReportController::class, 'test'])->name('report.test');
+//Route::get('Reportindex', [App\Http\Controllers\ReportController::class,'Reportindex'])->name('report.Rindex');
+//Route::get('Reportcreate', [App\Http\Controllers\ReportController::class, 'Reportcreate'])->name('report.Rcreate');
+//Route::get('indexrepo', [App\Http\Controllers\ReportController::class,'indexrepo'])->name('report.indexrepo');
+//Route::get('showrepo', [App\Http\Controllers\ReportController::class,'showrepo'])->name('report.showrepo');
+
+
+
+//email
+
+Route::get('send-mail', function () {
+   
+    $details = [
+        'title' => 'From buyabc@abcgroup.com',
+        'body' => 'This is Demo'
+    ];
+   
+    \Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\MyTestMail($details));
+   
+    dd("Email is Sent.");
+});
 
 
 

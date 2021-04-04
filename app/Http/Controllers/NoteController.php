@@ -15,30 +15,16 @@ class NoteController extends Controller
     public function __construct() {
         $this->authorizeResource(Note::class, Note::class);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    //Add Note 
+
     public function AddNote(Request $request)
     {
-        // $this->validate($request, [
-        
-        //     'Name'=>'required|min:1|max:25',
-        //     'Brand'=>'required|min:1|max:25',
-        //     'Price'=>'required',
-        //     'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
-        //     'Description'=>'required|min:1|max:100'
-        // ]);
-
-
        $note=new note;
        $note->Added_By = Auth::user()->EmpID;
        $note->Description=$request->Description;
        $note->Type=$request->Type;
        $note->OrderID=$request->OrderID;
-       //$order = $request->input('OrderID');
-       //$note->orders()->associate($order);
 
        if($request->hasfile('image')){
           $file=$request->file('image');
@@ -56,11 +42,7 @@ class NoteController extends Controller
        return redirect('/note/viewnote')-> with ('success','Product Inserted successfully');
     }
 
-    // public function CreateNote()
-    // {
-    //     return view('notes.createnote')
-    //     ->with('orders',order::all());
-    // }
+    //Show Notes
 
     public function index()
     {
@@ -71,9 +53,9 @@ class NoteController extends Controller
         }
         
         return  view('notes/viewnote', ['notes'=>$note]);
-
-       
     }
+
+    //Redirect to edit view
       
     public function UpdateNote($NoteID)
     {
@@ -82,6 +64,7 @@ class NoteController extends Controller
 
     }
 
+    //Edit Note
 
     public function ShowUpdatesNotes(Request $req)
     {
@@ -90,9 +73,9 @@ class NoteController extends Controller
         $data->Type=$req->Type;
         $data->save();
         return redirect('/note/viewnote');
-
     }
 
+    //Delete Note
 
     public function deleteNote($NoteID)
     {
@@ -100,6 +83,5 @@ class NoteController extends Controller
         $data->delete();
         return redirect('/note/viewnote');
     }
-
 
 }

@@ -3,9 +3,9 @@
 @section('header','View Tasks')
 @section('content')
 @if(Auth::user()->can('add-task', App\Models\Task::class))
-<div class="pull-left">
+  <div class="pull-left">
     <a class="btn btn-primary" href="/Create-Task">Add new task <span data-feather="plus"></a>
-</div>
+  </div>
 @endif
 <br>
 <br>
@@ -25,8 +25,7 @@
               <th >Last Update At</th>
               <th >Action</th>
             </tr>
-          
-          @foreach($tasks as $task)
+            @foreach($tasks as $task)
             <tr>
               <td style="text-align: center">{{$task['TaskID']}}</td>
               <td style="text-align: center">{{$task['ServicePersonID']}}</td>
@@ -43,9 +42,8 @@
               @endif
               </td>
             </tr>
-          @endforeach
+            @endforeach
           </table>
-        
         </div>
       </div>
     </div>

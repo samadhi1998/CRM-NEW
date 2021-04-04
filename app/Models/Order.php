@@ -35,4 +35,9 @@ class Order extends Model
         return $this->belongsTo(Task::class);
     }
 
+    public function customers()
+    {
+        return $this->belongsToMany(customers::class);
+    }
+
 }

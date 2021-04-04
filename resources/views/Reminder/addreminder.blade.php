@@ -4,10 +4,10 @@
 @section('content')
 <div class="pull-left">
     @if(Auth::user()->can('add-reminder', App\Models\Event::class))    
-    <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" >Add New Reminder</button>
+      <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" >Add New Reminder</button>
     @endif
     @if(Auth::user()->can('view-reminder', App\Models\Event::class))
-    <a class="btn btn-primary" href="/view-reminder">View Reminders </a>
+      <a class="btn btn-primary" href="/view-reminder">View Reminders </a>
     @endif
 </div>
 <br>
@@ -17,14 +17,13 @@
     <div class="col-md">
       <div class="card">
         <div class="card-body">
-        {!! $calendar->calendar() !!}
-        {!! $calendar->script() !!}
+          {!! $calendar->calendar() !!}
+          {!! $calendar->script() !!}
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

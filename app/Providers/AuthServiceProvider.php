@@ -66,6 +66,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('edit-product', [ProductPolicy::class, 'update']);
         Gate::define('Stock-out-product', [ProductPolicy::class, 'stockOut']);
         Gate::define('Stock-In-product', [ProductPolicy::class, 'InStock']);
+        Gate::define('view-product-information', [ProductPolicy::class, 'viewAny']);
         Gate::define('Not-Available-product', [ProductPolicy::class, 'NotAvailable']);
 
         //Task Premissions

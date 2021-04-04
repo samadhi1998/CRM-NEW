@@ -27,7 +27,7 @@ class UserController extends Controller
         //return view('index');
         $users= User::all();
         return view('admin.users.index')->with('users', $users)
-        ->with('roles',role::all());
+        ->with('roles',Role::all());
 
 
     }
@@ -106,7 +106,7 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($EmpID)
+    public function deleteuser($EmpID)
     {
         // $this->authorizeResource('delete', User::class);
         
@@ -142,7 +142,6 @@ class UserController extends Controller
 
     public function joinroles(User $user)
     {
-        // return DB::table('orders')->get();
           return DB::table('roles')
           ->join('users','users.RoleID',"=",'roles.RoleID')
           ->select('roles.*')

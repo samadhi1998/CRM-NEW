@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title','Orders')
+@section('header','View Orders')
 @section('content')
 
 @if(Auth::user()->can('add-order', App\Models\Order::class))

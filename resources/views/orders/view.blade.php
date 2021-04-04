@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title','View Orders')
+@section('header','View Order Details')
 @section('content')
 
     @foreach ($orders as $order)
@@ -7,7 +8,6 @@
     <div class="container" style="background :none !important ">
     <div class="row justify-content-center">
     <div class="col-md">
-        <!-- <form action="{{ route('orders.store') }}" method="POST"> -->
 
         <div class="card" >
             <div class="card-body">
@@ -54,7 +54,6 @@
                    </table> 
             </div>
         </div>
-        <!-- </form> -->
     </div> 
 
 @endforeach 
