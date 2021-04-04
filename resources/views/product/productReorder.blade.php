@@ -31,6 +31,7 @@
               <th >Price</th>
               <th >Quantity</th>
               <th >Warranty</th>
+              <th> Stock_Defective</th>
               <th >Action</th>
             </tr>
             @foreach( $data as $product)
@@ -42,12 +43,13 @@
               <td>{{$product->Price}}</td>
               <td>{{$product->Qty}}</td>
               <td>{{$product->Warranty}}</td>
+              <td>{{$product->stock_defective}}</td>
               <td> 
               @if(Auth::user()->can('edit-product', App\Models\product::class))
-                <a href= "/UpdateProducts/{{$product['ProductID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a> 
+              <a href= "/UpdateProducts/{{$product->ProductID}} " style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>  
               @endif
               @if(Auth::user()->can('view-product-information', App\Models\product::class))
-                <a href="/ProductInfomation/{{$product['ProductID']}}"  style="margin:2px" class="text-my-own-color"><span data-feather ="eye"></span></a>
+              <a href="/ProductInfomation/{{$product->ProductID}}"  style="margin:2px" class="text-my-own-color"><span data-feather ="eye"></span></a>
               @endif
               </td>
             </tr>

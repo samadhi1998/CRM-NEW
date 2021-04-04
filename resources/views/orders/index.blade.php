@@ -73,11 +73,11 @@
                 <a href= "progressedit/{{$order->OrderID}}" class="text-my-own-color"><span data-feather="edit-3"> </span></a>
             </div>
             @endif
-            @if(Auth::user()->can('view-charge', App\Models\Charge::class))
+            @if(Auth::user()->can('add-charge', App\Models\Charge::class))
             <div>
-            <a href= "ExtrachargeInformation/{{$order->OrderID}}" style="margin:10px" class="text-my-own-color"><span data-feather ="dollar-sign"></span></a> 
+            <a href= "addChargers/{{$order->OrderID}}" style="margin:10px" class="text-my-own-color"><span data-feather ="dollar-sign"></span></a> 
+            </div> 
             @endif
-            </div>
             @if(Auth::user()->can('delete-order', App\Models\Order::class))
             <div class="btn-group" role="group">
              <form action="{{route('orders.destroy', $order->OrderID)}}" method="POST"> 
