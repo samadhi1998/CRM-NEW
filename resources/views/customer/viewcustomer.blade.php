@@ -4,8 +4,8 @@
 @section('content')
 
 @if(Auth::user()->can('add-customer', App\Models\customer::class))
-  <div class="pull-left" style="text-align: right;color:blue">
-    <a href="/addCustomer" class="btn btn-primary"> Add Customer</a>
+  <div class="pull-left" style="text-align:left;color:blue">
+    <a href="/addCustomer" class="btn btn-primary"> Add Customer <span data-feather="plus"></a>
   </div>
 @endif
 <br>

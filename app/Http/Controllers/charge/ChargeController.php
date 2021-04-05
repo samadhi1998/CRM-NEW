@@ -91,7 +91,7 @@ class ChargeController extends Controller
 
         $query=$request->input('query') ;
         //dd($query);
-        $extra_charge=extra_charge::where('ExtraChargeID', 'like', "%$query%")->orWhere('Description', 'like', "%$query%")->paginate(5);
+        $extra_charge=extra_charge::where('ExtraChargeID', 'like', "%$query%")->orWhere('Description', 'like', "%$query%")->orWhere('Type', 'like', "%$query%")->paginate(5);
         //dd($customer);
         if (count($extra_charge)>0) {
             return view('charge/searchcharge', ['extra_charge'=>$extra_charge]);
