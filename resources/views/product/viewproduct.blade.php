@@ -36,7 +36,7 @@
 
           </br>
           </br>
-
+          <div class="table-responsive">
           <table>
             <tr >
               <th >@sortablelink('Name')</th>
@@ -72,6 +72,7 @@
             </tr>
                 @endforeach
           </table>
+          </div>
           <br>
           <br>
           {!! $products->appends(\Request::except('page'))->render() !!}

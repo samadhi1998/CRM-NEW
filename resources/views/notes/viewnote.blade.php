@@ -29,6 +29,7 @@
           </form>
           </br>
           </br>
+          <div class="table-responsive">
           <table>
             <tr >
               <th >@sortablelink('NoteID')</th>
@@ -58,6 +59,7 @@
             </tr>
             @endforeach
           </table>
+          </div>
           <br>
           <br> 
           {!! $notes->appends(\Request::except('page'))->render() !!}

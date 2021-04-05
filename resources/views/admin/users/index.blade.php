@@ -24,6 +24,7 @@
           </br>
           </br>
           <!-- Emp Detail Table -->
+          <div class="table-responsive">
             <table>
               <tr>
                 <th>@sortablelink('EmpID')</th>
@@ -64,6 +65,7 @@
               @endforeach 
               @endif
             </table>
+            </div>
           <!-- Emp Detail Table End -->
           <br>
           <br>

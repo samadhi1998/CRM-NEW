@@ -46,7 +46,7 @@
         <hr style="background-color:#233554; height: 3px">
         <div>
         </div>
-
+        <div class="table-responsive">
             <table>
                 <tr> 
                     <th>Order No</th>
@@ -69,7 +69,7 @@
                     @endforeach
                     
             </table>  
-          
+          </div>
             <br><br><br><br>
             <h5 class="font-light mb-0"><b>No of sales at  {{ $date }} : {{ $count }} </b> </h5>
 

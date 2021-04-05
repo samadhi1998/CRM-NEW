@@ -29,6 +29,7 @@
                     </strong></p>  
 
                 <h6 class="card-title"><strong>Order Items :</strong></h6>
+                <div class="table-responsive">
                     <table class="table table-bordered">
                             <tr>
                                 <th scope="col">Description</th>
@@ -52,6 +53,7 @@
                                 <td>{{ $order->Advance }}  </td>
                             </tr>
                    </table> 
+                   </div>
             </div>
         </div>
     </div> 

@@ -6,6 +6,7 @@
         <div class="col-md">
             <div class="card">
                 <div class="card-body">
+                    <div class="table-responsive">
                     <table >
                         <thead >
                             <tr>
@@ -30,6 +31,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
                 </div>
                 {{$customers->links()}}
                 <div class="pull-right" style="text-align: right;color:blue">

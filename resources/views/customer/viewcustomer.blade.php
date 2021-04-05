@@ -29,6 +29,7 @@
           </form>
           </br>
           </br>
+          <div class="table-responsive">
           <table>
             <thead>
               <tr>
@@ -62,6 +63,7 @@
               @endif
             </tbody>
           </table>
+          </div>
           <br>
           <br>
           {!! $customers->appends(\Request::except('page'))->render() !!}

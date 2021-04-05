@@ -10,6 +10,7 @@
        <div class="card-header">{{ __('search chargers') }}</div>
         <div class="card-body">
           <br>
+          <div class="table-responsive">
           <table>
             <tr>
               <th>Order ID</th>
@@ -30,6 +31,7 @@
             @endforeach
             </tbody>
           </table>
+          </div>
           <br>
           <br>
           {{$extra_charge->links()}}

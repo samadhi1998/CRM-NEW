@@ -22,6 +22,7 @@
             </form>
             </br>
             </br>
+            <div class="table-responsive">
           <table>
             <tr>
               <th >@sortablelink('TaskID')</th>
@@ -54,6 +55,7 @@
             </tr>
             @endforeach
           </table>
+          </div>
           <br>
           <br>
           {!! $tasks->appends(\Request::except('page'))->render() !!}

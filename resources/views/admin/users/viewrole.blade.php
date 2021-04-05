@@ -16,6 +16,7 @@
       <div class="card">
         <div class="card-body">
         <br>
+        <div class="table-responsive">
           <table>
             <tr>
               <th >@sortablelink('RoleID')</th>
@@ -39,6 +40,7 @@
             @endforeach
             @endif
           </table>
+        </div>
           <br>
           <br>
           {!! $roles->appends(\Request::except('page'))->render() !!}

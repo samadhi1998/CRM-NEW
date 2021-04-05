@@ -7,6 +7,7 @@
     <div class="col-md">
       <div class="card">
         <div class="card-body">
+        <div class="table-responsive">
         <table>
               <tr >
                 <th >Reminder ID</th>
@@ -33,7 +34,7 @@
               </tr>
                @endforeach
             </table>
-
+          </div>
           </br>
           </br>
 

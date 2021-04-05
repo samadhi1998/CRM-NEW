@@ -42,6 +42,7 @@
 
 
         </div>
+        <div class="table-responsive">
             <table>
                 <tr> 
                     <th>Order No</th>
@@ -64,7 +65,7 @@
                     @endforeach
                     
             </table>  
-          
+          </div>
             
             <br><br><br><br>
             <h5 class="font-light mb-0"><b>No of sales from {{ $first_day_this_month }}  to {{ $last_day_this_month }} : {{ $count }} </b> </h5>

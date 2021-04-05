@@ -23,6 +23,7 @@
           </br>
           </br>
           </br>
+          <div class="table-responsive">
           <table>
             <tr >
               <th >Product Name</th>
@@ -55,6 +56,7 @@
             </tr>
             @endforeach
           </table>
+          </div>
           <br>
           <br>
           {{$data->links()}}

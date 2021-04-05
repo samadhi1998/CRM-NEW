@@ -40,6 +40,7 @@
         <hr style="background-color:#233554; height: 3px">
         </div>
     </div>
+    <div class="table-responsive">
             <table>
                 <tr> 
                     <th>Order No</th>
@@ -50,6 +51,7 @@
                     <th>Amount</th>
                 </tr>
             </table>
+            </div>
             <br><br><br>
 
             <div align="right">

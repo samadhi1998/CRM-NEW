@@ -25,6 +25,7 @@
             </form>
 </br></br>
 <div>
+<div class="table-responsive">
     <table>
         <tr> 
             <th>Order No</th>
@@ -86,5 +87,6 @@
          @endforeach
 
     </table>  
+</div>
 </div>
 @endsection

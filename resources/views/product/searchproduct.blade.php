@@ -7,6 +7,7 @@
     <div class="col-md">
       <div class="card">
         <div class="card-body">
+        <div class="table-responsive">
           <table>
             <thead >
               <tr >
@@ -39,6 +40,7 @@
             @endforeach
             </tbody>
           </table>
+          </div>
           </br>
           </br>
 

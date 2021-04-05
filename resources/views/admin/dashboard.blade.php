@@ -96,7 +96,7 @@
                         <div class="d-md-flex">
                             <h4 class="card-title col-md-10 mb-md-0 mb-5 align-self-center">Orders</h4>
                         </div>
-                        <div class="table-responsive mt-5">
+                        <div class="table-responsive mt-4">
                             <table>
                                 <tr> 
                                     <th>Order ID:</th>
@@ -125,7 +125,7 @@
                         <div class="d-md-flex">
                             <h4 class="card-title col-md-10 mb-md-0 mb-5 align-self-center">Products</h4>
                         </div>              
-                        <div class="table-responsive mt-5">
+                        <div class="table-responsive mt-4">
                             <table>
                                 <tr> 
                                     <th>Product Name:</th>

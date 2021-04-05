@@ -32,6 +32,7 @@
             </form>
             </br>
             </br>
+            <div class="table-responsive">
             <table>
               <tr >
                 <th >@sortablelink('id')</th>
@@ -58,6 +59,7 @@
               </tr>
                @endforeach
             </table>
+            </div>
             <br>
             <br> 
             {!! $events->appends(\Request::except('page'))->render() !!}

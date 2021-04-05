@@ -24,6 +24,7 @@
                         </form>
                     </br>
                     <br>
+                    <div class="table-responsive">
                     <table>
                         <tr>
                             <th>@sortablelink('ExtraChargeID')</th>
@@ -55,6 +56,7 @@
                         @endforeach
                         @endif
                     </table>
+                    </div>
                     <br>
                     <br>
                     {!! $extra_charge->appends(\Request::except('page'))->render() !!}

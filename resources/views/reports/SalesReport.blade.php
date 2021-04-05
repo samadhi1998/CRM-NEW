@@ -82,7 +82,7 @@
                         <div class="card">
                         <div class="card-body">
                         <form action="{{ route('report') }}" method="get"><br><br>   
-
+                        <div class="table-responsive">
                             <table>
                                 <tr> 
                                     <th>Order No</th>
@@ -104,7 +104,7 @@
 
                                     @endforeach
                             </table>  
-                        
+                        </div>
                             <br><br><br><br>
                             <h5 class="font-light mb-0"><b>No of sales from {{ $start_date }}  to {{ $end_date }} :  </b> </h5>
 
