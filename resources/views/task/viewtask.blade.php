@@ -27,7 +27,7 @@
             <tr>
               <th >@sortablelink('TaskID')</th>
               <th >@sortablelink('ServicePersonID')</th>
-              <th >Status</th>
+              <th >@sortablelink('Status')</th>
               <th >@sortablelink('Due_Date')</th>
               <th >@sortablelink('Description')</th>
               <th >Last Update At</th>
@@ -43,7 +43,7 @@
               <td style="text-align: center">{{$task['updated_at']}}</td>
               <td>
               @if(Auth::user()->can('edit-task', App\Models\Task::class))
-                <a href="/View-Task/edit/{{$task->TaskID}}" class="text-my-own-color"><span data-feather="edit"></span></a>
+                <a href="/View-Task/editTask/{{$task->TaskID}}" class="text-my-own-color"><span data-feather="edit"></span></a>
               @endif
               @if(Auth::user()->can('delete-task', App\Models\Task::class))
                 <a href="/deleteTask/{{$task->TaskID}}" class="text-my-own-color"><span data-feather="trash-2"></span></a>

@@ -74,38 +74,27 @@ class OrdersController extends Controller
         return view('orders/show', compact('orders'));   
     }
 
-    public function edit(Order $order)
+    public function edit($OrderID)
     {
-        $products = Product::all();
+        $data = Order::find($OrderID);
 
-        $orders =  DB::table('orders')  
-
-        ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->join('order_product','orders.OrderID',"=",'order_product.order_OrderID')
-        ->join('products','products.ProductID',"=",'order_product.product_ProductID')
-        ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Progress','orders.Total_Price',
-                 'products.Name as ProductName','order_product.Qty','products.Price','products.ProductID')
-        ->where('orders.OrderID', '=', $order->OrderID)
-        ->get();   
-
-        return view('orders/edit', compact('products','orders')); 
+        $product = DB::table('products')
+        ->join('order_product','products.ProductID',"=",'order_product.product_ProductID')
+        ->select('products.Name as ProductName','products.price','order_product.Qty','products.Price')
+        ->where('order_product.order_OrderID', '=', $data->OrderID)
+        ->get();        
+        
+        return view('orders/edit',['order'=>$data,'products'=>$product]);  
     }
 
     public function update(Request $request, Order $order)
     {  
-         $orders =  DB::table('orders')  
+        $orders = Order::find($request->input('OrderID'));
+        $ProductID = $request->input('ProductID');
+        $orders->product()->attach($ProductID);
 
-        ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->join('order_details','orders.OrderID',"=",'order_details.OrderID')
-        ->join('products','products.ProductID',"=",'order_details.ProductID')
-        ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Progress','orders.Total_Price',
-                 'products.Name as ProductName','order_details.Qty','products.Price','products.ProductID')
-        ->where('orders.OrderID', '=', $order->OrderID);
-    
-        $order->update($request->all());
-        return redirect()->route('orders.index');
+        return redirect('order/index');
     }
-
  
     public function delete($OrderID)
     {

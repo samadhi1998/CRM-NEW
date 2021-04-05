@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="container"  style="background :none !important ">      
-                    <form method="POST" action="/edit" id="myform">
+                    <form method="POST" action="/editTask" id="myform">
                         @csrf
                         <label for="TaskID" ><b>Task ID : </b></label>
                         <input type="text" name="TaskID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$tasks->TaskID}}" readonly>

@@ -22,5 +22,9 @@ class product extends Model
         return $this->belongsTo(User::class,'EmpID');
     }
     
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class,'order_product', 'product_ProductID', 'order_OrderID')->withPivot(['Qty'])->withTimestamps();
+    }
  
 }

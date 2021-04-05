@@ -76,7 +76,8 @@ Route::get('/chats', function () {
  Route::resource('orders', OrdersController::class);
  Route::get('index', [App\Http\Controllers\OrdersController::class,'index']);
  Route::get('create', [App\Http\Controllers\OrdersController::class,'create']);
- Route::get('edit', [App\Http\Controllers\OrdersController::class,'edit']);
+ Route::get('edit/{OrderID}', [App\Http\Controllers\OrdersController::class,'edit']);
+ Route::post('edit', [App\Http\Controllers\OrdersController::class,'update']);
  Route::get('show', [App\Http\Controllers\OrdersController::class,'show']);
  Route::get('view', [App\Http\Controllers\OrdersController::class,'view']);
  Route::get('joincustomers', [App\Http\Controllers\OrdersController::class,'joincustomers']);
@@ -169,10 +170,10 @@ Route::get('ExtrachargeInformation/{OrderID}',[App\Http\Controllers\charge\Charg
 
 Route::resource('tasks','App\Http\Controllers\TaskController');
 Route::get('/View-Task','App\Http\Controllers\TaskController@index');
-Route::get('/View-Task/edit/{TaskID}','App\Http\Controllers\TaskController@edit')->name('editTask'); 
+Route::get('/View-Task/editTask/{TaskID}','App\Http\Controllers\TaskController@edit')->name('editTask'); 
 Route::get('/Create-Task','App\Http\Controllers\TaskController@create');
 Route::post('store','App\Http\Controllers\TaskController@store')->name('task.store');
-Route::post('edit','App\Http\Controllers\TaskController@update');
+Route::post('editTask','App\Http\Controllers\TaskController@update');
 Route::get('/Select-Order','App\Http\Controllers\OrdersController@selectorder');
 Route::get('/deleteTask/{TaskID}','App\Http\Controllers\TaskController@deleteTask');
 Route::get('/completeTask/{TaskID}','App\Http\Controllers\TaskController@completeTask');

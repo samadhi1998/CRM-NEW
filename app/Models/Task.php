@@ -21,6 +21,6 @@ class Task extends Model
 
     protected $primaryKey = 'TaskID';
     protected $fillable = ['TaskID','Description','ServicePersonID','Added_By','Due_Date','Status'];
-    public $sortable = ['TaskID', 'Description', 'ServicePersonID','Due_Date'];
+    public $sortable = ['TaskID', 'Description', 'ServicePersonID','Due_Date','Status'];
 
 }
