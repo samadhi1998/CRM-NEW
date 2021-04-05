@@ -54,6 +54,11 @@
             </tr>
             
    </table> 
+   <br>
+   </br>
+   </br>
+   <div class="pull-right" style="text-align: right;color:blue">
+    <a href="{{ URL::previous() }}">Go Back</a>
    </div>
 </div>
 </div>

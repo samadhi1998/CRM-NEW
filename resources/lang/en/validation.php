@@ -139,6 +139,7 @@ return [
             'required' => 'You should Enter NIC....',
             'regex' => ' Please Enter Valid NIC.....',
             'unique' => 'This Customer is already registered....',
+            'min' =>'NIC Must Have 10 Characters....',
         ],
         'Address'=>[
             'required' => 'You should Enter Address of Customer....',
@@ -177,7 +178,16 @@ return [
             'required' => 'Please Enter Brief Introction Of Product.....',
             'min' =>'Your Introduction is too Short....',
             'max' =>'your Introduction is too Heavy...., ',
-        ]
+        ],
+        'Type'=>[
+         'required' => 'Please select Charge Type.....',
+        ],
+        'Amount'=>[
+            'required' => 'Please Enter Charge Amount .....',
+            'numeric' => 'Invalid Input.Again Enter Amount Of  Charge',
+            'min' =>'Charge must be At least Rs. 50.',
+            'max' =>'Maxiumum charge Value is max:50000',
+        ],
     ],
 
     /*
