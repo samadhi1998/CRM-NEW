@@ -8,9 +8,9 @@
 </div>
 
 <div class="pull-right" style="text-align: right;">
-    <a class="btn btn-primary" href="/InStockProducts"> Available</a>
+    <a class="btn btn-primary" href="/InStockProducts"> In Stock</a>
     <a class="btn btn-primary"  href="/StockoutProducts">Re Order</a>
-     <a class="btn btn-primary" href="/notAvailableProducts">Not Available</a>
+     <a class="btn btn-primary" href="/notAvailableProducts">Out of Stock</a>
 </div>
   <br>
   <br>
@@ -44,7 +44,7 @@
               <th >Brand</th>
               <th >Price</th>
               <th >Quantity</th>
-              <td>Stock_Defective</td>
+              <th>Stock Defective</th>
               <th >Status</th>
               <th >Action</th>
             </tr>

@@ -6,8 +6,10 @@
 <div class="container" style="background :none !important ">
   <div class="row justify-content-center">
     <div class="col-md">
-      <div class="card">
+     <div class="card" >
+       <div class="card-header">{{ __('search chargers') }}</div>
         <div class="card-body">
+          <br>
           <table>
             <tr>
               <th>Order ID</th>

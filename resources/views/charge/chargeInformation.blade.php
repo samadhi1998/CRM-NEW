@@ -10,19 +10,19 @@
             <div class="card" >
                 <div class="card-header">{{ __('Chargers Details') }}</div>
                     <div class="card-body">
-                        <strong><p>
+                        <strong><p style="text-align:left;color:#233556">
                             Extra-Charge ID : {{ $charges->ExtraChargeID }}<br>
                             Created Date : {{  $charges->Created_at }}<br> 
                             Order ID: {{ $charges->OrderID }}
                         </strong></p>
                         <h6 class="card-title"><strong>Sevice Person Information:</strong></h6>
-                        <p><strong> 
+                        <p style="text-align:left;color:#233556"><strong> 
                             Service Person ID: {{$charges->ServicePersonID }} <br>
                             Service Person  Name :{{$charges->name }}<br>
                             Contact Number : {{ $charges->MobileNo}} <br>
                             Service Person Email  : {{$charges->email}} <br>
                         </strong></p>  
-                        <br>
+                        
                         <h6 class="card-title"><strong>Chargers Information :</strong></h6>
                         <br>
                         <table class="table table-bordered">
