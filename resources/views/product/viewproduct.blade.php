@@ -8,9 +8,9 @@
 </div>
 
 <div class="pull-right" style="text-align: right;">
-    <a class="btn btn-primary" href="/InStockProducts"> Available</a>
+    <a class="btn btn-primary" href="/InStockProducts"> In Stock</a>
     <a class="btn btn-primary"  href="/StockoutProducts">Re Order</a>
-     <a class="btn btn-primary" href="/notAvailableProducts">Not Available</a>
+     <a class="btn btn-primary" href="/notAvailableProducts">Out of Stock</a>
 </div>
   <br>
   <br>

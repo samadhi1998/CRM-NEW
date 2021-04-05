@@ -45,9 +45,9 @@
               @if(Auth::user()->can('edit-product', App\Models\product::class))
                 <a href= "/UpdateProducts/{{$product['ProductID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>
               @endif
-              @if(Auth::user()->can('view-product-information', App\Models\product::class))
+              <!-- @if(Auth::user()->can('view-product-information', App\Models\product::class))
                 <a href="/ProductInfomation/{{$product['ProductID']}}"  style="margin:2px" class="text-my-own-color"><span data-feather ="eye"></span></a>
-              @endif
+              @endif -->
               </td>
             </tr>
             @endforeach

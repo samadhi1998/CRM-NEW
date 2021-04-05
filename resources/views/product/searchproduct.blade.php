@@ -17,7 +17,7 @@
                 <th >Product View</th>
                 <th >Price</th>
                 <th >Quantity</th>
-                <td>Stock_Defective</td>
+                <th>Stock_Defective</th>
                 <th >Description</th>
                 <th >Status</th>
               </tr>

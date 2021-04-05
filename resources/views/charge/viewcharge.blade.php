@@ -3,11 +3,11 @@
 @section('header','View Additional Charges')
 @section('content')
 
-@if(Auth::user()->can('add-charge', App\Models\extra_charge::class))
+<!-- @if(Auth::user()->can('add-charge', App\Models\extra_charge::class))
     <div class="pull-left">
         <a class="btn btn-primary" href="/addChargers">Add Charges <span data-feather="plus"></a>
     </div>
-@endif
+@endif -->
 <br>
 <br>
 <div class="container" style="background :none !important ">
