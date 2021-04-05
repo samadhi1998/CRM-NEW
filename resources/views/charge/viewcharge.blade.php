@@ -2,8 +2,6 @@
 @section('title','View Charge')
 @section('header','View Additional Charges')
 @section('content')
-
-
 <div class="container" style="background :none !important ">
     <div class="row justify-content-center">
         <div class="col-md">
