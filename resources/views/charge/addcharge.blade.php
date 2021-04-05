@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title','Add Charge')
-@section('header','View Additional Charges')
+@section('header','Add Additional Charges')
 @section('content')
 
 <div class="row justify-content-center">
@@ -15,9 +15,6 @@
                                           <br>
                                           <label for="ServicePersonID" ><b>ServicePerson ID : </b></label>
                                           <input type="text" name="ServicePersonID"  value="{{ Auth::user()->EmpID }}">
-                                          <br>
-                                          <label for="Amount" ><b>Amount : </b></label>
-                                          <input type="number" name="Amount"  >
                                           <br>
                                           <label for="Type"><b>Type : </b></label>
                                                  <select  name="Type">

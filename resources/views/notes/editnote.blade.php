@@ -6,7 +6,6 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header">{{ __('Update Note') }}</div>
                 <div class="card-body">
                     <div class="container"  style="background :none !important ">
                         <form method="POST" action="/UpdateNote"id="myformproduct" enctype="multipart/form-data" >
@@ -35,7 +34,6 @@
                         </form>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>

@@ -3,35 +3,42 @@
 @section('header','Update Progress')
 @section('content')
 
-<div class="container">
-    <br>
-        <form method="POST" action="/progressedit" id="myform">
-            @csrf
-            <label for="OrderID" ><b>Order ID : </b></label>
-            <input type="text" name="OrderID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$orders->OrderID}}" readonly>
-            <br>
-            <label for="Due_Date" ><b>Due Date for Payment : </b></label>
-            <input type="date" name="Due_Date" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$orders->Due_date}}" readonly>
-            <br>
-            <label for="Progress"><b>Progress : </b></label>
-            <select name="Progress" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-                <option value="{{$orders->Progress}}" selected hidden>{{$orders->Progress}}</option>
-                <option value="Order Confirmed">Order Confirmed</option>
-                <option value="Advance Payment Done">Advance Payment Done</option>
-                <option value="Order Completed">Order Completed</option>
-                <option value="Pre-Site Visit Done">Pre-Site Visit Done</option>
-                <option value="Site Visit Done">Site Visit Done</option>
-                <option value="Order Canceled">Order Canceled</option>
-            </select>
-            <br>
-            <br>
-            <div class="btn-group float-right" role="group">
-                <button type="button" data-toggle="modal" data-target="#exampleModal" >Update</button>
+<div class="row justify-content-center">
+    <div class="col-md">
+        <div class="card">
+            <div class="card-body">
+                <div class="container"  style="background :none !important ">
+                    <form method="POST" action="/progressedit" id="myform">
+                        @csrf
+                            <label for="OrderID" ><b>Order ID : </b></label>
+                            <input type="text" name="OrderID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$orders->OrderID}}" readonly>
+                            <br>
+                            <label for="Due_Date" ><b>Due Date for Payment : </b></label>
+                            <input type="date" name="Due_Date" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$orders->Due_date}}" readonly>
+                            <br>
+                            <label for="Progress"><b>Progress : </b></label>
+                            <select name="Progress" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+                                <option value="{{$orders->Progress}}" selected hidden>{{$orders->Progress}}</option>
+                                <option value="Order Confirmed">Order Confirmed</option>
+                                <option value="Advance Payment Done">Advance Payment Done</option>
+                                <option value="Order Completed">Order Completed</option>
+                                <option value="Pre-Site Visit Done">Pre-Site Visit Done</option>
+                                <option value="Site Visit Done">Site Visit Done</option>
+                                <option value="Order Canceled">Order Canceled</option>
+                            </select>
+                            <br>
+                            <br>
+                            <div class="btn-group float-right" role="group">
+                                <button type="button" data-toggle="modal" data-target="#exampleModal" >Update</button>
+                            </div>
+                            <div class="btn-group float-right mr-2 " role="group">
+                                <button type="submit" ><a href="/index" class="text-my-own-color">Cancel</a></button>
+                            </div> 
+                    </form>
+                </div>
             </div>
-            <div class="btn-group float-right mr-2 " role="group">
-                <button type="submit" ><a href="/index" class="text-my-own-color">Cancel</a></button>
-            </div> 
-        </form>
+        </div>
+    </div>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
