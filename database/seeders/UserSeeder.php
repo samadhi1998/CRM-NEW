@@ -63,17 +63,8 @@ class UserSeeder extends Seeder
                 'RoleID'=>'5',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-            ],
-            [
-                'name'=>'Thilini Madushani',
-                'email'=>'Thilini@gmail.com',
-                'Address'=>'Divulapitiya,Gampaha',
-                'MobileNo'=>'0716180776',
-                'password'=>bcrypt("1234"),
-                'RoleID'=>'1',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
             ]
+           
         ]);
     }
 }
