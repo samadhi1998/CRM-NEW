@@ -39,12 +39,12 @@
 
           <table>
             <tr >
-              <th >Product Name</th>
+              <th >@sortablelink('Name')</th>
               <th >Product View</th>
               <th >Brand</th>
-              <th >Price</th>
-              <th >Quantity</th>
-              <th>Stock Defective</th>
+              <th >@sortablelink('Price')</th>
+              <th >@sortablelink('Qty')</th>
+              <th>Stock_Defective</th>
               <th >Status</th>
               <th >Action</th>
             </tr>
@@ -74,7 +74,7 @@
           </table>
           <br>
           <br>
-          {{$products->links()}}
+          {!! $products->appends(\Request::except('page'))->render() !!}
           <div class="pull-right" style="text-align: right;color:blue">
             <a href="{{ URL::previous() }}">Go Back</a>
           </div>

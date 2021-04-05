@@ -60,7 +60,7 @@ class ProductController extends Controller
 
     public function ViewProduct()
     {
-        $data=product::paginate(5); 
+        $data=product::sortable()->paginate(5); 
        return  view('product/viewproduct', ['products'=>$data]);
     }
 

@@ -23,10 +23,10 @@ class TaskController extends Controller
     public function index()
     {
         
-        $data = Task::where('ServicePersonID','=', Auth::user()->EmpID)->paginate(5);
+        $data = Task::where('ServicePersonID','=', Auth::user()->EmpID)->sortable()->paginate(5);
         
         if(Auth::user()->roles->name == 'Super-Admin' || Auth::user()->can('add-task', App\Models\Task::class) ){
-            $data = task::paginate(5);
+            $data = task::sortable()->paginate(5);
         }
         
         return view('task/viewtask',['tasks'=>$data]);

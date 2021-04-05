@@ -46,10 +46,10 @@ class NoteController extends Controller
 
     public function index()
     {
-        $note = Note::where('Added_By','=', Auth::user()->EmpID)->paginate(4);
+        $note = Note::where('Added_By','=', Auth::user()->EmpID)->sortable()->paginate(4);
 
         if(Auth::user()->roles->name == 'Super-Admin'){
-            $note = Note::paginate(4);
+            $note = Note::sortable()->paginate(4);
         }
         
         return  view('notes/viewnote', ['notes'=>$note]);

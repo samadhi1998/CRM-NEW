@@ -26,14 +26,15 @@
           <!-- Emp Detail Table -->
             <table>
               <tr>
-                <th>EmpID</th>
-                <th>Name</th>
-                <th>Email</th>
+                <th>@sortablelink('EmpID')</th>
+                <th>@sortablelink('name')</th>
+                <th>@sortablelink('email')</th>
                 <th>Address</th>
                 <th>MobileNo</th>
                 <th>Role</th>
                 <th>Action</th>    
               </tr>
+              @if($users->count())
               @foreach($users as $user)
               <tr>
                 <td>{{$user['EmpID']}}</td>
@@ -61,11 +62,12 @@
                 </td> 
               </tr>
               @endforeach 
+              @endif
             </table>
           <!-- Emp Detail Table End -->
           <br>
           <br>
-          {{$users->links()}}
+          {!! $users->appends(\Request::except('page'))->render() !!}
         </div>
       </div>
     </div>

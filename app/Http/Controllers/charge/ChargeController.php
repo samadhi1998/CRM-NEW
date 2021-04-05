@@ -56,7 +56,7 @@ class ChargeController extends Controller
   
     public function ViewChargers()// view chargers
     {
-        $data=extra_charge::paginate(5);
+        $data=extra_charge::sortable()->paginate(5);
         return  view('charge/viewcharge',['extra_charge'=>$data]);
     }
 
