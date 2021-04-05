@@ -34,8 +34,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view ('admin/users/createrole')
-        ->with('priviledges',Priviledge::all());
+        return view ('admin/users/createrole');
     }
 
     /**
@@ -106,5 +105,7 @@ class RoleController extends Controller
         $data->delete();
         return redirect('View-Role');
     }
+
+    
 
 }
