@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title','Charge Information')
-@section('header','View Charges')
+@section('header','View Charge Information')
 @section('content')
 
 @foreach ($extra_charges as $charges)
@@ -8,7 +8,6 @@
     <div class="row justify-content-center">
         <div class="col-md">
             <div class="card" >
-                <div class="card-header">{{ __('Chargers Details') }}</div>
                     <div class="card-body">
                         <strong><p style="text-align:left;color:#233556">
                             Extra-Charge ID : {{ $charges->ExtraChargeID }}<br>

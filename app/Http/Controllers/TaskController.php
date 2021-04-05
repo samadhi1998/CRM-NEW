@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Models\Task;
 use App\Models\Order;
 use App\Models\User;
+use DB;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -29,7 +30,8 @@ class TaskController extends Controller
             $data = task::sortable()->paginate(5);
         }
         
-        return view('task/viewtask',['tasks'=>$data]);
+        return view('task/viewtask',['tasks'=>$data])
+        ->with('orders', Order::all());
     }
 
     /**
@@ -147,4 +149,19 @@ class TaskController extends Controller
         }
     
     }
+
+    public function jointasks($TaskID)
+    {
+           $tasks = DB::table('tasks')
+          ->join('orders','tasks.TaskID',"=",'orders.TaskID')
+          ->join('users','tasks.Added_By','=','users.EmpID')
+          ->select('tasks.TaskID','tasks.Description','tasks.Due_Date','users.name','users.EmpID','users.MobileNo','users.email','orders.OrderID','tasks.created_at','orders.CustomerID')
+          ->where('tasks.TaskID','=',$TaskID)
+          ->get()->toArray();  
+
+         
+        
+         return view('task.viewtaskinfo',['tasks'=>$tasks]);  
+    }
+
 }

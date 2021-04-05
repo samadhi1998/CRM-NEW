@@ -188,6 +188,7 @@ Route::get('/deleteTask/{TaskID}','App\Http\Controllers\TaskController@deleteTas
 Route::get('/Search_Tasks',[App\Http\Controllers\TaskController::class,'searchTasks']);
 Route::get('addtask/{OrderID}','App\Http\Controllers\TaskController@create');
 Route::post('addtask',[App\Http\Controllers\TaskController::class,'store']);
+Route::get('TaskInformation/{TaskID}',[App\Http\Controllers\TaskController::class,'jointasks']);
 
 // Route::get('/addtask/{OrderID}','App\Http\Controllers\TaskController@create' );
 

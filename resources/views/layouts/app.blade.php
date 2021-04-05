@@ -65,7 +65,7 @@
 <body>
   <div id="app">
     <nav class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow navbar-expand-lg" style="background-color: #D8D5DB  !important">
-      <a class="navbar-brand col-md-3 col-lg-2 px-5" href="{{ url('/') }}">
+      <a class="navbar-brand col-md-3 col-lg-2 px-5" href="{{ url('/home') }}">
         <img src="/img/logo.png" width="100" height="50" alt="">
       </a>
       <button class="navbar-toggler  position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

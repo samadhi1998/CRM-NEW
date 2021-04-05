@@ -116,16 +116,6 @@ class OrdersController extends Controller
           ->get();   
     }
 
-    public function jointasks(Order $order)
-    {
-        // return DB::table('orders')->get();
-           return DB::table('orders')
-          ->join('tasks','orders.TaskID',"=",'tasks.TaskID')
-          ->select('tasks.*')
-          ->where('orders.TaskID',1)
-          ->get();   
-    }
-
 
     public function joinorddetails(Order $order)
     {

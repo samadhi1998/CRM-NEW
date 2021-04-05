@@ -29,7 +29,7 @@
                                 <button type="button" data-toggle="modal" class="btn btn-primary" data-target="#exampleModal" >Update</button>
                             </div>
                             <div class="btn-group float-right mr-2 " role="group">
-                                <button type="submit" class="btn btn-primary" ><a href="product/viewproduct">Cancel</a></button>
+                                <button type="submit" class="btn btn-primary" ><a href="/note/viewnote">Cancel</a></button>
                             </div>     
                         </form>
                     </div>
