@@ -34,9 +34,15 @@ class extra_chargePolicy
      * @param  \App\Models\extra_charge  $extraCharge
      * @return mixed
      */
-    public function view(User $user, extra_charge $extraCharge)
+    public function view(User $user)
     {
-        //
+        foreach($user->roles->priviledges as $priviledge){
+            if($priviledge->PriviledgeID == 50){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

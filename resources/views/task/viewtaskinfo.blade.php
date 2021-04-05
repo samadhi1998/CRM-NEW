@@ -45,6 +45,10 @@
                             <td>{{$task->created_at }} </td>  
                         </tr>
                     </table> 
+                    <br>
+                    <div class="pull-right">
+                    <a href="/completeTask/{{$task->TaskID}}" class="text-my-own-color"><button><span data-feather="check-circle"></span> Mark as Completed</button></a>
+                    </div>
                 </div>
             </div>
         </div>

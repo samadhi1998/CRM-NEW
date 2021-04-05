@@ -34,9 +34,15 @@ class TaskPolicy
      * @param  \App\Models\Task  $task
      * @return mixed
      */
-    public function view(User $user, Task $task)
+    public function view(User $user)
     {
-        //
+        foreach($user->roles->priviledges as $priviledge){
+            if($priviledge->PriviledgeID == 49){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

@@ -34,15 +34,20 @@ class HomeController extends Controller
     public function index()
     {
         //return view('index');
-        $orders= Order::all();
-        $products= Product::all();
+        $orders= Order::whereDate('created_at',Carbon::today())->paginate(5);
+        $products= Product::paginate(5);
         $cutomers= Customer::all();
         $notifications = Notification::all();
         $count = Order::whereDate('created_at',Carbon::today())->count();
         $count2 = Customer::whereDate('created_at',Carbon::today())->count();
-        $count3 = Task::whereDate('Due_Date',Carbon::today())->count();
         $count4 = Product::where('Status','=','In Stock')->count();
         $notifications = auth()->user()->unreadNotifications;
+
+        $count3 = Task::where('ServicePersonID','=', Auth::user()->EmpID)->whereDate('Due_Date',Carbon::today())->count();
+        
+        if(Auth::user()->roles->name == 'Super-Admin' || Auth::user()->can('add-task', App\Models\Task::class) ){
+            $count3 = Task::whereDate('Due_Date',Carbon::today())->count();
+        }
 
         return view('admin.dashboard',compact('count','count2','count3','count4'))
         ->with('orders', $orders)

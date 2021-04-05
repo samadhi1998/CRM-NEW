@@ -118,7 +118,7 @@
                                             <div class="col-md">
                                                 <div class="card-body">
                                                     <h6 class="card-title">Task Priviledges</h6>
-                                                        @foreach($priviledges->whereIn('PriviledgeID', [9,20,21,22]) as $priviledge)
+                                                        @foreach($priviledges->whereIn('PriviledgeID', [9,20,21,22,49]) as $priviledge)
                                                         <div class="form-group form-check col-sm-12">
                                                         <input type="checkbox" class="form-check-input" name="PriviledgeID[]" value="{{$priviledge->PriviledgeID}}" {{ $roles->priviledges->contains($priviledge->PriviledgeID) ? 'checked' : '' }}>
                                                         <label class="form-check-label checkbox-inline" for="PriviledgeID">{{$priviledge->Description}} </label>
@@ -174,7 +174,7 @@
                                             <div class="col-md">
                                                 <div class="card-body">
                                                     <h6 class="card-title">Extra Charge Priviledges</h6>
-                                                        @foreach($priviledges->whereIn('PriviledgeID', [23,24,25,26]) as $priviledge)
+                                                        @foreach($priviledges->whereIn('PriviledgeID', [23,24,25,26,50]) as $priviledge)
                                                         <div class="form-group form-check col-sm-12">
                                                         <input type="checkbox" class="form-check-input" name="PriviledgeID[]" value="{{$priviledge->PriviledgeID}}" {{ $roles->priviledges->contains($priviledge->PriviledgeID) ? 'checked' : '' }}>
                                                         <label class="form-check-label checkbox-inline" for="PriviledgeID">{{$priviledge->Description}} </label>

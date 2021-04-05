@@ -24,12 +24,12 @@ class TaskController extends Controller
     public function index()
     {
         
-        $data = Task::where('ServicePersonID','=', Auth::user()->EmpID)->sortable()->paginate(5);
+        $data = Task::where('ServicePersonID','=', Auth::user()->EmpID)->latest()->sortable()->paginate(5);
         
         if(Auth::user()->roles->name == 'Super-Admin' || Auth::user()->can('add-task', App\Models\Task::class) ){
-            $data = task::sortable()->paginate(5);
+            $data = task::latest()->sortable()->paginate(5);
         }
-        
+
         return view('task/viewtask',['tasks'=>$data])
         ->with('orders', Order::all());
     }
@@ -162,6 +162,14 @@ class TaskController extends Controller
          
         
          return view('task.viewtaskinfo',['tasks'=>$tasks]);  
+    }
+
+    
+    public function completeTask($TaskID)
+    {
+        $data=task::find($TaskID);
+        $data->update(['Status' => 'Completed']);
+        return redirect('View-Task');
     }
 
 }

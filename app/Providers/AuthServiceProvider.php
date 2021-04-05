@@ -77,6 +77,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('view-task', [TaskPolicy::class, 'viewAny']);
         Gate::define('delete-task', [TaskPolicy::class, 'delete']);
         Gate::define('edit-task', [TaskPolicy::class, 'update']);
+        Gate::define('view-task-information', [TaskPolicy::class, 'view']);
 
         //Order Permission
         Gate::define('add-order', [OrderPolicy::class, 'create']);
@@ -92,6 +93,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('view-charge', [extra_chargePolicy::class, 'viewAny']);
         Gate::define('delete-charge', [extra_chargePolicy::class, 'delete']);
         Gate::define('edit-charge', [extra_chargePolicy::class, 'update']);
+        Gate::define('view-charge-information', [extra_chargePolicy::class, 'view']);
 
         //Roles and Permission Premissions
         Gate::define('add-role', [RolePolicy::class, 'create']);

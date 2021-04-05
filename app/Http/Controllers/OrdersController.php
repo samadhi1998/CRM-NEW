@@ -21,7 +21,7 @@ class OrdersController extends Controller
 
     public function index()
     {
-        $orders = Order::with('products')->get();
+        $orders = Order::with('products')->latest()->get();
         return view('orders/index', compact('orders'));  
     }
 

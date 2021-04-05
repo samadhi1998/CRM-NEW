@@ -113,6 +113,8 @@
                                 </tr>
                                 @endforeach
                             </table>
+                            <br>
+                            {{ $orders->links() }}
                         </div>
                     </div>
                 </div>
@@ -138,6 +140,8 @@
                                 </tr>
                                 @endforeach
                             </table>
+                            <br>
+                            {{ $products->links() }}
                         </div>
                     </div>
                 </div>
