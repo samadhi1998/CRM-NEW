@@ -22,8 +22,5 @@ class product extends Model
         return $this->belongsTo(User::class,'EmpID');
     }
     
-    public function orders()
-    {
-        return $this->hasmany(Order::class, 'orders');
-    }
+ 
 }

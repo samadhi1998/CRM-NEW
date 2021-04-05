@@ -83,7 +83,7 @@ Route::get('/chats', function () {
  Route::get('emails', [App\Http\Controllers\OrdersController::class,'emails']);
  Route::get('progressedit/{OrderID}',[App\Http\Controllers\OrdersController::class,'progressedit']);
  Route::post('progressedit',[App\Http\Controllers\OrdersController::class,'progressupdate']);
- Route::get('delete',[App\Http\Controllers\Product\ProductController::class,'delete']);
+ Route::get('delete/{OrderID}',[App\Http\Controllers\OrdersController::class,'delete']);
 
  
 //Route::get('find', [OrdersController::class,'findorder']);

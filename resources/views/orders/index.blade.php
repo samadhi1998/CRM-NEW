@@ -9,7 +9,6 @@
 </div>
 @endif
 <br><br>
-
 <div class="container " style="background :none !important ">
 <div class="row justify-content-center">
     <div class="col-md">
@@ -25,71 +24,62 @@
                 </div>
             </form>
 </br></br>
-    
 <div>
     <table>
         <tr> 
             <th>Order No</th>
-            <th>Customer </th> 
-            <th>MobileNo </th> 
-            <th>E-mail </th>
-            <th>Date</th>
-            <th>Due Date</th>
-            <th>Advance</th> 
-            <th>Amount</th>
+            <!-- <th>Customer </th>
+            <th>E-mail </th> -->
+            <th>Date</th> 
             <th>Progress</th>
+            <th>Order Items</th>
             <th width="280px">Action</th>
        </tr>
          @foreach ($orders as $order)
         <tr>
-            <td>{{$order->OrderID }}</td>
-            <td>{{ $order->Name }}</td>
-            <td>{{ $order->MobileNo }}</td>
-            <td>{{ $order->Email }}</td>
-            <td>{{ $order->Created_at }}</td>
-            <td>{{ $order->Due_date }}</td>
-            <td>{{ $order->Advance }}</td>
-            <td>{{ $order->Qty * $order->Price }}</td>
+            <td>{{ $order->OrderID }}</td>
+          
+            <td>{{ $order->created_at }}</td>
             <td>{{ $order->Progress }}</td>
             <td>
+                <ul>
+                    @foreach($order->products as $item)
+                        <li>{{ $item->Name }} (Rs.{{ $item->Price }} x {{ $item->pivot->Qty }}  )</li>
+                    @endforeach
+                </ul>
+            </td>
 
-            @if(Auth::user()->can('view-order-details', App\Models\Order::class))
+            <td>
+
             <div class="btn-group" role="group">
-                <a href="http://127.0.0.1:8000/view"  style="margin:2px" class="text-my-own-color"><span data-feather ="eye"></span></a>
-            </div>
-            @endif
+
             @if(Auth::user()->can('show-Invoice-Quotation', App\Models\Order::class))
-            <div class="btn-group" role="group">
                 <a href="{{ route('orders.show',$order->OrderID) }}" style="margin:2px" class="text-my-own-color"><span data-feather ="file-text"></span></a>
-            </div>
-           @endif
+            @endif
+
             @if(Auth::user()->can('edit-order', App\Models\Order::class))
-            <div class="btn-group" role="group">
                 <a href="{{ route('orders.edit',$order->OrderID) }}"  style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>
-            </div>
             @endif
+
             @if(Auth::user()->can('update-progress', App\Models\Order::class))
-            <div>
                 <a href= "progressedit/{{$order->OrderID}}" class="text-my-own-color"><span data-feather="edit-3"> </span></a>
-            </div>
             @endif
+
             @if(Auth::user()->can('add-charge', App\Models\Charge::class))
-            <div>
-            <a href= "addChargers/{{$order->OrderID}}" style="margin:10px" class="text-my-own-color"><span data-feather ="dollar-sign"></span></a> 
-            </div> 
+            <a href= "addChargers/{{$order->OrderID}}" style="margin:2px" class="text-my-own-color"><span data-feather ="dollar-sign"></span></a> 
             @endif
+
             @if(Auth::user()->can('delete-order', App\Models\Order::class))
-            <div class="btn-group" role="group">
-             <form action="{{route('orders.destroy', $order->OrderID)}}" method="POST"> 
-            <button type="submit" data-toggle="modal" a href= "{{route('orders.destroy', $order->OrderID)}}" style="margin:10px" class="text-my-own-color"><span data-feather ="trash-2"></span></a>
-                </form>
-            </div> 
-            @endif
+                <a href= "delete/{{$order->OrderID}}" class="text-my-own-color"><span data-feather="trash-2"> </span></a>
+            @endif 
+
             @if(Auth::user()->can('add-task', App\Models\Task::class))
-            <div>
                 <a href= "addtask/{{$order->OrderID}}" class="text-my-own-color"><span data-feather="target"> </span></a>
-            </div>
             @endif
+            
+            </div>
+
+         
             </td>    
          </tr>   
 

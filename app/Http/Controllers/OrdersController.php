@@ -13,7 +13,6 @@ use Carbon\Carbon;
 use PDF;
 use Mail;
 
-
 class OrdersController extends Controller
 {
     public function __construct() {
@@ -22,94 +21,67 @@ class OrdersController extends Controller
 
     public function index()
     {
-        $orders =  DB::table('orders')
-        
-        ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->join('order_details','orders.OrderID',"=",'order_details.OrderID')
-        ->join('products','products.ProductID',"=",'order_details.ProductID')
-        ->select('customers.Name','customers.MobileNo', 'customers.Email','orders.OrderID','orders.Due_date' ,
-                 'orders.Created_at','orders.Advance','orders.Progress','orders.Total_Price','products.Price','order_details.Qty')
-        ->get();
-       
-        return view('orders.index',['orders'=>$orders]);
+        $orders = Order::with('products')->get();
+        return view('orders/index', compact('orders'));  
     }
 
-    
     public function create()
-
     {   
-        return view('orders/create');
+        $products = Product::all();
+        return view('orders/create', compact('products'));     
     }
+    
     public function store(Request $request)
     {
+       $order = Order::create($request->all());
 
-        $request->validate([
-            'Due_date' => 'required',
-            'Progress'=>'required',
-            'Qty'=>'required',
-        ]);
-        
-        Order::create($request->all());
-        order_detail::create($request->all());
+        $products = $request->input('products', []);
+        $quantities = $request->input('quantities', []);
 
-        return redirect()->route('orders.index')
-                        ->with('success','Order created successfully.');
-
-     
+        for ($product=0; $product < count($products); $product++) {
+            if ($products[$product] != '') {
+                $order->products()->attach($products[$product], ['Qty' => $quantities[$product]]);
+                
+            }
+        }
+    
+        return redirect()->route('orders.index');
     }
 
-
-
-    
     public function show(Order $order)
     {
-       $orders =  DB::table('orders')  
+        //$orders = Order::all();
+        $orders =  DB::table('orders')  
 
         ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->join('order_details','orders.OrderID',"=",'order_details.OrderID')
-        ->join('products','products.ProductID',"=",'order_details.ProductID')
+        ->join('order_product','orders.OrderID',"=",'order_product.order_OrderID')
+        ->join('products','products.ProductID',"=",'order_product.product_ProductID')
         ->select('orders.OrderID','orders.Due_date' ,'orders.Created_at','orders.Advance','orders.Progress','orders.Discount',
-                 'orders.Total_Price','customers.Name as CustomerName','customers.MobileNo', 'customers.Email','customers.Address',
-                 'products.Name as ProductName','products.price','order_details.Qty','products.Price')
+                 'customers.Name as CustomerName','customers.MobileNo', 'customers.Email','customers.Address',
+                 'products.Name as ProductName','products.price','order_product.Qty','products.Price')
         ->where('orders.OrderID', '=', $order->OrderID)
         ->get();   
-             
-          return view('orders.show',['orders'=>$orders]);
+            
+        return view('orders/show', compact('orders'));   
     }
-
-    public function view(Order $order)
-    {
-        $orders =  DB::table('orders')  
-        ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->join('order_details','orders.OrderID',"=",'order_details.OrderID')
-        ->join('products','products.ProductID',"=",'order_details.ProductID')
-        ->select('orders.OrderID','orders.Due_date' ,'orders.Created_at','orders.Advance','orders.Discount','orders.Total_Price',
-                 'customers.Name as CustomerName','customers.MobileNo', 'customers.Email','customers.Address',
-                 'products.Name as ProductName','order_details.Qty','products.Price')
-        // ->where('orders.OrderID', '=', $order->OrderID)
-        ->get();   
-             
-        return view('orders.view',['orders'=>$orders]);
-    }
-
-
 
     public function edit(Order $order)
     {
+        $products = Product::all();
+
         $orders =  DB::table('orders')  
 
         ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->join('order_details','orders.OrderID',"=",'order_details.OrderID')
-        ->join('products','products.ProductID',"=",'order_details.ProductID')
+        ->join('order_product','orders.OrderID',"=",'order_product.order_OrderID')
+        ->join('products','products.ProductID',"=",'order_product.product_ProductID')
         ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Progress','orders.Total_Price',
-                 'products.Name as ProductName','order_details.Qty','products.Price','products.ProductID')
+                 'products.Name as ProductName','order_product.Qty','products.Price','products.ProductID')
         ->where('orders.OrderID', '=', $order->OrderID)
         ->get();   
 
-        return view('orders.edit',['orders'=>$orders]);
+        return view('orders/edit', compact('products','orders')); 
     }
 
-    
     public function update(Request $request, Order $order)
     {  
          $orders =  DB::table('orders')  
@@ -125,19 +97,12 @@ class OrdersController extends Controller
         return redirect()->route('orders.index');
     }
 
-    public function destroy(Order $order)
-    {
-        $order->delete();
-        return redirect()->route('orders.index')
-                        ->with('success','Order deleted successfully');                                    
-    }
-
-    
+ 
     public function delete($OrderID)
     {
         $order=Order::find($OrderID);
         $order->delete();
-        return redirect('orders.index');
+        return redirect('/orders');
     }
 
 
@@ -207,10 +172,10 @@ class OrdersController extends Controller
         $orders =  DB::table('orders')  
 
         ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->join('order_details','orders.OrderID',"=",'order_details.OrderID')
-        ->join('products','products.ProductID',"=",'order_details.ProductID')
+        ->join('order_product','orders.OrderID',"=",'order_product.order_OrderID')
+        ->join('products','products.ProductID',"=",'order_product.product_ProductID')
         ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Progress','orders.Total_Price',
-                 'products.Name as ProductName','order_details.Qty','products.Price','products.ProductID')
+                 'products.Name as ProductName','order_product.Qty','products.Price','products.ProductID')
         ->where('orders.OrderID', '=', $OrderID)
         ->first();   
 
@@ -224,10 +189,10 @@ class OrdersController extends Controller
         $orders =  DB::table('orders')
 
         ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->join('order_details','orders.OrderID',"=",'order_details.OrderID')
-        ->join('products','products.ProductID',"=",'order_details.ProductID')
+        ->join('order_details','orders.OrderID',"=",'order_product.order_OrderID')
+        ->join('products','products.ProductID',"=",'order_product.product_ProductID')
         ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Progress','orders.Total_Price',
-                 'products.Name as ProductName','order_details.Qty','products.Price','products.ProductID')
+                 'products.Name as ProductName','order_product.Qty','products.Price','products.ProductID')
         ->where('orders.OrderID', '=', $data->OrderID);
     
         $data->update($request->except(['_token']));

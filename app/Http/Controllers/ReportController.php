@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 use App\Models\Order;
 use App\Models\product;
@@ -15,6 +16,10 @@ use Mail;
 
 class ReportController extends Controller
 {
+    public function __construct() {
+        $this->authorizeResource(Order::class, Order::class);
+    }
+
     public function Reportindex()
     {   
        //return view('reports.select');

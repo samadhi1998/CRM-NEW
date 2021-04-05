@@ -3,24 +3,17 @@
 @section('header','Create Order')
 @section('content')
 
-<html>
-    <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">     
-    </head>
-
 <div class="container" style="background :none !important ">
-<div class="row justify-content-center">
-    <div class="col-md">
-    <div class="card">
-        <div class="card-body">
-
+    <div class="row justify-content-center">
+        <div class="col-md">
+            <div class="card">
+                <div class="card-body">
             <form action="{{ route('orders.store') }}" method="POST">
                 @csrf
-
+<!-- 
                 <label for="OrderID" ><b>Order ID : </b></label>
                     <input type="text" name="OrderID" class="form-control">
-                <br><br>
+                <br><br> -->
 
                 <label for="CustomerID" ><b>Customer ID : </b></label>
                     <input type="text" name="CustomerID" class="form-control">
@@ -34,98 +27,82 @@
                     <select  name="Progress" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
                         <option value="" selected disabled hidden></option>
                         <option value="Estimated Quotation">Estimated Quotation</option>
-                        <option value="Order Confirmed">Quotation</option>
                         <option value="Invoice">Invoice</option>
-                    </select> <br><br>
-
-
+                    </select> 
                     <br><br>
-                    <div class="col-md">
-                    <div class="card">
-                        <form action="/orders" method="POST">
-                            {{csrf_field()}}
-                            <section>
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>ProductID</th>                                    
-                                            <th>Quantity</th>                                     
-                                            <th>Discount</th>                                        
-                                            <th><a href="#" class="addRow"><i class="glyphicon glyphicon-plus"></i></a></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><input type="text" name="ProductID" class="form-control" ></td>                                           
-                                            <td><input type="text" name="Qty" class="form-control quantity" ></td>                                       
-                                            <td><input type="text" name="Discount" class="form-control budget"></td>                                       
-                                            <td><a href="#" class="btn btn-danger remove"><i class="glyphicon glyphicon-remove"></i></a></td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td><b>Advance</b></td>  
-                                            <td><b><input type="text" name="Advance" class="form-control"></b></td>     
-                                        </tr> 
-                                    </tfoot>
-                                </table>        
-                            <br><br>    
-                            </div>      
-                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary">Submit</button><br><br><br>
-                                </div>                   
+                    <br><br>
+                    <div class="card-body">
+                    <table class="table" id="products_table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <!-- <th>Discount</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="product0">
+                                <td>
+                                    <select name="products[]" class="form-control">
+                                        <option value="">-- choose product --</option>
+                                        @foreach ($products as $product)
+                                            <option value="{{ $product->ProductID }}">
+                                                {{ $product->Name }} (${{ number_format($product->Price, 2) }})
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="number" name="quantities[]" class="form-control" value="1" />
+                                </td>
+                                <!-- <td>
+                                    <input type="number" name="Discounts[]" class="form-control"  >
+                                </td> -->
+                            </tr>
+                            <tr id="product1"></tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td><b>Advance</b></td>  
+                                <td><b><input type="text" name="Advance" class="form-control"></b></td>     
+                            </tr> 
+                        </tfoot>             
+                    </table>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button id="add_row" class="btn btn-default pull-left">+ Add Row</button>
+                            <button id='delete_row' class="pull-right btn btn-danger">- Delete Row</button>
                         </div>
-
-                        <script type="text/javascript">
-                            $('tbody').delegate('.quantity,.budget','keyup',function(){
-                                var tr=$(this).parent().parent();
-                                var quantity=tr.find('.quantity').val();
-                                var budget=tr.find('.budget').val();
-                                var amount=(quantity*budget);
-                                tr.find('.amount').val(amount);
-                                total();
-                            });
-                            function total(){
-                                var total=0;
-                                $('.amount').each(function(i,e){
-                                    var amount=$(this).val()-0;
-                                total +=amount;
-                            });
-                            $('.total').html(total+".00 ");   
-                            }
-                            $('.addRow').on('click',function(){
-                                addRow();
-                            });
-                            function addRow()
-                            {
-                                var tr='<tr>'+
-                                '<td><input type="text" name="productID[]" class="form-control" ></td>'+
-                                '<td><input type="text" name="Qty[]" class="form-control"></td>'+
-                                 '<td><input type="text" name="Discount[]" class="form-control budget"></td>'+
-                                '<td><a href="#" class="btn btn-danger remove"><i class="glyphicon glyphicon-remove"></i></a></td>'+
-                                '</tr>';
-                                $('tbody').append(tr);
-                            };
-                            $('.remove').live('click',function(){
-                                var last=$('tbody tr').length;
-                                if(last==1){
-                                    alert("You can not remove this row");
-                                }
-                                else{
-                                    $(this).parent().parent().remove();
-                                }                         
-                            });
-                        </script>  
-                @endsection
-            </form>
-
+                    </div>
             </div>
-        
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-        </body>
-    </html>
+        </div>
+    
+    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+    let row_number = 1;
+    $("#add_row").click(function(e){
+      e.preventDefault();
+      let new_row_number = row_number - 1;
+      $('#product' + row_number).html($('#product' + new_row_number).html()).find('td:first-child');
+      $('#products_table').append('<tr id="product' + (row_number + 1) + '"></tr>');
+      row_number++;
+    });
+
+    $("#delete_row").click(function(e){
+      e.preventDefault();
+      if(row_number > 1){
+        $("#product" + (row_number - 1)).html('');
+        row_number--;
+      }
+    });
+  });
+</script>
+
+</form>
+@endsection
