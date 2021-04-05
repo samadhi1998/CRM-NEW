@@ -34,10 +34,10 @@
             </br>
             <table>
               <tr >
-                <th >Reminder ID</th>
-                <th >Description</th>
-                <th >Start Date</th>
-                <th >End Date</th>
+                <th >@sortablelink('id')</th>
+                <th >@sortablelink('title')</th>
+                <th >@sortablelink('start_date')</th>
+                <th >@sortablelink('end_date')</th>
                 <th >Action</th>
               </tr>
 
@@ -60,6 +60,7 @@
             </table>
             <br>
             <br> 
+            {!! $events->appends(\Request::except('page'))->render() !!}
           </div>
         </div>
       </div>

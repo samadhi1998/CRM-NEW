@@ -61,8 +61,7 @@ class EventController extends Controller
    
     public function show()
     {
-       
-        $events = Event::where('Added_By','=', Auth::user()->EmpID)->get();
+        $events = Event::where('Added_By','=', Auth::user()->EmpID)->sortable()->paginate(5);
         return view('Reminder.viewreminder')->with('events',$events);
     }
 

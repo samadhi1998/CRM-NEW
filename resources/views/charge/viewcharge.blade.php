@@ -32,14 +32,15 @@
                     <br>
                     <table>
                         <tr>
-                            <th>Extra-Charge ID </th>
+                            <th>@sortablelink('ExtraChargeID')</th>
                             <th>Order ID</th>
                             <th>ServicePerson ID</th>
                             <th>Type</th>
-                            <th>Amount</th>
-                            <th>Description</th>
+                            <th>@sortablelink('Amount')</th>
+                            <th>@sortablelink('Description')</th>
                             <th>Action</th>
                         </tr>
+                        @if($extra_charge->count())
                         @foreach($extra_charge as $extra_charges)
                         <tr>                                                
                             <th scope="row">{{ $extra_charges['ExtraChargeID']}}</th>
@@ -58,10 +59,11 @@
                             </td>
                         </tr>
                         @endforeach
+                        @endif
                     </table>
-
-                    {{$extra_charge->links()}}
-
+                    <br>
+                    <br>
+                    {!! $extra_charge->appends(\Request::except('page'))->render() !!}
                     <div class="pull-right" style="text-align: right;color:blue">
                         <a href="{{ URL::previous() }}">Go Back</a>
                     </div> 

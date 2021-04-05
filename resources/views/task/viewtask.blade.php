@@ -24,11 +24,11 @@
             </br>
           <table>
             <tr>
-              <th >Task ID</th>
-              <th >Service Person ID</th>
+              <th >@sortablelink('TaskID')</th>
+              <th >@sortablelink('ServicePersonID')</th>
               <th >Status</th>
-              <th >Due Date</th>
-              <th >Description</th>
+              <th >@sortablelink('Due_Date')</th>
+              <th >@sortablelink('Description')</th>
               <th >Last Update At</th>
               <th >Action</th>
             </tr>
@@ -53,7 +53,7 @@
           </table>
           <br>
           <br>
-          {{$tasks->links()}}
+          {!! $tasks->appends(\Request::except('page'))->render() !!}
         </div>
       </div>
     </div>

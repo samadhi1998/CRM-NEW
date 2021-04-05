@@ -110,7 +110,7 @@
             </div>
         </div>
     </div>
-<footer class="footer text-center pt-3 pb-3 fixed-bottom">
+<footer class="footer text-center pt-3 pb-3 fixed-bottom" style="background-color: #D8D5DB  !important">
     © 2021 CRM by She Squad
 </footer>
 

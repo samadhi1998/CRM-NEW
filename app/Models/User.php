@@ -6,11 +6,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, SoftDeletes;
+    use HasFactory, Notifiable, SoftDeletes,Sortable;
 
     /**
      * The attributes that are mass assignable.
@@ -73,5 +74,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Note::class);
     }
+
+    public $sortable = ['EmpID', 'name', 'email'];
+
 
 }

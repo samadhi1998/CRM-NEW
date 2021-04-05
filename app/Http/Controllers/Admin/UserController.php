@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users= User::paginate(5);
+        $users= User::sortable()->paginate(5);
         return view('admin.users.index')->with('users', $users)
         ->with('roles',Role::all());
     }
