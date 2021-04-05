@@ -3,14 +3,22 @@
 @section('header','Product Details')
 @section('content')
 
+@if(Auth::user()->can('add-product', App\Models\product::class))
 <div class="pull-left">
     <a class="btn btn-primary" href="/addproduct">Add new product <span data-feather="plus"></a>
 </div>
+@endif
 
 <div class="pull-right" style="text-align: right;">
+    @if(Auth::user()->can('Stock-In-product', App\Models\product::class))
     <a class="btn btn-primary" href="/InStockProducts"> In Stock</a>
+    @endif
+    @if(Auth::user()->can('Stock-out-product', App\Models\product::class))
     <a class="btn btn-primary"  href="/StockoutProducts">Re Order</a>
-     <a class="btn btn-primary" href="/notAvailableProducts">Out of Stock</a>
+    @endif
+    @if(Auth::user()->can('Not-Available-product', App\Models\product::class))
+    <a class="btn btn-primary" href="/notAvailableProducts">Out of Stock</a>
+    @endif
 </div>
   <br>
   <br>
