@@ -16,7 +16,6 @@ class productObserver
 
 
       if ($product->Qty > 6 ){
-        $product->Status='In Stock';}
-          
+        $product->Status='In Stock';}    
     }
 }
