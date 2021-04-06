@@ -52,8 +52,7 @@ class OrdersController extends Controller
                 $product->Qty = $product->Qty - $quantities[$p];
                 $product->save();
             }
-        }
-        
+        }   
     
         return redirect()->route('orders.index');
     }
