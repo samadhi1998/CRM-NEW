@@ -5,7 +5,7 @@
 
 @if(Auth::user()->can('add-order', App\Models\Order::class))
 <div class="pull-left">
-    <a class="btn btn-primary" href="/searchordercustomer"> Add new order <span data-feather="plus"></a></a>
+    <a class="btn btn-primary" href="/create"> Add new order <span data-feather="plus"></a></a>
 </div>
 @endif
 <br><br>
