@@ -1,13 +1,24 @@
 @extends('layouts.app')
 @section('title','Add Charge')
-@section('header','Add Additional Charges')
-@section('content')
-
+@section('header','Add Charges Information')
 <div class="row justify-content-center">
        <div class="col-md-8">
               <div class="card">
+              <div class="card-header">{{ __('Add Charges') }}</div> 
                      <div class="card-body">
                             <div class="container"  style="background :none !important ">
+                                   <br>
+                                   @if ($errors->any())
+                                   <div class="alert alert-danger">
+                                   <b>
+                                   <ul>
+                                   @foreach ($errors->all() as $error)
+                                   <li>{{ $error }}</li>
+                                    @endforeach
+                                   </ul>
+                                   </b>
+                                   </div>
+                                    @endif
                                    <form method="POST" action="/addChargers">
                                           @csrf 
                                           <label for="OrderID" ><b> Order ID : </b></label>
@@ -27,7 +38,7 @@
                                           <input type="number" name="Amount"  >
                                           <br>
                                           <label for="Description" ><b>Description : </b></label>
-                                          <textarea  name="Description"  ></textarea>
+                                          <textarea  name="Description" required ></textarea>
                                           <br>
                                           <div class="text-right">
                                           <button type="submit"  Value="Next"class="btn btn-primary">Submit</button>	 			

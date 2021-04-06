@@ -131,9 +131,53 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'Name' => [
+            'required' => 'You should Enter Customer Name....',
+            'min' =>'Customer Name must be at least 3 characters....',
         ],
+        'NIC'=>[
+            'required' => 'You should Enter NIC....',
+            'regex' => ' Please Enter Valid NIC.....',
+            'unique' => 'This Customer is already registered....',
+        ],
+        'Address'=>[
+            'required' => 'You should Enter Address of Customer....',
+            'min' =>'Please Enter correct Address....',
+        ],
+        'MobileNo'=>[
+            'required' => 'You should Enter Contact Number of Customer....',
+            'regex' => ' Please Enter Valid Contact Number.....',
+            'min' =>'Contact Number Must have 10 Numbers',
+        ],
+        'Email' => [
+            'required' => 'You should Enter Email Address of Customer....',
+            'regex' =>' You Should Enter Valid Email Address.....',
+            'unique' => 'This Customer is already registered....',
+        ],
+        'Brand'=>[
+            'required' => 'You should Enter Product Brand.....',
+            'min' =>'Enter Valid Brand....',
+        ],
+        'Price'=>[
+            'required' => 'You should Enter Price of the Product....',
+        ],
+        'Qty'=>[
+            'required' => 'You should Enter Product Count....',
+            'numeric' => 'Invalid Input.Again Enter Amount Of Product....',
+            'min' =>'You Should Get least 6 Products....',
+        ],
+        'image' =>[
+            'image' => 'You Should Upload Image.....',
+            'mimes' => 'Upload Correct File Type like jpeg,png,jpg,gif,svg ....',
+        ],
+        'Warranty'=>[
+            'required' => 'Please Select Warranty details of Product....',
+        ],
+        'Description'=>[
+            'required' => 'Please Enter Brief Introction Of Product.....',
+            'min' =>'Your Introduction is too Short....',
+            'max' =>'your Introduction is too Heavy...., ',
+        ]
     ],
 
     /*

@@ -20,16 +20,16 @@ class ProductController extends Controller
     public function AddProduct (Request $request) 
     {
         
-        $this->validate($request, [
+        $request->validate( [
         
-             'Name'=>'required|min:1|max:25',
-             'Brand'=>'required|min:1|max:25',
-             'Price'=>'required',
-             'Qty'=>'required|numeric|min:1',
-             'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
-             'Warranty'=>'required',
-             'Description'=>'required|min:1|max:100'
-         ]);
+            'Name'=>'required|min:1|max:25|unique:products',
+            'Brand'=>'required|min:1|max:25',
+            'Price'=>'required',
+            'Qty'=>'required|numeric|min:6',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'Warranty'=>'required',
+            'Description'=>'required|min:4|max:100'
+            ]);
 
 
         $product=new product;

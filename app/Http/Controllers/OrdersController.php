@@ -44,6 +44,15 @@ class OrdersController extends Controller
                 
             }
         }
+
+        //product Thilini
+        if ($request->input('Progress') == 'Invoice') {
+            for ($p = 0; $p < count($products); $p++) {
+                $product = product::find($products[$p]);
+                $product->Qty = $product->Qty - $quantities[$p];
+                $product->save();
+            }
+        }
     
         return redirect()->route('orders.index');
     }

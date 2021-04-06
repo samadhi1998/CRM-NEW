@@ -24,15 +24,15 @@ class CustomerController extends Controller
      
      public function AddCustomer(Request $request){
 
-        // $request->validate( [
+        $request->validate( [
         
-        //     'Name'=>'required|min:1|max:25',
-        //     'NIC'=>'required|unique:customers|regex:/^[0-9]{9}[vVxX]$/|min:10',
-        //     'Address'=>'required|min:1|max:300',
-        //     'MobileNo'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
-        //     'email' =>  'required|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix|unique:customers|max:350'
-           
-        // ]);
+            'Name'=>'required|min:1|max:25',
+            'NIC'=>'required|unique:customers|regex:/^[0-9]{9}[vVxX]$/|min:10',
+            'Address'=>'required|min:1|max:300',
+            'MobileNo'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'Email' =>  'required|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix|unique:customers|max:350'
+             ]);
+ 
 
      
         $customer=new customer;

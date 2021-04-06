@@ -1,14 +1,26 @@
 @extends('layouts.app')
 @section('title','Add Customer')
-@section('header','Add Customer')
+@section('header','Add Customer Information')
 @section('content')
 <div class="container" style="background :none !important ">
     <div class="row justify-content-center">
         <div class="col-md">
             <div class="card">
+            <div class="card-header">{{ __('Add Customer') }}</div> 
                 <div class="card-body">
                     <br>
                     <br>
+                    @if ($errors->any())
+                   <div class="alert alert-danger">
+                   <b>
+                   <ul>
+                   @foreach ($errors->all() as $error)
+                   <li>{{ $error }}</li>
+                   @endforeach
+                   </ul>
+                   </b>
+                   </div>
+                   @endif
                     <form method="POST" action="/addCustomer" id="myform">
                         @csrf
                         <label for="Name" ><b> Customer Name : </b></label>

@@ -21,7 +21,10 @@ class ChargeController extends Controller
     }
 
     public function AddExtraChargers (Request $request) 
-    {
+    {    $request->validate( [
+        'Type'=>'required',
+        'Amount'=>'required|numeric|min:50|max:50000',
+        ]);
       
         $charge=new extra_charge;
         $charge->OrderID=$request->OrderID;
