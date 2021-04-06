@@ -53,6 +53,7 @@ class OrdersController extends Controller
                 $product->save();
             }
         }
+        
     
         return redirect()->route('orders.index');
     }

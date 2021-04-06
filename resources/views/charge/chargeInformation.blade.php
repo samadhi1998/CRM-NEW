@@ -9,10 +9,10 @@
         <div class="col-md">
             <div class="card" >
                     <div class="card-body">
+                    <h6 class="card-title"><strong> Order ID: {{ $charges->OrderID }}</strong></h6>
                         <strong><p style="text-align:left;color:#233556">
                             Extra-Charge ID : {{ $charges->ExtraChargeID }}<br>
                             Created Date : {{  $charges->Created_at }}<br> 
-                            Order ID: {{ $charges->OrderID }}
                         </strong></p>
                         <h6 class="card-title"><strong>Sevice Person Information:</strong></h6>
                         <p style="text-align:left;color:#233556"><strong> 

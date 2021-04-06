@@ -12,10 +12,10 @@
                     <form method="POST" action="/editcustomers"id="myformcustomer">
                         @csrf
                         <label for="CustomerID"> <b>Customer ID</b> </label>
-                        <input type="text"  name="CustomerID" value="{{$data['CustomerID']}}" required>
+                        <input type="text"  name="CustomerID" value="{{$data['CustomerID']}}" readonly required>
                         <br>
                         <label for="Name" ><b> Customer Name : </b></label>
-                        <input type="text" name="Name" value="{{$data['Name']}}" required>
+                        <input type="text" name="Name" value="{{$data['Name']}}" readonly required>
                         <br>
                         <label for="MobileNo" ><b>Mobile Number : </b></label>
                         <input type="text" name="MobileNo"  value="{{$data['MobileNo']}}" required>

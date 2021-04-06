@@ -19,8 +19,8 @@
                             
                 <form method="post"  action= "checkcustomers" autocomplete="off">
                    @csrf
-                <label class="form-control-label" for="input-name ">Customer Order Details</label>
-                    <select name="CustomerID" id="input-category" class="form-select form-control-alternative{{ $errors->has('Name') ? ' is-invalid' : '' }}" required>
+                  <label class="form-control-label" for="input-name ">Customer Order Details</label>
+                    <select name="CustomerID" id="input-category" class="form-select" required>
                             
                          @foreach ($customers as $customer)
                            @if($customer['CustomerID'] == old('customer'))
