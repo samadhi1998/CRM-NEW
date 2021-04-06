@@ -11,10 +11,10 @@
                     <form method="POST" action="/updateChargers"id="myformcharge">
                         @csrf
                         <label for="ExtraChargeID" ><b> ExtraCharge ID: </b></label>
-                        <input type="text" name="ExtraChargeID" value="{{$data['ExtraChargeID']}}" required>
+                        <input type="text" name="ExtraChargeID" value="{{$data['ExtraChargeID']}}" readonly required>
                         <br>
                         <label for="OrderID" ><b> Order ID : </b></label>
-                        <input type="text" name="OrderID" value="{{$data['OrderID']}}" required>
+                        <input type="text" name="OrderID" value="{{$data['OrderID']}}"readonly required>
                         <br>
                         <label for="ServicePersonID" ><b>ServicePerson ID : </b></label>
                         <input type="text" name="ServicePersonID" value="{{$data['ExtraChargeID']}}" required>
