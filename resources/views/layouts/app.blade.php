@@ -244,7 +244,7 @@
 
                     @if(Auth::user()->can('view-report', App\Models\Report::class))
                       <li class="nav-item">
-                        <a class="nav-link" href="/test">
+                        <a class="nav-link" href="/bydaily">
                           <span data-feather="bar-chart-2"></span>
                             Reports
                         </a>

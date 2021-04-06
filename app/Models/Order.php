@@ -16,7 +16,7 @@ class Order extends Model
         'CustomerCareID','QuotationEmpID','FollowUpID',
     ];
 
-    public $sortable = ['OrderID', 'Due_Date', 'Advance', 'Total_Price', 'create_at'];
+    public $sortable = ['OrderID', 'Due_Date', 'Advance', 'Total_Price', 'created_at'];
 
     protected $primaryKey = 'OrderID';
 

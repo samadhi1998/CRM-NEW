@@ -91,9 +91,9 @@ class OrdersController extends Controller
     {  
         $orders = Order::find($request->input('OrderID'));
         $ProductID = $request->input('ProductID');
-        $orders->product()->attach($ProductID);
+        $orders->products()->attach($ProductID);
 
-        return redirect('order/index');
+        return redirect('/index');
     }
  
     public function delete($OrderID)

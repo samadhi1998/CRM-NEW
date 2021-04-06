@@ -47,7 +47,7 @@
                                         <option value="">-- choose product --</option>
                                         @foreach ($products as $product)
                                             <option value="{{ $product->ProductID }}">
-                                                {{ $product->Name }} (${{ number_format($product->Price, 2) }})
+                                                {{ $product->Name }} (Rs.{{ number_format($product->Price, 2) }})
                                             </option>
                                         @endforeach
                                     </select>
