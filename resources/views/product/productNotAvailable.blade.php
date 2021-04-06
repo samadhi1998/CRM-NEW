@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title','Not Available Products')
-@section('header','Not Available Products')
+@section('title','Out  of Stock')
+@section('header','Out Of Stock')
 @section('content')
 
 <div class="container" style="background :none !important ">
