@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title','Add Charge')
-@section('header','Add Charges Information')
+@section('content')
 <div class="row justify-content-center">
        <div class="col-md-8">
               <div class="card">
@@ -25,7 +25,7 @@
                                           <input type="text" name="OrderID"  value="{{$extra_charge->OrderID}}" readonly >
                                           <br>
                                           <label for="ServicePersonID" ><b>ServicePerson ID : </b></label>
-                                          <input type="text" name="ServicePersonID"  value="{{ Auth::user()->EmpID }}">
+                                          <input type="text" name="ServicePersonID"  value="{{ Auth::user()->EmpID }}" readonly>
                                           <br>
                                           <label for="Type"><b>Type : </b></label>
                                                  <select  name="Type">
