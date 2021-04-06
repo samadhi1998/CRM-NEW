@@ -48,7 +48,7 @@ class CustomerController extends Controller
         } else {
             return ["Result"=>"operation failed"];
         }*/
-        return redirect('/searchordercustomer');
+        return redirect('/ViewCustomers');
     }
 
 
