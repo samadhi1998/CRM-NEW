@@ -80,7 +80,7 @@
                     </button>
             </div>
             <div class="modal-body" style="color:#233554">
-                You are going to delete the records of note. Do you want to continue ?
+                You are going to delete the records of note id {{$note->NoteID}}. Do you want to continue ?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
