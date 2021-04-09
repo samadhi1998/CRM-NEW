@@ -53,7 +53,7 @@
                     <a href= "/editeventurl/update/{{$event['id']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>                           
                   @endif
                   @if(Auth::user()->can('delete-reminder', App\Models\Eveent::class)) 
-                    <a href= "/deleteeventurl/{{$event['id']}}" style="margin:10px" class="text-my-own-color"><span data-feather ="trash-2"></span></a> 
+                    <a href= "" style="margin:10px" class="text-my-own-color" data-toggle="modal" data-target="#exampleModal2"><span data-feather ="trash-2"></span></a> 
                   @endif
                 </td>
               </tr>
@@ -102,5 +102,25 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="color:#233554">Delete Alert</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body" style="color:#233554">
+                You are going to delete the records of reminder id {{$event->id}} . Do you want to continue ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <a href="/deleteeventurl/{{$event['id']}}"><button type="submit" class="btn btn-primary">Continue</button></a>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

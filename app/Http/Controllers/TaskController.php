@@ -55,6 +55,11 @@ class TaskController extends Controller
      */
     public function store(Request $request)
      {
+        $request->validate([
+            'Description'=>'required|max:255|min:5',
+            'Due_Date'=>'required'
+            ]);
+
           $task=new Task;
           $task->Added_By = Auth::user()->EmpID;
           $task->Description=$request->Description;

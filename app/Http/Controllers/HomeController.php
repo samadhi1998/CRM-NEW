@@ -35,7 +35,7 @@ class HomeController extends Controller
     {
         //return view('index');
         $orders= Order::whereDate('created_at',Carbon::today())->paginate(5);
-        $products= Product::paginate(5);
+        $products= Product::where('Status','=','In Stock')->paginate(5);
         $cutomers= Customer::all();
         $notifications = Notification::all();
         $count = Order::whereDate('created_at',Carbon::today())->count();
