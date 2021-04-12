@@ -74,7 +74,9 @@
                 <a href= "/UpdateProducts/{{$product['ProductID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>                               
               @endif
               @if(Auth::user()->can('delete-product', App\Models\product::class))
-                <a href= "" style="margin:10px" class="text-my-own-color" data-toggle="modal" data-target="#exampleModal2"><span data-feather ="trash-2"></span></a> 
+                <a href="" style="margin:2px" class="text-my-own-color" data-toggle="modal" data-target="#exampleModal2">
+                  <span data-feather="trash-2"></span>
+                  </a>
               @endif
               </td>
             </tr>
@@ -103,11 +105,11 @@
                     </button>
             </div>
             <div class="modal-body" style="color:#233554">
-                You are going to delete the records of product id {{$product->ProductID}}. Do you want to continue ?
+                You are going to delete the records of  Product ID  {{$product['ProductID']}} - {{$product['Name']}}. Do you want to continue ?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                <a href="/Delete_Products/{{$product['ProductID']}}"><button type="submit" class="btn btn-primary">Continue</button></a>
+                <a href="/Delete_Products/{{$product['ProductID']}}"><button type="submit" form="myformproduct" class="btn btn-primary">Continue</button></a>
             </div>
         </div>
     </div>

@@ -55,7 +55,11 @@
                     <a href="/editCustomer/{{$customer['CustomerID']}}" style="margin:2px" class="text-my-own-color"><i data-feather="edit"></i></a>
                 @endif
                 @if(Auth::user()->can('delete-customer', App\Models\customer::class))
-                    <a href="/deleteCustomer/{{$customer['CustomerID']}}" style="margin:10px" class="text-my-own-color"><i data-feather= "trash-2"></i></a>
+                    <!-- <a href="/deleteCustomer/{{$customer['CustomerID']}}" style="margin:10px" class="text-my-own-color"><i data-feather= "trash-2"></i></a> -->
+                    <a href="" style="margin:2px" class="text-my-own-color" data-toggle="modal" data-target="#exampleModal2">
+                  <span data-feather="trash-2"></span>
+                  </a>
+
                 @endif
                 </td>
               </tr>
@@ -75,6 +79,25 @@
       </div>
     </div>
   </div>
+</div>
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="color:#233554">Delete Alert</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body" style="color:#233554">
+                You are going to delete the records of  Customer ID  {{$customer['CustomerID']}} -{{$customer['Name']}}. Do you want to continue ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <a href="/deleteCustomer/{{$customer['CustomerID']}}"><button type="submit" form="myformproduct" class="btn btn-primary">Continue</button></a>
+            </div>
+        </div>
+    </div>
 </div>
 </br>
 <script>
