@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
+
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -50,6 +51,249 @@
           font-size: 3.5rem;
         }
       }
+
+      user-wrapper, .message-wrapper{
+    border: 1px solid #dddddd;
+    overflow-y: auto;
+    border-radius: 15px;
+}
+
+.user-wrapper{
+  height:600px;
+  border-radius: 15px;
+}
+
+.user{
+  cursor: pointer; 
+  padding : 5px 0;
+  position : relative;
+}
+
+.user:hover{
+  background : #eeeeee;
+}
+
+.user:last-child{
+  margin-bottom :0;
+}
+
+.pending{
+  position:absolute;
+  left: 12px;
+  top : 5px;
+  background : #b600ff;
+  margin : 0;
+  border-radius : 50%;
+  width : 15px;
+  height :15px;
+  line-height: 10px; 
+  padding-left: 4px;
+  color : #ffffff;
+  font-size: 12px;
+}
+
+.media-left{
+  margin : 0 10px;
+  }
+
+.media-left img{
+  width :64px;
+  border-radius:64px;
+
+}
+
+.media-body p{
+  margin :6px 0;
+}
+
+ul{
+  margin: 0;
+  padding :0;
+}
+li{
+  list-style: none;
+}
+
+.message-wrapper{
+  padding :10px;
+  height : 536px;
+  background : #eeeeee;
+}
+
+.messages .message{
+  margin-bottom :15px;
+}
+
+.messages .message:last-child{
+  margin-bottom :0;
+}
+
+.received, .sent{
+  width :45%;
+  padding :3px 10px;
+  border-radius :10px;
+}
+
+.received {
+  background : #ffffff;
+  float: left;
+}
+
+.sent {
+  background : #C2DFFF ;
+  float :right;
+  text-align :right;
+}
+
+.message p{
+  margin : 5px 0;
+}
+
+.date{
+  color: #777777;
+  font-size: 12px; 
+}
+.active{
+  background: #eeeeee;
+}
+  
+input[type=text]{
+  width :100%;
+  padding :12px 20px;
+  margin : 15px 0 0 0;
+  display: inline-block;
+  border-radius: 4px;
+  box-sizing : border-box;
+  outline: none;
+  border : 1px solid #cccccc;
+}
+
+input[type=text]:focus{
+  border :1px solid #aaaaaa;
+}
+
+.user-wrapper, .message-wrapper{
+    border: 1px solid #dddddd;
+    overflow-y: auto;
+}
+
+.user-wrapper{
+  height:600px;
+}
+
+.user{
+  cursor: pointer; 
+  padding : 5px 0;
+  position : relative;
+}
+
+.user:hover{
+  background : #eeeeee;
+}
+
+.user:last-child{
+  margin-bottom :0;
+}
+
+.pending{
+  position:absolute;
+  left: 12px;
+  top : 5px;
+  background : #b600ff;
+  margin : 0;
+  border-radius : 50%;
+  width : 15px;
+  height :15px;
+  line-height: 10px; 
+  padding-left: 4px;
+  color : #ffffff;
+  font-size: 12px;
+}
+
+.media-left{
+  margin : 0 10px;
+  }
+
+.media-left img{
+  width :64px;
+  border-radius:64px;
+
+}
+
+.media-body p{
+  margin :6px 0;
+}
+
+ul{
+  margin: 0;
+  padding :0;
+}
+
+li{
+  list-style: none;
+}
+
+.message-wrapper{
+  padding :10px;
+  height : 536px;
+  background : #eeeeee;
+}
+
+.messages .message{
+  margin-bottom :15px;
+}
+
+.messages .message:last-child{
+  margin-bottom :0;
+}
+
+.received, .sent{
+  width :45%;
+  padding :3px 10px;
+  border-radius :10px;
+}
+
+.received {
+  background : #ffffff;
+  float: left;
+}
+
+.sent {
+  background : #233554;
+  float :right;
+  color: white;
+  text-align :right;
+}
+
+.message p{
+  margin : 5px 0;
+}
+
+.date{
+  color: #777777;
+  font-size: 12px; 
+}
+
+.active{
+  background: #eeeeee;
+}
+  
+input[type=text]{
+  width :100%;
+  padding :12px 20px;
+  margin : 15px 0 0 0;
+  display: inline-block;
+  border-radius: 4px;
+  box-sizing : border-box;
+  outline: none;
+  border : 1px solid #cccccc;
+}
+
+input[type=text]:focus{
+  border :1px solid #aaaaaa;
+}
+
+
     </style>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
@@ -62,6 +306,7 @@
 </head>
 
 <body>
+<div>
   <div id="app">
     <nav class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow navbar-expand-lg" style="background-color: #D8D5DB  !important">
       <a class="navbar-brand col-md-3 col-lg-2 px-5" href="{{ url('/home') }}">
@@ -268,7 +513,7 @@
                     @endif
 
                       <li class="nav-item">
-                        <a class="nav-link" href="/note/viewnote">
+                        <a class="nav-link" href="/chat/message">
                           <span data-feather="message-circle"></span>
                             Chat
                         </a>
@@ -302,6 +547,115 @@
               @endguest
             </main>
         </div>
+        </div>
+
+        <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script>
+            var receiver_id ="";
+            var my_id = "{{Auth::id()}}";
+            
+            $(document).ready(function(){
+              $.ajaxSetup({
+                headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+              });
+
+              // Enable pusher logging - don't include this in production
+                  Pusher.logToConsole = true;
+
+              var pusher = new Pusher('c5a282501e463a2eed6a', {
+                cluster: 'ap2'
+              });
+
+              var channel = pusher.subscribe('my-channel');
+              channel.bind('my-event', function(data) {
+                //app.messages.push(JSON.stringify(data));
+
+                ///////////////////////////////////////////////
+
+                if(my_id == data.from){
+                $('#' + data.to).click();
+                
+              }else if(my_id == data.to){
+                if(receiver_id == data.from){
+                  $('#' + data.from).click();
+                }else{
+                  var pending =parseInt($('#' + data.from).find('pending').html());
+
+                  if(pending){
+                    $('#'+data.from).find('.pending').html(pending + 1);
+                  }else{
+                    $('#' + data.from).append('<span class = "pending">1</span>');
+                  }
+                }
+              }
+
+              ///////////////////////////////////////////////////////
+
+              });
+
+              // Vue application
+              const app = new Vue({
+                el: '#app',
+                data: {
+                  messages: [],
+                },
+              });
+               
+              $('.user').click(function(){
+              $('.user').removeClass('active');
+              $(this).addClass('active');
+              $(this).find('.pending').remove();
+
+              receiver_id =$(this).attr('id');
+              
+                $.ajax({
+                    type: "get",
+                    url: "/message/"+receiver_id,
+                    data:"",
+                    cache: false,
+                    success: function(data){
+                      $('#messages').html(data);
+                      scrollToBottomFunc();
+                    }
+                  });
+              });
+              $(document).on('keyup','.input-text input', function(e){
+                  var message = $(this).val();
+
+                  if(e.keyCode == 13 && message != '' && receiver_id != ''){
+                    $(this).val('');
+
+                    var datastr = "receiver_id="+ receiver_id + "&message=" + message;
+                    console.log(datastr);
+                      $.ajax({
+                        type:"post",
+                        url :"/sendmessage",
+                        data: datastr,
+                        cache:false,
+                        success: function(data){
+
+                        },
+                        error: function(jqXHR, status, err){
+                        },
+                        complete: function(){
+                          scrollToBottomFunc();
+                        }
+                      })
+                  }
+              }) ;   
+            });
+            // make a function to scroll down auto
+            function scrollToBottomFunc() {
+                    $('.message-wrapper').animate({
+                        scrollTop: $('.message-wrapper').get(0).scrollHeight
+                    }, 50);
+                }
+         
+          </script>
 
     <footer class="footer text-center pt-3 pb-3 fixed-bottom" style="background-color: #D8D5DB  !important">
       © 2021 CRM by She Squad

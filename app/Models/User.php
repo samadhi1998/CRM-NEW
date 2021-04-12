@@ -77,5 +77,9 @@ class User extends Authenticatable
 
     public $sortable = ['EmpID', 'name', 'email'];
 
+    public function Message()
+    {
+        return $this->hasOne(Message::class);
+    }
 
 }

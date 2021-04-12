@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Message;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -45,3 +46,18 @@ class UserFactory extends Factory
         });
     }
 }
+
+$factory->define(Message::class, function (Faker $faker) {
+    do{
+        $from =rand(1, 30);
+        $to =rand(1, 30);
+        $is_read =rand(0, 1);
+    }while($from===$to);
+    return [
+        'from' => $from,
+        'to'=> $to,
+        'message' =>$faker->sentence,
+        'is_read' => $is_read,
+        
+    ];
+});

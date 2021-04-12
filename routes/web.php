@@ -194,3 +194,8 @@ Route::post('/editeventurl','App\Http\Controllers\EventController@update');
 Route::get('deleteeventurl/{id}','App\Http\Controllers\EventController@destroy');
 Route::get('/Search_Reminders',[App\Http\Controllers\EventController::class,'searchReminders']);
 
+//chat
+Route::get('/chat/message','App\Http\Controllers\ChatController@index');
+Route::get('/message/{id}', [App\Http\Controllers\ChatController::class, 'getMessage'])->name('chatGetMessage');
+Route::post('/sendmessage', [App\Http\Controllers\ChatController::class, 'sentMessage'])->name('sentMessage');
+
