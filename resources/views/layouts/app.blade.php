@@ -293,6 +293,12 @@ input[type=text]:focus{
   border :1px solid #aaaaaa;
 }
 
+body {
+		background: linear-gradient(0deg, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4)),url('{{asset("/img/background.jpg")}}');
+		background-attachment: fixed;
+		background-size: cover;
+		font-family: 'Ubuntu', sans-serif;
+	}
 
     </style>
 
