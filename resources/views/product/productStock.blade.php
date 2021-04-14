@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title','In Stock')
-@section('header','Available Products')
+@section('header','In Stock Products')
 @section('content')
 <div class="container" style="background :none !important ">
   <div class="row justify-content-center">
