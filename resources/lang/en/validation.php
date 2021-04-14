@@ -166,6 +166,7 @@ return [
             'required' => 'You should Enter Product Count....',
             'numeric' => 'Invalid Input.Again Enter Amount Of Product....',
             'min' =>'You Should Get least 6 Products....',
+            'max' =>'You Cannot change Product Quantity less than available Product Quantity',
         ],
         'image' =>[
             'image' => 'You Should Upload Image.....',

@@ -77,6 +77,7 @@ class ProductController extends Controller
 
     public function ShowUpdatesProducts(Request $req)
     {
+      
         $data=product::find($req->ProductID);
        // $data->AdminID=$req->AdminID;
         $data->Name=$req->Name;
@@ -94,7 +95,8 @@ class ProductController extends Controller
         //   }
        
         $data->Price=$req->Price;
-        $data->Qty=$req->Qty;
+       // $data->Qty=$req->Qty;
+        $data->Qty = max($data->Qty, $req->Qty);
         $data->Warranty=$req->Warranty;
         $data->Description=$req->Description;
         $data->Status=$req->Status;
