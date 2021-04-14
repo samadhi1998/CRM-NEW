@@ -6,16 +6,19 @@ use App\Models\product;
 
 class productObserver
 {
-    public function updating(product $product)
-    {
-     if ($product->Qty <= 0) {
-        $product->Status = 'Out of Stock';}
-
-     else if ($product->Qty <= 5 && $product->Qty >= 1){
-        $product->Status='Reorder level';}
+  public function updating(product $product)
+  {
+   
+   if ($product->Qty <= $product->ReOrderLevel){
+      $product->Status='Reorder level';}
 
 
-      if ($product->Qty > 6 ){
-        $product->Status='In Stock';}    
-    }
+   else if ($product->Qty >$product->ReOrderLevel ){
+      $product->Status='In Stock';}  
+
+   if ($product->Qty <= 0) {
+      $product->Status = 'Out of Stock';}
+  
+  }
+  
 }

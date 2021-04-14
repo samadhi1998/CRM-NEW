@@ -27,7 +27,10 @@
            </strong></p>  
            <br>
            <h6 class="card-title"><strong>Product Information :</strong></h6>
-            <br>
+            <p style="text-align:left;color:#233556"><strong> 
+        Re-Order Level  Quantity of  {{ $product->Name}} :: {{ $product->ReOrderLevel}}
+           </strong></p> 
+           </br> 
             <div class="table-responsive">
     <table class="table table-bordered">
             <tr>

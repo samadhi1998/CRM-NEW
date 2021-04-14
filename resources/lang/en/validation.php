@@ -188,6 +188,12 @@ return [
             'min' =>'Charge must be At least Rs. 50.',
             'max' =>'Maxiumum charge Value is max:50000',
         ],
+        'ReOrderLevel'=>[
+            'required' => 'You should Enter Product Re-Order Level Qauntity....',
+            'numeric' => 'Invalid Input.Again Enter Re Order Level Of Product....',
+            
+
+        ]
     ],
 
     /*

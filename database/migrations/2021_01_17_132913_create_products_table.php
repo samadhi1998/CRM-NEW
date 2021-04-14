@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('Warranty');
             $table->integer('Price');
             $table->integer('Qty');
+            $table->integer('ReOrderLevel');
             $table->string('Status')->nullable()->default("In Stock");
             $table->integer('stock_defective')->nullable()->default(0);
             $table->unsignedBigInteger('AdminID');
