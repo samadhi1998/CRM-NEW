@@ -14,7 +14,7 @@
     <a class="btn btn-primary" href="/InStockProducts"> In Stock</a>
     @endif
     @if(Auth::user()->can('Stock-out-product', App\Models\product::class))
-    <a class="btn btn-primary"  href="/StockoutProducts">Re Order</a>
+    <a class="btn btn-primary"  href="/ReOrderProducts">Re Order</a>
     @endif
     @if(Auth::user()->can('Not-Available-product', App\Models\product::class))
     <a class="btn btn-primary" href="/notAvailableProducts">Out of Stock</a>

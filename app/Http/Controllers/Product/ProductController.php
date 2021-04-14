@@ -138,7 +138,7 @@ class ProductController extends Controller
    } 
 
 
-   public function stockOut()//get re order  product details
+   public function ReorderProducts()//get re order  product details
 	{   
          
 	$data=product::where('Qty', '>', 0)->whereColumn('Qty', '<=','ReOrderLevel')->paginate(5);
