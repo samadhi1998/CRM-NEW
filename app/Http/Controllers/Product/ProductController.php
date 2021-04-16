@@ -26,6 +26,7 @@ class ProductController extends Controller
             'Brand'=>'required|min:1|max:25',
             'Price'=>'required',
             'Qty'=>'required|numeric|min:6',
+            'ReOrderLevel'=>'required|numeric|',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'Warranty'=>'required',
             'Description'=>'required|min:4|max:100'
@@ -51,6 +52,7 @@ class ProductController extends Controller
         $product->Qty=$request->Qty;
         $product->Warranty=$request->Warranty;
         $product->Description=$request->Description;
+        $product->ReOrderLevel=$request->ReOrderLevel;
         $result=$product->save();
      
         return redirect('/product/viewproduct')-> with ('success','Product Inserted successfully');
@@ -75,6 +77,7 @@ class ProductController extends Controller
 
     public function ShowUpdatesProducts(Request $req)
     {
+      
         $data=product::find($req->ProductID);
        // $data->AdminID=$req->AdminID;
         $data->Name=$req->Name;
@@ -92,7 +95,8 @@ class ProductController extends Controller
         //   }
        
         $data->Price=$req->Price;
-        $data->Qty=$req->Qty;
+       // $data->Qty=$req->Qty;
+        $data->Qty = max($data->Qty, $req->Qty);
         $data->Warranty=$req->Warranty;
         $data->Description=$req->Description;
         $data->Status=$req->Status;
@@ -136,34 +140,36 @@ class ProductController extends Controller
    } 
 
 
-   public function stockOut()//get stockout  product details
-	{
-		$data = DB::table('products')->whereBetween('Qty', [1, 4])->paginate(5);
-        return view('product/productReorder', compact('data'));
+   public function ReorderProducts()//get re order  product details
+	{   
+         
+	$data=product::where('Qty', '>', 0)->whereColumn('Qty', '<=','ReOrderLevel')->paginate(5);
+	return view('product/productReorder', compact('data'));
 	}
 
     public function instock()//get in stock product details
 	{
-		$data = Product::where('Qty', '>=', 5)->paginate(5);
+		$data = Product::whereColumn('Qty', '>','ReOrderLevel')->paginate(5);
         return view('product/productStock', compact('data'));
 	}
 
+    
     public function notavailable()//get not available stock product details
 	{
 		
         $data = Product::where('Qty', '<=', 0)->paginate(5);
         return view('product/productNotAvailable', compact('data'));
        
-
     }
 
+    
     public function ProductInfo($id)
     {   //dd($id);
         $products=  DB::table('Products')  
         ->join('users','products.AdminID',"=",'users.EmpID')
         ->select('products.AdminID','users.name','users.MobileNo','users.email','products.ProductID' ,
         'Products.Created_at','Products.Name','Products.Brand','Products.Description',
-        'Products.Warranty','Products.Price','Products.Qty','Products.Status','Products.stock_defective')
+        'Products.Warranty','Products.Price','Products.Qty','Products.Status','Products.stock_defective','Products.ReOrderLevel')
         ->where('products.ProductID', '=',$id)
         ->get()->toArray();
         //dd($products);

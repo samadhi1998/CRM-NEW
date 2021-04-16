@@ -131,7 +131,7 @@ Route::post('/Updateproducts',[App\Http\Controllers\Product\ProductController::c
 Route::get('/Search_Products',[App\Http\Controllers\Product\ProductController::class,'SearchProducts']);
 Route::get('/ProductCount',[App\Http\Controllers\Product\ProductController::class,'ProductCount']);
 Route::get('/Delete_Products/{ProductID}',[App\Http\Controllers\Product\ProductController::class,'deleteproducts']);
-Route::get('/StockoutProducts',[App\Http\Controllers\Product\ProductController::class,'stockOut']);
+Route::get('/ReOrderProducts',[App\Http\Controllers\Product\ProductController::class,'ReorderProducts']);
 Route::get('/InStockProducts',[App\Http\Controllers\Product\ProductController::class,'instock']);
 Route::get('/notAvailableProducts',[App\Http\Controllers\Product\ProductController::class,'notavailable']);
 Route::get('ProductInformation/{ProductID}',[App\Http\Controllers\Product\ProductController::class,'ProductInfo']);

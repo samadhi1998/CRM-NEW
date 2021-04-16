@@ -13,7 +13,7 @@ class product extends Model
 
     protected $table = 'products';
     protected $primaryKey = "ProductID";
-    protected $fillable =['ProductID','Name','Brand','image','Description','Price','Qty','Status','stock_defective','AdminID'];
+    protected $fillable =['ProductID','Name','Brand','image','Description','Price','Qty','Status','stock_defective','AdminID','ReOrderLevel'];
     public $sortable = ['Name', 'Qty', 'Price'];
 
     

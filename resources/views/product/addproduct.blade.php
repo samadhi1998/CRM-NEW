@@ -51,6 +51,9 @@
                             <label for="Description" ><b>Description : </b></label>
                             <textarea  name="Description" ></textarea>
                             <br>
+                            <label for="ReOrderLevel" ><b> Re-Order Level Quantity : </b></label>
+                            <input type="number" name="ReOrderLevel" >
+                            <br>
                             <br>
                             <div class="text-right">
                                 <button type="submit"  Value="Next"class="btn btn-primary">Add Product</button>	 			

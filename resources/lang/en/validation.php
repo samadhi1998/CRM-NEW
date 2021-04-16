@@ -166,6 +166,7 @@ return [
             'required' => 'You should Enter Product Count....',
             'numeric' => 'Invalid Input.Again Enter Amount Of Product....',
             'min' =>'You Should Get least 6 Products....',
+            'max' =>'You Cannot change Product Quantity less than available Product Quantity',
         ],
         'image' =>[
             'image' => 'You Should Upload Image.....',
@@ -188,6 +189,12 @@ return [
             'min' =>'Charge must be At least Rs. 50.',
             'max' =>'Maxiumum charge Value is max:50000',
         ],
+        'ReOrderLevel'=>[
+            'required' => 'You should Enter Product Re-Order Level Qauntity....',
+            'numeric' => 'Invalid Input.Again Enter Re Order Level Of Product....',
+            
+
+        ]
     ],
 
     /*
