@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-use App\Models\Order;
-use App\Models\product;
-use App\Models\customer;
+use Illuminate\Support\Facades\DB;
 use App\Models\order_detail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\customer;
+use App\Models\product;
+use App\Models\Order;
 use Carbon\Carbon;
 use PDF;
 use Mail;
@@ -19,43 +20,53 @@ class OrdersController extends Controller
         $this->authorizeResource(Order::class, Order::class);
     }
 
-    public function index()
-    {
-        $orders = Order::with('products')->latest()->get();
-        return view('orders/index', compact('orders'));  
+    public function index(Request $request)
+    {   
+        $orders = Order::sortable()->paginate(5);
+        return view('orders/index')->with('orders', $orders)
+        ->with('customers',customer::all());
     }
 
-    public function create()
-    {   
-        $products = Product::all();
-        return view('orders/create', compact('products'));     
+    public function create(Request $request, customer $CustomerID)
+    {       
+       $products = Product::all();
+       $customers = customer::all();
+       // $customers = customer::find($CustomerID);
+       
+        return view('orders/create', compact('products','customers'));    
     }
     
     public function store(Request $request)
     {
-       $order = Order::create($request->all());
-
+        $request->validate([
+            'Status'=>'required',
+            'Due_date'=>'required'
+        ]);
+            
+        $order = Order::create($request->all());
         $products = $request->input('products', []);
         $quantities = $request->input('quantities', []);
 
         for ($product=0; $product < count($products); $product++) {
             if ($products[$product] != '') {
-                $order->products()->attach($products[$product], ['Qty' => $quantities[$product]]);
-                
-            }
+                $order->products()->attach($products[$product], ['Qty' => $quantities[$product]]);          
+            }        
         }
 
         //product Thilini
-        if ($request->input('Progress') == 'Invoice') {
+        if ($request->input('Status') == 'Invoice') {
             for ($p = 0; $p < count($products); $p++) {
                 $product = product::find($products[$p]);
                 $product->Qty = $product->Qty - $quantities[$p];
                 $product->save();
             }
-        }   
-    
-        return redirect()->route('orders.index');
+        }  
+  
+       // return redirect()->route('orders.index');
+       return redirect('index')->with('success','Order Added');
+
     }
+
 
     public function show(Order $order)
     {
@@ -65,13 +76,28 @@ class OrdersController extends Controller
         ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
         ->join('order_product','orders.OrderID',"=",'order_product.order_OrderID')
         ->join('products','products.ProductID',"=",'order_product.product_ProductID')
-        ->select('orders.OrderID','orders.Due_date' ,'orders.Created_at','orders.Advance','orders.Progress','orders.Discount',
+        ->select('orders.OrderID','orders.Due_date' ,'orders.Created_at','orders.Advance','orders.Status','orders.Discount',
                  'customers.Name as CustomerName','customers.MobileNo', 'customers.Email','customers.Address',
                  'products.Name as ProductName','products.price','order_product.Qty','products.Price')
         ->where('orders.OrderID', '=', $order->OrderID)
         ->get();   
-            
+        
         return view('orders/show', compact('orders'));   
+    }
+
+    public function vieworddetails($OrderID)
+    {
+        $orders =  DB::table('orders')  
+
+        ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
+        ->join('order_product','orders.OrderID',"=",'order_product.order_OrderID')
+        ->join('products','products.ProductID',"=",'order_product.product_ProductID')
+        ->select('orders.OrderID','orders.Due_date' ,'orders.Created_at','orders.Advance','orders.Progress','orders.Status','orders.Discount',
+                 'customers.Name as CustomerName','customers.MobileNo', 'customers.Email','customers.Address',
+                 'products.Name as ProductName','products.price','order_product.Qty','products.Price')
+        ->where('orders.OrderID', '=', $OrderID )
+        ->get()->toArray();  
+        return view('orders.view',['orders'=>$orders]);
     }
 
     public function edit($OrderID)
@@ -80,22 +106,33 @@ class OrdersController extends Controller
 
         $product = DB::table('products')
         ->join('order_product','products.ProductID',"=",'order_product.product_ProductID')
-        ->select('products.Name as ProductName','products.price','order_product.Qty','products.Price')
+        ->select('products.Name as ProductName','order_product.Qty','products.Price')
         ->where('order_product.order_OrderID', '=', $data->OrderID)
-        ->get();        
-        
+        ->get(); 
+    
         return view('orders/edit',['order'=>$data,'products'=>$product]);  
     }
 
     public function update(Request $request, Order $order)
-    {  
-        $orders = Order::find($request->input('OrderID'));
+    {    
+        $data = Order::find($request->input('OrderID'));
+        $data->OrderID = $request->input('OrderID');
+        $data->Status=$request->input('Status');
+        $data->Due_date=$request->input('Due_date');
+        $data->Advance=$request->input('Advance');
+        $data->Discount=$request->input('Discount');
+        $data->CustomerID=$request->input('CustomerID');
+        $data->save();
+
+
         $ProductID = $request->input('ProductID');
         $orders->products()->attach($ProductID);
 
+
+
         return redirect('/index');
     }
- 
+
     public function delete($OrderID)
     {
         $order=Order::find($OrderID);
@@ -103,33 +140,10 @@ class OrdersController extends Controller
         return redirect('/orders');
     }
 
-
-    public function joincustomers(Order $order)
-    {
-        // return DB::table('orders')->get();
-           return DB::table('orders')
-          ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-          ->select('customers.*')
-          ->where('orders.CustomerID',1)
-          ->get();   
-    }
-
-
-    public function joinorddetails(Order $order)
-    {
-        // return DB::table('orders')->get();
-          return DB::table('order_details')
-          ->join('orders','orders.OrderID',"=",'order_details.OrderID')
-          ->join('products','products.ProductID',"=",'order_details.ProductID')
-          ->select('order_details.Description','order_details.Qty','products.Price','orders.Discount','orders.Total_Price')
-          ->where('orders.OrderID',1)
-          ->get();   
-    }
-
     public function emails()
     {
-        $data["email"] = "aatmaninfotech@gmail.com";
-        $data["title"] = "From ItSolutionStuff.com";
+        $data["email"] = "buyabc@abcgroup.com";
+        $data["title"] = "From buyabc@abcgroup.com";
         $data["body"] = "This is Demo";
   
         $pdf = PDF::loadView('emails.myTestMail', $data);
@@ -143,13 +157,15 @@ class OrdersController extends Controller
         dd('Mail sent successfully');
     }
 
-    public function selectorder(){
+    public function selectorder()
+    {
         $orders = Order::all();
 
         return view('task.selectorder',compact('orders'));
     }
 
-    public function dashboard(){
+    public function dashboard()
+    {
         $orders = Order::all();
 
         return view('admin.dashboard',compact('orders'));
@@ -186,4 +202,24 @@ class OrdersController extends Controller
         $data->update($request->except(['_token']));
         return redirect()->route('orders.index');
     }
+
+    public function SearchOrder(Request $request)
+    {
+
+        $request->validate([
+            'query'=>'required']);
+
+        $query=$request->input('query') ;
+        
+        $order=Order::where('OrderID', 'like', "%$query%")->paginate(5);
+        
+        if (count($order)>0) {
+            return view('orders/searchorder', ['orders'=>$order]);
+        } else {
+            return redirect()->back()->with('error', 'Invalid Search , Enter available one ...');
+        }
+    
+    }
+
+
 }

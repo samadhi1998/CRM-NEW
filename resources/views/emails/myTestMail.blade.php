@@ -6,6 +6,18 @@
 <body>
 
     <h1></h1>
+    
+    <div class="container">
+    <div class="row invoice-header px-3 py-4">
+        <div class="col-12 text-center">
+            <h2 class="Name">ABS-CBN CORPORATION</h2>
+            <h6>No.95, Galle Road, Moratuwa</h6>
+            <h6>Tel : +(94) 112 605 731</h6>
+            <h6><a href="mailto:buyabc@abcgroup.com">email : buyabc@abcgroup.com</a></h6>
+            <hr>
+        </div> 
+    </div>
+    
 
     <p>Dear Mr. Madam/Sir,</p>   
 
@@ -20,15 +32,5 @@
 
     <p>Sincerely,<br>Sales manager</p>
    
-
-        <h1 style="text-align: center; color:#233554">XYZ (PVT) LTD. </h1>
-        <h4 style="text-align: center; color:#233554">No.95, Galle Road, Moratuwa</h4>
-        <h5 style="text-align: center; color:#233554">Tel : 0112 605 731</h5>
-        <h5 style="text-align: center; color:#233554">E-mail : buyabc@abcgroup.com</h5>      
-        <hr style="background-color:#233554; height:3px">
-
-        <br><br><br><br> <br><br>
-        <hr style="background-color:#233554; height:3px">
-
 </body>
 </html>

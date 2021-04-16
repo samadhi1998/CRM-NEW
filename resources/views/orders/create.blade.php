@@ -7,37 +7,45 @@
     <div class="row justify-content-center">
         <div class="col-md">
             <div class="card">
+                   
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    
                 <div class="card-body">
-            <form action="{{ route('orders.store') }}" method="POST">
-                @csrf
-<!-- 
-                <label for="OrderID" ><b>Order ID : </b></label>
-                    <input type="text" name="OrderID" class="form-control">
-                <br><br> -->
-
-                <label for="CustomerID" ><b>Customer ID : </b></label>
-                    <input type="text" name="CustomerID" class="form-control">
-                <br><br>
-
-                <label for="Due_date" ><b>Due Date : </b></label>
-                    <input type="date" name="Due_date" class="form-control" >
-                <br><br>
-
-                <label for="Progress"><b>Progress : </b></label>
-                    <select  name="Progress" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-                        <option value="" selected disabled hidden></option>
-                        <option value="Estimated Quotation">Estimated Quotation</option>
-                        <option value="Invoice">Invoice</option>
-                    </select> 
-                    <br><br>
-                    <br><br>
-                    <div class="card-body">
+                   <form action="{{ route('orders.store') }}" method="POST">
+                   @csrf
+                   <label for="CustomerID" ><b>Customer ID : </b></label>
+                   <input type="text" name="CustomerID" class="form-control" value=""> 
+                   <br><br>
+                <!-- 
+                <label for="Name" ><b>Customer Name : </b></label>
+                <input type="text" name="Name" class="form-control" value="">
+                -->
+                  <label for="Due_date" ><b>Due Date : </b></label>
+                  <input type="date" name="Due_date" class="form-control" >
+                  <br><br>
+                  <label for="Status"><b>Status : </b></label>
+                  <select class="form-control" id="type"  name="Status">
+                    <option value="" selected disabled hidden></option>
+                    <option value="Estimated Quotation">Estimated Quotation</option>
+                    <option value="Invoice">Invoice</option>
+                  </select>   
+                  <br><br>   
+                <div class="card-body">
+                    <label for="Status"><b>Order Items : </b></label>
                     <table class="table" id="products_table">
                         <thead>
                             <tr>
                                 <th>Product</th>
                                 <th>Quantity</th>
-                                <!-- <th>Discount</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -47,7 +55,8 @@
                                         <option value="">-- choose product --</option>
                                         @foreach ($products as $product)
                                             <option value="{{ $product->ProductID }}">
-                                                {{ $product->Name }} (Rs.{{ number_format($product->Price, 2) }})
+                                                {{ $product->Name }} (Rs.{{ number_format($product->Price, 2) }} )
+                                                -- Stock {{ $product->Qty}} --
                                             </option>
                                         @endforeach
                                     </select>
@@ -55,54 +64,37 @@
                                 <td>
                                     <input type="number" name="quantities[]" class="form-control" value="1" />
                                 </td>
-                                <!-- <td>
-                                    <input type="number" name="Discounts[]" class="form-control"  >
-                                </td> -->
                             </tr>
                             <tr id="product1"></tr>
                         </tbody>
                         <tfoot>
                             <tr>
+                                <td><b>Discount</b></td>  
+                                <td><b><input type="number" name="Discount" class="form-control"></b></td>     
+                            </tr> 
+                            <tr>
                                 <td><b>Advance</b></td>  
-                                <td><b><input type="text" name="Advance" class="form-control"></b></td>     
+                                <td><b><input type="number" name="Advance" class="form-control"></b></td>     
                             </tr> 
                         </tfoot>             
                     </table>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button id="add_row" class="btn btn-default pull-left">+ Add Row</button>
-                            <button id='delete_row' class="pull-right btn btn-danger">- Delete Row</button>
-                        </div>
+                    <br><br>
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary">Add Order</button>
                     </div>
-            </div>
-        </div>
-    
-    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
+                  </div>
+                </form>
+                     <div class="row">
+                        <div class="col-md-12">
+                            <button id='add_row' class="btn btn-outline-primary pull-left">+ Add Row</button>
+                            <button id='delete_row' class="pull-right btn btn-outline-danger">- Delete Row</button>
+                        </div>
+                   </div>
+               </div>
+          </div>
+       </div>
+   </div>
+</div>
 
-<script type="text/javascript">
-
-    $(document).ready(function(){
-    let row_number = 1;
-    $("#add_row").click(function(e){
-      e.preventDefault();
-      let new_row_number = row_number - 1;
-      $('#product' + row_number).html($('#product' + new_row_number).html()).find('td:first-child');
-      $('#products_table').append('<tr id="product' + (row_number + 1) + '"></tr>');
-      row_number++;
-    });
-
-    $("#delete_row").click(function(e){
-      e.preventDefault();
-      if(row_number > 1){
-        $("#product" + (row_number - 1)).html('');
-        row_number--;
-      }
-    });
-  });
-</script>
-
-</form>
 @endsection
+

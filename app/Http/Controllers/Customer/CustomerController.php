@@ -120,16 +120,12 @@ class CustomerController extends Controller
     return('customer/customer');
 
   }
-
-   public function customerorder(Request $request, Order $model)
-     {
-
-    Order::where('CustomerID', $request->get('CustomerID'))->get();
-    $Order = $model->create($request->all());
-    return redirect()->route('orders.create', ['customerID' => $Order->CustomerID]);
-
-            
-     }
+  
+  public function customerorder(Request $request, Order $model)
+  {
+     return redirect()->route('orders.create', ['customerID' => $request->get('CustomerID')]);     
+  }
+  
   
 
 

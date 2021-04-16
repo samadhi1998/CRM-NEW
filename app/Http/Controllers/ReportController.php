@@ -34,9 +34,9 @@ class ReportController extends Controller
         ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
         ->select('orders.OrderID','orders.updated_at','customers.Name as Customer','orders.created_at','orders.Due_date','orders.Advance','orders.Progress', 'orders.Discount','orders.Total_Price')   
         
-        ->where('orders.Progress','=','Invoice') 
+        ->where('orders.Status','=','Invoice') 
         ->whereBetween('orders.updated_at', [$request->First_date, $request->Last_date])
-        ->where('orders.Progress','=','Invoice')  
+        ->where('orders.Status','=','Invoice')  
         ->get();
 
         $products =  Order::with('products')->latest()->get();
@@ -54,14 +54,14 @@ class ReportController extends Controller
     
    public function bydaily(Request $request)
     {
-        $count = Order::whereDate('created_at',Carbon::today())->where('orders.Progress','=','Invoice')->count();
+        $count = Order::whereDate('created_at',Carbon::today())->where('orders.Status','=','Invoice')->count();
 
         $date = date('Y-m-d');
         $daily = Order::whereDate('orders.updated_at', Carbon::today())->oldest()
 
         ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->select('orders.OrderID','orders.updated_at','customers.Name as Customer','orders.created_at','orders.Due_date','orders.Advance','orders.Progress', 'orders.Discount','orders.Total_Price')   
-        ->where('orders.Progress','=','Invoice')  
+        ->select('orders.OrderID','orders.updated_at','customers.Name as Customer','orders.created_at','orders.Due_date','orders.Advance','orders.Status', 'orders.Discount','orders.Total_Price')   
+        ->where('orders.Status','=','Invoice')  
         ->get(['orders.OrderID','orders.updated_at','customers.Name as Customer']);
        
         $products =  Order::with('products')->latest()->get();
@@ -72,7 +72,7 @@ class ReportController extends Controller
     public function byweekly(Request $request)
     {        
         $count = Order::whereBetween('orders.updated_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-        ->where('orders.Progress','=','Invoice')->count();
+        ->where('orders.Status','=','Invoice')->count();
 
         $now = Carbon::now();
         $weekStartDate = $now->startOfWeek()->format('Y-m-d ');
@@ -80,8 +80,8 @@ class ReportController extends Controller
         $current_week = Order::whereBetween('orders.updated_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->oldest()
 
         ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->select('orders.OrderID','orders.updated_at','customers.Name as Customer','orders.created_at','orders.Due_date','orders.Advance','orders.Progress', 'orders.Discount','orders.Total_Price')  
-        ->where('orders.Progress','=','Invoice')   
+        ->select('orders.OrderID','orders.updated_at','customers.Name as Customer','orders.created_at','orders.Due_date','orders.Advance','orders.Status', 'orders.Discount','orders.Total_Price')  
+        ->where('orders.Status','=','Invoice')   
         ->get(['orders.OrderID','orders.updated_at','customers.Name as Customer']);
 
         $products =  Order::with('products')->latest()->get();
@@ -93,7 +93,7 @@ class ReportController extends Controller
     {
         $count = Order::whereMonth('orders.updated_at', date('m'))
         ->whereYear('orders.updated_at', date('Y'))
-        ->where('orders.Progress','=','Invoice')  
+        ->where('orders.Status','=','Invoice')  
         ->get(['orders.updated_at','orders.OrderID'])->count();
 
         $first_day_this_month = date('m-01-Y');
@@ -101,8 +101,8 @@ class ReportController extends Controller
         $current_month = Order::whereMonth('orders.updated_at', Carbon::now()->month)->oldest()
         
         ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->select('orders.OrderID','orders.updated_at','customers.Name as Customer','orders.created_at','orders.Due_date','orders.Advance','orders.Progress', 'orders.Discount','orders.Total_Price')   
-        ->where('orders.Progress','=','Invoice')  
+        ->select('orders.OrderID','orders.updated_at','customers.Name as Customer','orders.created_at','orders.Due_date','orders.Advance','orders.Status', 'orders.Discount','orders.Total_Price')   
+        ->where('orders.Status','=','Invoice')  
         ->get(['orders.OrderID','orders.updated_at','customers.Name as Customer']);
 
         $products =  Order::with('products')->latest()->get();
@@ -111,15 +111,15 @@ class ReportController extends Controller
 
     public function premonth (Request $request)
     {
-        $count = Order::whereMonth('orders.updated_at', '=', Carbon::now()->subMonth()->month)->where('orders.Progress','=','Invoice') ->count();
+        $count = Order::whereMonth('orders.updated_at', '=', Carbon::now()->subMonth()->month)->where('orders.Status','=','Invoice') ->count();
 
         $start = Carbon::now()->startOfMonth()->subMonth()->toDateString();
         $end = Carbon::now()->subMonth()->endOfMonth()->toDateString();
         $premonth = Order::whereMonth('orders.updated_at', '=', Carbon::now()->subMonth()->month)->oldest()
          
         ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->select('orders.OrderID','orders.updated_at','customers.Name as Customer','orders.created_at','orders.Due_date','orders.Advance','orders.Progress', 'orders.Discount','orders.Total_Price')   
-        ->where('orders.Progress','=','Invoice')  
+        ->select('orders.OrderID','orders.updated_at','customers.Name as Customer','orders.created_at','orders.Due_date','orders.Advance','orders.Status', 'orders.Discount','orders.Total_Price')   
+        ->where('orders.Status','=','Invoice')  
         ->get(['orders.OrderID','orders.updated_at','customers.Name as Customer']);
        
         $products =  Order::with('products')->latest()->get();

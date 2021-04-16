@@ -293,13 +293,108 @@ input[type=text]:focus{
   border :1px solid #aaaaaa;
 }
 
-body {
-		background: linear-gradient(0deg, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4)),url('{{asset("/img/background.jpg")}}');
-		background-attachment: fixed;
-		background-size: cover;
-		font-family: 'Ubuntu', sans-serif;
-	}
+@page {
+            bleed: 1cm;
+            size: A4 portrait;
+            size:  auto;  
+            margin-bottom: 50pt;
+            font-size: 12pt;
+            #content, #page {
+            width: 100%;
+            margin: 0;
+            float: none;
+            }
+            }
+            @media print {  
+            table{
+                page-break-inside: auto;
+            }
+            tr.last-row {
+                background-color: #555!important;
+            }
+            tr.last-row > th, tr.last-row > td {
+                background-color: unset!important;
+            }
+            div.page-break{
+                page-break-before: auto;
+            }
+            }
+            .gray{
+            color: #333;
+            }
+            .gray-ish{
+            color: #666;
+            }
+            .almost-gray{
+            color: #999;
+            }
+            
+.page-holder {
+  min-height: 100vh;
+}
 
+.bg-cover {
+  background-size: cover !important;
+}
+            .login {
+              background: linear-gradient(0deg, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4)),url('{{asset("/img/background.jpg")}}');
+              background-size: cover;
+              font-family: 'Ubuntu', sans-serif;
+              height: 100%; 
+              background-position: center;
+              background-repeat: no-repeat;
+            }
+            body{
+            background-color: #eee;
+            -webkit-print-color-adjust: exact !important;
+            height: 100%;
+            }
+            div.container{
+            background-color: white;
+            border-radius: 25px;
+            height: 100%;
+            position: relative;
+            margin-top: 50px;
+            }
+            div.invoice-header > div > h1{
+            font-size: 4rem;
+            }
+            div.invoice-table{
+            border-top: 3px solid rgb(255, 77, 77);
+            }
+            div.invoice-table > table.table > thead, div.invoice-table > table.table > thead.thead > tr, div.invoice-table > table.table > thead.thead > tr > th {
+            border-top: none;
+            }
+            div.total-field{
+            position: relative;
+            }
+            h5.due-date{
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            }
+            div.sub-table{
+            border-left: 3px solid rgb(255, 77, 77);
+            padding-left: 0;
+            }
+            div.sub-table > table{
+            padding-bottom: 0;
+            margin-bottom: 0;
+            }
+            tr.last-row{
+            margin-top: 25px;
+            background-color: #555;
+            color: white;
+            border-top: 3px solid rgb(255, 77, 77);
+            }
+            p.footer{
+                bottom: 0;
+                width: 100%;
+                background-color: #333;
+                color: white;
+                padding-top: 15px;
+                border-top: 3px solid red;
+            }
     </style>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
@@ -558,7 +653,7 @@ body {
         <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-          <script>
+        <script>
             var receiver_id ="";
             var my_id = "{{Auth::id()}}";
             
@@ -661,7 +756,27 @@ body {
                     }, 50);
                 }
          
-          </script>
+    </script>
+    <script >
+        $(document).ready(function(){
+        let row_number = 1;
+        $('#add_row').click(function(e){
+          e.preventDefault();
+          let new_row_number = row_number - 1;
+          $('#product' + row_number).html($('#product' + new_row_number).html()).find('td:first-child');
+          $('#products_table').append('<tr id="product' + (row_number + 1) + '"></tr>');
+          row_number++;
+        });
+
+        $("#delete_row").click(function(e){
+          e.preventDefault();
+          if(row_number > 1){
+            $("#product" + (row_number - 1)).html('');
+            row_number--;
+          }
+        });
+        });
+</script>
 
     <footer class="footer text-center pt-3 pb-3 fixed-bottom" style="background-color: #D8D5DB  !important">
       © 2021 CRM by She Squad

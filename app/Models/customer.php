@@ -11,13 +11,16 @@ class customer extends Model
 {
     use HasFactory, SoftDeletes, Sortable;
 
+    protected $fillable = ['CustomerID','Name','NIC','Email','MobileNo','Address'];
     protected $table = 'customers';
-    protected $primaryKey = "CustomerID";
+    protected $primaryKey = 'CustomerID';
 
-    public function orders()
+    
+    public function order()
     {
-        return $this->hasmany(Order::class, 'orders');
+        return $this->hasmany(Order::class, 'OrderID');
     }
+
 
     public $sortable = ['CustomerID', 'Name', 'Email'];
 }

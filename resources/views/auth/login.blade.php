@@ -1,18 +1,7 @@
 @extends('layouts.app')
 @section('title','Login')
 @section('content1')
-<html>
-<head>
-    <style>
-    body {
-		background: linear-gradient(0deg, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4)),url('{{asset("/img/background.jpg")}}');
-		background-attachment: fixed;
-		background-size: cover;
-		font-family: 'Ubuntu', sans-serif;
-	}
-    </style>
-</head>
-<body>
+<div class="login page-holder bg-cover">
 <div class="jumbotron d-flex align-items-center " style="background :none !important ">
 <div class="container-fluid" style="max-width:1250px">
     <div class="row justify-content-center">
@@ -84,8 +73,6 @@
     </div>
 </div>
 </div>
- 
-</body>
-</html>
+</div>
 
 @endsection

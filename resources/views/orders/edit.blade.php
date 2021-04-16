@@ -7,24 +7,29 @@
     <div class="col-md">
         <div class="card">
             <div class="card-body">
-                <div class="container"  style="background :none !important ">      
-                    <form method="POST" action="/edit" id="myform">
+                <div class="container"  style="background :none !important ">
+                    <form method="POST" action="/progressedit" id="myform">
                         @csrf
-                        <label for="OrderID" ><b>Order ID : </b></label>
-                        <input type="text" name="OrderID" value="{{$order->OrderID}}" readonly>
-                        <br>
-                        <label for="Due_Date" ><b>Due Date : </b></label>
-                        <input type="date" name="Due_Date" value="{{$order->Due_date}}">
-                        <br>
-                        <label for="Status"><b>Status : </b></label>
-                        <select name="Progress" value="{{$order->Progress}}" class="form-control" placeholder="Progress">
-                            <option value="{{$order->Progress}}" selected hidden>{{$order->Progress}}</option>
-                            <option value="Estimated Quotation">Estimated Quotation</option>
-                            <option value="Invoice">Invoice</option>
-                        </select>
-                        <br>
-                        <div class="card-body">
-                        <table class="table" id="products_table">
+                            <label for="OrderID" ><b>Order ID : </b></label>
+                            <input type="text" name="OrderID" value="{{$order->OrderID}}" readonly>
+                            <br>
+                            <label for="CustomerID" ><b>Customer ID: </b></label>
+                            <input type="text" name="CustomerID"  value="{{$order->CustomerID}}" readonly>
+                            <br>
+                            <label for="Name" ><b>Customer Name: </b></label>
+                            <input type="text" name="Name" value="{{optional($order->customers)->Name}}" readonly>
+                            <br>
+                            <label for="Due_Date" ><b>Due Date for Payment : </b></label>
+                            <input type="date" name="Due_Date" value="{{$order->Due_date}}" readonly>
+                            <br>
+                            <label for="Status"><b>Status : </b></label>
+                            <select name="Status" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+                                <option value="{{$order->Status}}" selected hidden>{{$order->Status}}</option>
+                                <option value="Estimated Quotation">Estimated Quotation</option>
+                                <option value="Invoice">Invoice</option>
+                            </select>
+                            <br>
+                            <table class="table" id="products_table">
                             <thead>
                                 <tr>
                                     <th>Product</th>
@@ -45,45 +50,75 @@
                                 <tr id="product1"></tr>                 
                             </tbody>  
                             <tfoot>
-                                <tr>
-                                    <td><b>Advance</b></td>
-                                    <td><b><input type="text" name="Advance" value="{{$order->Advance}}" class="form-control"></b></td>        
-                                </tr>                                     
-                            </tfoot>
+                            <tr>
+                                <td><b>Discount</b></td>  
+                                <td><b><input type="number" name="Discount" class="form-control" value="{{$order->Discount}}"></b></td>     
+                            </tr> 
+                            <tr>
+                                <td><b>Advance</b></td>  
+                                <td><b><input type="number" name="Advance" class="form-control" value="{{$order->Advance}}"></b></td>     
+                            </tr> 
+                        </tfoot>  
                         </table>
                         <div class="row">
                             <div class="col-md-12">
-                                <button id="add_row" class="btn btn-default pull-left">+ Add Row</button>
-                                <button id='delete_row' class="pull-right btn btn-danger">- Delete Row</button>
+                                <button id="add_row" class="btn btn-outline-primary pull-left">+ Add Row</button>
+                                <button id='delete_row' class="pull-right btn btn-outline-danger">- Delete Row</button>
                             </div>
                         </div>
-                        <br><br>
-                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+                        <script type="text/javascript">
+                        $(document).ready(function(){
+                            let row_number = 1;
+                            $("#add_row").click(function(e){
+                            e.preventDefault();
+                            let new_row_number = row_number - 1;
+                            $('#product' + row_number).html($('#product' + new_row_number).html()).find('td:first-child');
+                            $('#products_table').append('<tr id="product' + (row_number + 1) + '"></tr>');
+                            row_number++;
+                            });
+
+                            $("#delete_row").click(function(e){
+                            e.preventDefault();
+                            if(row_number > 1){
+                                $("#product" + (row_number - 1)).html('');
+                                row_number--;
+                            }
+                            });
+                        });                    
+                        </script>
+
+                            <br>
+                            <div class="btn-group float-right" role="group">
+                                <button type="button" data-toggle="modal" data-target="#exampleModal" >Update</button>
+                            </div>
+                            <div class="btn-group float-right mr-2 " role="group">
+                                <button type="submit" ><a href="/index" class="text-my-own-color">Cancel</a></button>
+                            </div> 
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<script type="text/javascript">
-$(document).ready(function(){
-    let row_number = 1;
-    $("#add_row").click(function(e){
-      e.preventDefault();
-      let new_row_number = row_number - 1;
-      $('#product' + row_number).html($('#product' + new_row_number).html()).find('td:first-child');
-      $('#products_table').append('<tr id="product' + (row_number + 1) + '"></tr>');
-      row_number++;
-    });
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="color:#233554">Update Alert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="color:#233554">
+                You are going to update the details of Order ID {{$order->OrderID}} . Do you want to continue ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" form="myform" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
 
-    $("#delete_row").click(function(e){
-      e.preventDefault();
-      if(row_number > 1){
-        $("#product" + (row_number - 1)).html('');
-        row_number--;
-      }
-    });
-  });                    
-</script>
-
-
-
-  @endsection

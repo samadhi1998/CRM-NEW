@@ -1,11 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\PDF;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\DB;
+use App\Models\order_detail;
 use Illuminate\Http\Request;
-
+use App\Models\customer;
+use App\Models\product;
+use App\Models\Order;
+use Carbon\Carbon;
+use PDF;
 use Mail;
+
   
 class PDFController extends Controller
 {
@@ -14,22 +21,23 @@ class PDFController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function downloadPDF()
     {
-        $data["email"] = "buyabc@abcgroup.com";
-        $data["title"] = "From buyabc@abcgroup.com";
-        $data["body"] = "This is Demo";
-  
-        $pdf = PDF::loadView('emails.myTestMail', $data);
-  
-        Mail::send('emails.myTestMail', $data, function($message)use($data, $pdf) {
-            $message->to($data["email"], $data["email"])
-                    ->subject($data["title"])
-                    ->attachData($pdf->output(), "text.pdf");
-        });
-  
-        dd('Mail sent successfully');
+       $orders = Order::all();
+       
+       $orders =  DB::table('orders')  
+
+        ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
+        ->join('order_product','orders.OrderID',"=",'order_product.order_OrderID')
+        ->join('products','products.ProductID',"=",'order_product.product_ProductID')
+        ->select('orders.OrderID','orders.Due_date' ,'orders.created_at','orders.Advance','orders.Status','orders.Discount',
+                 'customers.Name as CustomerName','customers.MobileNo', 'customers.Email','customers.Address',
+                 'products.Name as ProductName','products.price','order_product.Qty','products.Price')->get();   
+
+       $pdf = PDF::loadView('myPDF', compact('orders'));
+       return $pdf->download('invoice.pdf');
     }
+
 
     /**
      * Show the form for creating a new resource.

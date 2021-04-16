@@ -12,7 +12,7 @@ class Order extends Model
     use HasFactory, SoftDeletes, Sortable;
 
     protected $fillable = [
-        'OrderID','CustomerID','Progress','created_at','Due_date','Advance','Discount','Total_Price','Total_Price','TaskID',
+        'OrderID','CustomerID','Progress','created_at','Due_date','Advance','Discount','Total_Price','Total_Price','TaskID','Status',
         'CustomerCareID','QuotationEmpID','FollowUpID',
     ];
 
@@ -39,7 +39,7 @@ class Order extends Model
 
     public function customers()
     {
-        return $this->belongsToMany(customers::class);
+        return $this->belongsTo(customer::class, 'CustomerID');
     }
 
 }
