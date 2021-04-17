@@ -48,7 +48,7 @@ class CustomerController extends Controller
         } else {
             return ["Result"=>"operation failed"];
         }*/
-        return redirect('/ViewCustomers');
+        return redirect('/ViewCustomers')-> with ('success','New Customer Added successfully...');
     }
 
 
@@ -82,7 +82,7 @@ class CustomerController extends Controller
         } else {
             return ["data"=>"operation failed"];
         }*/
-        return redirect('/ViewCustomers');
+        return redirect('/ViewCustomers')-> with ('success',' Customer Information Updated successfully...');
     }
 
     public function DeleteCustomers($CustomerID)
@@ -101,7 +101,10 @@ class CustomerController extends Controller
 
         $query=$request->input('query') ;
         //dd($query);
-        $customer=customer::where('Name', 'like', "%$query%")->orWhere('Address', 'like', "%$query%")->paginate(5);
+        $customer=customer::where('Name', 'like', "%$query%")
+        ->orWhere('MobileNo', 'like', "%$query%")
+        ->orWhere('Address', 'like', "%$query%")
+        ->orWhere('NIC', 'like', "%$query%")->paginate(5);
         //dd($customer);
         if (count($customer)>0) {
             return view('customer/searchcustomer', ['customers'=>$customer]);

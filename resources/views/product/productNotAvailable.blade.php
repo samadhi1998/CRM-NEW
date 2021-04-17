@@ -9,6 +9,11 @@
       <div class="card">
         <div class="card-body">
           <br>
+          @if (Session::has('error'))
+          <div class="alert alert-danger" role="alert">
+           {{Session::get('error')}}
+         </div>
+          @endif
           <form action="/Search_Products" method="GET" role="search">
             {{ csrf_field() }}
             <div class="input-group">
