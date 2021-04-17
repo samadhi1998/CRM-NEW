@@ -54,14 +54,20 @@ class OrdersController extends Controller
         }
 
         //product Thilini
-        if ($request->input('Status') == 'Invoice') {
+        if ($request->input('Progress') == 'Invoice') {
             for ($p = 0; $p < count($products); $p++) {
                 $product = product::find($products[$p]);
-                $product->Qty = $product->Qty - $quantities[$p];
-                $product->save();
+                if(($product->Qty>0)&&(( $product->Qty - $quantities[$p])>=0)){
+                    $product->Qty = $product->Qty - $quantities[$p];
+                    $product->save();
+                }else{
+                   // dd("error");               
+                   redirect()->back()->with(["error"=> $product->Name.
+                   " is not having enough  Quantity availble. only have  ". $product->Qty." Quantity."]);
+                }
+                
             }
-        }  
-  
+        }   
        // return redirect()->route('orders.index');
        return redirect('index')->with('success','Order Added');
 
@@ -127,7 +133,7 @@ class OrdersController extends Controller
 
         $ProductID = $request->input('ProductID');
         $orders->products()->attach($ProductID);
-
+  
 
 
         return redirect('/index');

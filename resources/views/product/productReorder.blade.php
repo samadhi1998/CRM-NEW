@@ -8,6 +8,11 @@
     <div class="col-md">
       <div class="card">
         <div class="card-body">
+        @if (Session::has('error'))
+       <div class="alert alert-danger" role="alert">
+           {{Session::get('error')}}
+       </div>
+         @endif
           <br>
           <form action="/Search_Products" method="GET" role="search">
             {{ csrf_field() }}

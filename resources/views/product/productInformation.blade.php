@@ -28,11 +28,11 @@
            <br>
            <h6 class="card-title"><strong>Product Information :</strong></h6>
             <p style="text-align:left;color:#233556"><strong> 
-        Re-Order Level  Quantity of  {{ $product->Name}} :: {{ $product->ReOrderLevel}}
+            <span style="color:#fc030f">  Re-Order Level  Quantity </span> of  {{ $product->Name}} :: <span style="color:#fc030f"> {{ $product->ReOrderLevel}}</span>
            </strong></p> 
            </br> 
             <div class="table-responsive">
-    <table class="table table-bordered">
+            <table class="table table-bordered">
             <tr>
                 <th scope="col">Product Name</th>
                 <th scope="col">Product Brand</th>
@@ -52,7 +52,7 @@
                 <td>{{ $product->Price}}</td>     
                 <td>{{$product->Qty }} </td>
                 <td>{{ $product->Status }}</td>     
-                <td>{{ $product->stock_defective}}</td> 
+                <td> <span style="color:#fc030f"> {{ $product->stock_defective}}</span></td> 
 
             </tr>
             

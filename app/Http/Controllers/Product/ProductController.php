@@ -10,6 +10,7 @@ use Illuminate\support\Facades\DB;
 use App\Models\product;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
@@ -79,7 +80,6 @@ class ProductController extends Controller
     {
       
         $data=product::find($req->ProductID);
-       // $data->AdminID=$req->AdminID;
         $data->Name=$req->Name;
         $data->Brand=$req->Brand;
 
@@ -95,14 +95,13 @@ class ProductController extends Controller
         //   }
        
         $data->Price=$req->Price;
-       // $data->Qty=$req->Qty;
         $data->Qty = max($data->Qty, $req->Qty);
         $data->Warranty=$req->Warranty;
         $data->Description=$req->Description;
         $data->Status=$req->Status;
         $data->stock_defective=$req->stock_defective;
         $data->save();
-        return redirect('product/viewproduct');
+        return redirect('product/viewproduct')-> with ('success',' Product Information Updated successfully...');;
 
     }
 
@@ -127,7 +126,7 @@ class ProductController extends Controller
         if (count($product)>0) {
             return view('product/searchproduct', ['products'=>$product]);
         } else {
-            return redirect()->back()->with('error', 'Invalid Search , Enter Available Product ...');
+            return redirect()->back()->with('error', 'Invalid Search Product ...');
         }
         
     }
