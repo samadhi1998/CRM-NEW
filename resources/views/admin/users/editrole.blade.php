@@ -191,7 +191,7 @@
                                             <div class="col-md">
                                                 <div class="card-body">
                                                     <h6 class="card-title">Other Priviledges</h6>
-                                                        @foreach($priviledges->whereIn('PriviledgeID', [38,44,45,46,51,52]) as $priviledge)
+                                                        @foreach($priviledges->whereIn('PriviledgeID', [38,44,45,46,51]) as $priviledge)
                                                         <div class="form-group form-check col-sm-12">
                                                         <input type="checkbox" class="form-check-input" name="PriviledgeID[]" value="{{$priviledge->PriviledgeID}}" {{ $roles->priviledges->contains($priviledge->PriviledgeID) ? 'checked' : '' }}>
                                                         <label class="form-check-label checkbox-inline" for="PriviledgeID">{{$priviledge->Description}} </label>

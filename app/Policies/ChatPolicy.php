@@ -31,7 +31,7 @@ class ChatPolicy
     public function view(User $user)
     {
         foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 51){
+            if($priviledge->PriviledgeID == 46){
                 return true;
             }
         }
