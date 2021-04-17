@@ -509,7 +509,7 @@ input[type=text]:focus{
         @endif
                                      
         @else
-          <div class="container-fluid pb-5" style="background-color: #F4F2F3">
+          <div class="container-fluid d-flex flex-column pb-5" style="background-color: #F4F2F3">
             <div class="row">
               <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="background-color: #2D3142 !important">
                 <div class="position-sticky pt-3 pb-5">
@@ -597,13 +597,6 @@ input[type=text]:focus{
                       </li>
                     @endif
 
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">
-                          <span data-feather="thumbs-up"></span>
-                            Feedbacks
-                        </a>
-                      </li>
-
                     @if(Auth::user()->can('view-note', App\Models\Note::class))
                       <li class="nav-item">
                         <a class="nav-link" href="/note/viewnote">
@@ -629,12 +622,6 @@ input[type=text]:focus{
                       </li>
                     @endif
 
-                      <li class="nav-item">
-                        <a class="nav-link" href="/note/viewnote">
-                          <span data-feather="map"></span>
-                            Map
-                        </a>
-                      </li>
                   </ul>
                 </div>
               </nav>

@@ -33,22 +33,26 @@
                             <th scope="col"> Order ID</th>
                             <th scope="col">Customer ID </th>
                             <th scope="col"> Due Date</th> 
+                            <th scope="col"> Status</th> 
                             <th scope="col"> Created Date</th> 
                         </tr>
             
                         <tr>                         
-                            <td>{{ $task->TaskID}} </td>
-                            <td>{{ $task->Description}} </td>   
-                            <td>{{ $task-> OrderID}} </td>                       
-                            <td>{{$task->CustomerID }} </td>
-                            <td>{{ $task->Due_Date}}</td>     
-                            <td>{{$task->created_at }} </td>  
+                            <td>{{ $task->TaskID }} </td>
+                            <td>{{ $task->Description }} </td>   
+                            <td>{{ $task-> OrderID }} </td>                       
+                            <td>{{ $task->CustomerID }} </td>
+                            <td>{{ $task->Due_Date }}</td>
+                            <td>{{ $task->Status }}</td>        
+                            <td>{{ $task->created_at }} </td>  
                         </tr>
                     </table> 
                     <br>
+                    @if( $task->Status == 'Open' )
                     <div class="pull-right">
-                    <a href="/completeTask/{{$task->TaskID}}" class="text-my-own-color"><button><span data-feather="check-circle"></span> Mark as Completed</button></a>
+                        <a href="/completeTask/{{$task->TaskID}}" class="text-my-own-color"><button><span data-feather="check-circle"></span> Mark as Completed</button></a>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
