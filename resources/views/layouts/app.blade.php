@@ -464,7 +464,7 @@ input[type=text]:focus{
                   <li class="notification-box">
                     <div class="row justify-content-center">    
                       <div class="alert alert-success" role="alert">
-                        [{{ $notification->created_at }}] A new user has just registered.
+                        <a href="/view-notifications">[{{ $notification->created_at }}] A new user has just registered.</a>
                         <br>
                         <a href="/mark-as-read" class="float-right mark-as-read" data-id="{{ $notification->id }}">
                           Mark as read
@@ -606,18 +606,29 @@ input[type=text]:focus{
                       </li>
                     @endif
 
+                    @if(Auth::user()->can('view-chat', App\Models\Message::class))
                       <li class="nav-item">
                         <a class="nav-link" href="/chat/message">
                           <span data-feather="message-circle"></span>
                             Chat
                         </a>
                       </li>
+                      @endif
 
                     @if(Auth::user()->can('view-charge', App\Models\extra_charge::class))
                       <li class="nav-item">
                         <a class="nav-link" href="/ViewChargers">
                           <span data-feather="dollar-sign"></span>
                             Additional Charges
+                        </a>
+                      </li>
+                    @endif
+
+                    @if(Auth::user()->can('view-notification', App\Models\Notification::class))
+                      <li class="nav-item">
+                        <a class="nav-link" href="/view-notifications">
+                          <span data-feather="bell"></span>
+                            Notifications
                         </a>
                       </li>
                     @endif

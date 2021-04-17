@@ -207,3 +207,5 @@ Route::get('/chat/message','App\Http\Controllers\ChatController@index');
 Route::get('/message/{id}', [App\Http\Controllers\ChatController::class, 'getMessage'])->name('chatGetMessage');
 Route::post('/sendmessage', [App\Http\Controllers\ChatController::class, 'sentMessage'])->name('sentMessage');
 
+//notification
+Route::get('/view-notifications','App\Http\Controllers\NotificationsController@index');

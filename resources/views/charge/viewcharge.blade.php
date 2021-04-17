@@ -52,7 +52,7 @@
                             <td>{{$extra_charges['ServicePersonID']}}</td>
                             <td>{{$extra_charges['Type']}}</td>
                             <td>{{$extra_charges['Amount']}}</td>
-                            <td>{{$extra_charges['Description']}}</td>
+                            <td style="text-align: left">{{$extra_charges['Description']}}</td>
                             <td>
                             @if(Auth::user()->can('view-charge-information', App\Models\extra_charge::class))
                                 <a href="/ExtrachargeInformation/{{$extra_charges['ExtraChargeID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="eye"></span></a>

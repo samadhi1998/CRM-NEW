@@ -57,7 +57,8 @@ class TaskController extends Controller
      {
         $request->validate([
             'Description'=>'required|max:255|min:5',
-            'Due_Date'=>'required'
+            'Due_Date'=>'required',
+            'ServicePersonID'=>'required'
             ]);
 
           $task=new Task;

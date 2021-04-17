@@ -3,12 +3,17 @@ namespace App\Http\Controllers;
 
 use Notifynder;
 use App\Models\User;
+use App\Models\Notification;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Log;
 
 class NotificationsController extends Controller
 {
+    public function __construct() {
+        $this->authorizeResource(Note::class, Note::class);
+    }
     /**
      * Mark a notification read
      * @param Request $request
@@ -34,5 +39,13 @@ class NotificationsController extends Controller
             $notification->markAsRead();
         }
         return redirect()->back();
+    }
+
+    public function index(Request $request)
+    {   
+        $notification = Notification::all();
+
+        //dd($notification);
+        return view('notification/index',['notifications'=>$notification]);
     }
 }

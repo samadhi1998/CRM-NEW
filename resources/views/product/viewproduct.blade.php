@@ -58,14 +58,14 @@
             </tr>
             @foreach($products as $product)
             <tr>                                                
-              <td>{{$product['Name']}}</td>
+              <td style="text-align: left">{{$product['Name']}}</td>
               <td> <img src="{{asset('uploads/product/'.$product->image)  }}"
               class="img-circle" width="100px;" height="100px;" alt="Product-Image">  </td>
-              <td>{{$product['Brand']}}</td>
+              <td style="text-align: left">{{$product['Brand']}}</td>
               <td>{{$product['Price']}}</td>
               <td>{{$product['Qty']}}</td>
               <td>{{$product->stock_defective}}</td>
-              <td>{{$product['Status']}}</td>
+              <td style="text-align: left">{{$product['Status']}}</td>
               <td>
               @if(Auth::user()->can('view-product-information', App\Models\product::class))
                 <a href="/ProductInformation/{{$product['ProductID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="eye"></span></a>
