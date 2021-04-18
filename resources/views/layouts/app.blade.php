@@ -464,7 +464,7 @@ input[type=text]:focus{
                   <li class="notification-box">
                     <div class="row justify-content-center">    
                       <div class="alert alert-success" role="alert">
-                        [{{ $notification->created_at }}] A new user has just registered.
+                        <a href="/view-notifications">[{{ $notification->created_at }}] A new user has just registered.</a>
                         <br>
                         <a href="/mark-as-read" class="float-right mark-as-read" data-id="{{ $notification->id }}">
                           Mark as read
@@ -509,7 +509,7 @@ input[type=text]:focus{
         @endif
                                      
         @else
-          <div class="container-fluid pb-5" style="background-color: #F4F2F3">
+          <div class="container-fluid d-flex flex-column pb-5" style="background-color: #F4F2F3">
             <div class="row">
               <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="background-color: #2D3142 !important">
                 <div class="position-sticky pt-3 pb-5">
@@ -597,13 +597,6 @@ input[type=text]:focus{
                       </li>
                     @endif
 
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">
-                          <span data-feather="thumbs-up"></span>
-                            Feedbacks
-                        </a>
-                      </li>
-
                     @if(Auth::user()->can('view-note', App\Models\Note::class))
                       <li class="nav-item">
                         <a class="nav-link" href="/note/viewnote">
@@ -613,12 +606,14 @@ input[type=text]:focus{
                       </li>
                     @endif
 
+                    @if(Auth::user()->can('view-chat', App\Models\Message::class))
                       <li class="nav-item">
                         <a class="nav-link" href="/chat/message">
                           <span data-feather="message-circle"></span>
                             Chat
                         </a>
                       </li>
+                      @endif
 
                     @if(Auth::user()->can('view-charge', App\Models\extra_charge::class))
                       <li class="nav-item">
@@ -629,12 +624,15 @@ input[type=text]:focus{
                       </li>
                     @endif
 
+                    @if(Auth::user()->can('view-notification', App\Models\Notification::class))
                       <li class="nav-item">
-                        <a class="nav-link" href="/note/viewnote">
-                          <span data-feather="map"></span>
-                            Map
+                        <a class="nav-link" href="/view-notifications">
+                          <span data-feather="bell"></span>
+                            Notifications
                         </a>
                       </li>
+                    @endif
+
                   </ul>
                 </div>
               </nav>

@@ -27,7 +27,7 @@
             @foreach($roles as $role)
             <tr>
               <td style="text-align: center">{{$role['RoleID']}}</td>
-              <td style="text-align: center">{{$role['name']}}</td>
+              <td style="text-align: left">{{$role['name']}}</td>
               <td>
               @if(Auth::user()->can('edit-role', App\Models\Role::class))
               <a href="roleedit/{{$role->RoleID}}" class="text-my-own-color" style="margin:2px" ><span data-feather="edit"></span></a>

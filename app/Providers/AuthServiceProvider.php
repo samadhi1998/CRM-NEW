@@ -10,6 +10,8 @@ use App\Models\Role;
 use App\Models\Event;
 use App\Models\Report;
 use App\Models\customer;
+use App\Models\Notification;
+use App\Models\Message;
 use App\Models\extra_charge;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -24,6 +26,10 @@ use App\Policies\NotePolicy;
 use App\Policies\CustomerPolicy;
 use App\Policies\ReminderPolicy;
 use App\Policies\ReportPolicy;
+use App\Policies\ChatPolicy;
+use App\Policies\NotificationPolicy;
+
+
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -43,7 +49,8 @@ class AuthServiceProvider extends ServiceProvider
         Note::class => NotePolicy::Class,
         Event::class => ReminderPolicy::Class,
         Report::class => ReportPolicy::Class,
-        // 'App\product' => 'App\Policies\ProductPolicy',
+        Notification::class => NotificationPolicy::Class,
+        Message::class => ChatPolicy::Class,
         
     ];
 
@@ -122,6 +129,13 @@ class AuthServiceProvider extends ServiceProvider
 
         //Report Premissions
         Gate::define('view-report', [ReportPolicy::class, 'viewAny']);
+
+        //Chat Permission
+        Gate::define('view-chat', [ChatPolicy::class, 'view']);
+
+        //Notification Permission
+        Gate::define('view-notification', [NotificationPolicy::class, 'view']);
+
 
     }
 

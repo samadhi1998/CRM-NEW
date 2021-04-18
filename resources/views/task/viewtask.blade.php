@@ -35,12 +35,12 @@
             </tr>
             @foreach($tasks as $task)
             <tr>
-              <td style="text-align: center">{{$task['TaskID']}}</td>
-              <td style="text-align: center">{{$task['ServicePersonID']}}</td>
+              <td>{{$task['TaskID']}}</td>
+              <td>{{$task['ServicePersonID']}}</td>
               <td>{{$task['Status']}}</td>
-              <td style="text-align: center">{{$task['Due_Date']}}</td>
-              <td style="text-align: center">{{$task['Description']}}</td>
-              <td style="text-align: center">{{$task['updated_at']}}</td>
+              <td>{{$task['Due_Date']}}</td>
+              <td style="text-align: left">{{$task['Description']}}</td>
+              <td>{{$task['updated_at']}}</td>
               <td>
               @if(Auth::user()->can('edit-task', App\Models\Task::class))
                 <a href="/View-Task/editTask/{{$task->TaskID}}" class="text-my-own-color"><span data-feather="edit"></span></a>

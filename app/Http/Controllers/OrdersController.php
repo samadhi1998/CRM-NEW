@@ -172,21 +172,12 @@ class OrdersController extends Controller
 
     public function progressedit($OrderID)
     {
-        $orders =  DB::table('orders')  
-
-        ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->join('order_product','orders.OrderID',"=",'order_product.order_OrderID')
-        ->join('products','products.ProductID',"=",'order_product.product_ProductID')
-        ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Progress','orders.Total_Price',
-                 'products.Name as ProductName','order_product.Qty','products.Price','products.ProductID')
-        ->where('orders.OrderID', '=', $OrderID)
-        ->first();   
-
-        return view('orders.updateprogress',['orders'=>$orders]);
+        $data = order::find($OrderID);
+        return view('orders.updateprogress',['orders'=>$data]);
     }
 
     public function progressupdate(Request $request, Order $OrderID)
-    {  
+    {
         $data = order::find($request->input('OrderID'));
 
         $orders =  DB::table('orders')
@@ -194,7 +185,7 @@ class OrdersController extends Controller
         ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
         ->join('order_details','orders.OrderID',"=",'order_product.order_OrderID')
         ->join('products','products.ProductID',"=",'order_product.product_ProductID')
-        ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Progress','orders.Total_Price',
+        ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Status','orders.Total_Price',
                  'products.Name as ProductName','order_product.Qty','products.Price','products.ProductID')
         ->where('orders.OrderID', '=', $data->OrderID);
     
@@ -202,8 +193,9 @@ class OrdersController extends Controller
 
            //Thilini Product
            // $products = $request->input('products', []);
+       //dd($request->input('quantities', []));
         $quantities = $request->input('quantities', []);
-
+       
        if ($request->input('Status') == 'Invoice') {
         foreach (product::find($request->input('products',[])) as  $p => $product) {
             if(($product->Qty>0)&&(( $product->Qty - $quantities[$p])>=0)){

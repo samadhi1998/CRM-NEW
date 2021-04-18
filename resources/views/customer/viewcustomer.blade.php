@@ -57,10 +57,10 @@
               @foreach($customers as $customer)
               <tr>                                                
                 <th >{{$customer['CustomerID']}}</th>
-                <td>{{$customer['Name']}}</td>
-                <td>{{$customer['Address']}}</td>
+                <td style="text-align: left">{{$customer['Name']}}</td>
+                <td style="text-align: left">{{$customer['Address']}}</td>
                 <td>{{$customer['MobileNo']}}</td>
-                <td>{{$customer['Email']}}</td>
+                <td style="text-align: left">{{$customer['Email']}}</td>
                 <td>
                 @if(Auth::user()->can('edit-customer', App\Models\customer::class))
                     <a href="/editCustomer/{{$customer['CustomerID']}}" style="margin:2px" class="text-my-own-color"><i data-feather="edit"></i></a>

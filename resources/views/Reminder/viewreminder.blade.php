@@ -45,7 +45,7 @@
               @foreach($events as $event)
               <tr>                                                
                 <th scope="row">{{$event['id']}}</th>
-                <td>{{$event['title']}}</td>
+                <td style="text-align: left">{{$event['title']}}</td>
                 <td>{{$event['start_date']}}</td>
                 <td>{{$event['end_date']}}</td>
                 <td>
