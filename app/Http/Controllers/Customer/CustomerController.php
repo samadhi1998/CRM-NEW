@@ -8,7 +8,7 @@ use App\Models\customer;
 use App\Models\Order;
 use App\Models\product;
 use App\Models\order_detail;
-
+use Carbon\Carbon;
 
 class CustomerController extends Controller
 {
@@ -89,7 +89,7 @@ class CustomerController extends Controller
     {
         $data=customer::find($CustomerID);
         $data->delete();
-        return redirect('/ViewCustomers');
+        return redirect('/ViewCustomers')-> with ('success',' Customer Information Deleted successfully...');
     }
 
 

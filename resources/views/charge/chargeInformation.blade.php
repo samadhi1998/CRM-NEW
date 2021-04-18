@@ -32,10 +32,15 @@
                             </tr>
                             <tr>                         
                                 <td>{{ $charges->Type}} </td>
-                                <td>{{ $charges->Amount}} </td>   
+                                <td> <span style="color:#fc030f">  Rs.{{ number_format( $charges->Amount, 2) }} </span></td>   
                                 <td>{{  $charges-> Description}} </td>                       
                             </tr>
                         </table> 
+                        </br>
+                        </br>
+                        <div class="pull-right" style="text-align: right;color:blue">
+                         <a href="{{ URL::previous() }}">Go Back</a>
+                         </div>
                     </div>
                 </div>
             </div>

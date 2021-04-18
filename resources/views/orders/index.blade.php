@@ -14,7 +14,11 @@
         <div class="col-md">
             <div class="card">
                 <div class="card-body">
-              
+                @if (Session::has('error'))
+               <div class="alert alert-danger" role="alert">
+                {{Session::get('error')}}
+                </div>
+                @endif
                     <form action="/SearchOrder" method="GET" role="search">
                         {{ csrf_field() }}
                         <div class="input-group">
@@ -94,7 +98,6 @@
         </div>
     </div>
  
-
-
+    
 
 @endsection

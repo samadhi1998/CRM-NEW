@@ -35,7 +35,7 @@
                                                  </select>
                                           <br>
                                           <label for="Amount" ><b>Amount : </b></label>
-                                          <input type="number" name="Amount"  >
+                                          <input type="number" name="Amount" min="50" >
                                           <br>
                                           <label for="Description" ><b>Description : </b></label>
                                           <textarea  name="Description" required ></textarea>

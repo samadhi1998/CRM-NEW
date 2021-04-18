@@ -18,15 +18,24 @@
               <th>Type</th>
               <th>Amount</th>
               <th>Description</th>
+              <th> Action </th>
             </tr>
             <tbody>
             @foreach($extra_charge as $extra_charges)
-              <tr>                                                
-                <th scope="row">{{ $extra_charges['OrderID']}}</th>
+              <tr>                                              
+                <td  scope="row">{{ $extra_charges['OrderID']}}</th>
                 <td>{{$extra_charges['ServicePersonID']}}</td>
                 <td>{{$extra_charges['Type']}}</td>
-                <td>{{$extra_charges['Amount']}}</td>
-                <td>{{$extra_charges['Description']}}</td>     
+                <td> Rs.{{ number_format($extra_charges->Amount, 2) }}</td>
+                <td>{{$extra_charges['Description']}}</td>  
+                <td>
+                            @if(Auth::user()->can('view-charge-information', App\Models\extra_charge::class))
+                                <a href="/ExtrachargeInformation/{{$extra_charges['ExtraChargeID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="eye"></span></a>
+                            @endif
+                            @if(Auth::user()->can('edit-charge', App\Models\extra_charge::class))
+                                <a href= "/UpdateChargers/{{$extra_charges['ExtraChargeID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>                               
+                            @endif
+                            
               </tr>
             @endforeach
             </tbody>
