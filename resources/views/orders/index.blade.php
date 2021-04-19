@@ -42,13 +42,13 @@
                             @foreach ($orders as $order)
                             <tr>
                                 <td>{{ $order['OrderID']}}</td>
-                                <td>{{optional($order->customers)->Name}}</td>
-                                <td>{{ $order['created_at'] }}</td>
+                                <td style="text-align: left">{{optional($order->customers)->Name}}</td>
+                                <td >{{ $order['created_at'] }}</td>
                                 <td>{{ $order['Progress'] }}</td>
-                                <td>
+                                <td style="text-align: left">
                                     <ul>
                                         @foreach($order->products as $item)
-                                            <li>{{ $item->Name }}(Rs.{{ $item->Price }} x {{ $item->pivot->Qty }})</li>
+                                            <li>{{ $item->Name }} - (Rs.{{ $item->Price }} x {{ $item->pivot->Qty }})</li>
                                         @endforeach
                                     </ul>
                                 </td>
@@ -57,7 +57,9 @@
 
                                 <div class="btn-group" role="group">
 
-                                <a href="/vieworddetails/{{$order['OrderID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="eye"></span></a>
+                                @if(Auth::user()->can('view-order-details', App\Models\Order::class))
+                                    <a href="/vieworddetails/{{$order['OrderID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="eye"></span></a>
+                                @endif
 
                                 @if(Auth::user()->can('show-Invoice-Quotation', App\Models\Order::class))
                                     <a href="{{ route('orders.show',$order->OrderID) }}" style="margin:2px" class="text-my-own-color"><span data-feather ="file-text"></span></a>

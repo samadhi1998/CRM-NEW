@@ -42,7 +42,7 @@
             @foreach($notes as $note)
             <tr>                                                
               <th scope="row">{{$note['NoteID']}}</th>
-              <td>{{$note['Description']}}</td>
+              <td style="text-align: left">{{$note['Description']}}</td>
               <td>{{$note['Type']}}</td>
               <td> <img src="{{asset('uploads/note/'.$note->image)  }}"
                 class="img-circle" width="100px;" height="100px;" alt="Note-Image">  

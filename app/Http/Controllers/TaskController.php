@@ -57,7 +57,8 @@ class TaskController extends Controller
      {
         $request->validate([
             'Description'=>'required|max:255|min:5',
-            'Due_Date'=>'required'
+            'Due_Date'=>'required',
+            'ServicePersonID'=>'required'
             ]);
 
           $task=new Task;
@@ -161,7 +162,7 @@ class TaskController extends Controller
            $tasks = DB::table('tasks')
           ->join('orders','tasks.TaskID',"=",'orders.TaskID')
           ->join('users','tasks.Added_By','=','users.EmpID')
-          ->select('tasks.TaskID','tasks.Description','tasks.Due_Date','users.name','users.EmpID','users.MobileNo','users.email','orders.OrderID','tasks.created_at','orders.CustomerID')
+          ->select('tasks.TaskID','tasks.Description','tasks.Due_Date','tasks.Status','users.name','users.EmpID','users.MobileNo','users.email','orders.OrderID','tasks.created_at','orders.CustomerID')
           ->where('tasks.TaskID','=',$TaskID)
           ->get()->toArray();  
 

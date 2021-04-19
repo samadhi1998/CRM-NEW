@@ -193,11 +193,40 @@ class OrdersController extends Controller
         return view('orders.updateprogress',['orders'=>$data]);
     }
 
+<<<<<<< HEAD
     public function progressupdate(Request $request, Order $order)
     {
         $data = order::find($request->input('OrderID'));
         $data->OrderID = $request->input('OrderID');
         $data->Progress = $request->input('Progress');
+=======
+    public function progressupdate(Request $request, Order $OrderID)
+    {
+        $data = order::find($request->input('OrderID'));
+
+        $orders =  DB::table('orders')
+
+        ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
+        ->join('order_details','orders.OrderID',"=",'order_product.order_OrderID')
+        ->join('products','products.ProductID',"=",'order_product.product_ProductID')
+        ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Status','orders.Total_Price',
+                 'products.Name as ProductName','order_product.Qty','products.Price','products.ProductID')
+        ->where('orders.OrderID', '=', $data->OrderID);
+    
+        $data->update($request->except(['_token']));
+
+           //Thilini Product
+           // $products = $request->input('products', []);
+       //dd($request->input('quantities', []));
+        $quantities = $request->input('quantities', []);
+       
+       if ($request->input('Status') == 'Invoice') {
+        foreach (product::find($request->input('products',[])) as  $p => $product) {
+            if(($product->Qty>0)&&(( $product->Qty - $quantities[$p])>=0)){
+                $product->Qty = $product->Qty - $quantities[$p];
+                $product->save();}
+                
+>>>>>>> 526f0ea82b93f12f2f90208311e4353d1fcd7c98
         
         $data->save();
 

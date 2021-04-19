@@ -134,8 +134,8 @@
                                 </tr>
                                 @foreach($products as $product)
                                 <tr>
-                                    <td>{{ $product->Name }}</td>
-                                    <td>{{ $product->Description }}</td>
+                                    <td style="text-align: left">{{ $product->Name }}</td>
+                                    <td style="text-align: left">{{ $product->Description }}</td>
                                     <td>{{ $product->Qty }}</td>
                                 </tr>
                                 @endforeach

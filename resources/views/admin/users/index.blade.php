@@ -39,11 +39,11 @@
               @foreach($users as $user)
               <tr>
                 <td>{{$user['EmpID']}}</td>
-                <td>{{$user['name']}}</td>
-                <td>{{$user['email']}}</td>
-                <td>{{$user['Address']}}</td>
+                <td style="text-align: left">{{$user['name']}}</td>
+                <td style="text-align: left">{{$user['email']}}</td>
+                <td style="text-align: left">{{$user['Address']}}</td>
                 <td>{{$user['MobileNo']}}</td>
-                <td>{{optional($user->roles)->name}}</td>
+                <td style="text-align: left">{{optional($user->roles)->name}}</td>
                 <td>
                   @if(Auth::user()->can('edit-user', App\Models\User::class))
                   <a href="{{route('users.edit', $user->EmpID)}}" style="margin:2px" class="text-my-own-color">

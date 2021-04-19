@@ -6,6 +6,16 @@
 <div class="row justify-content-center">
     <div class="col-md">
         <div class="card">
+        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
             <div class="card-body">
                 <div class="container"  style="background :none !important ">
                     <form method="POST" action="{{ route('task.store') }}" id="myform">
@@ -34,7 +44,7 @@
                         <br>
                         <br>
                         <div class="btn-group float-right" role="group">
-                        <button type="button" data-toggle="modal" data-target="#exampleModal" >Create Task</button>
+                        <button type="submit">Create Task</button>
                         </div>
                         <div class="btn-group float-right mr-2 " role="group">
                         <button type="submit" ><a href="/View-Task" class="text-my-own-color">Cancel</a></button>
@@ -46,23 +56,4 @@
     </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" style="color:#233554">Alert</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" style="color:#233554">
-                You are going to create new task. Do you want to continue ?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" form="myform" class="btn btn-primary">Continue</button>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
