@@ -10,6 +10,16 @@
 @endif
 <br>
 <br>
+@if (Session::has('error'))
+       <div class="alert alert-danger" role="alert">
+           {{Session::get('error')}}
+       </div>
+  @endif
+  @if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+  @endif
 <div class="container" style="background :none !important ">
   <div class="row justify-content-center">
     <div class="col-md">
@@ -33,7 +43,7 @@
               <a href="roleedit/{{$role->RoleID}}" class="text-my-own-color" style="margin:2px" ><span data-feather="edit"></span></a>
               @endif
               @if(Auth::user()->can('delete-role', App\Models\User::class))
-              <a href="" class="text-my-own-color" style="margin:2px" data-toggle="modal" data-target="#exampleModal2"><span data-feather="trash-2"></span></a>
+              <a href="/deleteRole/{{$role->RoleID}}" class="text-my-own-color" style="margin:2px" onclick="return confirm('Are you sure you want to delete this item?');"><span data-feather="trash-2"></span></a>
               @endif
               </td>
             </tr>

@@ -31,7 +31,7 @@ class NotificationPolicy
     public function view(User $user)
     {
         foreach($user->roles->priviledges as $priviledge){
-            if($priviledge->PriviledgeID == 52){
+            if($priviledge->PriviledgeID == 51){
                 return true;
             }
         }

@@ -77,7 +77,7 @@ class TaskController extends Controller
        
 
 
-        return redirect('/View-Task');
+        return redirect('/View-Task')->with('success','Task Added Successfully');
 
     }
 
@@ -122,7 +122,7 @@ class TaskController extends Controller
         
         $data->save();
 
-        return redirect('View-Task');
+        return redirect('View-Task')->with('success','Task Updated Successfully');
     }
 
     /**
@@ -135,7 +135,7 @@ class TaskController extends Controller
     {
         $data=task::find($TaskID);
         $data->delete();
-        return redirect('View-Task');
+        return redirect('View-Task')->with('success','Task Deleted Successfully');
     }
 
     public function searchTasks(Request $request)
@@ -175,7 +175,7 @@ class TaskController extends Controller
     {
         $data=task::find($TaskID);
         $data->update(['Status' => 'Completed']);
-        return redirect('View-Task');
+        return redirect('View-Task')->with('success','Task Completed Successfully');
     }
 
 }

@@ -9,7 +9,17 @@
   </div>
 @endif
   <br> 
-  <br>
+  <br> 
+  @if (Session::has('error'))
+       <div class="alert alert-danger" role="alert">
+           {{Session::get('error')}}
+       </div>
+  @endif
+  @if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+  @endif
 <div class="container " style="background :none !important ">
   <div class="row justify-content-center">
     <div class="col-md">
@@ -53,7 +63,7 @@
                   <a href= "/UpdateNote/{{$note['NoteID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a> 
                 @endif   
                 @if(Auth::user()->can('delete-note', App\Models\Note::class))                           
-                  <a href= "" style="margin:10px" class="text-my-own-color"  data-toggle="modal" data-target="#exampleModal2"><span data-feather ="trash-2"></span></a> 
+                  <a href= "/DeleteNote/{{$note['NoteID']}}" style="margin:10px" class="text-my-own-color"  onclick="return confirm('Are you sure you want to delete this item?');"><span data-feather ="trash-2"></span></a> 
                 @endif
               </td>
             </tr>
@@ -70,23 +80,4 @@
 </div>
 </div>
 
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" style="color:#233554">Delete Alert</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-            </div>
-            <div class="modal-body" style="color:#233554">
-                You are going to delete the records of note id {{$note->NoteID}}. Do you want to continue ?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                <a href="/DeleteNote/{{$note['NoteID']}}"><button type="submit" class="btn btn-primary">Continue</button></a>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

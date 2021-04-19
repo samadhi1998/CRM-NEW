@@ -50,7 +50,7 @@ class RoleController extends Controller
 
         $result=$role->save();
 
-        return redirect('/View-Role');
+        return redirect('/View-Role')->with('success','Role Created Successfully');
     }
 
     /**
@@ -90,7 +90,7 @@ class RoleController extends Controller
         $PriviledgeID = $request->input('PriviledgeID');
         $role->priviledges()->attach($PriviledgeID);
 
-        return redirect('View-Role');
+        return redirect('View-Role')->with('success','Role Updated Successfully');
     }
 
     /**
@@ -102,8 +102,13 @@ class RoleController extends Controller
     public function deleteRole($RoleID)
     {
         $data = role::find($RoleID);
+
+        if($RoleID == 1){
+            return redirect()->back()->with('error', 'Deleting Super Admin is Prohibited!');
+        }
+        
         $data->delete();
-        return redirect('View-Role');
+        return redirect('View-Role')->with('success','Role Deleted Successfully');
     }
 
     

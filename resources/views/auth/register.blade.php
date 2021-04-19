@@ -2,6 +2,7 @@
 @section('title','Register')
 @section('content2')
 <div class="login page-holder bg-cover">
+<br>
 <div class="container-fluid" style="max-width:1000px">
     <div class="row justify-content-center">
         <div class="col-md">

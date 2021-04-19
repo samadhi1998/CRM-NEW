@@ -55,7 +55,7 @@ class EventController extends Controller
          $events->start_date=$request->input('start_date');
          $events->end_date=$request->input('end_date');
          $events->save();
-         return redirect('/reminder')->with('success','Event Added');
+         return redirect('/reminder')->with('success','Event Added Successfully');
     }
 
    
@@ -100,7 +100,7 @@ class EventController extends Controller
 
         $events = Event::find($id);
         $events->delete();
-         return redirect('/view-reminder');
+         return redirect('/view-reminder')->with('success','Event Deleted Successfully');
     }
 
     public function searchReminders(Request $request)

@@ -67,7 +67,7 @@ class OrdersController extends Controller
         }   
 
        // return redirect()->route('orders.index');
-       return redirect('index')->with('success','Order Added');
+       return redirect('index')->with('success','New Order Added Successfully!');
 
     }
 
@@ -143,7 +143,7 @@ class OrdersController extends Controller
          }
      
         }
-         return redirect()->route('orders.index');
+         return redirect()->route('orders.index')->with ('success','Order Details Updated successfully');
      }
 
       
@@ -152,7 +152,7 @@ class OrdersController extends Controller
     {
         $order=Order::find($OrderID);
         $order->delete();
-        return redirect('/orders');
+        return redirect('/orders')->with ('success','Order Deleted successfully');
     }
 
     public function emails()
@@ -201,7 +201,7 @@ class OrdersController extends Controller
         
         $data->save();
 
-        return redirect('/index');
+        return redirect('/index')->with ('success','Progress Updated successfully');
     }
 
     public function SearchOrder(Request $request)
