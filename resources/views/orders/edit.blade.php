@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="container"  style="background :none !important ">
-                    <form method="POST" action="/progressedit" id="myform">
+                    <form method="POST" action="/edit" id="myform">
                         @csrf
                             <label for="OrderID" ><b>Order ID : </b></label>
                             <input type="text" name="OrderID" value="{{$order->OrderID}}" readonly>
