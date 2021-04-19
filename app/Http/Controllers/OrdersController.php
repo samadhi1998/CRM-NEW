@@ -27,13 +27,12 @@ class OrdersController extends Controller
         ->with('customers',customer::all());
     }
 
-    public function create(Request $request, customer $CustomerID)
+    public function create(Request $request)
     {       
-       $products = Product::all();
-       $customers = customer::all();
-       // $customers = customer::find($CustomerID);
-       
-        return view('orders/create', compact('products','customers'));    
+        $products = product::all();
+        $customers = customer::find($request->input('CustomerID'));
+
+        return view('orders/create', compact('products','customers'));
     }
     
     public function store(Request $request)
@@ -43,6 +42,7 @@ class OrdersController extends Controller
             'Due_date'=>'required'
         ]);
             
+        $customers = $request->input('CustomerID');
         $order = Order::create($request->all());
         $products = $request->input('products', []);
         $quantities = $request->input('quantities', []);

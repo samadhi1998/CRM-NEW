@@ -126,7 +126,7 @@ class CustomerController extends Controller
   
   public function customerorder(Request $request, Order $model)
   {
-     return redirect()->route('orders.create', ['customerID' => $request->get('CustomerID')]);     
+     return redirect()->route('orders.create', ['CustomerID' => $request->get('CustomerID')]);     
   }
   
   
