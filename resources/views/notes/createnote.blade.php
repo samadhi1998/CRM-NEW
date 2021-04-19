@@ -23,7 +23,7 @@
               <label for="Description" ><b>Description : </b></label>
               <textarea  name="Description"  required ></textarea>
               <br>
-              <label for="file" ><b>Product View: </b></label>
+              <label for="file" ><b>Select Image: </b></label>
               <input type="file" name="image">
               <br>
               <br>
