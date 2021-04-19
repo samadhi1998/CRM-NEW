@@ -53,16 +53,17 @@
                             <td>{{$extra_charges['Type']}}</td>
                             <td> Rs.{{ number_format($extra_charges->Amount, 2) }}</td>
                             <td>{{$extra_charges['Description']}}</td>
-
+                            <td>
                             @if(Auth::user()->can('view-charge-information', App\Models\extra_charge::class))
                                 <a href="/ExtrachargeInformation/{{$extra_charges['ExtraChargeID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="eye"></span></a>
                             @endif
                             @if(Auth::user()->can('edit-charge', App\Models\extra_charge::class))
                                 <a href= "/UpdateChargers/{{$extra_charges['ExtraChargeID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>                               
                             @endif
-                            
+                            @if(Auth::user()->can('delete-charge', App\Models\extra_charge::class))
                             <a href="" style="margin:2px" class="text-my-own-color" data-toggle="modal" data-target="#exampleModal2">
                              <span data-feather="trash-2"></span>
+                             @endif
                             </td>
                         </tr>
                         @endforeach
