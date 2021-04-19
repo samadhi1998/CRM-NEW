@@ -9,6 +9,7 @@
             <div class="card">
                 <div class="card-body">
                     <br>
+                    <br>
                     <form method="POST" action="/editcustomers"id="myformcustomer">
                         @csrf
                         <label for="CustomerID"> <b>Customer ID</b> </label>

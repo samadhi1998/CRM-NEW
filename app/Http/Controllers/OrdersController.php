@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
@@ -54,20 +54,16 @@ class OrdersController extends Controller
         }
 
         //product Thilini
-        if ($request->input('Progress') == 'Invoice') {
+        if ($request->input('Status') == 'Invoice') {
             for ($p = 0; $p < count($products); $p++) {
                 $product = product::find($products[$p]);
                 if(($product->Qty>0)&&(( $product->Qty - $quantities[$p])>=0)){
                     $product->Qty = $product->Qty - $quantities[$p];
                     $product->save();
-                }else{
-                   // dd("error");               
-                   redirect()->back()->with(["error"=> $product->Name.
-                   " is not having enough  Quantity availble. only have  ". $product->Qty." Quantity."]);
                 }
-                
             }
         }   
+
        // return redirect()->route('orders.index');
        return redirect('index')->with('success','Order Added');
 
@@ -112,7 +108,7 @@ class OrdersController extends Controller
 
         $product = DB::table('products')
         ->join('order_product','products.ProductID',"=",'order_product.product_ProductID')
-        ->select('products.Name as ProductName','order_product.Qty','products.Price')
+        ->select('products.ProductID','order_product.Qty','products.Price','products.Name')
         ->where('order_product.order_OrderID', '=', $data->OrderID)
         ->get(); 
     
@@ -130,11 +126,8 @@ class OrdersController extends Controller
         $data->CustomerID=$request->input('CustomerID');
         $data->save();
 
-
         $ProductID = $request->input('ProductID');
         $orders->products()->attach($ProductID);
-  
-
 
         return redirect('/index');
     }
@@ -206,6 +199,21 @@ class OrdersController extends Controller
         ->where('orders.OrderID', '=', $data->OrderID);
     
         $data->update($request->except(['_token']));
+
+           //Thilini Product
+           // $products = $request->input('products', []);
+        $quantities = $request->input('quantities', []);
+
+       if ($request->input('Status') == 'Invoice') {
+        foreach (product::find($request->input('products',[])) as  $p => $product) {
+            if(($product->Qty>0)&&(( $product->Qty - $quantities[$p])>=0)){
+                $product->Qty = $product->Qty - $quantities[$p];
+                $product->save();}
+                
+        
+        }
+    
+       }
         return redirect()->route('orders.index');
     }
 

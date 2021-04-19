@@ -40,8 +40,9 @@
                             @foreach ($products as $product)
                                 <tr id="product0">
                                     <td>       
-                                        <input type="text" name="products[]" value="{{$product->ProductName}} " class="form-control">            
-                                    </td>
+                                    <select name="products[]"  class="form-control">
+                                      <option value="{{ $product->ProductID }}">  {{ $product->Name }}</option> 
+                                      </select>
                                     <td>                      
                                         <input type="number" name="quantities[]" value="{{$product->Qty}}" class="form-control" value="1" />
                                     </td>                     

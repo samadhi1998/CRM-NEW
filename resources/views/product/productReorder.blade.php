@@ -46,7 +46,7 @@
               <td> <img src="{{asset('uploads/product/'.$product->image)  }}"
               class="img-circle" width="100px;" height="100px;" alt="Product-Image">  </td>
               <td>{{$product->Brand}}</td>
-              <td>{{$product->Price}}</td>
+              <td>Rs.{{ number_format($product->Price, 2) }}</td>
               <td>{{$product->Qty}}</td>
               <td>{{$product->Warranty}}</td>
               <td>{{$product->stock_defective}}</td>
@@ -54,9 +54,9 @@
               @if(Auth::user()->can('edit-product', App\Models\product::class))
               <a href= "/UpdateProducts/{{$product->ProductID}} " style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>  
               @endif
-              <!-- @if(Auth::user()->can('view-product-information', App\Models\product::class))
-              <a href="/ProductInfomation/{{$product->ProductID}}"  style="margin:2px" class="text-my-own-color"><span data-feather ="eye"></span></a>
-              @endif -->
+               @if(Auth::user()->can('view-product-information', App\Models\product::class))
+              <a href="/ProductInformation/{{$product['ProductID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="eye"></span></a>
+              @endif 
               </td>
             </tr>
             @endforeach

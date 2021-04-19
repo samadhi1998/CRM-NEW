@@ -82,7 +82,7 @@ class ChargeController extends Controller
         $data->Amount=$req->Amount;
         $data->Description=$req->Description;
         $data->save();
-        return redirect('/ViewChargers');
+        return redirect('/ViewChargers')-> with ('success',' Chargers Information Updated successfully...');
     }
 
 
@@ -120,7 +120,13 @@ class ChargeController extends Controller
          return view('charge.chargeInformation',['extra_charges'=>$extra_charges]);
     }
 
-
+    public function DeleteExChargers($ExtraChargeID)
+    {
+        $data=extra_charge::find($ExtraChargeID);
+        $data->delete();
+        return redirect('/ViewChargers')-> with ('success',' Product Information Deleted successfully...');
+    }
+  
 
 
 

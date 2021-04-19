@@ -49,7 +49,7 @@
                 <td>{{ $product->Brand}} </td>   
                 <td>{{  $product-> Description}} </td>                       
                 <td>{{$product->Warranty }} </td>
-                <td>{{ $product->Price}}</td>     
+                <td>Rs.{{ number_format($product->Price, 2) }}</td>     
                 <td>{{$product->Qty }} </td>
                 <td>{{ $product->Status }}</td>     
                 <td> <span style="color:#fc030f"> {{ $product->stock_defective}}</span></td> 

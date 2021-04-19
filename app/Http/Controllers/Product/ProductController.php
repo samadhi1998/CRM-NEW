@@ -78,8 +78,12 @@ class ProductController extends Controller
 
     public function ShowUpdatesProducts(Request $req)
     {
-      
+        
         $data=product::find($req->ProductID);
+        if(max($data->Qty, $req->Qty)==$data->Qty){
+            return redirect('product/viewproduct')-> with 
+            ('error','You Cannot change Product Quantity less than Available Product Quantity......');
+        }
         $data->Name=$req->Name;
         $data->Brand=$req->Brand;
 
@@ -101,7 +105,7 @@ class ProductController extends Controller
         $data->Status=$req->Status;
         $data->stock_defective=$req->stock_defective;
         $data->save();
-        return redirect('product/viewproduct')-> with ('success',' Product Information Updated successfully...');;
+        return redirect('product/viewproduct')-> with ('success',' Product Information Updated successfully...');
 
     }
 
@@ -110,7 +114,7 @@ class ProductController extends Controller
     {
         $data=product::find($ProductID);
         $data->delete();
-        return redirect('product/viewproduct');
+        return redirect('product/viewproduct')-> with ('success',' Product Information Deleted successfully...');
     }
   
     public function SearchProducts(Request $request)

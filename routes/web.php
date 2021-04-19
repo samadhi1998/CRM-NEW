@@ -173,8 +173,9 @@ Route::post('/updateChargers',[App\Http\Controllers\charge\ChargeController::cla
 Route::get('/UpdateChargers/{ExtraChargeID}',[App\Http\Controllers\charge\ChargeController::class, 'UpdateChargers']);
 Route::get('/Search_Chargers',[App\Http\Controllers\charge\ChargeController::class,'SearchChargers']);
 Route::get('ExtrachargeInformation/{OrderID}',[App\Http\Controllers\charge\ChargeController::class,'ChargeInfo']);
-
-//Task Routes
+Route::get('/deleteChargers/{ExtraChargeID}',[App\Http\Controllers\charge\ChargeController::class,'DeleteExChargers']);
+//Route::get('/deleteChargers/{ExtraChargeID}','App\Http\Controllers\charge\ChargeController@DeleteExChargers');
+//Task Routes 
 
 Route::resource('tasks','App\Http\Controllers\TaskController');
 Route::get('/View-Task','App\Http\Controllers\TaskController@index');
