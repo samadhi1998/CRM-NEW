@@ -47,11 +47,13 @@ class OrdersController extends Controller
         $products = $request->input('products', []);
         $quantities = $request->input('quantities', []);
 
-        for ($product=0; $product < count($products); $product++) {
+         for ($product=0; $product < count($products); $product++) {
             if ($products[$product] != '') {
                 $order->products()->attach($products[$product], ['Qty' => $quantities[$product]]);          
-            }        
-        }
+             }        
+         }
+
+       
 
         //product Thilini
         if ($request->input('Status') == 'Invoice') {
@@ -127,10 +129,24 @@ class OrdersController extends Controller
         $data->save();
 
         $ProductID = $request->input('ProductID');
-        $orders->products()->attach($ProductID);
+        $data->products()->attach($ProductID);
 
-        return redirect('/index');
-    }
+        $quantities = $request->input('quantities', []);
+
+        if ($request->input('Status') == 'Invoice') {
+         foreach (product::find($request->input('products',[])) as  $p => $product) {
+             if(($product->Qty>0)&&(( $product->Qty - $quantities[$p])>=0)){
+                 $product->Qty = $product->Qty - $quantities[$p];
+                 $product->save();}
+                 
+         
+         }
+     
+        }
+         return redirect()->route('orders.index');
+     }
+
+      
 
     public function delete($OrderID)
     {
@@ -170,51 +186,22 @@ class OrdersController extends Controller
         return view('admin.dashboard',compact('orders'));
     }
 
+   
     public function progressedit($OrderID)
     {
-        $orders =  DB::table('orders')  
-
-        ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->join('order_product','orders.OrderID',"=",'order_product.order_OrderID')
-        ->join('products','products.ProductID',"=",'order_product.product_ProductID')
-        ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Progress','orders.Total_Price',
-                 'products.Name as ProductName','order_product.Qty','products.Price','products.ProductID')
-        ->where('orders.OrderID', '=', $OrderID)
-        ->first();   
-
-        return view('orders.updateprogress',['orders'=>$orders]);
+        $data = order::find($OrderID);
+        return view('orders.updateprogress',['orders'=>$data]);
     }
 
-    public function progressupdate(Request $request, Order $OrderID)
-    {  
+    public function progressupdate(Request $request, Order $order)
+    {
         $data = order::find($request->input('OrderID'));
-
-        $orders =  DB::table('orders')
-
-        ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
-        ->join('order_details','orders.OrderID',"=",'order_product.order_OrderID')
-        ->join('products','products.ProductID',"=",'order_product.product_ProductID')
-        ->select('orders.OrderID','orders.Due_date','orders.Advance','orders.Discount','orders.Progress','orders.Total_Price',
-                 'products.Name as ProductName','order_product.Qty','products.Price','products.ProductID')
-        ->where('orders.OrderID', '=', $data->OrderID);
-    
-        $data->update($request->except(['_token']));
-
-           //Thilini Product
-           // $products = $request->input('products', []);
-        $quantities = $request->input('quantities', []);
-
-       if ($request->input('Status') == 'Invoice') {
-        foreach (product::find($request->input('products',[])) as  $p => $product) {
-            if(($product->Qty>0)&&(( $product->Qty - $quantities[$p])>=0)){
-                $product->Qty = $product->Qty - $quantities[$p];
-                $product->save();}
-                
+        $data->OrderID = $request->input('OrderID');
+        $data->Progress = $request->input('Progress');
         
-        }
-    
-       }
-        return redirect()->route('orders.index');
+        $data->save();
+
+        return redirect('/index');
     }
 
     public function SearchOrder(Request $request)
