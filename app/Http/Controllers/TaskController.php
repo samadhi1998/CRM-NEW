@@ -41,7 +41,7 @@ class TaskController extends Controller
      */
     public function create($OrderID)
     {
-        $user = User::where('RoleID','=',5)->get();
+        $user = User::where('RoleID','=',7)->get();
         $data = Order::find($OrderID);
         return view ('task/CreateTask',['orders'=>$data])
             ->with(['users'=>$user]);
@@ -57,7 +57,8 @@ class TaskController extends Controller
      {
         $request->validate([
             'Description'=>'required|max:255|min:5',
-            'Due_Date'=>'required'
+            'Due_Date'=>'required',
+            'ServicePersonID'=>'required'
             ]);
 
           $task=new Task;
@@ -65,7 +66,7 @@ class TaskController extends Controller
           $task->Description=$request->Description;
           $task->Status=$request->Status;
           $task->Due_Date=$request->Due_Date;
-          $task->ServicePersonID=$request->EmpID;
+          $task->ServicePersonID=$request->ServicePersonID;
 
          $data = Order::find($request->input('OrderID'));
          $data->OrderID = $request->input('OrderID');
@@ -75,7 +76,6 @@ class TaskController extends Controller
 
          $data->save();
        
-
 
         return redirect('/View-Task')->with('success','Task Added Successfully');
 

@@ -45,6 +45,10 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=>'required|min:2|max:25'
+          ]);
+
         $role=new role;
         $role->name = $request->name;
 
@@ -103,8 +107,8 @@ class RoleController extends Controller
     {
         $data = role::find($RoleID);
 
-        if($RoleID == 1){
-            return redirect()->back()->with('error', 'Deleting Super Admin is Prohibited!');
+        if($RoleID == 1 || $RoleID == 3 || $RoleID == 5){
+            return redirect()->back()->with('error', 'Deleting this role is Prohibited!');
         }
         
         $data->delete();

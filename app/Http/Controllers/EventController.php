@@ -29,7 +29,7 @@ class EventController extends Controller
                             // Add color
                          [
                             'color'=> $value->color,
-                             'textColor' => $value->textColor,
+                            'textColor' => $value->textColor,
                          ]
                         );
                     }
@@ -43,11 +43,12 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required',
+            'title'=>'required|min:4|max:50',
             'color'=>'required',
             'start_date'=>'required',
             'end_date'=>'required',
           ]);
+
          $events=new Event;
          $events->Added_By = Auth::user()->EmpID;
          $events->title=$request->input('title');
@@ -86,7 +87,7 @@ class EventController extends Controller
 
           $events->update($request->all());
 
-         return redirect('/view-reminder')->with('success','Event Updates Successfully');
+         return redirect('/view-reminder')->with('success','Event Updated Successfully');
     }
 
     /**

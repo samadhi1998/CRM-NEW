@@ -20,6 +20,14 @@ class NoteController extends Controller
 
     public function AddNote(Request $request)
     {
+        $request->validate( [
+        
+            'Type'=>'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'OrderID'=>'required',
+            'Description'=>'required|min:4|max:100'
+            ]);
+
        $note=new note;
        $note->Added_By = Auth::user()->EmpID;
        $note->Description=$request->Description;

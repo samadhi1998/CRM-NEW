@@ -10,7 +10,7 @@
             <input type="text" name="RoleID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$roles->RoleID}}" readonly>
             <br>
             <label for="name" ><b>Role name : </b></label>
-            <input type="text" name="name" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$roles->name}}" readonly >
+            <input type="text" name="name" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$roles->name}}">
             <br>
                 <div class="form-group" >
                     <label for="roles_permissions"> <b>Add Priviledges :</b>  </label>
