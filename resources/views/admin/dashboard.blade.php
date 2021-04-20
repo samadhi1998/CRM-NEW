@@ -100,14 +100,14 @@
                             <table>
                                 <tr> 
                                     <th>Order ID:</th>
-                                    <th>Date</th>
+                                    <th>Customer</th>
                                     <th>Due Date</th>
                                     <th>Progress</th>         
                                 </tr>
                                 @foreach($orders as $order)
                                 <tr>
                                     <td>{{ $order->OrderID }}</td>
-                                    <td>{{ $order->created_at }}</td>
+                                    <td>{{ optional($order->customers)->Name }}</td>
                                     <td>{{ $order->Due_date }}</td>
                                     <td>{{ $order->Progress }}</td>
                                 </tr>
