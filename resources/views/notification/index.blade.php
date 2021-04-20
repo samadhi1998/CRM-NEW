@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','View Notifications')
+@section('title','Notifications')
 @section('header','View Notifications')
 @section('content')
 
