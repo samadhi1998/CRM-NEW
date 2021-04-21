@@ -34,8 +34,16 @@
                         <option value="Estimated Quotation">Estimated Quotation</option>
                         <option value="Invoice">Invoice</option>
                     </select>   
-                    <br><br>   
-                    <label for="Order_Items "><b>Order Items : </b></label>
+                    <br><br>
+                    @if(session('status'))
+                    <div class = "alert alert-danger">
+                     <strong>Whoops!</strong> There were some problems with your input !!<br><br>
+                        <ul>
+                            <li> {{session('status')}} </li>
+                        </ul>
+                    </div>
+                    @endif   
+                    <label for="Order_Items "><b>Order Items : </b></label><br><br>
                     <table class="table" id="products_table">
                         <thead>
                             <tr>

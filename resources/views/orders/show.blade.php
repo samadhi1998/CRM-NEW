@@ -4,8 +4,8 @@
 @section('content')
 <html>
     <head>
-        <style>
-            @page {
+    <style>
+    @page {
             bleed: 1cm;
             size: A4 portrait;
             size:  auto;  
@@ -42,10 +42,8 @@
             }
             body{
             background-color: #eee;
-            padding-top: 25px;
             -webkit-print-color-adjust: exact !important;
             height: 100%;
-            margin-top: 40px;
             }
             div.container{
             background-color: white;
@@ -108,14 +106,14 @@
         </div> 
     </div>
     <div class="invoice-content row px-5 pt-5">
-        <div class="col-6">
+        <div class="col-sm-6">
             <h5 class="almost-gray mb-3">Invoiced To:</h5>
             <h4 class="to"><b>{{ $ord->CustomerName }}</b></h4>
             <h6 class="address">{{ $ord->Address }}</h6>
             <h6 class="mobile">{{ $ord->MobileNo }}</h6>
             <h6 class="email">{{ $ord->Email }}</h6>
         </div>
-        <div class="col-6 text-right total-field">
+        <div class="col-sm-6 text-right total-field float-sm-left">
             <h4 class="almost-gray">Order No : </h4>
             <h1 class="gray-ish;color:#233556"># {{ $ord->OrderID }}</h1>
             <h5 class="almost-gray due-date">
@@ -126,6 +124,7 @@
     </div>
   <div class="row mt-5">
     <div class="col-10 offset-1 invoice-table pt-1">
+    <div class="table-responsive">
       <table class="table table-hover">
             <thead class="thead splitForPrint">
                 <tr>
@@ -148,11 +147,11 @@
             @endforeach
             </tbody>
             <tfoot>
-                <tr>
+                <!-- <tr>
                     <td colspan="2"></td>
                     <td colspan="2"><b>Total Price</b></td>
                     <td>  </td>
-                </tr>
+                </tr> -->
                 <tr>
                     <td colspan="2"></td>
                     <td colspan="2"> (-) Discount</td>
@@ -160,24 +159,27 @@
                 </tr>                                                        
                 <tr>
                     <td colspan="2"></td>
-                    <td colspan="2"> (-) Advance</td>
+                    <td colspan="2" > (-) Advance</td>
                     <td>{{ $ord->Advance }} </td>
                 </tr>
                 <tr>
                     <td colspan="2"></td>
                     <td colspan="2"><b>Balance</b></td>
-                    <td></td>
+                    <td>{{ ($ord->Price * $ord->Qty) - $ord->Discount - $ord->Advance }}</td>
                 </tr>
             </tfoot>
           </table>
+          </div>
         </div>
    </div>
    <br><br><br>
    <div class="text-right">
-            <!-- <a class="btn btn-primary" id="printPageButton" onclick="window.print()">Save</button></a> -->
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/pdf-download">Save as PDF</a> 
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/emails"> E-mail</a>
-            <a class="btn btn-primary" id="printPageButton" onclick="window.print()">Print</button></a>       
+    @foreach ($orders as $orders)    
+        <a class="btn btn-primary" href="http://127.0.0.1:8000/PDF/{{$orders->OrderID}}">Save as PDF</a> 
+        <a class="btn btn-primary" href="http://127.0.0.1:8000/emails/{{$orders->OrderID}}">E-mail</a> 
+        <a class="btn btn-primary" id="printPageButton" onclick="window.print()">Print</button></a>   
+    @break 
+    @endforeach
     </div>
 </div>
 </html>

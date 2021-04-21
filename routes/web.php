@@ -89,7 +89,6 @@ Route::get('/SearchOrder',[App\Http\Controllers\OrdersController::class,'SearchO
 Route::get('deleteorder/{OrderID}',[App\Http\Controllers\OrdersController::class,'destroy']);
 
 
-
 //Report Routes
 
 Route::get('salesreport', [App\Http\Controllers\ReportController::class, 'salesreport'])->name('report');
@@ -100,23 +99,15 @@ Route::get('monthwise', [App\Http\Controllers\ReportController::class, 'monthwis
 Route::get('premonth', [App\Http\Controllers\ReportController::class, 'premonth'])->name('report.premonth');
 Route::get('test', [App\Http\Controllers\ReportController::class, 'test'])->name('report.test');
 
+
+//PDF Routes
+
+Route::get('PDF/{OrderID}', [App\Http\Controllers\OrdersController::class,'PDF']);
+
+
 //Email Routes
 
-Route::get('send-mail', function () {
-   
-    $details = [
-        'title' => 'From buyabc@abcgroup.com',
-    ];
-   
-    \Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\MyTestMail($details));
-   
-    dd("Email is Sent.");
-});
-
-
-//pdf
-
-Route::get('pdf-download', [App\Http\Controllers\PDFController::class, 'downloadPDF']);
+Route::get('emails/{OrderID}', [App\Http\Controllers\OrdersController::class, 'emails']);
 
 
 //Products Routes

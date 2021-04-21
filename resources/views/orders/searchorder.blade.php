@@ -2,7 +2,6 @@
 @section('title','Search Order')
 @section('header','Search Order')
 @section('content')
-
 <div class="container" style="background :none !important ">
   <div class="row justify-content-center">
     <div class="col-md">
@@ -10,20 +9,22 @@
         <div class="card-body">
          <table>
             <tr> 
-                <th width="60px">OrderID</th>
-                <th width="100px">Customer</th>
+                <th width="80px"> OrderID</th>
+                <th width="80px"> Customer</th>
                 <th width="100px">created_at</th> 
-                <th width="50px">Progress</th>
-                <th width="350px">Order Items</th>
-                <th width="250px">Action</th>
+                <th width="100px">Progress</th>
+                <th width="50px"> Status </th>
+                <th width="370px">Order Items</th>
+                <th width="200px">Action</th>
             </tr>
             @foreach ($orders as $order)
             <tr>
-                <td style="text-align: center">{{$order['OrderID']}}</td>
-                <td style="text-align: center">{{optional($order->customers)->Name}}</td>
-                <td style="text-align: center">{{$order['created_at']}}</td>
-                <td style="text-align: center">{{$order['Progress']}}</td>
-                <td>
+                <td>{{$order['OrderID']}}</td>
+                <td style="text-align: left">{{optional($order->customers)->Name}}</td>
+                <td style="text-align: left">{{$order['created_at']}}</td>
+                <td style="text-align: left"> {{ $order['Progress'] }} </td>
+                <td style="text-align: left">{{$order['Status']}}</td>
+                <td style="text-align: left">
                     <ul>
                         @foreach($order->products as $item)
                             <li>{{ $item->Name }}(Rs.{{ $item->Price }} x {{ $item->pivot->Qty }})</li>

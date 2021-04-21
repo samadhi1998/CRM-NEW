@@ -27,14 +27,14 @@
                         <h5 class="card-title"><strong>Order Items :</strong></h5>
                             <table class="table table-bordered">
                                     <tr>
-                                        <th scope="col">Description</th>
+                                        <th scope="col" >Description</th>
                                         <th scope="col">Unit Price</th>
                                         <th scope="col">Quantity</th>
                                         <th scope="col">Total</th>  
                                     </tr>     
                                     @foreach($orders as $ord)
                                     <tr>
-                                        <td>{{ $ord->ProductName }} </td>   
+                                        <td >{{ $ord->ProductName }} </td>   
                                         <td>{{ $ord->Price }} </td>   
                                         <td>{{ $ord->Qty }} </td>   
                                         <td>{{ $ord->Price * $ord->Qty }} </td>        
@@ -42,12 +42,12 @@
                                     @endforeach
                                     <tr>
                                         <td></td>
-                                        <td colspan="2"><b>Discount</b></td>
+                                        <td colspan="2" style="text-align: left"><b>Discount</b></td>
                                         <td>{{ $ord->Discount}}  </td>
                                     </tr>
                                     <tr>
                                         <td></td>
-                                        <td colspan="2"><b>Advance Payment</b></td>
+                                        <td colspan="2" style="text-align: left"><b>Advance Payment</b></td>
                                         <td>{{ $ord->Advance }}  </td>
                                     </tr>
                             </table>                         
