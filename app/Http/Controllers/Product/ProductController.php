@@ -80,10 +80,9 @@ class ProductController extends Controller
     {
         
         $data=product::find($req->ProductID);
-        if(max($data->Qty, $req->Qty)==$data->Qty){
-            return redirect('product/viewproduct')-> with 
-            ('error','You Cannot change Product Quantity less than Available Product Quantity......');
-        }
+        // if(max($data->Qty, $req->Qty)==$data->Qty){
+        //     return redirect('product/viewproduct')->with('error','You Cannot change Product Quantity less than Available Product Quantity......');
+        // }
         $data->Name=$req->Name;
         $data->Brand=$req->Brand;
 

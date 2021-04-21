@@ -10,6 +10,9 @@
                 <div class="container"  style="background :none !important ">
                     <form method="POST" action="/Updateproducts"id="myformproduct" enctype="multipart/form-data" >
                         @csrf
+                            <span style="color:#fc030f"> <b>REMEMBER :: </b> You Cannot change Product Quantity less than Available Product Quantity.</span>
+                             </br> 
+                             </br>
                             <label for="ProductID" ><b>Product ID: </b></label>
                             <input type="text" name="ProductID" value="{{$data['ProductID']}}" name="Name" required readonly>
                             <br> 
