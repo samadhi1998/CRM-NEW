@@ -45,12 +45,16 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=>'required|min:2|max:25'
+          ]);
+
         $role=new role;
         $role->name = $request->name;
 
         $result=$role->save();
 
-        return redirect('/View-Role');
+        return redirect('/View-Role')->with('success','Role Created Successfully');
     }
 
     /**
@@ -90,7 +94,7 @@ class RoleController extends Controller
         $PriviledgeID = $request->input('PriviledgeID');
         $role->priviledges()->attach($PriviledgeID);
 
-        return redirect('View-Role');
+        return redirect('View-Role')->with('success','Role Updated Successfully');
     }
 
     /**
@@ -102,8 +106,13 @@ class RoleController extends Controller
     public function deleteRole($RoleID)
     {
         $data = role::find($RoleID);
+
+        if($RoleID == 1 || $RoleID == 3 || $RoleID == 5){
+            return redirect()->back()->with('error', 'Deleting this role is Prohibited!');
+        }
+        
         $data->delete();
-        return redirect('View-Role');
+        return redirect('View-Role')->with('success','Role Deleted Successfully');
     }
 
     

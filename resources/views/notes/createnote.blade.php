@@ -3,6 +3,18 @@
 @section('header','Add Note')
 @section('content')
     
+@if ($errors->any())
+    <div class="alert alert-danger">
+      <b>
+        <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      <b>
+    </div>
+  @endif
+  
 <div class="row justify-content-center">
   <div class="col-md-8">
     <div class="card">
@@ -23,7 +35,7 @@
               <label for="Description" ><b>Description : </b></label>
               <textarea  name="Description"  required ></textarea>
               <br>
-              <label for="file" ><b>Product View: </b></label>
+              <label for="file" ><b>Select Image: </b></label>
               <input type="file" name="image">
               <br>
               <br>

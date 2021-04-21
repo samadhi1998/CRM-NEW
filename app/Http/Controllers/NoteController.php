@@ -20,6 +20,14 @@ class NoteController extends Controller
 
     public function AddNote(Request $request)
     {
+        $request->validate( [
+        
+            'Type'=>'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'OrderID'=>'required',
+            'Description'=>'required|min:4|max:100'
+            ]);
+
        $note=new note;
        $note->Added_By = Auth::user()->EmpID;
        $note->Description=$request->Description;
@@ -39,7 +47,7 @@ class NoteController extends Controller
        $result=$note->save();
 
     
-       return redirect('/note/viewnote')-> with ('success','Product Inserted successfully');
+       return redirect('/note/viewnote')-> with ('success','Note Inserted successfully');
     }
 
     //Show Notes
@@ -72,7 +80,7 @@ class NoteController extends Controller
         $data->Description=$req->Description;
         $data->Type=$req->Type;
         $data->save();
-        return redirect('/note/viewnote');
+        return redirect('/note/viewnote')-> with ('success','Note Updated successfully');
     }
 
     //Delete Note
@@ -81,7 +89,7 @@ class NoteController extends Controller
     {
         $data=note::find($NoteID);
         $data->delete();
-        return redirect('/note/viewnote');
+        return redirect('/note/viewnote')-> with ('success','Note Deleted successfully');
     }
 
     public function searchNotes(Request $request)

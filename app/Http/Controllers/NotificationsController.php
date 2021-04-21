@@ -5,6 +5,7 @@ use Notifynder;
 use App\Models\User;
 use App\Models\Notification;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Log;
@@ -43,9 +44,10 @@ class NotificationsController extends Controller
 
     public function index(Request $request)
     {   
-        $notification = Notification::all();
+        $user = Auth::user();
 
-        //dd($notification);
+        $notification = $user->Notifications;
+
         return view('notification/index',['notifications'=>$notification]);
     }
 }

@@ -29,8 +29,8 @@
                         <label for="OrderID" ><b>Order ID : </b></label>
                         <input type="text" name="OrderID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$orders->OrderID}}"> 
                         <br>
-                        <label for="EmpID"><b>Assign Employee : </b></label>
-                            <select name="EmpID" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+                        <label for="ServicePersonID"><b>Assign Employee : </b></label>
+                            <select name="ServicePersonID" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
                                 @foreach($users as $user)
                                     <option value="{{$user['EmpID']}}">{{$user['name']}}</option>
                                 @endforeach

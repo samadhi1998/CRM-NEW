@@ -12,6 +12,17 @@
 </div>
 <br>
 <br>
+<br>
+@if (Session::has('error'))
+       <div class="alert alert-danger" role="alert">
+           {{Session::get('error')}}
+       </div>
+  @endif
+  @if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+  @endif
 <div class="container" style="background :none !important ">
   <div class="row justify-content-center">
     <div class="col-md">

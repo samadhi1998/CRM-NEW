@@ -66,7 +66,7 @@ class TaskController extends Controller
           $task->Description=$request->Description;
           $task->Status=$request->Status;
           $task->Due_Date=$request->Due_Date;
-          $task->ServicePersonID=$request->EmpID;
+          $task->ServicePersonID=$request->ServicePersonID;
 
          $data = Order::find($request->input('OrderID'));
          $data->OrderID = $request->input('OrderID');
@@ -77,8 +77,7 @@ class TaskController extends Controller
          $data->save();
        
 
-
-        return redirect('/View-Task');
+        return redirect('/View-Task')->with('success','Task Added Successfully');
 
     }
 
@@ -123,7 +122,7 @@ class TaskController extends Controller
         
         $data->save();
 
-        return redirect('View-Task');
+        return redirect('View-Task')->with('success','Task Updated Successfully');
     }
 
     /**
@@ -136,7 +135,7 @@ class TaskController extends Controller
     {
         $data=task::find($TaskID);
         $data->delete();
-        return redirect('View-Task');
+        return redirect('View-Task')->with('success','Task Deleted Successfully');
     }
 
     public function searchTasks(Request $request)
@@ -176,7 +175,7 @@ class TaskController extends Controller
     {
         $data=task::find($TaskID);
         $data->update(['Status' => 'Completed']);
-        return redirect('View-Task');
+        return redirect('View-Task')->with('success','Task Completed Successfully');
     }
 
 }

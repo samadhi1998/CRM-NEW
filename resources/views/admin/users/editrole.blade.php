@@ -10,7 +10,7 @@
             <input type="text" name="RoleID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$roles->RoleID}}" readonly>
             <br>
             <label for="name" ><b>Role name : </b></label>
-            <input type="text" name="name" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$roles->name}}" readonly >
+            <input type="text" name="name" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$roles->name}}">
             <br>
                 <div class="form-group" >
                     <label for="roles_permissions"> <b>Add Priviledges :</b>  </label>
@@ -191,7 +191,7 @@
                                             <div class="col-md">
                                                 <div class="card-body">
                                                     <h6 class="card-title">Other Priviledges</h6>
-                                                        @foreach($priviledges->whereIn('PriviledgeID', [38,44,45,46,51]) as $priviledge)
+                                                        @foreach($priviledges->whereIn('PriviledgeID', [38,44,46,51]) as $priviledge)
                                                         <div class="form-group form-check col-sm-12">
                                                         <input type="checkbox" class="form-check-input" name="PriviledgeID[]" value="{{$priviledge->PriviledgeID}}" {{ $roles->priviledges->contains($priviledge->PriviledgeID) ? 'checked' : '' }}>
                                                         <label class="form-check-label checkbox-inline" for="PriviledgeID">{{$priviledge->Description}} </label>

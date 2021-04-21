@@ -27,13 +27,12 @@ class OrdersController extends Controller
         ->with('customers',customer::all());
     }
 
-    public function create(Request $request, customer $CustomerID)
+    public function create(Request $request)
     {       
-       $products = Product::all();
-       $customers = customer::all();
-       // $customers = customer::find($CustomerID);
-       
-        return view('orders/create', compact('products','customers'));    
+        $products = product::all();
+        $customers = customer::find($request->input('CustomerID'));
+
+        return view('orders/create', compact('products','customers'));
     }
     
     public function store(Request $request)
@@ -43,6 +42,7 @@ class OrdersController extends Controller
             'Due_date'=>'required'
         ]);
             
+        $customers = $request->input('CustomerID');
         $order = Order::create($request->all());
         $products = $request->input('products', []);
         $quantities = $request->input('quantities', []);
@@ -67,7 +67,7 @@ class OrdersController extends Controller
         }   
 
        // return redirect()->route('orders.index');
-       return redirect('index')->with('success','Order Added');
+       return redirect('index')->with('success','New Order Added Successfully!');
 
     }
 
@@ -143,7 +143,7 @@ class OrdersController extends Controller
          }
      
         }
-         return redirect()->route('orders.index');
+         return redirect()->route('orders.index')->with ('success','Order Details Updated successfully');
      }
 
       
@@ -152,7 +152,7 @@ class OrdersController extends Controller
     {
         $order=Order::find($OrderID);
         $order->delete();
-        return redirect('/orders');
+        return redirect('/orders')->with ('success','Order Deleted successfully');
     }
 
     public function emails()
@@ -201,7 +201,7 @@ class OrdersController extends Controller
         
         $data->save();
 
-        return redirect('/index');
+        return redirect('/index')->with ('success','Progress Updated successfully');
     }
 
     public function SearchOrder(Request $request)

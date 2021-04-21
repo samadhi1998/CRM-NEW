@@ -18,6 +18,7 @@
             <br>
             <label for="RoleID"><b>Role : </b></label>
               <select  name="RoleID" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+              <option value="{{$users->RoleID}}" selected hidden>{{$users->roles->name}}</option>
                 @foreach($roles as $role) 
                   <option value="{{$role->RoleID}}">{{$role->name}}</option>
                 @endforeach
@@ -25,6 +26,9 @@
             <br>
             <div class="btn-group float-right" role="group">
               <button type="button" data-toggle="modal" class="btn btn-primary" data-target="#exampleModal" >Assign Role</button>
+            </div>
+            <div class="btn-group float-right mr-2" role="group">
+              <button type="submit" class="btn btn-primary" ><a href="/viewuser" style="color:white">Cancel</a></button>
             </div>
           </form>
         </div>

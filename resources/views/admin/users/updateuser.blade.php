@@ -35,7 +35,7 @@
                             <button type="button" data-toggle="modal" data-target="#exampleModal" >Update</button>
                         </div>
                         <div class="btn-group float-right mr-2 " role="group">
-                            <button type="submit" ><a href="/admin/users/index" class="text-my-own-color">Cancel</a></button>
+                            <button type="submit" ><a href="/viewuser" class="text-my-own-color">Cancel</a></button>
                         </div> 
                     </form>
                 </div>

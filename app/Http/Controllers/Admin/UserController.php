@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users= User::latest()->sortable()->paginate(5);
+        $users= User::sortable()->paginate(5);
         return view('admin.users.index')->with('users', $users)
         ->with('roles',Role::all());
     }
@@ -107,7 +107,7 @@ class UserController extends Controller
         
         $data->save();
 
-        return redirect('/viewuser');
+        return redirect('/viewuser')->with('success','User Details Updated Successfully');
     }
 
     /**
@@ -121,8 +121,12 @@ class UserController extends Controller
         // $this->authorizeResource('delete', User::class);
         
         $data=user::find($EmpID);
+
+        if($EmpID == Auth::user()->EmpID){
+            return redirect()->back()->with('error', 'You can not delete yourself!');
+        }
         $data->delete();
-        return redirect('/home');
+        return redirect('/viewuser')->with('success','User Details Deleted Successfully');
     }
 
     public function assigntask(){
@@ -146,7 +150,7 @@ class UserController extends Controller
 
         $data->save();
 
-        return redirect('/viewuser');
+        return redirect('/viewuser')->with('success','Role Assigned Successfully');
 
     }
 
