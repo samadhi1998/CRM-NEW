@@ -201,3 +201,8 @@ Route::post('/sendmessage', [App\Http\Controllers\ChatController::class, 'sentMe
 
 //notification
 Route::get('/view-notifications','App\Http\Controllers\NotificationsController@index');
+
+
+Route::get('/backup/create', 'App\Http\Controllers\BackupController@create');
+Route::get('/backup/download/{file_name}', 'App\Http\Controllers\BackupController@download');
+Route::get('/backup/delete/{file_name}', 'App\Http\Controllers\BackupController@delete');

@@ -51,6 +51,10 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
         ],
+        'backups' => [
+            'driver' => 'local',
+            'root'   => storage_path('backups'), // that's where your backups are stored by default: storage/backups
+        ],
 
     ],
 
