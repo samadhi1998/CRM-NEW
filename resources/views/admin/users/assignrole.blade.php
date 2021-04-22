@@ -18,7 +18,7 @@
             <br>
             <label for="RoleID"><b>Role : </b></label>
               <select  name="RoleID" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
-              <option value="{{$users->RoleID}}" selected hidden>{{$users->roles->name}}</option>
+              <option value="{{$users->RoleID}}" selected hidden>{{optional($users->roles)->name}}</option>
                 @foreach($roles as $role) 
                   <option value="{{$role->RoleID}}">{{$role->name}}</option>
                 @endforeach
