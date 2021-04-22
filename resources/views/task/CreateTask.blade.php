@@ -32,7 +32,8 @@
                         <label for="ServicePersonID"><b>Assign Employee : </b></label>
                             <select name="ServicePersonID" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
                                 @foreach($users as $user)
-                                    <option value="{{$user['EmpID']}}">{{$user['name']}}</option>
+                                    <option selected>Select a Service Person</option>
+                                    <option value="{{$user['EmpID']}}">{{$user['name']}}: No of active tasks:- {{$count}}</option>
                                 @endforeach
                             </select>
                         <br>

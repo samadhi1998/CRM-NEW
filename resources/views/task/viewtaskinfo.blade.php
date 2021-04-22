@@ -48,11 +48,14 @@
                         </tr>
                     </table> 
                     <br>
-                    @if( $task->Status == 'Open' )
-                    <div class="pull-right">
-                        <a href="/completeTask/{{$task->TaskID}}" class="text-my-own-color"><button><span data-feather="check-circle"></span> Mark as Completed</button></a>
-                    </div>
+                    <div class="btn-group pull-right" role="group">
+                    @if(Auth::user()->can('view-order-details', App\Models\Order::class))
+                        <a href="/vieworddetails/{{$task->OrderID}}" style="margin:2px" class="text-my-own-color"><button><span data-feather ="eye"></span> View Order Details</button></a>
                     @endif
+                    @if( $task->Status == 'Open' )
+                        <a href="/completeTask/{{$task->TaskID}}" class="text-my-own-color"><button><span data-feather="check-circle"></span> Mark as Completed</button></a>
+                    @endif
+                    </div>
                 </div>
             </div>
         </div>
