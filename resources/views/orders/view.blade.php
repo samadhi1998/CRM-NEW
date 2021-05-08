@@ -19,7 +19,7 @@
                     </strong></h6>          
                     <h5 class="card-title"><strong>Customer :</strong></h5>
                             <h6><strong> 
-                                Name :{{ $order->CustomerName }}<br>
+                                Name : {{ $order->CustomerName }}<br>
                                 Address : {{ $order->Address }} <br>
                                 Mobile No : {{ $order->MobileNo }} <br>
                                 E-mail : {{ $order->Email }} <br><br>

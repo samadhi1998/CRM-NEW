@@ -67,10 +67,8 @@
 
                                 <div class="btn-group" role="group">
 
-                                @if(Auth::user()->can('view-order-details', App\Models\Order::class))
                                 <a href="/vieworddetails/{{$order['OrderID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="eye"></span></a>
-                                @endif
-                                
+
                                 @if(Auth::user()->can('edit-order', App\Models\Order::class))
                                     <a href="edit/{{$order->OrderID}}"  style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>
                                 @endif

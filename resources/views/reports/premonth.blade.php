@@ -3,81 +3,113 @@
 @section('header','Sales Report Monthly')
 @section('content')
 
-<div class="container " style="background :none !important ">
-    <div class="row justify-content-center">
-        <div class="col-md">
-            <div class="card">
-                <div class="card-body">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        ---Select Report Cetogory---
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="http://127.0.0.1:8000/bydaily">Daily Sales Report</a>
-                            <a class="dropdown-item" href="http://127.0.0.1:8000/byweekly">Weekly Sales Report</a>
-                            <a class="dropdown-item" href="http://127.0.0.1:8000/bymonthly">Monthly Sales Report</a>
-                            <a class="dropdown-item" href="http://127.0.0.1:8000/salesreport">Other Sales Report</a>
+
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="col-md">           
+            <form action="{{ route('report') }}" method="get">          
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="row no-gutters">
+                                <div class="col-md-12">
+                                    <div class="card-body">
+                                        <h5>
+                                            <span data-feather = "calendar" style="width: 30px; height: 30px" class="text-my-own-color" ></span> 
+                                            <span class="text-muted">Date Period : 
+                                        </h5>     
+                                        <h6> 
+                                            <b>{{$start}} - {{$end}}</b>
+                                        <h6>                                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="row no-gutters">
+                                <div class="col-md-12">
+                                    <div class="card-body">
+                                        <h5>
+                                            <span data-feather = "calendar" style="width: 30px; height: 30px" class="text-my-own-color" ></span> 
+                                            <span class="text-muted">No of Sales : </span> {{$countInvo}}
+                                        </h5>                                   
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <form action="{{ route('report') }}" method="get"><br><br>
-                    <div class="container " style="background :none !important ">
-                        <div class="row justify-content-center">
-                            <div class="col-md">
-                                <div class="card">
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="row no-gutters">
+                                <div class="col-md-12">
                                     <div class="card-body">
-                                        <form action="{{ route('report') }}" method="get"><br><br>   
-                                            <div class="row invoice-header px-3 py-4">
-                                                <div class="col-12 text-center">
-                                                    <h2 class="Name">ABS-CBN CORPORATION</h2>
-                                                    <h6>No.95, Galle Road, Moratuwa</h6>
-                                                    <h6>Tel : +(94) 112 605 731</h6>
-                                                    <h6><a href="mailto:buyabc@abcgroup.com">email : buyabc@abcgroup.com</a></h6>
-                                                    <hr>        
-                                                    <h4 style="text-align: center; color:#233554">From :{{ $start }}  To : {{ $end }} </h4>                         
-                                                </div> 
-                                            </div>
-                                        <div>
+                                        <h5>
+                                            <span data-feather = "help-circle" style="width: 30px; height: 30px" class="text-my-own-color" ></span> 
+                                            <span class="text-muted">Pending Orders : </span> {{$countQuo}}
+                                        </h5>                                   
                                     </div>
                                 </div>
-                                <div class="table-responsive">
-                                    <table>
-                                            <tr> 
-                                                <th>Order No</th>
-                                                <th>Customer </th> 
-                                                <th>Updated Date</th>
-                                                <th>Product Name</th>                                             
-                                            </tr>
-                                            @foreach ($premonth as $order)
-                                            <tr>
-                                                <td>{{ $order->OrderID }}</td>
-                                                <td>{{ $order->Customer }}</td>
-                                                <td>{{ $order->updated_at }}</td>
-                                                <td>
-                                                    <ul>
-                                                        @foreach($products as $item)                                         
-                                                            @if ( $order->OrderID === $item->OrderID)
-                                                                @foreach($item->products as $p)
-                                                                    <li>{{ $p->Name }} (Rs.{{ $p->Price }})</li>
-                                                                @endforeach
-                                                            @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                    <div class="card">        
+                            <div class="row invoice-header px-3 py-4">
+                                <div class="col-12 text-center">
+                                    <h3 class="Name">ABS-CBN CORPORATION</h3>                      
+                                    <h4 style="text-align: center; color:#233554">Monthly Sales Report</h4>   
+                                    <h6 style="text-align: center; color:#233554"><b>{{ $start }}  -  {{ $end }} </b></h6>                      
+                            </div>   
+                            <div class="table-responsive">
+                            <?php $total_p = 0; ?>
+                                <table>
+                                    <tr> 
+                                        <th>Order No</th>
+                                        <th>Customer </th> 
+                                        <th>Email </th> 
+                                        <th>Updated Date</th>
+                                        <th>Product Name</th>                                             
+                                    </tr>
+                                    @foreach ($premonth as $order)
+                                    <tr>
+                                        <td>{{ $order->OrderID }}</td>
+                                        <td>{{ $order->Customer }}</td>
+                                        <td>{{ $order->Email }}</td>
+                                        <td>{{ $order->updated_at }}</td>
+                                        <td>
+                                            <ul>
+                                                @foreach($products as $item)                                         
+                                                    @if ( $order->OrderID === $item->OrderID)
+                                                        @foreach($item->products as $p)
+                                                            <li>{{ $p->Name }} (Rs.{{ $p->Price }} x {{ $p->pivot->Qty }})</li>
+                                                            <?php $total_p = $total_p + ($p->Price * $p->pivot->Qty ); ?>  
                                                         @endforeach
-                                                    </ul>
-                                                </td>                                            
-                                            </tr>   
-                                            @endforeach                                           
-                                        </table>  
-                                    </div>  
-                                    <br><br><br><br>
-                                    <div class="card" style="width: 18rem;">
-                                        <ul class="list-group list-group-flush"><b>
-                                            <li class="list-group-item">Date Range : <br> From {{ $start }}  to {{ $end }} </li>
-                                            <li class="list-group-item">No of Sales : {{ $count }}</li>
-                                        </b></ul>
-                                    </div>
-                                    <div align="right">
-                                        <a class="btn btn-primary" id="printPageButton" onclick="window.print()">Save</button></a>
-                                        <a class="btn btn-primary" id="printPageButton" onclick="window.print()">Print</button></a>
-                                    </div>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
+                                        </td>                                            
+                                    </tr>   
+                                    @endforeach                                           
+                                </table>  
+                            </div>  
+                        </div>
+                        <br><br>
+                        <div class="col-sm-3"> 
+                            <h5>
+                                <span class="text-muted">Total Sales : Rs. </span> <?php echo  number_format  ($total_p)."<br>"; ?>
+                            </h5>                                          
+                        </div>
+                        <div align="right">
+                            <a class="btn btn-primary" id="printPageButton" onclick="window.print()">Print</button></a>
+                        </div>
+                        <br>
+                    </div>              
+            </form>
+        </div>
+    </div>
+</div>
+ @endsection
 
-                                </div>
-                        @endsection

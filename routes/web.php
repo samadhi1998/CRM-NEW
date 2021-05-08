@@ -76,18 +76,20 @@ Route::get('/chats', function () {
 Route::resource('orders', OrdersController::class);
 Route::get('/index', [App\Http\Controllers\OrdersController::class,'index']);
 Route::get('/create', [App\Http\Controllers\OrdersController::class,'create']);
+Route::get('vieworddetails/{OrderID}', [App\Http\Controllers\OrdersController::class,'vieworddetails']);
 Route::get('edit/{OrderID}', [App\Http\Controllers\OrdersController::class,'edit']);
 Route::post('edit', [App\Http\Controllers\OrdersController::class,'update']);
-Route::get('show', [App\Http\Controllers\OrdersController::class,'show']);
-Route::get('view', [App\Http\Controllers\OrdersController::class,'view']);
-Route::get('emails', [App\Http\Controllers\OrdersController::class,'emails']);
 Route::get('progressedit/{OrderID}',[App\Http\Controllers\OrdersController::class,'progressedit']);
 Route::post('progressedit',[App\Http\Controllers\OrdersController::class,'progressupdate']);
-Route::get('vieworddetails/{OrderID}', [App\Http\Controllers\OrdersController::class,'vieworddetails']);
 Route::get('delete/{OrderID}',[App\Http\Controllers\OrdersController::class,'delete']);
 Route::get('/SearchOrder',[App\Http\Controllers\OrdersController::class,'SearchOrder']);
-Route::get('deleteorder/{OrderID}',[App\Http\Controllers\OrdersController::class,'destroy']);
 
+
+//Invoice Routes (Invoice + PDF + Emails)
+
+Route::get('show', [App\Http\Controllers\OrdersController::class,'show']);
+Route::get('PDF/{OrderID}', [App\Http\Controllers\OrdersController::class,'PDF']);
+Route::get('emails/{OrderID}', [App\Http\Controllers\OrdersController::class, 'emails']);
 
 //Report Routes
 
@@ -100,14 +102,11 @@ Route::get('premonth', [App\Http\Controllers\ReportController::class, 'premonth'
 Route::get('test', [App\Http\Controllers\ReportController::class, 'test'])->name('report.test');
 
 
-//PDF Routes
+//REPORT-PDF Route
 
-Route::get('PDF/{OrderID}', [App\Http\Controllers\OrdersController::class,'PDF']);
-
-
-//Email Routes
-
-Route::get('emails/{OrderID}', [App\Http\Controllers\OrdersController::class, 'emails']);
+Route::get('sendpdfdaily', [App\Http\Controllers\PDFController::class, 'PDFDaily']);
+Route::get('sendpdfweekly', [App\Http\Controllers\PDFController::class, 'PDFWeekly']);
+Route::get('sendpdfmonthly', [App\Http\Controllers\PDFController::class, 'PDFMonthly']);
 
 
 //Products Routes

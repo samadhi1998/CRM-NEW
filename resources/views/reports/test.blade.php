@@ -1,53 +1,100 @@
-@extends('layouts.app')
-@section('title','Sales Report')
-@section('content')
-
-<div class="container " style="background :none !important "><div class="row justify-content-center">
-    <div class="col-md">
-        <div class="card">
-            <div class="card-body">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ---Select Report Cetogory---
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="http://127.0.0.1:8000/bydaily">Daily Sales Report</a>
-                        <a class="dropdown-item" href="http://127.0.0.1:8000/byweekly">Weekly Sales Report</a>
-                        <a class="dropdown-item" href="http://127.0.0.1:8000/bymonthly">Monthly Sales Report</a>
-                        <a class="dropdown-item" href="http://127.0.0.1:8000/salesreport">Other Sales Report</a>
+<html>
+    <head>
+        <title> Daily Sales Report </title>
+        <head>
+            <style>
+                table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                max-width: 2480px;
+                width: 100%;
+                }
+                td {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+                width: auto;
+                overflow: hidden;
+                word-wrap: break-word;
+                }
+                th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                background-color: #dddddd;  
+                color: black;
+                }
+                h2,h3,h4{
+                    text-align: center;
+                    margin-bottom: -12px;
+                    }   
+            </style>
+        </head>
+        <body>
+            <div class="container" style="background :none !important ">
+                <div class="row justify-content-center">
+                    <div class="col-md">
+                        <div class="card">
+                            <div class="card-body">   
+                                <form action="{{ route('report') }}" method="get">  
+                                    <div>
+                                        <h2>ABS-CBN CORPORATION</h2>
+                                        <h3>No.95, Galle Road, Moratuwa</h3>
+                                        <h4>Tel : +(94) 112 605 731</h4>
+                                        <h4>E-mail : <a href="mailto:buyabc@abcgroup.com"> buyabc@abcgroup.com</a></h4>
+                                        <br><br><hr>
+                                    </div>    
+                                    <h2>Daily Sales Report : {{ $date }} </b></h2>   
+                                    <br><br>     
+                                    <div class="table-responsive">
+                                    <?php $total_d = 0; ?>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th width="5px">Order No</th>
+                                                    <th width="30px">Customer </th> 
+                                                    <th width="70px">Date</th>
+                                                    <th width="280px">Items</th>  
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($daily as $order)
+                                                <tr>
+                                                    <td>{{ $order->OrderID }}</td>
+                                                    <td>{{ $order->Customer }}</td>
+                                                    <td>{{ $order->updated_at }}</td>
+                                                    <td>
+                                                        <ul style="list-style-type:none;">
+                                                            @foreach($products as $item)                                         
+                                                                @if ( $order->OrderID === $item->OrderID)
+                                                                    @foreach($item->products as $p)
+                                                                        <li>{{ $p->Name }} (Rs.{{ $p->Price }} x {{ $p->pivot->Qty }})</li>
+                                                                        <?php $total_d = $total_d + ($p->Price * $p->pivot->Qty ); ?>  
+                                                                    @endforeach
+                                                                @endif
+                                                            @endforeach
+                                                        </ul>
+                                                    </td>                                            
+                                                </tr>   
+                                                @endforeach     
+                                            </tbody>                         
+                                        </table>
+                                        <br>
+                                        <div class="col-sm-3"> 
+                                            <h3 style="text-align:left">
+                                                <span class="text-muted">No of Pending Orders :  </span> {{$countQuo}}<br>
+                                                <span class="text-muted">No of Sales :  </span> {{$countInvo}}<br>
+                                                <span class="text-muted">Total Sales : Rs. </span> <?php echo  number_format  ($total_d)."<br>"; ?>
+                                            </h3>                                          
+                                        </div>
+                                    </div>                      
+                                </form>              
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <form action="{{ route('report') }}" method="get"><br><br>
+            </div>
+        </body>
+</html>
+    
 
-                <div class="container " style="background :none !important ">
-                    <div class="row justify-content-center">
-                        <div class="col-md">
-                            <div class="card">
-                                <div class="card-body">
-                                    <form action="{{ route('report') }}" method="get"><br><br>   
-                                        <div>
-                                            <h2 style="text-align: center; color:#233554">ABC PVT(LTD)</h2>
-                                            <h3 style="text-align: center; color:#233554">Sales Report</h3>
-                                            <!-- <p style="text-align: center; color:#233554"><b>From  To </b></p><br> -->
-                                            <hr style="background-color:#233554; height: 3px">
-                                        </div>
-                                    </div>
-                                    <div class="table-responsive">
-                                            <table>
-                                                <tr> 
-                                                    <th>Order No</th>
-                                                    <th>Customer </th> 
-                                                    <th>Updated Date</th>
-                                                    <th>Product Name</th>
-                                                    <th>Qty</th> 
-                                                    <th>Amount</th>
-                                                </tr>
-                                            </table>
-                                            </div>
-                                            <br><br><br>
-                                            <div align="right">
-                                                <a class="btn btn-primary" id="printPageButton" onclick="window.print()">Save</button></a>
-                                                <a class="btn btn-primary" id="printPageButton" onclick="window.print()">Print</button></a>
-                                            </div>
-                                        </div>
-                                @endsection

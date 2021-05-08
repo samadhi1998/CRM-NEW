@@ -69,6 +69,7 @@ class HomeController extends Controller
     }
 
     public function markAllNotification(Request $request)
+    
     {
         
         $user = Auth::user();
@@ -77,7 +78,6 @@ class HomeController extends Controller
         
         $notification->markAsRead();
         
-
         return redirect()->back();
     }
 

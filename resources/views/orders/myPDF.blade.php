@@ -1,120 +1,125 @@
 
 <html>
     <head>
-        <title>ABS-CBN CORPORATION - Invoice</title>
+        <title> INVOICE </title>
         <style>
-        table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-        }
-
-        td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-        }
-
-        tr:nth-child(even) {
-        background-color: #dddddd;
-        }
+            table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            }
+            td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            }
+            th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #dddddd;  
+            color: black;
+            }
+            div.invoice-header > div >h2,h3,h4{
+                text-align: center;
+                margin-bottom: -12px;
+                }
+            h1 {
+            font-size: 23px;
+            margin-bottom: -10px;
+            }
+            h5 {
+            font-size: 18px;
+            margin-bottom: -23px;
+            font-weight: normal;
+            }        
         </style>
     </head>
     <body>
         @foreach ($orders as $ord)
-        <div class="container">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-body">
-                        <header class="header">
-                        <div id="invoice">
-                            <div class="invoice overflow-auto">
-                                <div style="min-width: 600px">
-                                    <header>
-                                    <div class="row invoice-header px-3 py-4">
-                                        <div class="col-12 text-center">
-                                            <h2 class="Name">ABS-CBN CORPORATION</h2>
-                                            <h4>No.95, Galle Road, Moratuwa</h4>
-                                            <h4>Tel : +(94) 112 605 731</h4>
-                                            <h4>email : <a href="mailto:buyabc@abcgroup.com"> buyabc@abcgroup.com</a></h4>
-                                            <hr>
-                                        </div> 
-                                    </div>
-                                    </header>
-                                    <div class="col invoice-details">
-                                            <h2 class="invoice-id">{{ $ord->Status }}</h2>
-                                            <h3>Order No #{{ $ord->OrderID }}</h3>
-                                            <h4><b><p>
-                                                Payment Due: {{$ord->Due_date}} <br>
-                                                Issued: {{ $ord->created_at }}
-                                            </p></b></h4>
-                                            <br> 
-                                        </div>
-                                    <div class="row contacts">
-                                        <div class="col invoice-to">
-                                            <h5>INVOICE TO :</h5>
-                                                <div class="to"><b>{{ $ord->CustomerName }}</b>
-                                                <div class="address">{{ $ord->Address }}</div>
-                                                <div class="mobile">{{ $ord->MobileNo }}</div>
-                                                <div class="email">{{ $ord->Email }}</div>
-                                            <br><br>
-                                        </div>                              
-                                    </div>       
-                                    <div id="table">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th class="text-center"> Description  </th>
-                                                <th class="text-center"> Unit Price  </th>
-                                                <th class="text-center"> Quantity  </th>
-                                                <th class="text-center"> Total  </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($orders as $ord)
-                                                <tr>
-                                                    <th></th>
-                                                    <td>{{ $ord->ProductName }} </td>   
-                                                    <td>{{ $ord->Price }} </td>   
-                                                    <td>{{ $ord->Qty }} </td>   
-                                                    <td>{{ $ord->Price * $ord->Qty }} </td>        
-                                                </tr>
-                                                @endforeach
-                                        </tbody>
-                                        <tfoot>
-                                            <!-- <tr>
-                                                <td colspan="2"></td>
-                                                <td colspan="2"><p>Total Price</p></td>
-                                                <td>  </td>
-                                            </tr> -->
-                                            <tr>
-                                                <td colspan="2"></td>
-                                                <td colspan="2"><p> (-) Discount</p></td>
-                                                <td>{{ $ord->Discount }}</td>
-                                            </tr>                          
-                                            <tr>
-                                                <td colspan="2"></td>
-                                                <td colspan="2"><p>(-) Advance</p></td>
-                                                <td>{{ $ord->Advance }} </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2"></td>
-                                                <td colspan="2"><p>Balance</p></td>
-                                                <td>{{ ($ord->Price * $ord->Qty) - $ord->Discount - $ord->Advance }}</td>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                                </header>
-                            </div>
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row invoice-header px-3 py-4">
+                            <div class="card-body">
+                                <div class="col-12 text-center">
+                                    <h2 class="Name">ABS-CBN CORPORATION</h2>
+                                    <h3>No.95, Galle Road, Moratuwa</h3>
+                                    <h4>Tel : +(94) 112 605 731</h4>
+                                    <h4>E-mail : <a href="mailto:buyabc@abcgroup.com"> buyabc@abcgroup.com</a></h4>
+                                    <br><br><hr>
+                                    <h2 class="Name">{{ $ord->Status }}</h2>
+                                </div> 
+                            </div> 
+                        </div>   
+                        <br><br>
+                        <div>                                       
+                            <h1><b>Order No #{{ $ord->OrderID }}</b></h1>
+                            <h5>Payment Due: {{$ord->Due_date}}</h5>
+                            <h5>Issued: {{ $ord->created_at }}</h5>
+                        </div>
+                        <br><br>
+                        <div>
+                            <h5><b>{{ $ord->CustomerName }}</b></h5>
+                            <h5>{{ $ord->Address }}</h5>
+                            <h5>{{ $ord->MobileNo }}</h5>
+                            <h5>{{ $ord->Email }}</h5> 
                         </div>  
+                        <br><br><hr><br>
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th class="text-center"> Description  </th>
+                                        <th class="text-center"> Unit Price  </th>
+                                        <th class="text-center"> Quantity  </th>
+                                        <th class="text-center"> Total  </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $total = 0; ?>
+                                    @foreach($orders as $ord)
+                                    <tr>
+                                        <td></td>
+                                        <td>{{ $ord->ProductName }} </td>   
+                                        <td style="text-align: right">{{ number_format ($ord->Price) }} </td>   
+                                        <td style="text-align: right">{{ $ord->Qty }} </td>   
+                                        <td style="text-align: right">{{ number_format ($ord->Price * $ord->Qty) }} </td>   
+                                        <?php $total = $total + ($ord->Price * $ord->Qty); ?>      
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="2"></td>
+                                        <td colspan="2"><b>Total Amount</b></td>
+                                        <td style="text-align: right"><b><?php echo number_format  ($total)."<br>"; ?>
+                                    </tr> 
+                                    <tr>
+                                        <td colspan="2"></td>
+                                        <td colspan="2"> (-) Discount</td>
+                                        <td style="text-align: right">{{ number_format ($ord->Discount) }}</td>
+                                    </tr>                                                        
+                                    <tr>
+                                        <td colspan="2"></td>
+                                        <td colspan="2" > (-) Advance</td>
+                                        <td style="text-align: right">{{ number_format ($ord->Advance) }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"></td>
+                                        <td colspan="2"><b>Balance</b></td>
+                                        <td style="text-align: right"><b>{{ number_format ($total - $ord->Discount - $ord->Advance) }}</b></td>
+                                    </tr>
+                                </tfoot>                              
+                            </table>
+                            <br><br>
+                            <p style="text-align:right"> By : ........................................ </p>
+                        </div>                       
                     </div>
-                </div>              
-        </div>
-
-        @break
+                </div>   
+            </div>                    
+            @break
         @endforeach
-
     </body>
 </html>

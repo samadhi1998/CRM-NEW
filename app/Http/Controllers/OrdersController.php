@@ -25,7 +25,7 @@ class OrdersController extends Controller
     {   
         $orders = Order::sortable()->paginate(5);
         return view('orders/index')->with('orders', $orders)
-        ->with('customers',customer::all());
+            ->with('customers',customer::all());
     }
 
     public function create(Request $request)
@@ -83,6 +83,7 @@ class OrdersController extends Controller
         ->select('products.ProductID','order_product.Qty','products.Price','products.Name')
         ->where('order_product.order_OrderID', '=', $data->OrderID)
         ->get(); 
+        $products = product::all();
     
         return view('orders/edit',['order'=>$data,'products'=>$product]);  
     }
@@ -149,8 +150,7 @@ class OrdersController extends Controller
         ->join('products','products.ProductID',"=",'order_product.product_ProductID')
         ->select('orders.OrderID','orders.Due_date' ,'orders.created_at','orders.Advance','orders.Status','orders.Discount','customers.Name as CustomerName','customers.MobileNo', 'customers.Email','customers.Address', 'products.Name as ProductName','products.price','order_product.Qty','products.Price')
         ->where('orders.OrderID', '=', $OrderID )
-        ->get()
-        ->toArray(); 
+        ->get()->toArray(); 
   
         $pdf = PDF::loadView('orders.myEmail', compact('orders'));
 
@@ -160,7 +160,7 @@ class OrdersController extends Controller
         Mail::send('emails.myTestMail', $orders, function($message)use($orders, $pdf) {
             $message->to($orders["emails"], $orders["emails"])
                     ->subject($orders["title"])
-                    ->attachData($pdf->output(), "invoice.pdf");
+                    ->attachData($pdf->output(), "Invoice.pdf");
         });
   
         dd('Mail sent successfully');
@@ -180,7 +180,7 @@ class OrdersController extends Controller
         ->toArray(); 
 
         $pdf = PDF::loadView('orders.myPDF', compact('orders'));
-        return $pdf->download('invoice.pdf');
+        return $pdf->download('Invoice.pdf');
     }
     
     public function show(Order $order)
