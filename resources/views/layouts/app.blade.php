@@ -640,13 +640,14 @@ table {
                         </a>
                       </li>
                     @endif
-
+                    @if(Auth::user()->roles->name == 'Super-Admin')
                     <li class="nav-item">
                         <a class="nav-link" href="/backup">
                           <span data-feather="hard-drive"></span>
                             Backup
                         </a>
                       </li>
+                      @endif
                   </ul>
                 </div>
               </nav>

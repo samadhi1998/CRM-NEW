@@ -58,7 +58,7 @@ class TaskController extends Controller
      {
         $request->validate([
             'Description'=>'required|max:255|min:5',
-            'Due_Date'=>'required',
+            'Due_Date'=>'required|after_or_equal:today',
             'ServicePersonID'=>'required'
             ]);
 
@@ -114,6 +114,12 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
+        $request->validate([
+            'Description'=>'required|max:255|min:5',
+            'Due_Date'=>'required|after_or_equal:today',
+            'ServicePersonID'=>'required'
+            ]);
+            
         $data = task::find($request->input('TaskID'));
         $data->TaskID = $request->input('TaskID');
         $data->ServicePersonID = $request->input('ServicePersonID');

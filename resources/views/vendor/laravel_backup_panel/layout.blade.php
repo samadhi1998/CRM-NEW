@@ -256,7 +256,7 @@
 
                       <li class="nav-item">
                         <a class="nav-link" href="/backup">
-                          <span data-feather="bell"></span>
+                          <span data-feather="hard-drive"></span>
                             Backup
                         </a>
                       </li>

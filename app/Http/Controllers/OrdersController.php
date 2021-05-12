@@ -39,7 +39,7 @@ class OrdersController extends Controller
     {
         $request->validate([
             'Status'=>'required',
-            'Due_date'=>'required'
+            'Due_date'=>'required|after_or_equal:today'
         ]);
             
         $order = Order::create($request->all()); 
@@ -90,6 +90,10 @@ class OrdersController extends Controller
 
     public function update(Request $request, Order $order)
     {    
+        $request->validate([
+            'Due_date'=>'required|after_or_equal:today'
+        ]);
+
         $data = Order::find($request->input('OrderID'));
         $data->OrderID = $request->input('OrderID');
         $data->Status=$request->input('Status');
@@ -232,6 +236,12 @@ class OrdersController extends Controller
     public function progressedit($OrderID)
     {
         $data = order::find($OrderID);
+
+        if($data->Progress == 'Order Completed'){
+            return redirect()->back()->with('error', 'This order is already completed. You can not change the progress...');
+        }elseif($data->Progress == 'Order Canceled'){
+            return redirect()->back()->with('error', 'This order is canceled. You can not change the progress...');
+        }
         return view('orders.updateprogress',['orders'=>$data]);
     }
 

@@ -201,12 +201,17 @@ return [
         ],
         'Due_Date'=>[
             'required' => 'Please enter due date',
+            'after_or_equal' => 'Due dtae should be a date after or equal to today date'
         ],
         'start_date'=>[
             'required' => 'Please enter start date',
+            'date_format' => 'The data format is incorrect',
+            'after_or_equal' => 'The end date should be after or equal to the start date',
         ],
         'end_date'=>[
             'required' => 'Please enter end date',
+            'date_format' => 'The data format is incorrect',
+            'before_or_equal' => 'The start date should be before or equal to the end date',
         ],
         'color'=>[
             'required' => 'Please select a color',

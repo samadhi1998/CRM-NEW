@@ -45,8 +45,8 @@ class EventController extends Controller
         $request->validate([
             'title'=>'required|min:4|max:50',
             'color'=>'required',
-            'start_date'=>'required',
-            'end_date'=>'required',
+            'start_date'=>'required|date_format:Y-m-d|before_or_equal:end_date',
+            'end_date'=>'required|date_format:Y-m-d|after_or_equal:start_date',
           ]);
 
          $events=new Event;
@@ -76,6 +76,12 @@ class EventController extends Controller
 
     public function update(Request $request, Event $event)
     {
+        $request->validate([
+            'title'=>'required|min:4|max:50',
+            'color'=>'required',
+            'start_date'=>'required|date_format:Y-m-d|before_or_equal:end_date',
+            'end_date'=>'required|date_format:Y-m-d|after_or_equal:start_date',
+          ]);
           
         $events = Event::find($request->input('id'));
         $events->id = $request->input('id');

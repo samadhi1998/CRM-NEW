@@ -19,11 +19,11 @@
                             <label for="Progress"><b>Progress : </b></label>
                             <select name="Progress" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
                                 <option value="{{$orders->Progress}}" selected hidden>{{$orders->Progress}}</option>
-                                <option value="Order Confirmed">Order Confirmed</option>
                                 <option value="Advance Payment Done">Advance Payment Done</option>
-                                <option value="Order Completed">Order Completed</option>
+                                <option value="Order Confirmed">Order Confirmed</option>
                                 <option value="Pre-Site Visit Done">Pre-Site Visit Done</option>
                                 <option value="Site Visit Done">Site Visit Done</option>
+                                <option value="Order Completed">Order Completed</option>
                                 <option value="Order Canceled">Order Canceled</option>
                             </select>
                             <br>
