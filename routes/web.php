@@ -31,6 +31,12 @@ Route::get('/wait', function () {
 
 Auth::routes();
 
+Route::get('/forget-password', 'App\Http\Controllers\Auth\ForgotPasswordController@getEmail');
+Route::post('/forget-password', 'App\Http\Controllers\Auth\ForgotPasswordController@postEmail');
+
+Route::get('/reset-password/{token}', 'App\Http\Controllers\Auth\ResetPasswordController@getPassword');
+Route::post('/reset-password', 'App\Http\Controllers\Auth\ResetPasswordController@updatePassword');
+
 //Dashboard Route
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
