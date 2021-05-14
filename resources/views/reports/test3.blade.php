@@ -37,10 +37,10 @@
                         <div class="card-body">   
                             <form action="{{ route('report') }}" method="get">  
                                 <div>
-                                    <h2>ABS-CBN CORPORATION</h2>
+                                    <h2>Winsoft Holdings (Pvt) Ltd. </h2>
                                     <h3>No.95, Galle Road, Moratuwa</h3>
                                     <h4>Tel : +(94) 112 605 731</h4>
-                                    <h4>E-mail : <a href="mailto:buyabc@abcgroup.com"> buyabc@abcgroup.com</a></h4>
+                                    <h4>E-mail :<a href="mailto:winsoft@winsoftlk.com"> winsoft@winsoftlk.com</a></h4>
                                     <br><br><hr>
                                 </div>    
                                 <h2 style="text-align: center; color:#233554">Monthly Sales Report : {{ $first_day_this_month }}  -  {{ $last_day_this_month }} </h2>                           

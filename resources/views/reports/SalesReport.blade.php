@@ -27,10 +27,10 @@
                         <div class="card"> 
                             <div class="row invoice-header px-3 py-4">
                                 <div class="col-12 text-center">
-                                    <h2 class="Name">ABS-CBN CORPORATION</h2>
+                                    <h2 class="Name">Winsoft Holdings (Pvt) Ltd.</h2>
                                     <h5>No.95, Galle Road, Moratuwa</h5>
                                     <h6>Tel : +(94) 112 605 731</h6>
-                                    <h6>Email :<a href="mailto:buyabc@abcgroup.com"> buyabc@abcgroup.com</a></h6>
+                                    <h6>E-mail :<a href="mailto:winsoft@winsoftlk.com"> winsoft@winsoftlk.com</a></h6>
                                     <hr>        
                                     <h4 style="text-align: center; color:#233554">Sales Report</h4><br>                   
                                 </div>    

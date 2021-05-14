@@ -24,9 +24,9 @@
                             
                          @foreach ($customers as $customer)
                            @if($customer['CustomerID'] == old('customer'))
-                            <option value="{{$customer['CustomerID']}}" selected>{{$customer['Name']}}  -  {{$customer['MobileNo']}} - {{$customer['NIC']}}</option>
+                            <option value="{{$customer['CustomerID']}}" selected>{{$customer['CustomerID']}}  - {{$customer['Name']}}  -  {{$customer['MobileNo']}} - {{$customer['NIC']}}</option>
                            @else
-                            <option value="{{$customer['CustomerID']}}">{{$customer['Name']}}  -  {{$customer['MobileNo']}} -  {{$customer['NIC']}}</option>
+                            <option value="{{$customer['CustomerID']}}">{{$customer['CustomerID']}}  - {{$customer['Name']}}  -  {{$customer['MobileNo']}} -  {{$customer['NIC']}}</option>
                            @endif
                         @endforeach 
 

@@ -32,14 +32,20 @@ class OrdersController extends Controller
     {       
         $products = product::all();
         $customers = customer::find($request->input('CustomerID'));
+        
         return view('orders/create', compact('products','customers'));
     }
     
     public function store(Request $request)
     {
+        $todayDate = date('m/d/Y');
+        
         $request->validate([
+
             'Status'=>'required',
-            'Due_date'=>'required|after_or_equal:today'
+            'Due_date'=>'required',
+            'Due_date' => 'date_format:Y-m-d|after_or_equal:today',
+
         ]);
             
         $order = Order::create($request->all()); 
@@ -83,6 +89,7 @@ class OrdersController extends Controller
         ->select('products.ProductID','order_product.Qty','products.Price','products.Name')
         ->where('order_product.order_OrderID', '=', $data->OrderID)
         ->get(); 
+        
         $products = product::all();
     
         return view('orders/edit',['order'=>$data,'products'=>$product]);  
@@ -90,11 +97,8 @@ class OrdersController extends Controller
 
     public function update(Request $request, Order $order)
     {    
-        $request->validate([
-            'Due_date'=>'required|after_or_equal:today'
-        ]);
-
         $data = Order::find($request->input('OrderID'));
+
         $data->OrderID = $request->input('OrderID');
         $data->Status=$request->input('Status');
         $data->Due_date=$request->input('Due_date');
@@ -119,17 +123,16 @@ class OrdersController extends Controller
          return redirect()->route('orders.index');
      }
 
- 
     public function delete($OrderID)
     {
         $order=Order::find($OrderID);
         $order->delete();
+
         return redirect('/orders');
     }
 
     public function SearchOrder(Request $request)
     {
-
         $request->validate([
             'query'=>'required']);
 
@@ -141,8 +144,7 @@ class OrdersController extends Controller
             return view('orders/searchorder', ['orders'=>$order]);
         } else {
             return redirect()->back()->with('error', 'Invalid Search , Enter available one ...');
-        }
-    
+        }   
     }
 
     public function emails($OrderID)
@@ -153,22 +155,21 @@ class OrdersController extends Controller
         ->join('order_product','orders.OrderID',"=",'order_product.order_OrderID')
         ->join('products','products.ProductID',"=",'order_product.product_ProductID')
         ->select('orders.OrderID','orders.Due_date' ,'orders.created_at','orders.Advance','orders.Status','orders.Discount','customers.Name as CustomerName','customers.MobileNo', 'customers.Email','customers.Address', 'products.Name as ProductName','products.price','order_product.Qty','products.Price')
-        ->where('orders.OrderID', '=', $OrderID )
-        ->get()->toArray(); 
+        ->where('orders.OrderID', '=', $OrderID )->get()->toArray(); 
   
         $pdf = PDF::loadView('orders.myEmail', compact('orders'));
 
-        $orders["title"] = "From ABS-CBN CORPORATION";
-        $orders["emails"] = "buyabc@abcgroup.com";
+        $orders["title"] = "From Winsoft Holdings (Pvt) Ltd.";
+        $orders["emails"] = "winsoft@winsoftlk.com";
       
         Mail::send('emails.myTestMail', $orders, function($message)use($orders, $pdf) {
             $message->to($orders["emails"], $orders["emails"])
                     ->subject($orders["title"])
-                    ->attachData($pdf->output(), "Invoice.pdf");
+                    ->attachData($pdf->output(), "Invoice - Winsoft Holdings.pdf");
         });
   
-        dd('Mail sent successfully');
-        
+       // dd('Mail sent successfully');      
+       return back()->with('success','Mail sent successfully');
     }
 
     public function PDF($OrderID)
@@ -179,12 +180,10 @@ class OrdersController extends Controller
         ->join('order_product','orders.OrderID',"=",'order_product.order_OrderID')
         ->join('products','products.ProductID',"=",'order_product.product_ProductID')
         ->select('orders.OrderID','orders.Due_date' ,'orders.created_at','orders.Advance','orders.Status','orders.Discount','customers.Name as CustomerName','customers.MobileNo', 'customers.Email','customers.Address', 'products.Name as ProductName','products.price','order_product.Qty','products.Price')
-        ->where('orders.OrderID', '=', $OrderID )
-        ->get()
-        ->toArray(); 
+        ->where('orders.OrderID', '=', $OrderID )->get()->toArray(); 
 
         $pdf = PDF::loadView('orders.myPDF', compact('orders'));
-        return $pdf->download('Invoice.pdf');
+        return $pdf->download('Invoice - Winsoft Holdings.pdf');
     }
     
     public function show(Order $order)
@@ -197,8 +196,7 @@ class OrdersController extends Controller
         ->select('orders.OrderID','orders.Due_date' ,'orders.Created_at','orders.Advance','orders.Status','orders.Discount',
                  'customers.Name as CustomerName','customers.MobileNo', 'customers.Email','customers.Address',
                  'products.Name as ProductName','products.price','order_product.Qty','products.Price')
-        ->where('orders.OrderID', '=', $order->OrderID)
-        ->get();   
+        ->where('orders.OrderID', '=', $order->OrderID)->get();   
         
         return view('orders/show', compact('orders'));   
     }
@@ -213,8 +211,8 @@ class OrdersController extends Controller
         ->select('orders.OrderID','orders.Due_date' ,'orders.Created_at','orders.Advance','orders.Progress','orders.Status','orders.Discount',
                  'customers.Name as CustomerName','customers.MobileNo', 'customers.Email','customers.Address',
                  'products.Name as ProductName','products.price','order_product.Qty','products.Price')
-        ->where('orders.OrderID', '=', $OrderID )
-        ->get()->toArray();  
+        ->where('orders.OrderID', '=', $OrderID )->get()->toArray();  
+        
         return view('orders.view',['orders'=>$orders]);
     }
 

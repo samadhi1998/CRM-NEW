@@ -43,15 +43,15 @@
                         <div class="row invoice-header px-3 py-4">
                             <div class="card-body">
                                 <div class="col-12 text-center">
-                                    <h2 class="Name">ABS-CBN CORPORATION</h2>
+                                    <h2 class="Name">Winsoft Holdings (Pvt) Ltd.</h2>
                                     <h3>No.95, Galle Road, Moratuwa</h3>
                                     <h4>Tel : +(94) 112 605 731</h4>
-                                    <h4>E-mail : <a href="mailto:buyabc@abcgroup.com"> buyabc@abcgroup.com</a></h4>
+                                    <h4>E-mail :<a href="mailto:winsoft@winsoftlk.com"> winsoft@winsoftlk.com</a></h4>
                                     <br><br><hr>
                                     <h2 class="Name">{{ $ord->Status }}</h2>
                                 </div> 
                             </div> 
-                        </div>   
+                        </div>  
                         <br><br>
                         <div>                                       
                             <h1><b>Order No #{{ $ord->OrderID }}</b></h1>

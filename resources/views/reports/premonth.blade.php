@@ -59,7 +59,7 @@
                     <div class="card">        
                             <div class="row invoice-header px-3 py-4">
                                 <div class="col-12 text-center">
-                                    <h3 class="Name">ABS-CBN CORPORATION</h3>                      
+                                    <h3> Winsoft Holdings (Pvt) Ltd. </h3>      
                                     <h4 style="text-align: center; color:#233554">Monthly Sales Report</h4>   
                                     <h6 style="text-align: center; color:#233554"><b>{{ $start }}  -  {{ $end }} </b></h6>                      
                             </div>   

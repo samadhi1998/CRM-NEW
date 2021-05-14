@@ -67,7 +67,7 @@
                 <div class="card">          
                     <div class="row invoice-header px-3 py-4">
                         <div class="col-12 text-center">
-                            <h3> ABS-CBN CORPORATION </h3>      
+                            <h3> Winsoft Holdings (Pvt) Ltd. </h3>      
                             <h4> Daily Sales Report </h4> 
                             <h5><b> {{ $date }} </b></h5>                      
                         </div>           

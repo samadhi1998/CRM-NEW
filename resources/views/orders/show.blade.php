@@ -97,15 +97,21 @@
             </style>
         </head>
         <body> 
+        @if(session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
             @foreach ($orders as $ord)
                 <div class="container">
                     <div class="row invoice-header px-3 py-4">
                         <div class="col-12 text-center">
-                            <h2 class="Name">ABS-CBN CORPORATION</h2>
+                            <h2 class="Name">Winsoft Holdings (Pvt) Ltd.</h2>
                             <h5>No.95, Galle Road, Moratuwa</h5>
                             <h6>Tel : +(94) 112 605 731</h6>
-                            <h6>E-mail :<a href="mailto:buyabc@abcgroup.com"> buyabc@abcgroup.com</a></h6>
+                            <h6>E-mail :<a href="mailto:winsoft@winsoftlk.com"> winsoft@winsoftlk.com </a></h6>
                             <hr>
+                            <h2 class="Name">{{ $ord->Status }}</h2>
                         </div> 
                     </div>
                     <div class="invoice-content row px-5 pt-5">
