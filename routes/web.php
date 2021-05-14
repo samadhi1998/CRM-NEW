@@ -28,6 +28,9 @@ Route::get('/wait', function () {
     return view('auth/wait');
 });
 
+Route::get('/Route', function () {
+    return view('Route');
+});
 
 Auth::routes();
 
