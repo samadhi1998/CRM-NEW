@@ -201,7 +201,7 @@ return [
         ],
         'Due_Date'=>[
             'required' => 'Please enter due date',
-            'after_or_equal' => 'Due dtae should be a date after or equal to today date'
+            'after_or_equal' => 'Due date should be a date after or equal to today date'
         ],
         'start_date'=>[
             'required' => 'Please enter start date',

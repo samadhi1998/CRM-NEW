@@ -174,6 +174,7 @@ Route::get('/Search_Chargers',[App\Http\Controllers\charge\ChargeController::cla
 Route::get('ExtrachargeInformation/{OrderID}',[App\Http\Controllers\charge\ChargeController::class,'ChargeInfo']);
 Route::get('/deleteChargers/{ExtraChargeID}',[App\Http\Controllers\charge\ChargeController::class,'DeleteExChargers']);
 //Route::get('/deleteChargers/{ExtraChargeID}','App\Http\Controllers\charge\ChargeController@DeleteExChargers');
+
 //Task Routes 
 
 Route::resource('tasks','App\Http\Controllers\TaskController');
@@ -209,6 +210,7 @@ Route::post('/sendmessage', [App\Http\Controllers\ChatController::class, 'sentMe
 
 //notification
 Route::get('/view-notifications','App\Http\Controllers\NotificationsController@index');
+Route::get('/deleteNotification/{id}','App\Http\Controllers\NotificationsController@deleteNotification');
 
 
 Route::get('/backup/create', 'App\Http\Controllers\BackupController@create');

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use Notifynder;
+use DB;
 use App\Models\User;
 use App\Models\Notification;
 use App\Http\Requests;
@@ -12,9 +13,7 @@ use Log;
 
 class NotificationsController extends Controller
 {
-    public function __construct() {
-        $this->authorizeResource(Note::class, Note::class);
-    }
+    
     /**
      * Mark a notification read
      * @param Request $request
@@ -49,5 +48,12 @@ class NotificationsController extends Controller
         $notification = $user->Notifications;
 
         return view('notification/index',['notifications'=>$notification]);
+    }
+
+    public function deleteNotification($id)
+    {
+        $data = DB::table('notifications')->where('id', $id);
+        $data->delete();
+        return redirect('view-notifications')->with('success','Notification Deleted Successfully');
     }
 }
