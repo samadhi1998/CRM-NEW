@@ -179,6 +179,7 @@ Route::get('/deleteChargers/{ExtraChargeID}',[App\Http\Controllers\charge\Charge
 
 Route::resource('tasks','App\Http\Controllers\TaskController');
 Route::get('/View-Task','App\Http\Controllers\TaskController@index');
+Route::get('/restore','App\Http\Controllers\TaskController@restore');
 Route::get('/View-Task/editTask/{TaskID}','App\Http\Controllers\TaskController@edit')->name('editTask'); 
 Route::get('/Create-Task','App\Http\Controllers\TaskController@create');
 Route::post('store','App\Http\Controllers\TaskController@store')->name('task.store');

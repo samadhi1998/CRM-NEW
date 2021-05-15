@@ -44,6 +44,9 @@ class TaskController extends Controller
         $user = User::where('RoleID','=',5)->get();
         $count = Task::where('ServicePersonID','=', $user->first()->EmpID)->where('Status','=','Open')->count();
         $data = Order::find($OrderID);
+        if($data->Progress == 'Order Completed'){
+            return redirect()->back()->with('error', 'This order is already completed. You can not add task...');
+        }
         return view ('task/CreateTask',['orders'=>$data], compact('count'))
             ->with(['users'=>$user]);
     }
@@ -183,6 +186,13 @@ class TaskController extends Controller
         $data=task::find($TaskID);
         $data->update(['Status' => 'Completed']);
         return redirect('View-Task')->with('success','Task Completed Successfully');
+    }
+
+    public function restore()
+    {
+        $Task = Task::whereNotNull('deleted_at' );
+        $Task->restore();
+        return redirect('View-Task')->with('success','Tasks Restored Successfully');
     }
 
 }

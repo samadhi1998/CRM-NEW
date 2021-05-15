@@ -91,12 +91,17 @@ class OrdersController extends Controller
         ->get(); 
         
         $products = product::all();
+
+        if($data->Progress == 'Order Completed'){
+            return redirect()->back()->with('error', 'This order is already completed. You can not edit details...');
+        }
     
         return view('orders/edit',['order'=>$data,'products'=>$product]);  
     }
 
     public function update(Request $request, Order $order)
     {    
+
         $data = Order::find($request->input('OrderID'));
 
         $data->OrderID = $request->input('OrderID');
@@ -251,7 +256,7 @@ class OrdersController extends Controller
         
         $data->save();
 
-        return redirect('/index');
+        return redirect('/index')->with('success','Progress updated successfully...');
     }
 
 }

@@ -27,7 +27,7 @@
                         <input type="date" name="Due_Date" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%">
                         <br>
                         <label for="OrderID" ><b>Order ID : </b></label>
-                        <input type="text" name="OrderID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$orders->OrderID}}"> 
+                        <input type="text" name="OrderID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$orders->OrderID}}" readonly> 
                         <br>
                         <label for="ServicePersonID"><b>Assign Employee : </b></label>
                             <select name="ServicePersonID" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >

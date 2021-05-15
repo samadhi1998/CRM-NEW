@@ -13,6 +13,12 @@
         {{ session()->get('success') }}
     </div>
   @endif
+@if(Auth::user()->roles->name == 'Super-Admin')
+<div class="pull-left">
+    <a class="btn btn-primary" href="/restore"> Restore Deleted Items</a>
+</div>
+@endif
+<br>
 <div class="container" style="background :none !important ">
   <div class="row justify-content-center">
     <div class="col-md">

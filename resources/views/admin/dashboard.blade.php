@@ -94,7 +94,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-md-flex">
-                            <h4 class="card-title col-md-10 mb-md-0 mb-5 align-self-center">Orders</h4>
+                            <h4 class="card-title col-md-10 mb-md-0 mb-5 align-self-center">Daily Orders</h4>
                         </div>
                         <div class="table-responsive mt-4">
                             <table>

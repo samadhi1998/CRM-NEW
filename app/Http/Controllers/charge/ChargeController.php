@@ -50,6 +50,9 @@ class ChargeController extends Controller
         ->where('OrderID',$id)
          ->get()->first(); 
         // dd( $extra_charges);
+        if($extra_charges->Progress == 'Order Completed'){
+            return redirect()->back()->with('error', 'This order is already completed. You can not add extra charge...');
+        }
         return  view('charge/addcharge',['extra_charge'=>$extra_charges]);
 
     }
