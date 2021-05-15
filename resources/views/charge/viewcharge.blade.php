@@ -2,6 +2,13 @@
 @section('title','View Charge')
 @section('header','View Additional Charges')
 @section('content')
+@if(Auth::user()->roles->name == 'Super-Admin')
+<div class="pull-right">
+    <a class="btn btn-primary" href="/restoreChargers"> Restore Deleted Charges</a>
+</div>
+@endif
+<br>
+<br>
 <div class="container" style="background :none !important ">
     <div class="row justify-content-center">
         <div class="col-md">

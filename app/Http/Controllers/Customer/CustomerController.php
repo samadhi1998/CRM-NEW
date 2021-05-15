@@ -130,12 +130,12 @@ class CustomerController extends Controller
   }
   
   
-
-
-
-
-
-
+  public function restore()
+  {
+      $customer = customer::whereNotNull('deleted_at' );
+      $customer->restore();
+      return redirect('ViewCustomers')->with('success','Customers Restored Successfully');
+  }
 
 
 

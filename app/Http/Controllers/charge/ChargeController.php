@@ -133,7 +133,12 @@ class ChargeController extends Controller
     }
   
 
-
+    public function restore()
+    {
+        $extra_charge =extra_charge::whereNotNull('deleted_at' );
+        $extra_charge->restore();
+        return redirect('/ViewChargers')->with('success','Charges Restored Successfully');
+    }
 
 
 
