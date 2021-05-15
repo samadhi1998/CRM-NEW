@@ -92,8 +92,10 @@ class OrdersController extends Controller
         
         $products = product::all();
 
-        if($data->Progress == 'Order Completed'){
+        if($data->Progress == 'Order Completed' && Auth::user()->roles->name != 'Super-Admin'){
             return redirect()->back()->with('error', 'This order is already completed. You can not edit details...');
+        }elseif($data->Progress == 'Order Canceled' && Auth::user()->roles->name != 'Super-Admin'){
+            return redirect()->back()->with('error', 'This order is canceled. You can not edit details...');
         }
     
         return view('orders/edit',['order'=>$data,'products'=>$product]);  
@@ -240,9 +242,9 @@ class OrdersController extends Controller
     {
         $data = order::find($OrderID);
 
-        if($data->Progress == 'Order Completed'){
+        if($data->Progress == 'Order Completed' && Auth::user()->roles->name != 'Super-Admin'){
             return redirect()->back()->with('error', 'This order is already completed. You can not change the progress...');
-        }elseif($data->Progress == 'Order Canceled'){
+        }elseif($data->Progress == 'Order Canceled' && Auth::user()->roles->name != 'Super-Admin'){
             return redirect()->back()->with('error', 'This order is canceled. You can not change the progress...');
         }
         return view('orders.updateprogress',['orders'=>$data]);
