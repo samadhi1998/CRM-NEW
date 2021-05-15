@@ -80,25 +80,13 @@ class ProductController extends Controller
     {
         
         $data=product::find($req->ProductID);
-        // if(max($data->Qty, $req->Qty)==$data->Qty){
-        //     return redirect('product/viewproduct')->with('error','You Cannot change Product Quantity less than Available Product Quantity......');
-        // }
+         if(($data->Qty)>($req->Qty)){
+             return redirect('product/viewproduct')->with('error','You Cannot change Product Quantity less than Available Product Quantity......');
+         }
         $data->Name=$req->Name;
         $data->Brand=$req->Brand;
-
-        // if($req->hasfile('image')){
-        //     $file=$req->file('image');
-        //     $extension=$file->getClientOriginalExtension();//get image extension
-        //     $filename= time().'.'.$extension;
-        //     $file->move('uploads/product',$filename); 
-        //     $data->image=$filename;
-        //   }else{
-        //      return $req;
-        //      $data->image='';
-        //   }
-       
+        $data->Qty=$req->Qty;
         $data->Price=$req->Price;
-        $data->Qty = max($data->Qty, $req->Qty);
         $data->Warranty=$req->Warranty;
         $data->Description=$req->Description;
         $data->Status=$req->Status;
