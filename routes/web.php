@@ -92,6 +92,7 @@ Route::get('progressedit/{OrderID}',[App\Http\Controllers\OrdersController::clas
 Route::post('progressedit',[App\Http\Controllers\OrdersController::class,'progressupdate']);
 Route::get('delete/{OrderID}',[App\Http\Controllers\OrdersController::class,'delete']);
 Route::get('/SearchOrder',[App\Http\Controllers\OrdersController::class,'SearchOrder']);
+Route::get('/restoreOrder',[App\Http\Controllers\OrdersController::class,'restore']);
 
 
 //Invoice Routes (Invoice + PDF + Emails)

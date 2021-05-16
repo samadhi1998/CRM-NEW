@@ -17,6 +17,14 @@
                             </ul>
                         </div>
                     @endif
+                    @if(session('status'))
+                    <div class = "alert alert-danger">
+                     <strong>Whoops!</strong> There were some problems with your input !!<br><br>
+                        <ul>
+                            <li> {{session('status')}} </li>
+                        </ul>
+                    </div>
+                    @endif
                     <form action="{{ route('orders.store') }}" method="POST">
                     @csrf     
                     <label for="CustomerID" ><b>Customer ID : </b></label>

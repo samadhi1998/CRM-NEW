@@ -37,9 +37,7 @@ class OrdersController extends Controller
     }
     
     public function store(Request $request)
-    {
-        $todayDate = date('m/d/Y');
-        
+    { 
         $request->validate([
 
             'Status'=>'required',
@@ -48,11 +46,14 @@ class OrdersController extends Controller
 
         ]);
             
-        $order = Order::create($request->all()); 
-        $customers = $request->input('CustomerID'); 
-        $products = $request->input('products', []);
-        $quantities = $request->input('quantities', []);
-        
+        try {
+            DB::beginTransaction();
+
+            $order = Order::create($request->all()); 
+            $customers = $request->input('CustomerID'); 
+            $products = $request->input('products', []);
+            $quantities = $request->input('quantities', []);
+
             for ($product=0; $product < count($products); $product++) 
             {           
                 if ($products[$product] != '') 
@@ -61,11 +62,22 @@ class OrdersController extends Controller
                             $order->products()->attach($products[$product], ['Qty' => $quantities[$product]]);                                         
                         }    
                         else{
+                            DB::rollBack(); 
                             $msg = " The requested quantity is not available !! ";
-                            return back()->with('status',$msg);                       
+                            return back()->with('status',$msg);                     
                         }
                     }  
             }
+            
+            DB::commit();
+
+        } catch (\PDOException $e) {
+            DB::rollBack();
+
+            $msg = " The requested quantity is not available !! ";
+            return back()->with('status',$msg); 
+        }
+            
         
         //product Thilini
         if ($request->input('Status') == 'Invoice') {
@@ -74,10 +86,9 @@ class OrdersController extends Controller
                     $product->Qty = $product->Qty - $quantities[$p];
                     $product->save();
                 }
-            }
+        }
 
-       return redirect('index')->with('success','Order Added');
-
+       return redirect('index')->with('success','Order Added successfully...');
     }
 
     public function edit($OrderID)
@@ -127,7 +138,7 @@ class OrdersController extends Controller
          }
      
         }
-         return redirect()->route('orders.index');
+         return redirect()->route('orders.index')->with('success', 'Order Updated successfully...');
      }
 
     public function delete($OrderID)
@@ -135,7 +146,15 @@ class OrdersController extends Controller
         $order=Order::find($OrderID);
         $order->delete();
 
-        return redirect('/orders');
+        return redirect('/orders')->with('success', 'Order Deleted successfully...');
+    }
+
+    public function restore()
+    {
+        $order = Order::whereNotNull('deleted_at' );
+        $order->restore();
+
+        return redirect('index')->with('success','Order Restored Successfully...');
     }
 
     public function SearchOrder(Request $request)

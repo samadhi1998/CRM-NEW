@@ -8,7 +8,11 @@
     <a class="btn btn-primary" href="/searchordercustomer"> Add new order <span data-feather="plus"></a></a>
 </div>
 @endif
-
+@if(Auth::user()->roles->name == 'Super-Admin')
+<div class="pull-left">
+    <a class="btn btn-primary" href="/restoreOrder"> Restore Deleted Orders</a>
+</div>
+@endif
 <br>
 <br>
 @if (Session::has('error'))
