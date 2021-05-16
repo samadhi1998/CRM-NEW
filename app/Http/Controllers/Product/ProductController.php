@@ -166,4 +166,11 @@ class ProductController extends Controller
         return view('product.productInformation',['products'=>$products]);
     }
 
+    public function restore()
+  {
+      $Product = Product::whereNotNull('deleted_at' );
+      $Product->restore();
+      return redirect('product/viewproduct')->with('success','Product Restored Successfully');
+  }
+
 }

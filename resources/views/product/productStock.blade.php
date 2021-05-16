@@ -57,6 +57,11 @@
               @if(Auth::user()->can('edit-product', App\Models\product::class))
                 <a href= "/UpdateProducts/{{$product['ProductID']}}" style="margin:2px" class="text-my-own-color"><span data-feather ="edit"></span></a>                               
               @endif
+              @if(Auth::user()->can('delete-product', App\Models\product::class))
+                <a href="/Delete_Products/{{$product['ProductID']}}" style="margin:2px" class="text-my-own-color" onclick="return confirm('Are you sure you want to delete this item?');">
+                  <span data-feather="trash-2"></span>
+                  </a>
+               @endif
               </td>
             </tr>
             @endforeach

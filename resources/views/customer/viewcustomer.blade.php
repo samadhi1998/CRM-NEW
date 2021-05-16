@@ -8,6 +8,11 @@
     <a href="/addCustomer" class="btn btn-primary"> Add Customer <span data-feather="plus"></a>
   </div>
 @endif
+@if(Auth::user()->roles->name == 'Super-Admin')
+<div class="pull-right">
+    <a class="btn btn-primary" href="/customerrestore"> Restore Deleted Customers</a>
+</div>
+@endif
 <br>
 <br>
 <br>

@@ -52,8 +52,34 @@ class customerSeeder extends Seeder
                 'Address'=>'"3rd road,Mathale"',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-            ]
-
+            ],
+            [
+                'Name'=>'Nuwani Perera',
+                'NIC'=>'954418490V',
+                'Email'=>'nuwaniPerera123@gmail.com',
+                'MobileNo'=>'0718934807',
+                'Address'=>'"2rd road,Gampaha"',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'Name'=>'Thilini Madushani',
+                'NIC'=>'924513367V',
+                'Email'=>'thiliniM@gmail.com',
+                'MobileNo'=>'0714400756',
+                'Address'=>'"Kuliyapitiya"',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'Name'=>'Menaka Rajapaksha',
+                'NIC'=>'737867180V',
+                'Email'=>'MRajapaksha@gmail.com',
+                'MobileNo'=>'0718037754',
+                'Address'=>'"34/144,niyagalagama,Badulla"',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
 
             ]
         

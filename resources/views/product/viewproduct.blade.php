@@ -9,6 +9,12 @@
 </div>
 @endif
 
+@if(Auth::user()->roles->name == 'Super-Admin')
+<div class="pull-left">
+    <a class="btn btn-primary" href="/productrestore"> Restore Deleted Products</a>
+</div>
+@endif
+
 <div class="pull-right" style="text-align: right;">
     @if(Auth::user()->can('Stock-In-product', App\Models\product::class))
     <a class="btn btn-primary" href="/InStockProducts"> In Stock</a>

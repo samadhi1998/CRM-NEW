@@ -128,6 +128,7 @@ Route::get('product/viewproduct',[App\Http\Controllers\Product\ProductController
 Route::get('/UpdateProducts/{ProductID}',[App\Http\Controllers\Product\ProductController::class,'UpdateProducts']);
 Route::post('/Updateproducts',[App\Http\Controllers\Product\ProductController::class,'ShowUpdatesProducts']);
 Route::get('/Search_Products',[App\Http\Controllers\Product\ProductController::class,'SearchProducts']);
+Route::get('/productrestore',[App\Http\Controllers\Product\ProductController::class,'restore']);
 Route::get('/ProductCount',[App\Http\Controllers\Product\ProductController::class,'ProductCount']);
 Route::get('/Delete_Products/{ProductID}',[App\Http\Controllers\Product\ProductController::class,'deleteproducts']);
 Route::get('/ReOrderProducts',[App\Http\Controllers\Product\ProductController::class,'ReorderProducts']);
@@ -157,6 +158,7 @@ Route::post('/addCustomer',[App\Http\Controllers\Customer\CustomerController::cl
 Route::get('/editCustomer/{CustomerID}',[App\Http\Controllers\Customer\CustomerController::class,'UpdateCustomers']);
 Route::post('/editcustomers',[App\Http\Controllers\Customer\CustomerController::class,'ShowUpdatesCustomers']);
 Route::get('/deleteCustomer/{CustomerID}',[App\Http\Controllers\Customer\CustomerController::class,'DeleteCustomers']);
+Route::get('/customerrestore',[App\Http\Controllers\Customer\CustomerController::class,'restore']);
 Route::get('/Search_Customers',[App\Http\Controllers\Customer\CustomerController::class,'SearchCustomers']);
 Route::get('/ViewCustomers',[App\Http\Controllers\Customer\CustomerController::class, 'ViewCustomers']);
 Route::get('/CustomerCount',[App\Http\Controllers\Customer\CustomerController::class,'CustomerCount']);
@@ -168,12 +170,13 @@ Route::post('/checkcustomers',[App\Http\Controllers\Customer\CustomerController:
 Route::get('/addChargers/{id}',[App\Http\Controllers\charge\ChargeController::class,'Addcharge']);
 Route::post('/addChargers',[App\Http\Controllers\charge\ChargeController::class,'AddExtraChargers']);
 Route::get('/ViewChargers',[App\Http\Controllers\charge\ChargeController::class,'ViewChargers']);
+Route::get('/restoreChargers',[App\Http\Controllers\charge\ChargeController::class,'restore']);
 Route::post('/updateChargers',[App\Http\Controllers\charge\ChargeController::class,'ShowUpdateExtraChargers']);
 Route::get('/UpdateChargers/{ExtraChargeID}',[App\Http\Controllers\charge\ChargeController::class, 'UpdateChargers']);
 Route::get('/Search_Chargers',[App\Http\Controllers\charge\ChargeController::class,'SearchChargers']);
 Route::get('ExtrachargeInformation/{OrderID}',[App\Http\Controllers\charge\ChargeController::class,'ChargeInfo']);
 Route::get('/deleteChargers/{ExtraChargeID}',[App\Http\Controllers\charge\ChargeController::class,'DeleteExChargers']);
-//Route::get('/deleteChargers/{ExtraChargeID}','App\Http\Controllers\charge\ChargeController@DeleteExChargers');
+
 
 //Task Routes 
 
