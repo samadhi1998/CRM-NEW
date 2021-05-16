@@ -24,7 +24,9 @@
                                 <option value="Pre-Site Visit Done">Pre-Site Visit Done</option>
                                 <option value="Site Visit Done">Site Visit Done</option>
                                 <option value="Order Completed">Order Completed</option>
+                                @if($orders->Status != 'Invoice')
                                 <option value="Order Canceled">Order Canceled</option>
+                                @endif
                             </select>
                             <br>
                             <br>
