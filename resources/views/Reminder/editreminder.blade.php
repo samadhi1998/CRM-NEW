@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title','Update Note')
-@section('header','Update Note')
+@section('title','Update Reminder')
+@section('header','Update Reminder')
 @section('content')
 
 @if ($errors->any())

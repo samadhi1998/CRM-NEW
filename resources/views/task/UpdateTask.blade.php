@@ -31,7 +31,6 @@
                         <label for="Status"><b>Status : </b></label>
                             <select name="Status" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
                                 <option value="{{$tasks->Status}}" selected hidden>{{$tasks->Status}}</option>
-                                <option value="Active">Active</option>
                                 <option value="Completed">Completed</option>
                                 <option value="Canceled">Canceled</option>
                             </select>

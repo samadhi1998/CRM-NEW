@@ -30,10 +30,10 @@
                         <input type="text" name="OrderID" required style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" value="{{$orders->OrderID}}" readonly> 
                         <br>
                         <label for="ServicePersonID"><b>Assign Employee : </b></label>
-                            <select name="ServicePersonID" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" >
+                            <select name="ServicePersonID" style="background: #ffffff; margin: 5px 0 22px 0; border: none; padding: 10px; width: 100%" id="input-category" class="form-select" >
+                                <option selected>Select a Service Person</option>
                                 @foreach($users as $user)
-                                    <option selected>Select a Service Person</option>
-                                    <option value="{{$user['EmpID']}}">{{$user['name']}}: No of active tasks:- {{$count}}</option>
+                                    <option value="{{$user['EmpID']}}">{{$user['name']}}</option>
                                 @endforeach
                             </select>
                         <br>
@@ -58,3 +58,11 @@
 </div>
 
 @endsection
+
+@push('js')
+    <script>
+        new SlimSelect({
+            select: '.form-select'
+        })
+    </script>
+@endpush

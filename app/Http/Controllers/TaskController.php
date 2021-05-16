@@ -23,7 +23,6 @@ class TaskController extends Controller
      */
     public function index()
     {
-        
         $data = Task::where('ServicePersonID','=', Auth::user()->EmpID)->sortable()->paginate(5);
         
         if(Auth::user()->roles->name == 'Super-Admin' || Auth::user()->can('add-task', App\Models\Task::class) ){
@@ -42,7 +41,6 @@ class TaskController extends Controller
     public function create($OrderID)
     {
         $user = User::where('RoleID','=',5)->get();
-        $count = Task::where('ServicePersonID','=', $user->first()->EmpID)->where('Status','=','Open')->count();
         $data = Order::find($OrderID);
 
         if($data->Progress == 'Order Completed'){
@@ -51,7 +49,7 @@ class TaskController extends Controller
             return redirect()->back()->with('error', 'This order is canceled. You can not add task...');
         }
         
-        return view ('task/CreateTask',['orders'=>$data], compact('count'))
+        return view ('task/CreateTask',['orders'=>$data])
             ->with(['users'=>$user]);
     }
 
@@ -84,9 +82,7 @@ class TaskController extends Controller
 
          $data->save();
        
-
         return redirect('/View-Task')->with('success','Task Added Successfully');
-
     }
 
     /**
@@ -178,8 +174,6 @@ class TaskController extends Controller
           ->select('tasks.TaskID','tasks.Description','tasks.Due_Date','tasks.Status','users.name','users.EmpID','users.MobileNo','users.email','orders.OrderID','tasks.created_at','orders.CustomerID')
           ->where('tasks.TaskID','=',$TaskID)
           ->get()->toArray();  
-
-         
         
          return view('task.viewtaskinfo',['tasks'=>$tasks]);  
     }

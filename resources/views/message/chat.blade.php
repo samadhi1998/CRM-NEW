@@ -15,7 +15,7 @@
           
             @if($user->unread)
             <span class="pending">{{ $user->unread }}</span>
-           @endif  
+            @endif  
             <div class="media">
               <div class="media-body">
                 <div class="card text-center">

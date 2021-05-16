@@ -20,9 +20,6 @@ class CreateMessagesTable extends Migration
             $table->text('message');
             $table->tinyInteger('is_read'); 
             $table->timestamps();
-            
-            $table->unsignedBigInteger('FollowUpID')->nullable();
-            $table->foreign('FollowUpID')->references('EmpID')->on('users');
         });
     }
 
