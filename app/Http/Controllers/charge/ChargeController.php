@@ -54,6 +54,8 @@ class ChargeController extends Controller
             return redirect()->back()->with('error', 'This order is already completed. You can not add extra charge...');
         }elseif($extra_charges->Progress == 'Order Canceled'){
             return redirect()->back()->with('error', 'This order is canceled. You can not add extra charge...');
+        }elseif($extra_charges->Status == 'Estimated Quotation'){
+            return redirect()->back()->with('error', 'This order is still in progress. You can not add extra charge...');
         }
         return  view('charge/addcharge',['extra_charge'=>$extra_charges]);
 
