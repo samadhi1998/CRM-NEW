@@ -15,7 +15,19 @@
                             Due Date : {{$order->Due_date}}<br>
                             Created Date : {{ $order->Created_at }}<br><br>
                             Progress :  {{ $order->Progress }}<br>
-                            Status :  {{ $order->Status }}<br><br>   
+                            Status :  {{ $order->Status }}<br><br> 
+                            Rate :   
+                                @for ($i=0; $i < 5 ; $i++)
+                                @if ($i < $order->Rate)
+                                    <span data-feather="star" style="color: red"></span>
+                                @else
+                                    <span data-feather="star"></span>
+                                @endif
+                                @endfor
+                                <br>
+                            Feedback : {{ $order->Feedback}}
+                            <br>
+                            <br>
                     </strong></h6>          
                     <h5 class="card-title"><strong>Customer :</strong></h5>
                             <h6><strong> 
@@ -50,7 +62,7 @@
                                         <td colspan="2" style="text-align: left"><b>Advance Payment</b></td>
                                         <td>{{ $ord->Advance }}  </td>
                                     </tr>
-                            </table>                         
+                            </table>                        
                         </div>
                     </div>
                 </div>

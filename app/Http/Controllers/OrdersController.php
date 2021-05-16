@@ -234,7 +234,7 @@ class OrdersController extends Controller
         ->join('customers','orders.CustomerID',"=",'customers.CustomerID')
         ->join('order_product','orders.OrderID',"=",'order_product.order_OrderID')
         ->join('products','products.ProductID',"=",'order_product.product_ProductID')
-        ->select('orders.OrderID','orders.Due_date' ,'orders.Created_at','orders.Advance','orders.Progress','orders.Status','orders.Discount',
+        ->select('orders.OrderID','orders.Due_date' ,'orders.Created_at','orders.Advance','orders.Rate','orders.Feedback','orders.Progress','orders.Status','orders.Discount',
                  'customers.Name as CustomerName','customers.MobileNo', 'customers.Email','customers.Address',
                  'products.Name as ProductName','products.price','order_product.Qty','products.Price')
         ->where('orders.OrderID', '=', $OrderID )->get()->toArray();  
