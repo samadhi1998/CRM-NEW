@@ -107,6 +107,8 @@ class OrdersController extends Controller
             return redirect()->back()->with('error', 'This order is already completed. You can not edit details...');
         }elseif($data->Progress == 'Order Canceled' && Auth::user()->roles->name != 'Super-Admin'){
             return redirect()->back()->with('error', 'This order is canceled. You can not edit details...');
+        }elseif ($data->Status == 'Invoice' && Auth::user()->roles->name != 'Super-Admin'){
+            return redirect()->back()->with('error', 'This order is already completed. You can not edit details...');
         }
     
         return view('orders/edit',['order'=>$data,'products'=>$product]);  

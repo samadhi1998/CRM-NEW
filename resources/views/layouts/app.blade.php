@@ -652,7 +652,7 @@ table {
                       </li>
                       @endif
                       @if(Auth::user()->roles->name == 'Super-Admin' || Auth::user()->roles->name == 'Service-Person')
-                    <li class="nav-item">
+                      <li class="nav-item">
                         <a class="nav-link" href="/Route">
                           <span data-feather="compass"></span>
                             Map
