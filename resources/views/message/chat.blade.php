@@ -13,13 +13,16 @@
         @foreach($users as $user)
           <li class="user" id="{{$user->EmpID}}">
           
-            @if($user->unread)
+            <!-- @if($user->unread)
             <span class="pending">{{ $user->unread }}</span>
-            @endif  
+            @endif   -->
             <div class="media">
               <div class="media-body">
                 <div class="card text-center">
                 <div class= "row no-gutters">
+                @if($user->unread)
+                  <span class="pending">{{ $user->unread }}</span>
+                @endif  
                 <div class="col-md-4 align-self-center">
                 <span data-feather="user" style="width: 50px; height: 50px" class="text-my-own-color" >
                 </span>

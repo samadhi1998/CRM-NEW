@@ -105,6 +105,11 @@ class TaskController extends Controller
     public function edit($TaskID)
     {
         $data = task::find($TaskID);
+        if($data->Status == 'Completed' && Auth::user()->roles->name != 'Super-Admin'){
+            return redirect()->back()->with('error', 'This task is already completed. You can not edit task...');
+        }elseif($data->Status == 'Canceled' && Auth::user()->roles->name != 'Super-Admin'){
+            return redirect()->back()->with('error', 'This task is canceled. You can not edit task...');
+        }
         return view('task.UpdateTask',['tasks'=>$data]);
     }
 
